@@ -1,0 +1,1106 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.1.0 #7066 (Nov 22 2011) (Linux)
+                              4 ; This file was generated Wed Sep  7 09:33:08 2022
+                              5 ;--------------------------------------------------------
+                              6 	.module bootloader
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _bl_main
+                             13 	.globl _cin
+                             14 	.globl _cout
+                             15 	.globl _flash_read_byte
+                             16 	.globl _flash_write_byte
+                             17 	.globl _flash_erase_scratch
+                             18 	.globl _flash_erase_app
+                             19 	.globl _flash_app_valid
+                             20 	.globl _NSS1
+                             21 	.globl _IRQ
+                             22 	.globl _PIN_ENABLE
+                             23 	.globl _PIN_CONFIG
+                             24 	.globl _LED_GREEN
+                             25 	.globl _LED_RED
+                             26 	.globl _SPI0EN
+                             27 	.globl _TXBMT0
+                             28 	.globl _NSS0MD0
+                             29 	.globl _NSS0MD1
+                             30 	.globl _RXOVRN0
+                             31 	.globl _MODF0
+                             32 	.globl _WCOL0
+                             33 	.globl _SPIF0
+                             34 	.globl _AD0CM0
+                             35 	.globl _AD0CM1
+                             36 	.globl _AD0CM2
+                             37 	.globl _AD0WINT
+                             38 	.globl _AD0BUSY
+                             39 	.globl _AD0INT
+                             40 	.globl _BURSTEN
+                             41 	.globl _AD0EN
+                             42 	.globl _CCF0
+                             43 	.globl _CCF1
+                             44 	.globl _CCF2
+                             45 	.globl _CCF3
+                             46 	.globl _CCF4
+                             47 	.globl _CCF5
+                             48 	.globl _CR
+                             49 	.globl _CF
+                             50 	.globl _P
+                             51 	.globl _F1
+                             52 	.globl _OV
+                             53 	.globl _RS0
+                             54 	.globl _RS1
+                             55 	.globl _F0
+                             56 	.globl _AC
+                             57 	.globl _CY
+                             58 	.globl _T2XCLK
+                             59 	.globl _T2RCLK
+                             60 	.globl _TR2
+                             61 	.globl _T2SPLIT
+                             62 	.globl _TF2CEN
+                             63 	.globl _TF2LEN
+                             64 	.globl _TF2L
+                             65 	.globl _TF2H
+                             66 	.globl _SI
+                             67 	.globl _ACK
+                             68 	.globl _ARBLOST
+                             69 	.globl _ACKRQ
+                             70 	.globl _STO
+                             71 	.globl _STA
+                             72 	.globl _TXMODE
+                             73 	.globl _MASTER
+                             74 	.globl _PX0
+                             75 	.globl _PT0
+                             76 	.globl _PX1
+                             77 	.globl _PT1
+                             78 	.globl _PS0
+                             79 	.globl _PT2
+                             80 	.globl _PSPI0
+                             81 	.globl _SPI1EN
+                             82 	.globl _TXBMT1
+                             83 	.globl _NSS1MD0
+                             84 	.globl _NSS1MD1
+                             85 	.globl _RXOVRN1
+                             86 	.globl _MODF1
+                             87 	.globl _WCOL1
+                             88 	.globl _SPIF1
+                             89 	.globl _EX0
+                             90 	.globl _ET0
+                             91 	.globl _EX1
+                             92 	.globl _ET1
+                             93 	.globl _ES0
+                             94 	.globl _ET2
+                             95 	.globl _ESPI0
+                             96 	.globl _EA
+                             97 	.globl _RI0
+                             98 	.globl _TI0
+                             99 	.globl _RB80
+                            100 	.globl _TB80
+                            101 	.globl _REN0
+                            102 	.globl _MCE0
+                            103 	.globl _S0MODE
+                            104 	.globl _CRC0VAL
+                            105 	.globl _CRC0INIT
+                            106 	.globl _CRC0SEL
+                            107 	.globl _IT0
+                            108 	.globl _IE0
+                            109 	.globl _IT1
+                            110 	.globl _IE1
+                            111 	.globl _TR0
+                            112 	.globl _TF0
+                            113 	.globl _TR1
+                            114 	.globl _TF1
+                            115 	.globl _PCA0CP4
+                            116 	.globl _PCA0CP0
+                            117 	.globl _PCA0
+                            118 	.globl _PCA0CP3
+                            119 	.globl _PCA0CP2
+                            120 	.globl _PCA0CP1
+                            121 	.globl _PCA0CP5
+                            122 	.globl _TMR2
+                            123 	.globl _TMR2RL
+                            124 	.globl _ADC0LT
+                            125 	.globl _ADC0GT
+                            126 	.globl _ADC0
+                            127 	.globl _TMR3
+                            128 	.globl _TMR3RL
+                            129 	.globl _TOFF
+                            130 	.globl _DP
+                            131 	.globl _VDM0CN
+                            132 	.globl _PCA0CPH4
+                            133 	.globl _PCA0CPL4
+                            134 	.globl _PCA0CPH0
+                            135 	.globl _PCA0CPL0
+                            136 	.globl _PCA0H
+                            137 	.globl _PCA0L
+                            138 	.globl _SPI0CN
+                            139 	.globl _EIP2
+                            140 	.globl _EIP1
+                            141 	.globl _SMB0ADM
+                            142 	.globl _SMB0ADR
+                            143 	.globl _P2MDIN
+                            144 	.globl _P1MDIN
+                            145 	.globl _P0MDIN
+                            146 	.globl _B
+                            147 	.globl _RSTSRC
+                            148 	.globl _PCA0CPH3
+                            149 	.globl _PCA0CPL3
+                            150 	.globl _PCA0CPH2
+                            151 	.globl _PCA0CPL2
+                            152 	.globl _PCA0CPH1
+                            153 	.globl _PCA0CPL1
+                            154 	.globl _ADC0CN
+                            155 	.globl _EIE2
+                            156 	.globl _EIE1
+                            157 	.globl _FLWR
+                            158 	.globl _IT01CF
+                            159 	.globl _XBR2
+                            160 	.globl _XBR1
+                            161 	.globl _XBR0
+                            162 	.globl _ACC
+                            163 	.globl _PCA0PWM
+                            164 	.globl _PCA0CPM4
+                            165 	.globl _PCA0CPM3
+                            166 	.globl _PCA0CPM2
+                            167 	.globl _PCA0CPM1
+                            168 	.globl _PCA0CPM0
+                            169 	.globl _PCA0MD
+                            170 	.globl _PCA0CN
+                            171 	.globl _P0MAT
+                            172 	.globl _P2SKIP
+                            173 	.globl _P1SKIP
+                            174 	.globl _P0SKIP
+                            175 	.globl _PCA0CPH5
+                            176 	.globl _PCA0CPL5
+                            177 	.globl _REF0CN
+                            178 	.globl _PSW
+                            179 	.globl _P1MAT
+                            180 	.globl _PCA0CPM5
+                            181 	.globl _TMR2H
+                            182 	.globl _TMR2L
+                            183 	.globl _TMR2RLH
+                            184 	.globl _TMR2RLL
+                            185 	.globl _REG0CN
+                            186 	.globl _TMR2CN
+                            187 	.globl _P0MASK
+                            188 	.globl _ADC0LTH
+                            189 	.globl _ADC0LTL
+                            190 	.globl _ADC0GTH
+                            191 	.globl _ADC0GTL
+                            192 	.globl _SMB0DAT
+                            193 	.globl _SMB0CF
+                            194 	.globl _SMB0CN
+                            195 	.globl _P1MASK
+                            196 	.globl _ADC0H
+                            197 	.globl _ADC0L
+                            198 	.globl _ADC0TK
+                            199 	.globl _ADC0CF
+                            200 	.globl _ADC0MX
+                            201 	.globl _ADC0PWR
+                            202 	.globl _ADC0AC
+                            203 	.globl _IREF0CN
+                            204 	.globl _IP
+                            205 	.globl _FLKEY
+                            206 	.globl _FLSCL
+                            207 	.globl _PMU0CF
+                            208 	.globl _OSCICL
+                            209 	.globl _OSCICN
+                            210 	.globl _OSCXCN
+                            211 	.globl _SPI1CN
+                            212 	.globl _ONESHOT
+                            213 	.globl _EMI0TC
+                            214 	.globl _RTC0KEY
+                            215 	.globl _RTC0DAT
+                            216 	.globl _RTC0ADR
+                            217 	.globl _EMI0CF
+                            218 	.globl _EMI0CN
+                            219 	.globl _CLKSEL
+                            220 	.globl _IE
+                            221 	.globl _SFRPAGE
+                            222 	.globl _P2DRV
+                            223 	.globl _P2MDOUT
+                            224 	.globl _P1DRV
+                            225 	.globl _P1MDOUT
+                            226 	.globl _P0DRV
+                            227 	.globl _P0MDOUT
+                            228 	.globl _SPI0DAT
+                            229 	.globl _SPI0CKR
+                            230 	.globl _SPI0CFG
+                            231 	.globl _P2
+                            232 	.globl _CPT0MX
+                            233 	.globl _CPT1MX
+                            234 	.globl _CPT0MD
+                            235 	.globl _CPT1MD
+                            236 	.globl _CPT0CN
+                            237 	.globl _CPT1CN
+                            238 	.globl _SBUF0
+                            239 	.globl _SCON0
+                            240 	.globl _CRC0CNT
+                            241 	.globl _DC0CN
+                            242 	.globl _CRC0AUTO
+                            243 	.globl _DC0CF
+                            244 	.globl _TMR3H
+                            245 	.globl _CRC0FLIP
+                            246 	.globl _TMR3L
+                            247 	.globl _CRC0IN
+                            248 	.globl _TMR3RLH
+                            249 	.globl _CRC0CN
+                            250 	.globl _TMR3RLL
+                            251 	.globl _CRC0DAT
+                            252 	.globl _TMR3CN
+                            253 	.globl _P1
+                            254 	.globl _PSCTL
+                            255 	.globl _CKCON
+                            256 	.globl _TH1
+                            257 	.globl _TH0
+                            258 	.globl _TL1
+                            259 	.globl _TL0
+                            260 	.globl _TMOD
+                            261 	.globl _TCON
+                            262 	.globl _PCON
+                            263 	.globl _TOFFH
+                            264 	.globl _SPI1DAT
+                            265 	.globl _TOFFL
+                            266 	.globl _SPI1CKR
+                            267 	.globl _SPI1CFG
+                            268 	.globl _DPH
+                            269 	.globl _DPL
+                            270 	.globl _SP
+                            271 	.globl _P0
+                            272 	.globl _app_valid
+                            273 	.globl _debounce_count
+                            274 	.globl _reset_source
+                            275 	.globl _buf
+                            276 ;--------------------------------------------------------
+                            277 ; special function registers
+                            278 ;--------------------------------------------------------
+                            279 	.area RSEG    (ABS,DATA)
+   0000                     280 	.org 0x0000
+                    0080    281 _P0	=	0x0080
+                    0081    282 _SP	=	0x0081
+                    0082    283 _DPL	=	0x0082
+                    0083    284 _DPH	=	0x0083
+                    0084    285 _SPI1CFG	=	0x0084
+                    0085    286 _SPI1CKR	=	0x0085
+                    0085    287 _TOFFL	=	0x0085
+                    0086    288 _SPI1DAT	=	0x0086
+                    0086    289 _TOFFH	=	0x0086
+                    0087    290 _PCON	=	0x0087
+                    0088    291 _TCON	=	0x0088
+                    0089    292 _TMOD	=	0x0089
+                    008A    293 _TL0	=	0x008a
+                    008B    294 _TL1	=	0x008b
+                    008C    295 _TH0	=	0x008c
+                    008D    296 _TH1	=	0x008d
+                    008E    297 _CKCON	=	0x008e
+                    008F    298 _PSCTL	=	0x008f
+                    0090    299 _P1	=	0x0090
+                    0091    300 _TMR3CN	=	0x0091
+                    0091    301 _CRC0DAT	=	0x0091
+                    0092    302 _TMR3RLL	=	0x0092
+                    0092    303 _CRC0CN	=	0x0092
+                    0093    304 _TMR3RLH	=	0x0093
+                    0093    305 _CRC0IN	=	0x0093
+                    0094    306 _TMR3L	=	0x0094
+                    0095    307 _CRC0FLIP	=	0x0095
+                    0095    308 _TMR3H	=	0x0095
+                    0096    309 _DC0CF	=	0x0096
+                    0096    310 _CRC0AUTO	=	0x0096
+                    0097    311 _DC0CN	=	0x0097
+                    0097    312 _CRC0CNT	=	0x0097
+                    0098    313 _SCON0	=	0x0098
+                    0099    314 _SBUF0	=	0x0099
+                    009A    315 _CPT1CN	=	0x009a
+                    009B    316 _CPT0CN	=	0x009b
+                    009C    317 _CPT1MD	=	0x009c
+                    009D    318 _CPT0MD	=	0x009d
+                    009E    319 _CPT1MX	=	0x009e
+                    009F    320 _CPT0MX	=	0x009f
+                    00A0    321 _P2	=	0x00a0
+                    00A1    322 _SPI0CFG	=	0x00a1
+                    00A2    323 _SPI0CKR	=	0x00a2
+                    00A3    324 _SPI0DAT	=	0x00a3
+                    00A4    325 _P0MDOUT	=	0x00a4
+                    00A4    326 _P0DRV	=	0x00a4
+                    00A5    327 _P1MDOUT	=	0x00a5
+                    00A5    328 _P1DRV	=	0x00a5
+                    00A6    329 _P2MDOUT	=	0x00a6
+                    00A6    330 _P2DRV	=	0x00a6
+                    00A7    331 _SFRPAGE	=	0x00a7
+                    00A8    332 _IE	=	0x00a8
+                    00A9    333 _CLKSEL	=	0x00a9
+                    00AA    334 _EMI0CN	=	0x00aa
+                    00AB    335 _EMI0CF	=	0x00ab
+                    00AC    336 _RTC0ADR	=	0x00ac
+                    00AD    337 _RTC0DAT	=	0x00ad
+                    00AE    338 _RTC0KEY	=	0x00ae
+                    00AF    339 _EMI0TC	=	0x00af
+                    00AF    340 _ONESHOT	=	0x00af
+                    00B0    341 _SPI1CN	=	0x00b0
+                    00B1    342 _OSCXCN	=	0x00b1
+                    00B2    343 _OSCICN	=	0x00b2
+                    00B3    344 _OSCICL	=	0x00b3
+                    00B5    345 _PMU0CF	=	0x00b5
+                    00B6    346 _FLSCL	=	0x00b6
+                    00B7    347 _FLKEY	=	0x00b7
+                    00B8    348 _IP	=	0x00b8
+                    00B9    349 _IREF0CN	=	0x00b9
+                    00BA    350 _ADC0AC	=	0x00ba
+                    00BA    351 _ADC0PWR	=	0x00ba
+                    00BB    352 _ADC0MX	=	0x00bb
+                    00BC    353 _ADC0CF	=	0x00bc
+                    00BD    354 _ADC0TK	=	0x00bd
+                    00BD    355 _ADC0L	=	0x00bd
+                    00BE    356 _ADC0H	=	0x00be
+                    00BF    357 _P1MASK	=	0x00bf
+                    00C0    358 _SMB0CN	=	0x00c0
+                    00C1    359 _SMB0CF	=	0x00c1
+                    00C2    360 _SMB0DAT	=	0x00c2
+                    00C3    361 _ADC0GTL	=	0x00c3
+                    00C4    362 _ADC0GTH	=	0x00c4
+                    00C5    363 _ADC0LTL	=	0x00c5
+                    00C6    364 _ADC0LTH	=	0x00c6
+                    00C7    365 _P0MASK	=	0x00c7
+                    00C8    366 _TMR2CN	=	0x00c8
+                    00C9    367 _REG0CN	=	0x00c9
+                    00CA    368 _TMR2RLL	=	0x00ca
+                    00CB    369 _TMR2RLH	=	0x00cb
+                    00CC    370 _TMR2L	=	0x00cc
+                    00CD    371 _TMR2H	=	0x00cd
+                    00CE    372 _PCA0CPM5	=	0x00ce
+                    00CF    373 _P1MAT	=	0x00cf
+                    00D0    374 _PSW	=	0x00d0
+                    00D1    375 _REF0CN	=	0x00d1
+                    00D2    376 _PCA0CPL5	=	0x00d2
+                    00D3    377 _PCA0CPH5	=	0x00d3
+                    00D4    378 _P0SKIP	=	0x00d4
+                    00D5    379 _P1SKIP	=	0x00d5
+                    00D6    380 _P2SKIP	=	0x00d6
+                    00D7    381 _P0MAT	=	0x00d7
+                    00D8    382 _PCA0CN	=	0x00d8
+                    00D9    383 _PCA0MD	=	0x00d9
+                    00DA    384 _PCA0CPM0	=	0x00da
+                    00DB    385 _PCA0CPM1	=	0x00db
+                    00DC    386 _PCA0CPM2	=	0x00dc
+                    00DD    387 _PCA0CPM3	=	0x00dd
+                    00DE    388 _PCA0CPM4	=	0x00de
+                    00DF    389 _PCA0PWM	=	0x00df
+                    00E0    390 _ACC	=	0x00e0
+                    00E1    391 _XBR0	=	0x00e1
+                    00E2    392 _XBR1	=	0x00e2
+                    00E3    393 _XBR2	=	0x00e3
+                    00E4    394 _IT01CF	=	0x00e4
+                    00E5    395 _FLWR	=	0x00e5
+                    00E6    396 _EIE1	=	0x00e6
+                    00E7    397 _EIE2	=	0x00e7
+                    00E8    398 _ADC0CN	=	0x00e8
+                    00E9    399 _PCA0CPL1	=	0x00e9
+                    00EA    400 _PCA0CPH1	=	0x00ea
+                    00EB    401 _PCA0CPL2	=	0x00eb
+                    00EC    402 _PCA0CPH2	=	0x00ec
+                    00ED    403 _PCA0CPL3	=	0x00ed
+                    00EE    404 _PCA0CPH3	=	0x00ee
+                    00EF    405 _RSTSRC	=	0x00ef
+                    00F0    406 _B	=	0x00f0
+                    00F1    407 _P0MDIN	=	0x00f1
+                    00F2    408 _P1MDIN	=	0x00f2
+                    00F3    409 _P2MDIN	=	0x00f3
+                    00F4    410 _SMB0ADR	=	0x00f4
+                    00F5    411 _SMB0ADM	=	0x00f5
+                    00F6    412 _EIP1	=	0x00f6
+                    00F7    413 _EIP2	=	0x00f7
+                    00F8    414 _SPI0CN	=	0x00f8
+                    00F9    415 _PCA0L	=	0x00f9
+                    00FA    416 _PCA0H	=	0x00fa
+                    00FB    417 _PCA0CPL0	=	0x00fb
+                    00FC    418 _PCA0CPH0	=	0x00fc
+                    00FD    419 _PCA0CPL4	=	0x00fd
+                    00FE    420 _PCA0CPH4	=	0x00fe
+                    00FF    421 _VDM0CN	=	0x00ff
+                    8382    422 _DP	=	0x8382
+                    8685    423 _TOFF	=	0x8685
+                    9392    424 _TMR3RL	=	0x9392
+                    9594    425 _TMR3	=	0x9594
+                    BEBD    426 _ADC0	=	0xbebd
+                    C4C3    427 _ADC0GT	=	0xc4c3
+                    C6C5    428 _ADC0LT	=	0xc6c5
+                    CBCA    429 _TMR2RL	=	0xcbca
+                    CDCC    430 _TMR2	=	0xcdcc
+                    D3D2    431 _PCA0CP5	=	0xd3d2
+                    EAE9    432 _PCA0CP1	=	0xeae9
+                    ECEB    433 _PCA0CP2	=	0xeceb
+                    EEED    434 _PCA0CP3	=	0xeeed
+                    FAF9    435 _PCA0	=	0xfaf9
+                    FCFB    436 _PCA0CP0	=	0xfcfb
+                    FEFD    437 _PCA0CP4	=	0xfefd
+                            438 ;--------------------------------------------------------
+                            439 ; special function bits
+                            440 ;--------------------------------------------------------
+                            441 	.area RSEG    (ABS,DATA)
+   0000                     442 	.org 0x0000
+                    008F    443 _TF1	=	0x008f
+                    008E    444 _TR1	=	0x008e
+                    008D    445 _TF0	=	0x008d
+                    008C    446 _TR0	=	0x008c
+                    008B    447 _IE1	=	0x008b
+                    008A    448 _IT1	=	0x008a
+                    0089    449 _IE0	=	0x0089
+                    0088    450 _IT0	=	0x0088
+                    0096    451 _CRC0SEL	=	0x0096
+                    0095    452 _CRC0INIT	=	0x0095
+                    0094    453 _CRC0VAL	=	0x0094
+                    009F    454 _S0MODE	=	0x009f
+                    009D    455 _MCE0	=	0x009d
+                    009C    456 _REN0	=	0x009c
+                    009B    457 _TB80	=	0x009b
+                    009A    458 _RB80	=	0x009a
+                    0099    459 _TI0	=	0x0099
+                    0098    460 _RI0	=	0x0098
+                    00AF    461 _EA	=	0x00af
+                    00AE    462 _ESPI0	=	0x00ae
+                    00AD    463 _ET2	=	0x00ad
+                    00AC    464 _ES0	=	0x00ac
+                    00AB    465 _ET1	=	0x00ab
+                    00AA    466 _EX1	=	0x00aa
+                    00A9    467 _ET0	=	0x00a9
+                    00A8    468 _EX0	=	0x00a8
+                    00B7    469 _SPIF1	=	0x00b7
+                    00B6    470 _WCOL1	=	0x00b6
+                    00B5    471 _MODF1	=	0x00b5
+                    00B4    472 _RXOVRN1	=	0x00b4
+                    00B3    473 _NSS1MD1	=	0x00b3
+                    00B2    474 _NSS1MD0	=	0x00b2
+                    00B1    475 _TXBMT1	=	0x00b1
+                    00B0    476 _SPI1EN	=	0x00b0
+                    00BE    477 _PSPI0	=	0x00be
+                    00BD    478 _PT2	=	0x00bd
+                    00BC    479 _PS0	=	0x00bc
+                    00BB    480 _PT1	=	0x00bb
+                    00BA    481 _PX1	=	0x00ba
+                    00B9    482 _PT0	=	0x00b9
+                    00B8    483 _PX0	=	0x00b8
+                    00C7    484 _MASTER	=	0x00c7
+                    00C6    485 _TXMODE	=	0x00c6
+                    00C5    486 _STA	=	0x00c5
+                    00C4    487 _STO	=	0x00c4
+                    00C3    488 _ACKRQ	=	0x00c3
+                    00C2    489 _ARBLOST	=	0x00c2
+                    00C1    490 _ACK	=	0x00c1
+                    00C0    491 _SI	=	0x00c0
+                    00CF    492 _TF2H	=	0x00cf
+                    00CE    493 _TF2L	=	0x00ce
+                    00CD    494 _TF2LEN	=	0x00cd
+                    00CC    495 _TF2CEN	=	0x00cc
+                    00CB    496 _T2SPLIT	=	0x00cb
+                    00CA    497 _TR2	=	0x00ca
+                    00C9    498 _T2RCLK	=	0x00c9
+                    00C8    499 _T2XCLK	=	0x00c8
+                    00D7    500 _CY	=	0x00d7
+                    00D6    501 _AC	=	0x00d6
+                    00D5    502 _F0	=	0x00d5
+                    00D4    503 _RS1	=	0x00d4
+                    00D3    504 _RS0	=	0x00d3
+                    00D2    505 _OV	=	0x00d2
+                    00D1    506 _F1	=	0x00d1
+                    00D0    507 _P	=	0x00d0
+                    00DF    508 _CF	=	0x00df
+                    00DE    509 _CR	=	0x00de
+                    00DD    510 _CCF5	=	0x00dd
+                    00DC    511 _CCF4	=	0x00dc
+                    00DB    512 _CCF3	=	0x00db
+                    00DA    513 _CCF2	=	0x00da
+                    00D9    514 _CCF1	=	0x00d9
+                    00D8    515 _CCF0	=	0x00d8
+                    00EF    516 _AD0EN	=	0x00ef
+                    00EE    517 _BURSTEN	=	0x00ee
+                    00ED    518 _AD0INT	=	0x00ed
+                    00EC    519 _AD0BUSY	=	0x00ec
+                    00EB    520 _AD0WINT	=	0x00eb
+                    00EA    521 _AD0CM2	=	0x00ea
+                    00E9    522 _AD0CM1	=	0x00e9
+                    00E8    523 _AD0CM0	=	0x00e8
+                    00FF    524 _SPIF0	=	0x00ff
+                    00FE    525 _WCOL0	=	0x00fe
+                    00FD    526 _MODF0	=	0x00fd
+                    00FC    527 _RXOVRN0	=	0x00fc
+                    00FB    528 _NSS0MD1	=	0x00fb
+                    00FA    529 _NSS0MD0	=	0x00fa
+                    00F9    530 _TXBMT0	=	0x00f9
+                    00F8    531 _SPI0EN	=	0x00f8
+                    0096    532 _LED_RED	=	0x0096
+                    0095    533 _LED_GREEN	=	0x0095
+                    0082    534 _PIN_CONFIG	=	0x0082
+                    0083    535 _PIN_ENABLE	=	0x0083
+                    0087    536 _IRQ	=	0x0087
+                    0094    537 _NSS1	=	0x0094
+                            538 ;--------------------------------------------------------
+                            539 ; overlayable register banks
+                            540 ;--------------------------------------------------------
+                            541 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     542 	.ds 8
+                            543 ;--------------------------------------------------------
+                            544 ; internal ram data
+                            545 ;--------------------------------------------------------
+                            546 	.area DSEG    (DATA)
+   0000                     547 _buf::
+   0000                     548 	.ds 64
+   0040                     549 _reset_source::
+   0040                     550 	.ds 1
+   0041                     551 _debounce_count::
+   0041                     552 	.ds 1
+   0042                     553 _bootloader_address_1_1:
+   0042                     554 	.ds 2
+                            555 ;--------------------------------------------------------
+                            556 ; overlayable items in internal ram 
+                            557 ;--------------------------------------------------------
+                            558 	.area	OSEG    (OVR,DATA)
+                            559 ;--------------------------------------------------------
+                            560 ; indirectly addressable internal ram data
+                            561 ;--------------------------------------------------------
+                            562 	.area ISEG    (DATA)
+                            563 ;--------------------------------------------------------
+                            564 ; absolute internal ram data
+                            565 ;--------------------------------------------------------
+                            566 	.area IABS    (ABS,DATA)
+                            567 	.area IABS    (ABS,DATA)
+                            568 ;--------------------------------------------------------
+                            569 ; bit data
+                            570 ;--------------------------------------------------------
+                            571 	.area BSEG    (BIT)
+   0000                     572 _app_valid::
+   0000                     573 	.ds 1
+                            574 ;--------------------------------------------------------
+                            575 ; paged external ram data
+                            576 ;--------------------------------------------------------
+                            577 	.area PSEG    (PAG,XDATA)
+                            578 ;--------------------------------------------------------
+                            579 ; external ram data
+                            580 ;--------------------------------------------------------
+                            581 	.area XSEG    (XDATA)
+                            582 ;--------------------------------------------------------
+                            583 ; absolute external ram data
+                            584 ;--------------------------------------------------------
+                            585 	.area XABS    (ABS,XDATA)
+                            586 ;--------------------------------------------------------
+                            587 ; external initialized ram data
+                            588 ;--------------------------------------------------------
+                            589 	.area HOME    (CODE)
+                            590 	.area GSINIT0 (CODE)
+                            591 	.area GSINIT1 (CODE)
+                            592 	.area GSINIT2 (CODE)
+                            593 	.area GSINIT3 (CODE)
+                            594 	.area GSINIT4 (CODE)
+                            595 	.area GSINIT5 (CODE)
+                            596 	.area GSINIT  (CODE)
+                            597 	.area GSFINAL (CODE)
+                            598 	.area CSEG    (CODE)
+                            599 ;--------------------------------------------------------
+                            600 ; global & static initialisations
+                            601 ;--------------------------------------------------------
+                            602 	.area HOME    (CODE)
+                            603 	.area GSINIT  (CODE)
+                            604 	.area GSFINAL (CODE)
+                            605 	.area GSINIT  (CODE)
+                            606 ;--------------------------------------------------------
+                            607 ; Home
+                            608 ;--------------------------------------------------------
+                            609 	.area HOME    (CODE)
+                            610 	.area HOME    (CODE)
+                            611 ;--------------------------------------------------------
+                            612 ; code
+                            613 ;--------------------------------------------------------
+                            614 	.area HOME    (CODE)
+                            615 ;------------------------------------------------------------
+                            616 ;Allocation info for local variables in function 'bl_main'
+                            617 ;------------------------------------------------------------
+                            618 ;i                         Allocated to registers r7 
+                            619 ;------------------------------------------------------------
+                            620 ;	bootloader/bootloader.c:71: bl_main(void)
+                            621 ;	-----------------------------------------
+                            622 ;	 function bl_main
+                            623 ;	-----------------------------------------
+   0000                     624 _bl_main:
+                    0007    625 	ar7 = 0x07
+                    0006    626 	ar6 = 0x06
+                    0005    627 	ar5 = 0x05
+                    0004    628 	ar4 = 0x04
+                    0003    629 	ar3 = 0x03
+                    0002    630 	ar2 = 0x02
+                    0001    631 	ar1 = 0x01
+                    0000    632 	ar0 = 0x00
+                            633 ;	bootloader/bootloader.c:79: hardware_init();
+   0000 12s01rF1            634 	lcall	_hardware_init
+                            635 ;	bootloader/bootloader.c:89: reset_source = RSTSRC;
+                            636 ;	bootloader/bootloader.c:90: if (reset_source & (1 << 1))
+   0003 E5 EF               637 	mov	a,_RSTSRC
+   0005 F5*40               638 	mov	_reset_source,a
+   0007 30 E1 03            639 	jnb	acc.1,00102$
+                            640 ;	bootloader/bootloader.c:91: reset_source = 1 << 1;
+   000A 75*40 02            641 	mov	_reset_source,#0x02
+   000D                     642 00102$:
+                            643 ;	bootloader/bootloader.c:94: app_valid = flash_app_valid();
+   000D 12s00r00            644 	lcall	_flash_app_valid
+   0010 E5 82               645 	mov	a,dpl
+   0012 24 FF               646 	add	a,#0xff
+   0014 92*00               647 	mov	_app_valid,c
+                            648 ;	bootloader/bootloader.c:97: BUTTON_BOOTLOAD = ~BUTTON_ACTIVE;
+   0016 D2 82               649 	setb	_PIN_CONFIG
+                            650 ;	bootloader/bootloader.c:101: debounce_count = 0;
+   0018 75*41 00            651 	mov	_debounce_count,#0x00
+                            652 ;	bootloader/bootloader.c:102: for (i = 0; i < 255; i++) {
+   001B 7F FF               653 	mov	r7,#0xFF
+   001D                     654 00112$:
+                            655 ;	bootloader/bootloader.c:103: if (BUTTON_BOOTLOAD == BUTTON_ACTIVE)
+   001D 20 82 02            656 	jb	_PIN_CONFIG,00104$
+                            657 ;	bootloader/bootloader.c:104: debounce_count++;
+   0020 05*41               658 	inc	_debounce_count
+   0022                     659 00104$:
+   0022 8F 06               660 	mov	ar6,r7
+   0024 1E                  661 	dec	r6
+   0025 8E 07               662 	mov	ar7,r6
+                            663 ;	bootloader/bootloader.c:102: for (i = 0; i < 255; i++) {
+   0027 EF                  664 	mov	a,r7
+   0028 70 F3               665 	jnz	00112$
+                            666 ;	bootloader/bootloader.c:108: LED_BOOTLOADER = LED_ON;
+   002A D2 96               667 	setb	_LED_RED
+                            668 ;	bootloader/bootloader.c:117: if (!(reset_source & (1 << 6)) && app_valid) {
+   002C E5*40               669 	mov	a,_reset_source
+   002E 20 E6 16            670 	jb	acc.6,00114$
+   0031 30*00 13            671 	jnb	_app_valid,00114$
+                            672 ;	bootloader/bootloader.c:122: if (debounce_count < 200) {
+   0034 74 38               673 	mov	a,#0x100 - 0xC8
+   0036 25*41               674 	add	a,_debounce_count
+   0038 40 0D               675 	jc	00114$
+                            676 ;	bootloader/bootloader.c:131: BOARD_FREQUENCY_REG = board_frequency;
+   003A 90s00r00            677 	mov	dptr,#_board_frequency
+   003D E4                  678 	clr	a
+   003E 93                  679 	movc	a,@a+dptr
+   003F F5 C4               680 	mov	_ADC0GTH,a
+                            681 ;	bootloader/bootloader.c:132: BOARD_BL_VERSION_REG = BL_VERSION;
+   0041 75 C3 02            682 	mov	_ADC0GTL,#0x02
+                            683 ;	bootloader/bootloader.c:139: ((void (__code *)(void))FLASH_APP_START)();
+   0044 12 04 00            684 	lcall	0x0400
+   0047                     685 00114$:
+                            686 ;	bootloader/bootloader.c:146: bootloader();
+   0047 12s00r4C            687 	lcall	_bootloader
+   004A 80 FB               688 	sjmp	00114$
+                            689 ;------------------------------------------------------------
+                            690 ;Allocation info for local variables in function 'bootloader'
+                            691 ;------------------------------------------------------------
+                            692 ;address                   Allocated with name '_bootloader_address_1_1'
+                            693 ;c                         Allocated to registers r7 
+                            694 ;count                     Allocated to registers r6 
+                            695 ;i                         Allocated to registers r5 
+                            696 ;------------------------------------------------------------
+                            697 ;	bootloader/bootloader.c:152: bootloader(void)
+                            698 ;	-----------------------------------------
+                            699 ;	 function bootloader
+                            700 ;	-----------------------------------------
+   004C                     701 _bootloader:
+                            702 ;	bootloader/bootloader.c:163: LED_BOOTLOADER = LED_ON;
+   004C D2 96               703 	setb	_LED_RED
+                            704 ;	bootloader/bootloader.c:164: c = cin();
+   004E 12s00r00            705 	lcall	_cin
+   0051 AF 82               706 	mov	r7,dpl
+                            707 ;	bootloader/bootloader.c:165: LED_BOOTLOADER = LED_OFF;
+   0053 C2 96               708 	clr	_LED_RED
+                            709 ;	bootloader/bootloader.c:168: switch (c) {
+   0055 BF 21 02            710 	cjne	r7,#0x21,00169$
+   0058 80 17               711 	sjmp	00106$
+   005A                     712 00169$:
+   005A BF 22 02            713 	cjne	r7,#0x22,00170$
+   005D 80 12               714 	sjmp	00106$
+   005F                     715 00170$:
+   005F BF 23 02            716 	cjne	r7,#0x23,00171$
+   0062 80 0D               717 	sjmp	00106$
+   0064                     718 00171$:
+   0064 BF 26 02            719 	cjne	r7,#0x26,00172$
+   0067 80 08               720 	sjmp	00106$
+   0069                     721 00172$:
+   0069 BF 29 02            722 	cjne	r7,#0x29,00173$
+   006C 80 03               723 	sjmp	00106$
+   006E                     724 00173$:
+   006E BF 31 0F            725 	cjne	r7,#0x31,00109$
+                            726 ;	bootloader/bootloader.c:174: case PROTO_DEBUG:
+   0071                     727 00106$:
+                            728 ;	bootloader/bootloader.c:175: if (cin() != PROTO_EOC)
+   0071 C0 07               729 	push	ar7
+   0073 12s00r00            730 	lcall	_cin
+   0076 AE 82               731 	mov	r6,dpl
+   0078 D0 07               732 	pop	ar7
+   007A BE 20 02            733 	cjne	r6,#0x20,00176$
+   007D 80 01               734 	sjmp	00177$
+   007F                     735 00176$:
+   007F 22                  736 	ret
+   0080                     737 00177$:
+                            738 ;	bootloader/bootloader.c:177: }
+   0080                     739 00109$:
+                            740 ;	bootloader/bootloader.c:179: switch (c) {
+   0080 BF 21 00            741 	cjne	r7,#0x21,00178$
+   0083                     742 00178$:
+   0083 50 01               743 	jnc	00179$
+   0085 22                  744 	ret
+   0086                     745 00179$:
+   0086 EF                  746 	mov	a,r7
+   0087 24 CE               747 	add	a,#0xff - 0x31
+   0089 50 01               748 	jnc	00180$
+   008B 22                  749 	ret
+   008C                     750 00180$:
+   008C EF                  751 	mov	a,r7
+   008D 24 DF               752 	add	a,#0xDF
+   008F FE                  753 	mov	r6,a
+   0090 24 09               754 	add	a,#(00181$-3-.)
+   0092 83                  755 	movc	a,@a+pc
+   0093 C0 E0               756 	push	acc
+   0095 EE                  757 	mov	a,r6
+   0096 24 14               758 	add	a,#(00182$-3-.)
+   0098 83                  759 	movc	a,@a+pc
+   0099 C0 E0               760 	push	acc
+   009B 22                  761 	ret
+   009C                     762 00181$:
+   009CrBE                  763 	.db	00110$
+   009DrC1                  764 	.db	00111$
+   009ErD4                  765 	.db	00112$
+   009FrE0                  766 	.db	00114$
+   00A0r03                  767 	.db	00117$
+   00A1r2D                  768 	.db	00120$
+   00A2r44                  769 	.db	00121$
+   00A3rA4                  770 	.db	00126$
+   00A4rDA                  771 	.db	00113$
+   00A5rE0                  772 	.db	00131$
+   00A6rE0                  773 	.db	00131$
+   00A7rE0                  774 	.db	00131$
+   00A8rE0                  775 	.db	00131$
+   00A9rE0                  776 	.db	00131$
+   00AArE0                  777 	.db	00131$
+   00ABrDB                  778 	.db	00129$
+   00ACrDE                  779 	.db	00130$
+   00AD                     780 00182$:
+   00ADs00                  781 	.db	00110$>>8
+   00AEs00                  782 	.db	00111$>>8
+   00AFs00                  783 	.db	00112$>>8
+   00B0s00                  784 	.db	00114$>>8
+   00B1s01                  785 	.db	00117$>>8
+   00B2s01                  786 	.db	00120$>>8
+   00B3s01                  787 	.db	00121$>>8
+   00B4s01                  788 	.db	00126$>>8
+   00B5s00                  789 	.db	00113$>>8
+   00B6s01                  790 	.db	00131$>>8
+   00B7s01                  791 	.db	00131$>>8
+   00B8s01                  792 	.db	00131$>>8
+   00B9s01                  793 	.db	00131$>>8
+   00BAs01                  794 	.db	00131$>>8
+   00BBs01                  795 	.db	00131$>>8
+   00BCs01                  796 	.db	00129$>>8
+   00BDs01                  797 	.db	00130$>>8
+                            798 ;	bootloader/bootloader.c:181: case PROTO_GET_SYNC:		// sync
+   00BE                     799 00110$:
+                            800 ;	bootloader/bootloader.c:182: break;
+   00BE 02s01rE1            801 	ljmp	00132$
+                            802 ;	bootloader/bootloader.c:184: case PROTO_GET_DEVICE:
+   00C1                     803 00111$:
+                            804 ;	bootloader/bootloader.c:185: cout(BOARD_ID);
+   00C1 75 82 42            805 	mov	dpl,#0x42
+   00C4 12s00r00            806 	lcall	_cout
+                            807 ;	bootloader/bootloader.c:186: cout(board_frequency);
+   00C7 90s00r00            808 	mov	dptr,#_board_frequency
+   00CA E4                  809 	clr	a
+   00CB 93                  810 	movc	a,@a+dptr
+   00CC F5 82               811 	mov	dpl,a
+   00CE 12s00r00            812 	lcall	_cout
+                            813 ;	bootloader/bootloader.c:187: break;
+   00D1 02s01rE1            814 	ljmp	00132$
+                            815 ;	bootloader/bootloader.c:189: case PROTO_CHIP_ERASE:		// erase the program area
+   00D4                     816 00112$:
+                            817 ;	bootloader/bootloader.c:190: flash_erase_app();
+   00D4 12s00r00            818 	lcall	_flash_erase_app
+                            819 ;	bootloader/bootloader.c:191: break;
+   00D7 02s01rE1            820 	ljmp	00132$
+                            821 ;	bootloader/bootloader.c:193: case PROTO_PARAM_ERASE:
+   00DA                     822 00113$:
+                            823 ;	bootloader/bootloader.c:194: flash_erase_scratch();
+   00DA 12s00r00            824 	lcall	_flash_erase_scratch
+                            825 ;	bootloader/bootloader.c:195: break;
+   00DD 02s01rE1            826 	ljmp	00132$
+                            827 ;	bootloader/bootloader.c:197: case PROTO_LOAD_ADDRESS:	// set address
+   00E0                     828 00114$:
+                            829 ;	bootloader/bootloader.c:198: address = cin();
+   00E0 12s00r00            830 	lcall	_cin
+   00E3 AE 82               831 	mov	r6,dpl
+   00E5 8E*42               832 	mov	_bootloader_address_1_1,r6
+   00E7 75*43 00            833 	mov	(_bootloader_address_1_1 + 1),#0x00
+                            834 ;	bootloader/bootloader.c:199: address |= (uint16_t)cin() << 8;
+   00EA 12s00r00            835 	lcall	_cin
+   00ED AE 82               836 	mov	r6,dpl
+   00EF 8E 05               837 	mov	ar5,r6
+   00F1 E4                  838 	clr	a
+   00F2 42*42               839 	orl	_bootloader_address_1_1,a
+   00F4 ED                  840 	mov	a,r5
+   00F5 42*43               841 	orl	(_bootloader_address_1_1 + 1),a
+                            842 ;	bootloader/bootloader.c:203: if (cin() != PROTO_EOC)
+   00F7 12s00r00            843 	lcall	_cin
+   00FA AE 82               844 	mov	r6,dpl
+   00FC BE 20 03            845 	cjne	r6,#0x20,00183$
+   00FF 02s01rE1            846 	ljmp	00132$
+   0102                     847 00183$:
+                            848 ;	bootloader/bootloader.c:204: goto cmd_bad;
+   0102 22                  849 	ret
+                            850 ;	bootloader/bootloader.c:207: case PROTO_PROG_FLASH:		// program byte
+   0103                     851 00117$:
+                            852 ;	bootloader/bootloader.c:208: c = cin();
+   0103 12s00r00            853 	lcall	_cin
+   0106 AF 82               854 	mov	r7,dpl
+                            855 ;	bootloader/bootloader.c:209: if (cin() != PROTO_EOC)
+   0108 C0 07               856 	push	ar7
+   010A 12s00r00            857 	lcall	_cin
+   010D AE 82               858 	mov	r6,dpl
+   010F D0 07               859 	pop	ar7
+   0111 BE 20 02            860 	cjne	r6,#0x20,00184$
+   0114 80 01               861 	sjmp	00185$
+   0116                     862 00184$:
+   0116 22                  863 	ret
+   0117                     864 00185$:
+                            865 ;	bootloader/bootloader.c:211: flash_write_byte(address++, c);
+   0117 85*42 82            866 	mov	dpl,_bootloader_address_1_1
+   011A 85*43 83            867 	mov	dph,(_bootloader_address_1_1 + 1)
+   011D 05*42               868 	inc	_bootloader_address_1_1
+   011F E4                  869 	clr	a
+   0120 B5*42 02            870 	cjne	a,_bootloader_address_1_1,00186$
+   0123 05*43               871 	inc	(_bootloader_address_1_1 + 1)
+   0125                     872 00186$:
+   0125 8F*00               873 	mov	_flash_write_byte_PARM_2,r7
+   0127 12s00r00            874 	lcall	_flash_write_byte
+                            875 ;	bootloader/bootloader.c:212: break;
+   012A 02s01rE1            876 	ljmp	00132$
+                            877 ;	bootloader/bootloader.c:214: case PROTO_READ_FLASH:		// readback byte
+   012D                     878 00120$:
+                            879 ;	bootloader/bootloader.c:215: c = flash_read_byte(address++);
+   012D 85*42 82            880 	mov	dpl,_bootloader_address_1_1
+   0130 85*43 83            881 	mov	dph,(_bootloader_address_1_1 + 1)
+   0133 05*42               882 	inc	_bootloader_address_1_1
+   0135 E4                  883 	clr	a
+   0136 B5*42 02            884 	cjne	a,_bootloader_address_1_1,00187$
+   0139 05*43               885 	inc	(_bootloader_address_1_1 + 1)
+   013B                     886 00187$:
+   013B 12s00r00            887 	lcall	_flash_read_byte
+                            888 ;	bootloader/bootloader.c:216: cout(c);
+   013E 12s00r00            889 	lcall	_cout
+                            890 ;	bootloader/bootloader.c:217: break;
+   0141 02s01rE1            891 	ljmp	00132$
+                            892 ;	bootloader/bootloader.c:219: case PROTO_PROG_MULTI:
+   0144                     893 00121$:
+                            894 ;	bootloader/bootloader.c:220: count = cin();
+   0144 12s00r00            895 	lcall	_cin
+                            896 ;	bootloader/bootloader.c:221: if (count > sizeof(buf))
+   0147 E5 82               897 	mov	a,dpl
+   0149 FE                  898 	mov	r6,a
+   014A 24 BF               899 	add	a,#0xff - 0x40
+   014C 50 01               900 	jnc	00188$
+   014E 22                  901 	ret
+   014F                     902 00188$:
+                            903 ;	bootloader/bootloader.c:223: for (i = 0; i < count; i++)
+   014F 7D 00               904 	mov	r5,#0x00
+   0151                     905 00134$:
+   0151 C3                  906 	clr	c
+   0152 ED                  907 	mov	a,r5
+   0153 9E                  908 	subb	a,r6
+   0154 50 19               909 	jnc	00137$
+                            910 ;	bootloader/bootloader.c:224: buf[i] = cin();
+   0156 ED                  911 	mov	a,r5
+   0157 24r00               912 	add	a,#_buf
+   0159 F9                  913 	mov	r1,a
+   015A C0 06               914 	push	ar6
+   015C C0 05               915 	push	ar5
+   015E C0 01               916 	push	ar1
+   0160 12s00r00            917 	lcall	_cin
+   0163 E5 82               918 	mov	a,dpl
+   0165 D0 01               919 	pop	ar1
+   0167 D0 05               920 	pop	ar5
+   0169 D0 06               921 	pop	ar6
+   016B F7                  922 	mov	@r1,a
+                            923 ;	bootloader/bootloader.c:223: for (i = 0; i < count; i++)
+   016C 0D                  924 	inc	r5
+   016D 80 E2               925 	sjmp	00134$
+   016F                     926 00137$:
+                            927 ;	bootloader/bootloader.c:225: if (cin() != PROTO_EOC)
+   016F C0 06               928 	push	ar6
+   0171 12s00r00            929 	lcall	_cin
+   0174 AD 82               930 	mov	r5,dpl
+   0176 D0 06               931 	pop	ar6
+   0178 BD 20 69            932 	cjne	r5,#0x20,00133$
+                            933 ;	bootloader/bootloader.c:227: for (i = 0; i < count; i++)
+   017B 7D 00               934 	mov	r5,#0x00
+   017D                     935 00138$:
+   017D C3                  936 	clr	c
+   017E ED                  937 	mov	a,r5
+   017F 9E                  938 	subb	a,r6
+   0180 50 5F               939 	jnc	00132$
+                            940 ;	bootloader/bootloader.c:228: flash_write_byte(address++, buf[i]);
+   0182 85*42 82            941 	mov	dpl,_bootloader_address_1_1
+   0185 85*43 83            942 	mov	dph,(_bootloader_address_1_1 + 1)
+   0188 05*42               943 	inc	_bootloader_address_1_1
+   018A E4                  944 	clr	a
+   018B B5*42 02            945 	cjne	a,_bootloader_address_1_1,00193$
+   018E 05*43               946 	inc	(_bootloader_address_1_1 + 1)
+   0190                     947 00193$:
+   0190 ED                  948 	mov	a,r5
+   0191 24r00               949 	add	a,#_buf
+   0193 F9                  950 	mov	r1,a
+   0194 87*00               951 	mov	_flash_write_byte_PARM_2,@r1
+   0196 C0 06               952 	push	ar6
+   0198 C0 05               953 	push	ar5
+   019A 12s00r00            954 	lcall	_flash_write_byte
+   019D D0 05               955 	pop	ar5
+   019F D0 06               956 	pop	ar6
+                            957 ;	bootloader/bootloader.c:227: for (i = 0; i < count; i++)
+   01A1 0D                  958 	inc	r5
+                            959 ;	bootloader/bootloader.c:231: case PROTO_READ_MULTI:
+   01A2 80 D9               960 	sjmp	00138$
+   01A4                     961 00126$:
+                            962 ;	bootloader/bootloader.c:232: count = cin();
+   01A4 12s00r00            963 	lcall	_cin
+   01A7 AE 82               964 	mov	r6,dpl
+                            965 ;	bootloader/bootloader.c:233: if (cin() != PROTO_EOC)
+   01A9 C0 06               966 	push	ar6
+   01AB 12s00r00            967 	lcall	_cin
+   01AE AD 82               968 	mov	r5,dpl
+   01B0 D0 06               969 	pop	ar6
+   01B2 BD 20 2F            970 	cjne	r5,#0x20,00133$
+                            971 ;	bootloader/bootloader.c:235: for (i = 0; i < count; i++) {
+   01B5 7D 00               972 	mov	r5,#0x00
+   01B7                     973 00142$:
+   01B7 C3                  974 	clr	c
+   01B8 ED                  975 	mov	a,r5
+   01B9 9E                  976 	subb	a,r6
+   01BA 50 25               977 	jnc	00132$
+                            978 ;	bootloader/bootloader.c:236: c = flash_read_byte(address++);
+   01BC 85*42 82            979 	mov	dpl,_bootloader_address_1_1
+   01BF 85*43 83            980 	mov	dph,(_bootloader_address_1_1 + 1)
+   01C2 05*42               981 	inc	_bootloader_address_1_1
+   01C4 E4                  982 	clr	a
+   01C5 B5*42 02            983 	cjne	a,_bootloader_address_1_1,00197$
+   01C8 05*43               984 	inc	(_bootloader_address_1_1 + 1)
+   01CA                     985 00197$:
+   01CA C0 06               986 	push	ar6
+   01CC C0 05               987 	push	ar5
+   01CE 12s00r00            988 	lcall	_flash_read_byte
+                            989 ;	bootloader/bootloader.c:237: cout(c);
+   01D1 12s00r00            990 	lcall	_cout
+   01D4 D0 05               991 	pop	ar5
+   01D6 D0 06               992 	pop	ar6
+                            993 ;	bootloader/bootloader.c:235: for (i = 0; i < count; i++) {
+   01D8 0D                  994 	inc	r5
+                            995 ;	bootloader/bootloader.c:241: case PROTO_REBOOT:
+   01D9 80 DC               996 	sjmp	00142$
+   01DB                     997 00129$:
+                            998 ;	bootloader/bootloader.c:243: RSTSRC |= (1 << 4);
+   01DB 43 EF 10            999 	orl	_RSTSRC,#0x10
+                           1000 ;	bootloader/bootloader.c:245: case PROTO_DEBUG:
+   01DE                    1001 00130$:
+                           1002 ;	bootloader/bootloader.c:247: break;
+                           1003 ;	bootloader/bootloader.c:249: default:
+   01DE 80 01              1004 	sjmp	00132$
+   01E0                    1005 00131$:
+                           1006 ;	bootloader/bootloader.c:250: goto cmd_bad;
+                           1007 ;	bootloader/bootloader.c:251: }
+   01E0 22                 1008 	ret
+   01E1                    1009 00132$:
+                           1010 ;	bootloader/bootloader.c:252: sync_response();
+                           1011 ;	bootloader/bootloader.c:253: cmd_bad:
+                           1012 ;	bootloader/bootloader.c:254: return;
+   01E1 02s01rE5           1013 	ljmp	_sync_response
+   01E4                    1014 00133$:
+   01E4 22                 1015 	ret
+                           1016 ;------------------------------------------------------------
+                           1017 ;Allocation info for local variables in function 'sync_response'
+                           1018 ;------------------------------------------------------------
+                           1019 ;	bootloader/bootloader.c:258: sync_response(void)
+                           1020 ;	-----------------------------------------
+                           1021 ;	 function sync_response
+                           1022 ;	-----------------------------------------
+   01E5                    1023 _sync_response:
+                           1024 ;	bootloader/bootloader.c:260: cout(PROTO_INSYNC);	// "in sync"
+   01E5 75 82 12           1025 	mov	dpl,#0x12
+   01E8 12s00r00           1026 	lcall	_cout
+                           1027 ;	bootloader/bootloader.c:261: cout(PROTO_OK);		// "OK"
+   01EB 75 82 10           1028 	mov	dpl,#0x10
+   01EE 02s00r00           1029 	ljmp	_cout
+                           1030 ;------------------------------------------------------------
+                           1031 ;Allocation info for local variables in function 'hardware_init'
+                           1032 ;------------------------------------------------------------
+                           1033 ;i                         Allocated to registers r6 r7 
+                           1034 ;------------------------------------------------------------
+                           1035 ;	bootloader/bootloader.c:267: hardware_init(void)
+                           1036 ;	-----------------------------------------
+                           1037 ;	 function hardware_init
+                           1038 ;	-----------------------------------------
+   01F1                    1039 _hardware_init:
+                           1040 ;	bootloader/bootloader.c:271: SFRPAGE = LEGACY_PAGE;
+   01F1 75 A7 00           1041 	mov	_SFRPAGE,#0x00
+                           1042 ;	bootloader/bootloader.c:275: EA	 =  0x00;
+   01F4 C2 AF              1043 	clr	_EA
+                           1044 ;	bootloader/bootloader.c:278: PCA0MD	&= ~0x40;
+   01F6 AF D9              1045 	mov	r7,_PCA0MD
+   01F8 53 07 BF           1046 	anl	ar7,#0xBF
+   01FB 8F D9              1047 	mov	_PCA0MD,r7
+                           1048 ;	bootloader/bootloader.c:281: FLSCL	 =  0x40;
+   01FD 75 B6 40           1049 	mov	_FLSCL,#0x40
+                           1050 ;	bootloader/bootloader.c:285: OSCICN	 =	0x8F;
+   0200 75 B2 8F           1051 	mov	_OSCICN,#0x8F
+                           1052 ;	bootloader/bootloader.c:287: CLKSEL	 =  0x00;
+   0203 75 A9 00           1053 	mov	_CLKSEL,#0x00
+                           1054 ;	bootloader/bootloader.c:290: TCON	 =  0x40;		// Timer1 on
+   0206 75 88 40           1055 	mov	_TCON,#0x40
+                           1056 ;	bootloader/bootloader.c:291: TMOD	 =  0x20;		// Timer1 8-bit auto-reload
+   0209 75 89 20           1057 	mov	_TMOD,#0x20
+                           1058 ;	bootloader/bootloader.c:292: CKCON	 =  0x08;		// Timer1 from SYSCLK
+   020C 75 8E 08           1059 	mov	_CKCON,#0x08
+                           1060 ;	bootloader/bootloader.c:293: TH1		 =  0x96;		// 115200 bps
+   020F 75 8D 96           1061 	mov	_TH1,#0x96
+                           1062 ;	bootloader/bootloader.c:296: SCON0	 =  0x12;		// enable receiver, set TX ready
+   0212 75 98 12           1063 	mov	_SCON0,#0x12
+                           1064 ;	bootloader/bootloader.c:299: VDM0CN	 =  0x80;
+   0215 75 FF 80           1065 	mov	_VDM0CN,#0x80
+                           1066 ;	bootloader/bootloader.c:300: for (i = 0; i < 350; i++);	// Wait 100us for initialization
+   0218 7E 5E              1067 	mov	r6,#0x5E
+   021A 7F 01              1068 	mov	r7,#0x01
+   021C                    1069 00106$:
+   021C 1E                 1070 	dec	r6
+   021D BE FF 01           1071 	cjne	r6,#0xFF,00112$
+   0220 1F                 1072 	dec	r7
+   0221                    1073 00112$:
+   0221 EE                 1074 	mov	a,r6
+   0222 4F                 1075 	orl	a,r7
+   0223 70 F7              1076 	jnz	00106$
+                           1077 ;	bootloader/bootloader.c:301: RSTSRC	 =  0x06;		// enable brown out and missing clock reset sources
+   0225 75 EF 06           1078 	mov	_RSTSRC,#0x06
+                           1079 ;	bootloader/bootloader.c:304: P0MDOUT	 =  0x10;		// UART Tx push-pull
+   0228 75 A4 10           1080 	mov	_P0MDOUT,#0x10
+                           1081 ;	bootloader/bootloader.c:305: SFRPAGE	 =  CONFIG_PAGE;
+   022B 75 A7 0F           1082 	mov	_SFRPAGE,#0x0F
+                           1083 ;	bootloader/bootloader.c:306: P0DRV	 =  0x10;		// UART TX
+   022E 75 A4 10           1084 	mov	_P0DRV,#0x10
+                           1085 ;	bootloader/bootloader.c:307: SFRPAGE	 =  LEGACY_PAGE;
+   0231 75 A7 00           1086 	mov	_SFRPAGE,#0x00
+                           1087 ;	bootloader/bootloader.c:308: XBR0	 =  0x01;		// UART enable
+   0234 75 E1 01           1088 	mov	_XBR0,#0x01
+                           1089 ;	bootloader/bootloader.c:311: HW_INIT;
+   0237 43 D4 0C           1090 	orl	_P0SKIP,#0x0C
+   023A 43 D5 E0           1091 	orl	_P1SKIP,#0xE0
+   023D 75 A7 0F           1092 	mov	_SFRPAGE,#0x0F
+   0240 43 A5 F5           1093 	orl	_P1MDOUT,#0xF5
+   0243 43 A5 F5           1094 	orl	_P1DRV,#0xF5
+   0246 75 A7 00           1095 	mov	_SFRPAGE,#0x00
+   0249 74 0F              1096 	mov	a,#0x0F
+   024B 55 E4              1097 	anl	a,_IT01CF
+   024D 44 07              1098 	orl	a,#0x07
+   024F F5 E4              1099 	mov	_IT01CF,a
+   0251 C2 88              1100 	clr	_IT0
+                           1101 ;	bootloader/bootloader.c:313: XBR2	 =  0x40;		// Crossbar (GPIO) enable
+   0253 75 E3 40           1102 	mov	_XBR2,#0x40
+   0256 22                 1103 	ret
+                           1104 	.area CSEG    (CODE)
+                           1105 	.area CONST   (CODE)
+                           1106 	.area CABS    (ABS,CODE)

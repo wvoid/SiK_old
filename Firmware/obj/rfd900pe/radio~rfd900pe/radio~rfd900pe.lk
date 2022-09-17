@@ -1,0 +1,43 @@
+-muwx
+-i obj/rfd900pe/radio~rfd900pe/radio~rfd900pe.ihx
+-M
+-Y
+-I 0x0100
+-S 0x40
+-X 0x2000
+-C 0xf400
+-b HOME = 0x0400
+-b XSEG = 0x0001
+-b PSEG = 0x0001
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-k /usr/local/bin/../share/sdcc/lib/large
+-k /usr/local/share/sdcc/lib/large
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+.//obj/rfd900pe/radio~rfd900pe/crc.rel
+.//obj/rfd900pe/radio~rfd900pe/mavlink.rel
+.//obj/rfd900pe/radio~rfd900pe/packet.rel
+.//obj/rfd900pe/radio~rfd900pe/printfl.rel
+.//obj/rfd900pe/radio~rfd900pe/freq_hopping.rel
+.//obj/rfd900pe/radio~rfd900pe/tdm.rel
+.//obj/rfd900pe/radio~rfd900pe/at.rel
+.//obj/rfd900pe/radio~rfd900pe/radio.rel
+.//obj/rfd900pe/radio~rfd900pe/flash.rel
+.//obj/rfd900pe/radio~rfd900pe/parameters.rel
+.//obj/rfd900pe/radio~rfd900pe/main.rel
+.//obj/rfd900pe/radio~rfd900pe/golay.rel
+.//obj/rfd900pe/radio~rfd900pe/pins_user.rel
+.//obj/rfd900pe/radio~rfd900pe/serial.rel
+.//obj/rfd900pe/radio~rfd900pe/rtc.rel
+.//obj/rfd900pe/radio~rfd900pe/timer.rel
+.//obj/rfd900pe/radio~rfd900pe/AES/AES_BlockCipher.rel
+.//obj/rfd900pe/radio~rfd900pe/AES/GenerateDecryptionKey.rel
+.//obj/rfd900pe/radio~rfd900pe/AES/CBC_EncryptDecrypt.rel
+.//obj/rfd900pe/radio~rfd900pe/AES/aes.rel
+.//obj/rfd900pe/radio~rfd900pe/AES/CTR_EncryptDecrypt.rel
+
+-e

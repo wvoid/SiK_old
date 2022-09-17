@@ -1,0 +1,18 @@
+-muwx
+-i obj/rfd900p/bootloader~rfd900p/bootloader~rfd900p.ihx
+-M
+-Y
+-I 0x0100
+-S 0x40
+-X 0x2000
+-b HOME = 0x0000
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-r
+-bHIGHCSEG=0x0FC00
+.//obj/rfd900p/bootloader~rfd900p/crtstart.rel
+.//obj/rfd900p/bootloader~rfd900p/bootloader.rel
+.//obj/rfd900p/bootloader~rfd900p/flash.rel
+.//obj/rfd900p/bootloader~rfd900p/util.rel
+
+-e

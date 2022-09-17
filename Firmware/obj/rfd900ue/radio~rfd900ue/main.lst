@@ -1,0 +1,2880 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Sep  7 2022) (Linux)
+                                      4 ; This file was generated Wed Sep  7 10:05:07 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module main
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _g_version_string
+                                     13 	.globl _g_banner_string
+                                     14 	.globl _main
+                                     15 	.globl _aes_init
+                                     16 	.globl _fhop_init
+                                     17 	.globl _delay_msec
+                                     18 	.globl _timer_init
+                                     19 	.globl _tdm_serial_loop
+                                     20 	.globl _tdm_init
+                                     21 	.globl _radio_get_transmit_power
+                                     22 	.globl _radio_set_transmit_power
+                                     23 	.globl _radio_air_rate
+                                     24 	.globl _radio_set_network_id
+                                     25 	.globl _radio_configure
+                                     26 	.globl _radio_set_channel
+                                     27 	.globl _radio_set_channel_spacing
+                                     28 	.globl _radio_set_frequency
+                                     29 	.globl _radio_initialise
+                                     30 	.globl _radio_receiver_on
+                                     31 	.globl _vprintfl
+                                     32 	.globl _constrain
+                                     33 	.globl _param_default
+                                     34 	.globl _param_load
+                                     35 	.globl _param_get
+                                     36 	.globl _param_set
+                                     37 	.globl _serial_init
+                                     38 	.globl _srand
+                                     39 	.globl _rand
+                                     40 	.globl _puts
+                                     41 	.globl _NSS1
+                                     42 	.globl _IRQ
+                                     43 	.globl _PIN_ENABLE
+                                     44 	.globl _PIN_CONFIG
+                                     45 	.globl _LED_GREEN
+                                     46 	.globl _LED_RED
+                                     47 	.globl _SPI1EN
+                                     48 	.globl _TXBMT1
+                                     49 	.globl _NSS1MD0
+                                     50 	.globl _NSS1MD1
+                                     51 	.globl _RXOVRN1
+                                     52 	.globl _MODF1
+                                     53 	.globl _WCOL1
+                                     54 	.globl _SPIF1
+                                     55 	.globl _SPI0EN
+                                     56 	.globl _TXBMT0
+                                     57 	.globl _NSS0MD0
+                                     58 	.globl _NSS0MD1
+                                     59 	.globl _RXOVRN0
+                                     60 	.globl _MODF0
+                                     61 	.globl _WCOL0
+                                     62 	.globl _SPIF0
+                                     63 	.globl _AD0CM0
+                                     64 	.globl _AD0CM1
+                                     65 	.globl _AD0CM2
+                                     66 	.globl _AD0WINT
+                                     67 	.globl _AD0BUSY
+                                     68 	.globl _AD0INT
+                                     69 	.globl _BURSTEN
+                                     70 	.globl _AD0EN
+                                     71 	.globl _CCF0
+                                     72 	.globl _CCF1
+                                     73 	.globl _CCF2
+                                     74 	.globl _CCF3
+                                     75 	.globl _CCF4
+                                     76 	.globl _CCF5
+                                     77 	.globl _CR
+                                     78 	.globl _CF
+                                     79 	.globl _P
+                                     80 	.globl _F1
+                                     81 	.globl _OV
+                                     82 	.globl _RS0
+                                     83 	.globl _RS1
+                                     84 	.globl _F0
+                                     85 	.globl _AC
+                                     86 	.globl _CY
+                                     87 	.globl _T2XCLK
+                                     88 	.globl _T2RCLK
+                                     89 	.globl _TR2
+                                     90 	.globl _T2SPLIT
+                                     91 	.globl _TF2CEN
+                                     92 	.globl _TF2LEN
+                                     93 	.globl _TF2L
+                                     94 	.globl _TF2H
+                                     95 	.globl _SI
+                                     96 	.globl _ACK
+                                     97 	.globl _ARBLOST
+                                     98 	.globl _ACKRQ
+                                     99 	.globl _STO
+                                    100 	.globl _STA
+                                    101 	.globl _TXMODE
+                                    102 	.globl _MASTER
+                                    103 	.globl _PX0
+                                    104 	.globl _PT0
+                                    105 	.globl _PX1
+                                    106 	.globl _PT1
+                                    107 	.globl _PS0
+                                    108 	.globl _PT2
+                                    109 	.globl _PSPI0
+                                    110 	.globl _EX0
+                                    111 	.globl _ET0
+                                    112 	.globl _EX1
+                                    113 	.globl _ET1
+                                    114 	.globl _ES0
+                                    115 	.globl _ET2
+                                    116 	.globl _ESPI0
+                                    117 	.globl _EA
+                                    118 	.globl _RI0
+                                    119 	.globl _TI0
+                                    120 	.globl _RB80
+                                    121 	.globl _TB80
+                                    122 	.globl _REN0
+                                    123 	.globl _MCE0
+                                    124 	.globl _S0MODE
+                                    125 	.globl _IT0
+                                    126 	.globl _IE0
+                                    127 	.globl _IT1
+                                    128 	.globl _IE1
+                                    129 	.globl _TR0
+                                    130 	.globl _TF0
+                                    131 	.globl _TR1
+                                    132 	.globl _TF1
+                                    133 	.globl __XPAGE
+                                    134 	.globl _PCA0CP4
+                                    135 	.globl _PCA0CP0
+                                    136 	.globl _PCA0
+                                    137 	.globl _PCA0CP3
+                                    138 	.globl _PCA0CP2
+                                    139 	.globl _PCA0CP1
+                                    140 	.globl _PCA0CP5
+                                    141 	.globl _TMR2
+                                    142 	.globl _TMR2RL
+                                    143 	.globl _ADC0LT
+                                    144 	.globl _ADC0GT
+                                    145 	.globl _ADC0
+                                    146 	.globl _TMR3
+                                    147 	.globl _TMR3RL
+                                    148 	.globl _TOFF
+                                    149 	.globl _DP
+                                    150 	.globl _PCLKEN
+                                    151 	.globl _CLKMODE
+                                    152 	.globl _P7MDOUT
+                                    153 	.globl _P6MDOUT
+                                    154 	.globl _P5MDOUT
+                                    155 	.globl _P4MDOUT
+                                    156 	.globl _PCLKACT
+                                    157 	.globl _P6MDIN
+                                    158 	.globl _P5MDIN
+                                    159 	.globl _P4MDIN
+                                    160 	.globl _P3MDIN
+                                    161 	.globl _DEVICEID
+                                    162 	.globl _REVID
+                                    163 	.globl _HWID
+                                    164 	.globl _P7
+                                    165 	.globl _P6
+                                    166 	.globl _P5
+                                    167 	.globl _P4
+                                    168 	.globl _TOFFH
+                                    169 	.globl _TOFFL
+                                    170 	.globl _ADC0TK
+                                    171 	.globl _ADC0PWR
+                                    172 	.globl _IREF0CF
+                                    173 	.globl _FLSCL
+                                    174 	.globl _OSCICL
+                                    175 	.globl _OSCIFL
+                                    176 	.globl _P3MDOUT
+                                    177 	.globl _LCD0BUFCF
+                                    178 	.globl _P7DRV
+                                    179 	.globl _P6DRV
+                                    180 	.globl _P2DRV
+                                    181 	.globl _P1DRV
+                                    182 	.globl _P0DRV
+                                    183 	.globl _P5DRV
+                                    184 	.globl _P4DRV
+                                    185 	.globl _P3DRV
+                                    186 	.globl _LCD0BUFCN
+                                    187 	.globl _CRC0CNT
+                                    188 	.globl _CRC0AUTO
+                                    189 	.globl _CRC0FLIP
+                                    190 	.globl _CRC0IN
+                                    191 	.globl _CRC0CN
+                                    192 	.globl _CRC0DAT
+                                    193 	.globl _SFRPGCN
+                                    194 	.globl _DC0RDY
+                                    195 	.globl _PC0INT1
+                                    196 	.globl _PC0INT0
+                                    197 	.globl _PC0DCH
+                                    198 	.globl _PC0DCL
+                                    199 	.globl _SPI1CN
+                                    200 	.globl _AES0YOUT
+                                    201 	.globl _PC0HIST
+                                    202 	.globl _PC0CMP1H
+                                    203 	.globl _PC0CMP1M
+                                    204 	.globl _PC0CMP1L
+                                    205 	.globl _AES0KBA
+                                    206 	.globl _AES0DBA
+                                    207 	.globl _AES0KIN
+                                    208 	.globl _AES0XIN
+                                    209 	.globl _AES0BIN
+                                    210 	.globl _AES0DCFG
+                                    211 	.globl _AES0BCFG
+                                    212 	.globl _PC0TH
+                                    213 	.globl _PC0CMP0H
+                                    214 	.globl _PC0CMP0M
+                                    215 	.globl _PC0CMP0L
+                                    216 	.globl _PC0CTR1H
+                                    217 	.globl _PC0CTR1M
+                                    218 	.globl _PC0CTR1L
+                                    219 	.globl _PC0CTR0H
+                                    220 	.globl _PC0CTR0M
+                                    221 	.globl _PC0CTR0L
+                                    222 	.globl _PC0MD
+                                    223 	.globl _PC0PCF
+                                    224 	.globl _DMA0NMD
+                                    225 	.globl _DMA0BUSY
+                                    226 	.globl _DMA0MINT
+                                    227 	.globl _DMA0INT
+                                    228 	.globl _DMA0EN
+                                    229 	.globl _DMA0SEL
+                                    230 	.globl _DMA0NSZH
+                                    231 	.globl _DMA0NSZL
+                                    232 	.globl _DMA0NAOH
+                                    233 	.globl _DMA0NAOL
+                                    234 	.globl _DMA0NBAH
+                                    235 	.globl _DMA0NBAL
+                                    236 	.globl _DMA0NCF
+                                    237 	.globl _VREGINSDH
+                                    238 	.globl _VREGINSDL
+                                    239 	.globl _ENC0CN
+                                    240 	.globl _ENC0H
+                                    241 	.globl _ENC0M
+                                    242 	.globl _ENC0L
+                                    243 	.globl _PC0STAT
+                                    244 	.globl _CRC1CN
+                                    245 	.globl _CRC1POLH
+                                    246 	.globl _CRC1POLL
+                                    247 	.globl _CRC1OUTH
+                                    248 	.globl _CRC1OUTL
+                                    249 	.globl _CRC1IN
+                                    250 	.globl _LCD0BUFMD
+                                    251 	.globl _LCD0CHPCN
+                                    252 	.globl _DC0MD
+                                    253 	.globl _DC0CF
+                                    254 	.globl _DC0CN
+                                    255 	.globl _LCD0VBMCF
+                                    256 	.globl _LCD0CHPMD
+                                    257 	.globl _LCD0CHPCF
+                                    258 	.globl _LCD0MSCF
+                                    259 	.globl _LCD0MSCN
+                                    260 	.globl _LCD0CLKDIVH
+                                    261 	.globl _LCD0CLKDIVL
+                                    262 	.globl _LCD0VBMCN
+                                    263 	.globl _LCD0CF
+                                    264 	.globl _LCD0PWR
+                                    265 	.globl _SPI1DAT
+                                    266 	.globl _SPI1CKR
+                                    267 	.globl _SPI1CFG
+                                    268 	.globl _LCD0TOGR
+                                    269 	.globl _LCD0BLINK
+                                    270 	.globl _LCD0CN
+                                    271 	.globl _LCD0CNTRST
+                                    272 	.globl _LCD0DF
+                                    273 	.globl _LCD0DE
+                                    274 	.globl _LCD0DD
+                                    275 	.globl _LCD0DC
+                                    276 	.globl _LCD0DB
+                                    277 	.globl _LCD0DA
+                                    278 	.globl _LCD0D9
+                                    279 	.globl _LCD0D8
+                                    280 	.globl _LCD0D7
+                                    281 	.globl _LCD0D6
+                                    282 	.globl _LCD0D5
+                                    283 	.globl _LCD0D4
+                                    284 	.globl _LCD0D3
+                                    285 	.globl _LCD0D2
+                                    286 	.globl _LCD0D1
+                                    287 	.globl _LCD0D0
+                                    288 	.globl _VDM0CN
+                                    289 	.globl _PCA0CPH4
+                                    290 	.globl _PCA0CPL4
+                                    291 	.globl _PCA0CPH0
+                                    292 	.globl _PCA0CPL0
+                                    293 	.globl _PCA0H
+                                    294 	.globl _PCA0L
+                                    295 	.globl _SPI0CN
+                                    296 	.globl _EIP2
+                                    297 	.globl _EIP1
+                                    298 	.globl _SMB0ADM
+                                    299 	.globl _SMB0ADR
+                                    300 	.globl _P2MDIN
+                                    301 	.globl _P1MDIN
+                                    302 	.globl _P0MDIN
+                                    303 	.globl _B
+                                    304 	.globl _RSTSRC
+                                    305 	.globl _PCA0CPH3
+                                    306 	.globl _PCA0CPL3
+                                    307 	.globl _PCA0CPH2
+                                    308 	.globl _PCA0CPL2
+                                    309 	.globl _PCA0CPH1
+                                    310 	.globl _PCA0CPL1
+                                    311 	.globl _ADC0CN
+                                    312 	.globl _EIE2
+                                    313 	.globl _EIE1
+                                    314 	.globl _FLWR
+                                    315 	.globl _IT01CF
+                                    316 	.globl _XBR2
+                                    317 	.globl _XBR1
+                                    318 	.globl _XBR0
+                                    319 	.globl _ACC
+                                    320 	.globl _PCA0PWM
+                                    321 	.globl _PCA0CPM4
+                                    322 	.globl _PCA0CPM3
+                                    323 	.globl _PCA0CPM2
+                                    324 	.globl _PCA0CPM1
+                                    325 	.globl _PCA0CPM0
+                                    326 	.globl _PCA0MD
+                                    327 	.globl _PCA0CN
+                                    328 	.globl _P0MAT
+                                    329 	.globl _P2SKIP
+                                    330 	.globl _P1SKIP
+                                    331 	.globl _P0SKIP
+                                    332 	.globl _PCA0CPH5
+                                    333 	.globl _PCA0CPL5
+                                    334 	.globl _REF0CN
+                                    335 	.globl _PSW
+                                    336 	.globl _P1MAT
+                                    337 	.globl _PCA0CPM5
+                                    338 	.globl _TMR2H
+                                    339 	.globl _TMR2L
+                                    340 	.globl _TMR2RLH
+                                    341 	.globl _TMR2RLL
+                                    342 	.globl _REG0CN
+                                    343 	.globl _TMR2CN
+                                    344 	.globl _P0MASK
+                                    345 	.globl _ADC0LTH
+                                    346 	.globl _ADC0LTL
+                                    347 	.globl _ADC0GTH
+                                    348 	.globl _ADC0GTL
+                                    349 	.globl _SMB0DAT
+                                    350 	.globl _SMB0CF
+                                    351 	.globl _SMB0CN
+                                    352 	.globl _P1MASK
+                                    353 	.globl _ADC0H
+                                    354 	.globl _ADC0L
+                                    355 	.globl _ADC0CF
+                                    356 	.globl _ADC0MX
+                                    357 	.globl _ADC0AC
+                                    358 	.globl _IREF0CN
+                                    359 	.globl _IP
+                                    360 	.globl _FLKEY
+                                    361 	.globl _PMU0FL
+                                    362 	.globl _PMU0CF
+                                    363 	.globl _PMU0MD
+                                    364 	.globl _OSCICN
+                                    365 	.globl _OSCXCN
+                                    366 	.globl _P3
+                                    367 	.globl _EMI0TC
+                                    368 	.globl _RTC0KEY
+                                    369 	.globl _RTC0DAT
+                                    370 	.globl _RTC0ADR
+                                    371 	.globl _EMI0CF
+                                    372 	.globl _EMI0CN
+                                    373 	.globl _CLKSEL
+                                    374 	.globl _IE
+                                    375 	.globl _SFRPAGE
+                                    376 	.globl _P2MDOUT
+                                    377 	.globl _P1MDOUT
+                                    378 	.globl _P0MDOUT
+                                    379 	.globl _SPI0DAT
+                                    380 	.globl _SPI0CKR
+                                    381 	.globl _SPI0CFG
+                                    382 	.globl _P2
+                                    383 	.globl _CPT0MX
+                                    384 	.globl _CPT1MX
+                                    385 	.globl _CPT0MD
+                                    386 	.globl _CPT1MD
+                                    387 	.globl _CPT0CN
+                                    388 	.globl _CPT1CN
+                                    389 	.globl _SBUF0
+                                    390 	.globl _SCON0
+                                    391 	.globl _TMR3H
+                                    392 	.globl _TMR3L
+                                    393 	.globl _TMR3RLH
+                                    394 	.globl _TMR3RLL
+                                    395 	.globl _TMR3CN
+                                    396 	.globl _P1
+                                    397 	.globl _PSCTL
+                                    398 	.globl _CKCON
+                                    399 	.globl _TH1
+                                    400 	.globl _TH0
+                                    401 	.globl _TL1
+                                    402 	.globl _TL0
+                                    403 	.globl _TMOD
+                                    404 	.globl _TCON
+                                    405 	.globl _PCON
+                                    406 	.globl _SFRLAST
+                                    407 	.globl _SFRNEXT
+                                    408 	.globl _PSBANK
+                                    409 	.globl _DPH
+                                    410 	.globl _DPL
+                                    411 	.globl _SP
+                                    412 	.globl _P0
+                                    413 	.globl _feature_mavlink_framing
+                                    414 	.globl _remote_statistics
+                                    415 	.globl _statistics
+                                    416 	.globl _errors
+                                    417 	.globl _g_board_bl_version
+                                    418 	.globl _g_board_frequency
+                                    419 	.globl _feature_rtscts
+                                    420 	.globl _feature_golay
+                                    421 	.globl _panic
+                                    422 ;--------------------------------------------------------
+                                    423 ; special function registers
+                                    424 ;--------------------------------------------------------
+                                    425 	.area RSEG    (ABS,DATA)
+      000000                        426 	.org 0x0000
+                           000080   427 _P0	=	0x0080
+                           000081   428 _SP	=	0x0081
+                           000082   429 _DPL	=	0x0082
+                           000083   430 _DPH	=	0x0083
+                           000084   431 _PSBANK	=	0x0084
+                           000085   432 _SFRNEXT	=	0x0085
+                           000086   433 _SFRLAST	=	0x0086
+                           000087   434 _PCON	=	0x0087
+                           000088   435 _TCON	=	0x0088
+                           000089   436 _TMOD	=	0x0089
+                           00008A   437 _TL0	=	0x008a
+                           00008B   438 _TL1	=	0x008b
+                           00008C   439 _TH0	=	0x008c
+                           00008D   440 _TH1	=	0x008d
+                           00008E   441 _CKCON	=	0x008e
+                           00008F   442 _PSCTL	=	0x008f
+                           000090   443 _P1	=	0x0090
+                           000091   444 _TMR3CN	=	0x0091
+                           000092   445 _TMR3RLL	=	0x0092
+                           000093   446 _TMR3RLH	=	0x0093
+                           000094   447 _TMR3L	=	0x0094
+                           000095   448 _TMR3H	=	0x0095
+                           000098   449 _SCON0	=	0x0098
+                           000099   450 _SBUF0	=	0x0099
+                           00009A   451 _CPT1CN	=	0x009a
+                           00009B   452 _CPT0CN	=	0x009b
+                           00009C   453 _CPT1MD	=	0x009c
+                           00009D   454 _CPT0MD	=	0x009d
+                           00009E   455 _CPT1MX	=	0x009e
+                           00009F   456 _CPT0MX	=	0x009f
+                           0000A0   457 _P2	=	0x00a0
+                           0000A1   458 _SPI0CFG	=	0x00a1
+                           0000A2   459 _SPI0CKR	=	0x00a2
+                           0000A3   460 _SPI0DAT	=	0x00a3
+                           0000A4   461 _P0MDOUT	=	0x00a4
+                           0000A5   462 _P1MDOUT	=	0x00a5
+                           0000A6   463 _P2MDOUT	=	0x00a6
+                           0000A7   464 _SFRPAGE	=	0x00a7
+                           0000A8   465 _IE	=	0x00a8
+                           0000A9   466 _CLKSEL	=	0x00a9
+                           0000AA   467 _EMI0CN	=	0x00aa
+                           0000AB   468 _EMI0CF	=	0x00ab
+                           0000AC   469 _RTC0ADR	=	0x00ac
+                           0000AD   470 _RTC0DAT	=	0x00ad
+                           0000AE   471 _RTC0KEY	=	0x00ae
+                           0000AF   472 _EMI0TC	=	0x00af
+                           0000B0   473 _P3	=	0x00b0
+                           0000B1   474 _OSCXCN	=	0x00b1
+                           0000B2   475 _OSCICN	=	0x00b2
+                           0000B3   476 _PMU0MD	=	0x00b3
+                           0000B5   477 _PMU0CF	=	0x00b5
+                           0000B6   478 _PMU0FL	=	0x00b6
+                           0000B7   479 _FLKEY	=	0x00b7
+                           0000B8   480 _IP	=	0x00b8
+                           0000B9   481 _IREF0CN	=	0x00b9
+                           0000BA   482 _ADC0AC	=	0x00ba
+                           0000BB   483 _ADC0MX	=	0x00bb
+                           0000BC   484 _ADC0CF	=	0x00bc
+                           0000BD   485 _ADC0L	=	0x00bd
+                           0000BE   486 _ADC0H	=	0x00be
+                           0000BF   487 _P1MASK	=	0x00bf
+                           0000C0   488 _SMB0CN	=	0x00c0
+                           0000C1   489 _SMB0CF	=	0x00c1
+                           0000C2   490 _SMB0DAT	=	0x00c2
+                           0000C3   491 _ADC0GTL	=	0x00c3
+                           0000C4   492 _ADC0GTH	=	0x00c4
+                           0000C5   493 _ADC0LTL	=	0x00c5
+                           0000C6   494 _ADC0LTH	=	0x00c6
+                           0000C7   495 _P0MASK	=	0x00c7
+                           0000C8   496 _TMR2CN	=	0x00c8
+                           0000C9   497 _REG0CN	=	0x00c9
+                           0000CA   498 _TMR2RLL	=	0x00ca
+                           0000CB   499 _TMR2RLH	=	0x00cb
+                           0000CC   500 _TMR2L	=	0x00cc
+                           0000CD   501 _TMR2H	=	0x00cd
+                           0000CE   502 _PCA0CPM5	=	0x00ce
+                           0000CF   503 _P1MAT	=	0x00cf
+                           0000D0   504 _PSW	=	0x00d0
+                           0000D1   505 _REF0CN	=	0x00d1
+                           0000D2   506 _PCA0CPL5	=	0x00d2
+                           0000D3   507 _PCA0CPH5	=	0x00d3
+                           0000D4   508 _P0SKIP	=	0x00d4
+                           0000D5   509 _P1SKIP	=	0x00d5
+                           0000D6   510 _P2SKIP	=	0x00d6
+                           0000D7   511 _P0MAT	=	0x00d7
+                           0000D8   512 _PCA0CN	=	0x00d8
+                           0000D9   513 _PCA0MD	=	0x00d9
+                           0000DA   514 _PCA0CPM0	=	0x00da
+                           0000DB   515 _PCA0CPM1	=	0x00db
+                           0000DC   516 _PCA0CPM2	=	0x00dc
+                           0000DD   517 _PCA0CPM3	=	0x00dd
+                           0000DE   518 _PCA0CPM4	=	0x00de
+                           0000DF   519 _PCA0PWM	=	0x00df
+                           0000E0   520 _ACC	=	0x00e0
+                           0000E1   521 _XBR0	=	0x00e1
+                           0000E2   522 _XBR1	=	0x00e2
+                           0000E3   523 _XBR2	=	0x00e3
+                           0000E4   524 _IT01CF	=	0x00e4
+                           0000E5   525 _FLWR	=	0x00e5
+                           0000E6   526 _EIE1	=	0x00e6
+                           0000E7   527 _EIE2	=	0x00e7
+                           0000E8   528 _ADC0CN	=	0x00e8
+                           0000E9   529 _PCA0CPL1	=	0x00e9
+                           0000EA   530 _PCA0CPH1	=	0x00ea
+                           0000EB   531 _PCA0CPL2	=	0x00eb
+                           0000EC   532 _PCA0CPH2	=	0x00ec
+                           0000ED   533 _PCA0CPL3	=	0x00ed
+                           0000EE   534 _PCA0CPH3	=	0x00ee
+                           0000EF   535 _RSTSRC	=	0x00ef
+                           0000F0   536 _B	=	0x00f0
+                           0000F1   537 _P0MDIN	=	0x00f1
+                           0000F2   538 _P1MDIN	=	0x00f2
+                           0000F3   539 _P2MDIN	=	0x00f3
+                           0000F4   540 _SMB0ADR	=	0x00f4
+                           0000F5   541 _SMB0ADM	=	0x00f5
+                           0000F6   542 _EIP1	=	0x00f6
+                           0000F7   543 _EIP2	=	0x00f7
+                           0000F8   544 _SPI0CN	=	0x00f8
+                           0000F9   545 _PCA0L	=	0x00f9
+                           0000FA   546 _PCA0H	=	0x00fa
+                           0000FB   547 _PCA0CPL0	=	0x00fb
+                           0000FC   548 _PCA0CPH0	=	0x00fc
+                           0000FD   549 _PCA0CPL4	=	0x00fd
+                           0000FE   550 _PCA0CPH4	=	0x00fe
+                           0000FF   551 _VDM0CN	=	0x00ff
+                           000089   552 _LCD0D0	=	0x0089
+                           00008A   553 _LCD0D1	=	0x008a
+                           00008B   554 _LCD0D2	=	0x008b
+                           00008C   555 _LCD0D3	=	0x008c
+                           00008D   556 _LCD0D4	=	0x008d
+                           00008E   557 _LCD0D5	=	0x008e
+                           000091   558 _LCD0D6	=	0x0091
+                           000092   559 _LCD0D7	=	0x0092
+                           000093   560 _LCD0D8	=	0x0093
+                           000094   561 _LCD0D9	=	0x0094
+                           000095   562 _LCD0DA	=	0x0095
+                           000096   563 _LCD0DB	=	0x0096
+                           000097   564 _LCD0DC	=	0x0097
+                           000099   565 _LCD0DD	=	0x0099
+                           00009A   566 _LCD0DE	=	0x009a
+                           00009B   567 _LCD0DF	=	0x009b
+                           00009C   568 _LCD0CNTRST	=	0x009c
+                           00009D   569 _LCD0CN	=	0x009d
+                           00009E   570 _LCD0BLINK	=	0x009e
+                           00009F   571 _LCD0TOGR	=	0x009f
+                           0000A1   572 _SPI1CFG	=	0x00a1
+                           0000A2   573 _SPI1CKR	=	0x00a2
+                           0000A3   574 _SPI1DAT	=	0x00a3
+                           0000A4   575 _LCD0PWR	=	0x00a4
+                           0000A5   576 _LCD0CF	=	0x00a5
+                           0000A6   577 _LCD0VBMCN	=	0x00a6
+                           0000A9   578 _LCD0CLKDIVL	=	0x00a9
+                           0000AA   579 _LCD0CLKDIVH	=	0x00aa
+                           0000AB   580 _LCD0MSCN	=	0x00ab
+                           0000AC   581 _LCD0MSCF	=	0x00ac
+                           0000AD   582 _LCD0CHPCF	=	0x00ad
+                           0000AE   583 _LCD0CHPMD	=	0x00ae
+                           0000AF   584 _LCD0VBMCF	=	0x00af
+                           0000B1   585 _DC0CN	=	0x00b1
+                           0000B2   586 _DC0CF	=	0x00b2
+                           0000B3   587 _DC0MD	=	0x00b3
+                           0000B5   588 _LCD0CHPCN	=	0x00b5
+                           0000B6   589 _LCD0BUFMD	=	0x00b6
+                           0000B9   590 _CRC1IN	=	0x00b9
+                           0000BA   591 _CRC1OUTL	=	0x00ba
+                           0000BB   592 _CRC1OUTH	=	0x00bb
+                           0000BC   593 _CRC1POLL	=	0x00bc
+                           0000BD   594 _CRC1POLH	=	0x00bd
+                           0000BE   595 _CRC1CN	=	0x00be
+                           0000C1   596 _PC0STAT	=	0x00c1
+                           0000C2   597 _ENC0L	=	0x00c2
+                           0000C3   598 _ENC0M	=	0x00c3
+                           0000C4   599 _ENC0H	=	0x00c4
+                           0000C5   600 _ENC0CN	=	0x00c5
+                           0000C6   601 _VREGINSDL	=	0x00c6
+                           0000C7   602 _VREGINSDH	=	0x00c7
+                           0000C9   603 _DMA0NCF	=	0x00c9
+                           0000CA   604 _DMA0NBAL	=	0x00ca
+                           0000CB   605 _DMA0NBAH	=	0x00cb
+                           0000CC   606 _DMA0NAOL	=	0x00cc
+                           0000CD   607 _DMA0NAOH	=	0x00cd
+                           0000CE   608 _DMA0NSZL	=	0x00ce
+                           0000CF   609 _DMA0NSZH	=	0x00cf
+                           0000D1   610 _DMA0SEL	=	0x00d1
+                           0000D2   611 _DMA0EN	=	0x00d2
+                           0000D3   612 _DMA0INT	=	0x00d3
+                           0000D4   613 _DMA0MINT	=	0x00d4
+                           0000D5   614 _DMA0BUSY	=	0x00d5
+                           0000D6   615 _DMA0NMD	=	0x00d6
+                           0000D7   616 _PC0PCF	=	0x00d7
+                           0000D9   617 _PC0MD	=	0x00d9
+                           0000DA   618 _PC0CTR0L	=	0x00da
+                           0000DB   619 _PC0CTR0M	=	0x00db
+                           0000DC   620 _PC0CTR0H	=	0x00dc
+                           0000DD   621 _PC0CTR1L	=	0x00dd
+                           0000DE   622 _PC0CTR1M	=	0x00de
+                           0000DF   623 _PC0CTR1H	=	0x00df
+                           0000E1   624 _PC0CMP0L	=	0x00e1
+                           0000E2   625 _PC0CMP0M	=	0x00e2
+                           0000E3   626 _PC0CMP0H	=	0x00e3
+                           0000E4   627 _PC0TH	=	0x00e4
+                           0000E9   628 _AES0BCFG	=	0x00e9
+                           0000EA   629 _AES0DCFG	=	0x00ea
+                           0000EB   630 _AES0BIN	=	0x00eb
+                           0000EC   631 _AES0XIN	=	0x00ec
+                           0000ED   632 _AES0KIN	=	0x00ed
+                           0000EE   633 _AES0DBA	=	0x00ee
+                           0000EF   634 _AES0KBA	=	0x00ef
+                           0000F1   635 _PC0CMP1L	=	0x00f1
+                           0000F2   636 _PC0CMP1M	=	0x00f2
+                           0000F3   637 _PC0CMP1H	=	0x00f3
+                           0000F4   638 _PC0HIST	=	0x00f4
+                           0000F5   639 _AES0YOUT	=	0x00f5
+                           0000F8   640 _SPI1CN	=	0x00f8
+                           0000F9   641 _PC0DCL	=	0x00f9
+                           0000FA   642 _PC0DCH	=	0x00fa
+                           0000FB   643 _PC0INT0	=	0x00fb
+                           0000FC   644 _PC0INT1	=	0x00fc
+                           0000FD   645 _DC0RDY	=	0x00fd
+                           00008E   646 _SFRPGCN	=	0x008e
+                           000091   647 _CRC0DAT	=	0x0091
+                           000092   648 _CRC0CN	=	0x0092
+                           000093   649 _CRC0IN	=	0x0093
+                           000094   650 _CRC0FLIP	=	0x0094
+                           000096   651 _CRC0AUTO	=	0x0096
+                           000097   652 _CRC0CNT	=	0x0097
+                           00009C   653 _LCD0BUFCN	=	0x009c
+                           0000A1   654 _P3DRV	=	0x00a1
+                           0000A2   655 _P4DRV	=	0x00a2
+                           0000A3   656 _P5DRV	=	0x00a3
+                           0000A4   657 _P0DRV	=	0x00a4
+                           0000A5   658 _P1DRV	=	0x00a5
+                           0000A6   659 _P2DRV	=	0x00a6
+                           0000AA   660 _P6DRV	=	0x00aa
+                           0000AB   661 _P7DRV	=	0x00ab
+                           0000AC   662 _LCD0BUFCF	=	0x00ac
+                           0000B1   663 _P3MDOUT	=	0x00b1
+                           0000B2   664 _OSCIFL	=	0x00b2
+                           0000B3   665 _OSCICL	=	0x00b3
+                           0000B6   666 _FLSCL	=	0x00b6
+                           0000B9   667 _IREF0CF	=	0x00b9
+                           0000BB   668 _ADC0PWR	=	0x00bb
+                           0000BC   669 _ADC0TK	=	0x00bc
+                           0000BD   670 _TOFFL	=	0x00bd
+                           0000BE   671 _TOFFH	=	0x00be
+                           0000D9   672 _P4	=	0x00d9
+                           0000DA   673 _P5	=	0x00da
+                           0000DB   674 _P6	=	0x00db
+                           0000DC   675 _P7	=	0x00dc
+                           0000E9   676 _HWID	=	0x00e9
+                           0000EA   677 _REVID	=	0x00ea
+                           0000EB   678 _DEVICEID	=	0x00eb
+                           0000F1   679 _P3MDIN	=	0x00f1
+                           0000F2   680 _P4MDIN	=	0x00f2
+                           0000F3   681 _P5MDIN	=	0x00f3
+                           0000F4   682 _P6MDIN	=	0x00f4
+                           0000F5   683 _PCLKACT	=	0x00f5
+                           0000F9   684 _P4MDOUT	=	0x00f9
+                           0000FA   685 _P5MDOUT	=	0x00fa
+                           0000FB   686 _P6MDOUT	=	0x00fb
+                           0000FC   687 _P7MDOUT	=	0x00fc
+                           0000FD   688 _CLKMODE	=	0x00fd
+                           0000FE   689 _PCLKEN	=	0x00fe
+                           008382   690 _DP	=	0x8382
+                           008685   691 _TOFF	=	0x8685
+                           009392   692 _TMR3RL	=	0x9392
+                           009594   693 _TMR3	=	0x9594
+                           00BEBD   694 _ADC0	=	0xbebd
+                           00C4C3   695 _ADC0GT	=	0xc4c3
+                           00C6C5   696 _ADC0LT	=	0xc6c5
+                           00CBCA   697 _TMR2RL	=	0xcbca
+                           00CDCC   698 _TMR2	=	0xcdcc
+                           00D3D2   699 _PCA0CP5	=	0xd3d2
+                           00EAE9   700 _PCA0CP1	=	0xeae9
+                           00ECEB   701 _PCA0CP2	=	0xeceb
+                           00EEED   702 _PCA0CP3	=	0xeeed
+                           00FAF9   703 _PCA0	=	0xfaf9
+                           00FCFB   704 _PCA0CP0	=	0xfcfb
+                           00FEFD   705 _PCA0CP4	=	0xfefd
+                           0000AA   706 __XPAGE	=	0x00aa
+                                    707 ;--------------------------------------------------------
+                                    708 ; special function bits
+                                    709 ;--------------------------------------------------------
+                                    710 	.area RSEG    (ABS,DATA)
+      000000                        711 	.org 0x0000
+                           00008F   712 _TF1	=	0x008f
+                           00008E   713 _TR1	=	0x008e
+                           00008D   714 _TF0	=	0x008d
+                           00008C   715 _TR0	=	0x008c
+                           00008B   716 _IE1	=	0x008b
+                           00008A   717 _IT1	=	0x008a
+                           000089   718 _IE0	=	0x0089
+                           000088   719 _IT0	=	0x0088
+                           00009F   720 _S0MODE	=	0x009f
+                           00009D   721 _MCE0	=	0x009d
+                           00009C   722 _REN0	=	0x009c
+                           00009B   723 _TB80	=	0x009b
+                           00009A   724 _RB80	=	0x009a
+                           000099   725 _TI0	=	0x0099
+                           000098   726 _RI0	=	0x0098
+                           0000AF   727 _EA	=	0x00af
+                           0000AE   728 _ESPI0	=	0x00ae
+                           0000AD   729 _ET2	=	0x00ad
+                           0000AC   730 _ES0	=	0x00ac
+                           0000AB   731 _ET1	=	0x00ab
+                           0000AA   732 _EX1	=	0x00aa
+                           0000A9   733 _ET0	=	0x00a9
+                           0000A8   734 _EX0	=	0x00a8
+                           0000BE   735 _PSPI0	=	0x00be
+                           0000BD   736 _PT2	=	0x00bd
+                           0000BC   737 _PS0	=	0x00bc
+                           0000BB   738 _PT1	=	0x00bb
+                           0000BA   739 _PX1	=	0x00ba
+                           0000B9   740 _PT0	=	0x00b9
+                           0000B8   741 _PX0	=	0x00b8
+                           0000C7   742 _MASTER	=	0x00c7
+                           0000C6   743 _TXMODE	=	0x00c6
+                           0000C5   744 _STA	=	0x00c5
+                           0000C4   745 _STO	=	0x00c4
+                           0000C3   746 _ACKRQ	=	0x00c3
+                           0000C2   747 _ARBLOST	=	0x00c2
+                           0000C1   748 _ACK	=	0x00c1
+                           0000C0   749 _SI	=	0x00c0
+                           0000CF   750 _TF2H	=	0x00cf
+                           0000CE   751 _TF2L	=	0x00ce
+                           0000CD   752 _TF2LEN	=	0x00cd
+                           0000CC   753 _TF2CEN	=	0x00cc
+                           0000CB   754 _T2SPLIT	=	0x00cb
+                           0000CA   755 _TR2	=	0x00ca
+                           0000C9   756 _T2RCLK	=	0x00c9
+                           0000C8   757 _T2XCLK	=	0x00c8
+                           0000D7   758 _CY	=	0x00d7
+                           0000D6   759 _AC	=	0x00d6
+                           0000D5   760 _F0	=	0x00d5
+                           0000D4   761 _RS1	=	0x00d4
+                           0000D3   762 _RS0	=	0x00d3
+                           0000D2   763 _OV	=	0x00d2
+                           0000D1   764 _F1	=	0x00d1
+                           0000D0   765 _P	=	0x00d0
+                           0000DF   766 _CF	=	0x00df
+                           0000DE   767 _CR	=	0x00de
+                           0000DD   768 _CCF5	=	0x00dd
+                           0000DC   769 _CCF4	=	0x00dc
+                           0000DB   770 _CCF3	=	0x00db
+                           0000DA   771 _CCF2	=	0x00da
+                           0000D9   772 _CCF1	=	0x00d9
+                           0000D8   773 _CCF0	=	0x00d8
+                           0000EF   774 _AD0EN	=	0x00ef
+                           0000EE   775 _BURSTEN	=	0x00ee
+                           0000ED   776 _AD0INT	=	0x00ed
+                           0000EC   777 _AD0BUSY	=	0x00ec
+                           0000EB   778 _AD0WINT	=	0x00eb
+                           0000EA   779 _AD0CM2	=	0x00ea
+                           0000E9   780 _AD0CM1	=	0x00e9
+                           0000E8   781 _AD0CM0	=	0x00e8
+                           0000FF   782 _SPIF0	=	0x00ff
+                           0000FE   783 _WCOL0	=	0x00fe
+                           0000FD   784 _MODF0	=	0x00fd
+                           0000FC   785 _RXOVRN0	=	0x00fc
+                           0000FB   786 _NSS0MD1	=	0x00fb
+                           0000FA   787 _NSS0MD0	=	0x00fa
+                           0000F9   788 _TXBMT0	=	0x00f9
+                           0000F8   789 _SPI0EN	=	0x00f8
+                           0000FF   790 _SPIF1	=	0x00ff
+                           0000FE   791 _WCOL1	=	0x00fe
+                           0000FD   792 _MODF1	=	0x00fd
+                           0000FC   793 _RXOVRN1	=	0x00fc
+                           0000FB   794 _NSS1MD1	=	0x00fb
+                           0000FA   795 _NSS1MD0	=	0x00fa
+                           0000F9   796 _TXBMT1	=	0x00f9
+                           0000F8   797 _SPI1EN	=	0x00f8
+                           0000B6   798 _LED_RED	=	0x00b6
+                           0000B7   799 _LED_GREEN	=	0x00b7
+                           000082   800 _PIN_CONFIG	=	0x0082
+                           000083   801 _PIN_ENABLE	=	0x0083
+                           000081   802 _IRQ	=	0x0081
+                           0000A3   803 _NSS1	=	0x00a3
+                                    804 ;--------------------------------------------------------
+                                    805 ; overlayable register banks
+                                    806 ;--------------------------------------------------------
+                                    807 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        808 	.ds 8
+                                    809 ;--------------------------------------------------------
+                                    810 ; internal ram data
+                                    811 ;--------------------------------------------------------
+                                    812 	.area DSEG    (DATA)
+      000000                        813 _radio_init_sloc0_1_0:
+      000000                        814 	.ds 4
+      000004                        815 _radio_init_sloc1_1_0:
+      000004                        816 	.ds 4
+                                    817 ;--------------------------------------------------------
+                                    818 ; overlayable items in internal ram 
+                                    819 ;--------------------------------------------------------
+                                    820 ;--------------------------------------------------------
+                                    821 ; Stack segment in internal ram 
+                                    822 ;--------------------------------------------------------
+                                    823 	.area	SSEG
+      000000                        824 __start__stack:
+      000000                        825 	.ds	1
+                                    826 
+                                    827 ;--------------------------------------------------------
+                                    828 ; indirectly addressable internal ram data
+                                    829 ;--------------------------------------------------------
+                                    830 	.area ISEG    (DATA)
+                                    831 ;--------------------------------------------------------
+                                    832 ; absolute internal ram data
+                                    833 ;--------------------------------------------------------
+                                    834 	.area IABS    (ABS,DATA)
+                                    835 	.area IABS    (ABS,DATA)
+                                    836 ;--------------------------------------------------------
+                                    837 ; bit data
+                                    838 ;--------------------------------------------------------
+                                    839 	.area BSEG    (BIT)
+      000000                        840 _feature_golay::
+      000000                        841 	.ds 1
+      000001                        842 _feature_rtscts::
+      000001                        843 	.ds 1
+                                    844 ;--------------------------------------------------------
+                                    845 ; paged external ram data
+                                    846 ;--------------------------------------------------------
+                                    847 	.area PSEG    (PAG,XDATA)
+      000000                        848 _g_board_frequency::
+      000000                        849 	.ds 1
+      000001                        850 _g_board_bl_version::
+      000001                        851 	.ds 1
+      000002                        852 _errors::
+      000002                        853 	.ds 14
+      000010                        854 _statistics::
+      000010                        855 	.ds 4
+      000014                        856 _remote_statistics::
+      000014                        857 	.ds 4
+                                    858 ;--------------------------------------------------------
+                                    859 ; external ram data
+                                    860 ;--------------------------------------------------------
+                                    861 	.area XSEG    (XDATA)
+      000000                        862 _feature_mavlink_framing::
+      000000                        863 	.ds 1
+      000001                        864 _radio_init_freq_min_1_168:
+      000001                        865 	.ds 4
+      000005                        866 _radio_init_freq_max_1_168:
+      000005                        867 	.ds 4
+      000009                        868 _radio_init_channel_spacing_1_168:
+      000009                        869 	.ds 4
+      00000D                        870 _radio_init_txpower_1_168:
+      00000D                        871 	.ds 1
+                                    872 ;--------------------------------------------------------
+                                    873 ; absolute external ram data
+                                    874 ;--------------------------------------------------------
+                                    875 	.area XABS    (ABS,XDATA)
+                                    876 ;--------------------------------------------------------
+                                    877 ; external initialized ram data
+                                    878 ;--------------------------------------------------------
+                                    879 	.area XISEG   (XDATA)
+                                    880 	.area HOME    (CODE)
+                                    881 	.area GSINIT0 (CODE)
+                                    882 	.area GSINIT1 (CODE)
+                                    883 	.area GSINIT2 (CODE)
+                                    884 	.area GSINIT3 (CODE)
+                                    885 	.area GSINIT4 (CODE)
+                                    886 	.area GSINIT5 (CODE)
+                                    887 	.area GSINIT  (CODE)
+                                    888 	.area GSFINAL (CODE)
+                                    889 	.area CSEG    (CODE)
+                                    890 ;--------------------------------------------------------
+                                    891 ; interrupt vector 
+                                    892 ;--------------------------------------------------------
+                                    893 	.area HOME    (CODE)
+      000000                        894 __interrupt_vect:
+      000000 02r00r00         [24]  895 	ljmp	__sdcc_gsinit_startup
+      000003 02r00r00         [24]  896 	ljmp	_Receiver_ISR
+      000006                        897 	.ds	5
+      00000B 32               [24]  898 	reti
+      00000C                        899 	.ds	7
+      000013 32               [24]  900 	reti
+      000014                        901 	.ds	7
+      00001B 32               [24]  902 	reti
+      00001C                        903 	.ds	7
+      000023 02r00r00         [24]  904 	ljmp	_serial_interrupt
+      000026                        905 	.ds	5
+      00002B 02r00r00         [24]  906 	ljmp	_T2_ISR
+      00002E                        907 	.ds	5
+      000033 32               [24]  908 	reti
+      000034                        909 	.ds	7
+      00003B 32               [24]  910 	reti
+      00003C                        911 	.ds	7
+      000043 32               [24]  912 	reti
+      000044                        913 	.ds	7
+      00004B 32               [24]  914 	reti
+      00004C                        915 	.ds	7
+      000053 32               [24]  916 	reti
+      000054                        917 	.ds	7
+      00005B 32               [24]  918 	reti
+      00005C                        919 	.ds	7
+      000063 32               [24]  920 	reti
+      000064                        921 	.ds	7
+      00006B 32               [24]  922 	reti
+      00006C                        923 	.ds	7
+      000073 02r00r00         [24]  924 	ljmp	_T3_ISR
+      000076                        925 	.ds	5
+      00007B 32               [24]  926 	reti
+      00007C                        927 	.ds	7
+      000083 32               [24]  928 	reti
+      000084                        929 	.ds	7
+      00008B 32               [24]  930 	reti
+      00008C                        931 	.ds	7
+      000093 32               [24]  932 	reti
+      000094                        933 	.ds	7
+      00009B 32               [24]  934 	reti
+      00009C                        935 	.ds	7
+      0000A3 02r00r00         [24]  936 	ljmp	_DMA_ISR
+                                    937 ;--------------------------------------------------------
+                                    938 ; global & static initialisations
+                                    939 ;--------------------------------------------------------
+                                    940 	.area HOME    (CODE)
+                                    941 	.area GSINIT  (CODE)
+                                    942 	.area GSFINAL (CODE)
+                                    943 	.area GSINIT  (CODE)
+                                    944 	.globl __sdcc_gsinit_startup
+                                    945 	.globl __sdcc_program_startup
+                                    946 	.globl __start__stack
+                                    947 	.globl __mcs51_genXINIT
+                                    948 	.globl __mcs51_genXRAMCLEAR
+                                    949 	.globl __mcs51_genRAMCLEAR
+                                    950 	.area GSFINAL (CODE)
+      000000 02r00rA6         [24]  951 	ljmp	__sdcc_program_startup
+                                    952 ;--------------------------------------------------------
+                                    953 ; Home
+                                    954 ;--------------------------------------------------------
+                                    955 	.area HOME    (CODE)
+                                    956 	.area HOME    (CODE)
+      0000A6                        957 __sdcc_program_startup:
+      0000A6 02r00r00         [24]  958 	ljmp	_main
+                                    959 ;	return from main will return to caller
+                                    960 ;--------------------------------------------------------
+                                    961 ; code
+                                    962 ;--------------------------------------------------------
+                                    963 	.area CSEG    (CODE)
+                                    964 ;------------------------------------------------------------
+                                    965 ;Allocation info for local variables in function 'main'
+                                    966 ;------------------------------------------------------------
+                                    967 ;	radio/main.c:104: main(void)
+                                    968 ;	-----------------------------------------
+                                    969 ;	 function main
+                                    970 ;	-----------------------------------------
+      000000                        971 _main:
+                           000007   972 	ar7 = 0x07
+                           000006   973 	ar6 = 0x06
+                           000005   974 	ar5 = 0x05
+                           000004   975 	ar4 = 0x04
+                           000003   976 	ar3 = 0x03
+                           000002   977 	ar2 = 0x02
+                           000001   978 	ar1 = 0x01
+                           000000   979 	ar0 = 0x00
+                                    980 ;	radio/main.c:107: PSBANK = 0x33;
+      000000 75 84 33         [24]  981 	mov	_PSBANK,#0x33
+                                    982 ;	radio/main.c:113: g_board_frequency = BOARD_FREQUENCY_REG;
+      000003 AF C4            [24]  983 	mov	r7,_ADC0GTH
+      000005 78r00            [12]  984 	mov	r0,#_g_board_frequency
+      000007 EF               [12]  985 	mov	a,r7
+      000008 F2               [24]  986 	movx	@r0,a
+                                    987 ;	radio/main.c:114: g_board_bl_version = BOARD_BL_VERSION_REG;
+      000009 AF C3            [24]  988 	mov	r7,_ADC0GTL
+      00000B 78r01            [12]  989 	mov	r0,#_g_board_bl_version
+      00000D EF               [12]  990 	mov	a,r7
+      00000E F2               [24]  991 	movx	@r0,a
+                                    992 ;	radio/main.c:118: if (!param_load())
+      00000F 12r00r00         [24]  993 	lcall	_param_load
+      000012 40 03            [24]  994 	jc	00102$
+                                    995 ;	radio/main.c:119: param_default();
+      000014 12r00r00         [24]  996 	lcall	_param_default
+      000017                        997 00102$:
+                                    998 ;	radio/main.c:122: feature_mavlink_framing = param_get(PARAM_MAVLINK);
+      000017 75 82 06         [24]  999 	mov	dpl,#0x06
+      00001A 12r00r00         [24] 1000 	lcall	_param_get
+      00001D AC 82            [24] 1001 	mov	r4,dpl
+      00001F 90r00r00         [24] 1002 	mov	dptr,#_feature_mavlink_framing
+      000022 EC               [12] 1003 	mov	a,r4
+      000023 F0               [24] 1004 	movx	@dptr,a
+                                   1005 ;	radio/main.c:123: feature_golay = param_get(PARAM_ECC)?true:false;
+      000024 75 82 05         [24] 1006 	mov	dpl,#0x05
+      000027 12r00r00         [24] 1007 	lcall	_param_get
+      00002A AC 82            [24] 1008 	mov	r4,dpl
+      00002C AD 83            [24] 1009 	mov	r5,dph
+      00002E AE F0            [24] 1010 	mov	r6,b
+      000030 FF               [12] 1011 	mov	r7,a
+      000031 EC               [12] 1012 	mov	a,r4
+      000032 4D               [12] 1013 	orl	a,r5
+      000033 4E               [12] 1014 	orl	a,r6
+      000034 4F               [12] 1015 	orl	a,r7
+      000035 24 FF            [12] 1016 	add	a,#0xff
+      000037 92*00            [24] 1017 	mov	_feature_golay,c
+                                   1018 ;	radio/main.c:124: feature_rtscts = param_get(PARAM_RTSCTS)?true:false;
+      000039 75 82 0E         [24] 1019 	mov	dpl,#0x0E
+      00003C 12r00r00         [24] 1020 	lcall	_param_get
+      00003F AC 82            [24] 1021 	mov	r4,dpl
+      000041 AD 83            [24] 1022 	mov	r5,dph
+      000043 AE F0            [24] 1023 	mov	r6,b
+      000045 FF               [12] 1024 	mov	r7,a
+      000046 EC               [12] 1025 	mov	a,r4
+      000047 4D               [12] 1026 	orl	a,r5
+      000048 4E               [12] 1027 	orl	a,r6
+      000049 4F               [12] 1028 	orl	a,r7
+      00004A 24 FF            [12] 1029 	add	a,#0xff
+      00004C 92*01            [24] 1030 	mov	_feature_rtscts,c
+                                   1031 ;	radio/main.c:127: hardware_init();
+      00004E 12r00rCF         [24] 1032 	lcall	_hardware_init
+                                   1033 ;	radio/main.c:130: radio_init();
+      000051 12r01r60         [24] 1034 	lcall	_radio_init
+                                   1035 ;	radio/main.c:133: if (!radio_receiver_on()) {
+      000054 12r00r00         [24] 1036 	lcall	_radio_receiver_on
+      000057 40 15            [24] 1037 	jc	00104$
+                                   1038 ;	radio/main.c:134: panic("failed to enable receiver");
+      000059 74r1B            [12] 1039 	mov	a,#___str_0
+      00005B C0 E0            [24] 1040 	push	acc
+      00005D 74s00            [12] 1041 	mov	a,#(___str_0 >> 8)
+      00005F C0 E0            [24] 1042 	push	acc
+      000061 74 80            [12] 1043 	mov	a,#0x80
+      000063 C0 E0            [24] 1044 	push	acc
+      000065 12r00r95         [24] 1045 	lcall	_panic
+      000068 15 81            [12] 1046 	dec	sp
+      00006A 15 81            [12] 1047 	dec	sp
+      00006C 15 81            [12] 1048 	dec	sp
+      00006E                       1049 00104$:
+                                   1050 ;	radio/main.c:144: if (! aes_init(param_get(PARAM_ENCRYPTION))) {
+      00006E 75 82 10         [24] 1051 	mov	dpl,#0x10
+      000071 12r00r00         [24] 1052 	lcall	_param_get
+      000074 AC 82            [24] 1053 	mov	r4,dpl
+      000076 8C 82            [24] 1054 	mov	dpl,r4
+      000078 12r00r00         [24] 1055 	lcall	_aes_init
+      00007B 40 15            [24] 1056 	jc	00106$
+                                   1057 ;	radio/main.c:145: panic("failed to initialise aes");
+      00007D 74r35            [12] 1058 	mov	a,#___str_1
+      00007F C0 E0            [24] 1059 	push	acc
+      000081 74s00            [12] 1060 	mov	a,#(___str_1 >> 8)
+      000083 C0 E0            [24] 1061 	push	acc
+      000085 74 80            [12] 1062 	mov	a,#0x80
+      000087 C0 E0            [24] 1063 	push	acc
+      000089 12r00r95         [24] 1064 	lcall	_panic
+      00008C 15 81            [12] 1065 	dec	sp
+      00008E 15 81            [12] 1066 	dec	sp
+      000090 15 81            [12] 1067 	dec	sp
+      000092                       1068 00106$:
+                                   1069 ;	radio/main.c:149: tdm_serial_loop();
+      000092 02r00r00         [24] 1070 	ljmp	_tdm_serial_loop
+                                   1071 ;------------------------------------------------------------
+                                   1072 ;Allocation info for local variables in function 'panic'
+                                   1073 ;------------------------------------------------------------
+                                   1074 ;fmt                       Allocated to stack - sp -4
+                                   1075 ;ap                        Allocated to registers r7 
+                                   1076 ;------------------------------------------------------------
+                                   1077 ;	radio/main.c:153: panic(char *fmt, ...)
+                                   1078 ;	-----------------------------------------
+                                   1079 ;	 function panic
+                                   1080 ;	-----------------------------------------
+      000095                       1081 _panic:
+                                   1082 ;	radio/main.c:157: puts("\n**PANIC**");
+      000095 90r00r4E         [24] 1083 	mov	dptr,#___str_2
+      000098 75 F0 80         [24] 1084 	mov	b,#0x80
+      00009B 12r00r00         [24] 1085 	lcall	_puts
+                                   1086 ;	radio/main.c:158: va_start(ap, fmt);
+      00009E E5 81            [12] 1087 	mov	a,sp
+      0000A0 24 FC            [12] 1088 	add	a,#0xFC
+      0000A2 FF               [12] 1089 	mov	r7,a
+                                   1090 ;	radio/main.c:159: vprintf(fmt, ap);
+      0000A3 C0 07            [24] 1091 	push	ar7
+      0000A5 E5 81            [12] 1092 	mov	a,sp
+      0000A7 24 FB            [12] 1093 	add	a,#0xfb
+      0000A9 F8               [12] 1094 	mov	r0,a
+      0000AA 86 82            [24] 1095 	mov	dpl,@r0
+      0000AC 08               [12] 1096 	inc	r0
+      0000AD 86 83            [24] 1097 	mov	dph,@r0
+      0000AF 08               [12] 1098 	inc	r0
+      0000B0 86 F0            [24] 1099 	mov	b,@r0
+      0000B2 12r00r00         [24] 1100 	lcall	_vprintfl
+      0000B5 15 81            [12] 1101 	dec	sp
+                                   1102 ;	radio/main.c:160: puts("");
+      0000B7 90r00r59         [24] 1103 	mov	dptr,#___str_3
+      0000BA 75 F0 80         [24] 1104 	mov	b,#0x80
+      0000BD 12r00r00         [24] 1105 	lcall	_puts
+                                   1106 ;	radio/main.c:162: EA = 1;
+      0000C0 D2 AF            [12] 1107 	setb	_EA
+                                   1108 ;	radio/main.c:163: ES0 = 1;
+      0000C2 D2 AC            [12] 1109 	setb	_ES0
+                                   1110 ;	radio/main.c:165: delay_msec(1000);
+      0000C4 90 03 E8         [24] 1111 	mov	dptr,#0x03E8
+      0000C7 12r00r00         [24] 1112 	lcall	_delay_msec
+                                   1113 ;	radio/main.c:168: RSTSRC |= (1 << 4);
+      0000CA 43 EF 10         [24] 1114 	orl	_RSTSRC,#0x10
+      0000CD                       1115 00103$:
+      0000CD 80 FE            [24] 1116 	sjmp	00103$
+                                   1117 ;------------------------------------------------------------
+                                   1118 ;Allocation info for local variables in function 'hardware_init'
+                                   1119 ;------------------------------------------------------------
+                                   1120 ;i                         Allocated with name '_hardware_init_i_1_166'
+                                   1121 ;------------------------------------------------------------
+                                   1122 ;	radio/main.c:174: hardware_init(void)
+                                   1123 ;	-----------------------------------------
+                                   1124 ;	 function hardware_init
+                                   1125 ;	-----------------------------------------
+      0000CF                       1126 _hardware_init:
+                                   1127 ;	radio/main.c:179: PCA0MD	&= ~0x40;
+      0000CF AF D9            [24] 1128 	mov	r7,_PCA0MD
+      0000D1 74 BF            [12] 1129 	mov	a,#0xBF
+      0000D3 5F               [12] 1130 	anl	a,r7
+      0000D4 F5 D9            [12] 1131 	mov	_PCA0MD,a
+                                   1132 ;	radio/main.c:183: OSCICN	|=  0x80;
+      0000D6 43 B2 80         [24] 1133 	orl	_OSCICN,#0x80
+                                   1134 ;	radio/main.c:187: FLSCL	 =  0x40;
+      0000D9 75 B6 40         [24] 1135 	mov	_FLSCL,#0x40
+                                   1136 ;	radio/main.c:188: CLKSEL	 =  0x00;
+      0000DC 75 A9 00         [24] 1137 	mov	_CLKSEL,#0x00
+                                   1138 ;	radio/main.c:191: VDM0CN	 =  0x80;
+      0000DF 75 FF 80         [24] 1139 	mov	_VDM0CN,#0x80
+                                   1140 ;	radio/main.c:192: for (i = 0; i < 350; i++);	// Wait 100us for initialization
+      0000E2 7E 5E            [12] 1141 	mov	r6,#0x5E
+      0000E4 7F 01            [12] 1142 	mov	r7,#0x01
+      0000E6                       1143 00104$:
+      0000E6 1E               [12] 1144 	dec	r6
+      0000E7 BE FF 01         [24] 1145 	cjne	r6,#0xFF,00114$
+      0000EA 1F               [12] 1146 	dec	r7
+      0000EB                       1147 00114$:
+      0000EB EE               [12] 1148 	mov	a,r6
+      0000EC 4F               [12] 1149 	orl	a,r7
+      0000ED 70 F7            [24] 1150 	jnz	00104$
+                                   1151 ;	radio/main.c:193: RSTSRC	 =  0x06;		// enable brown out and missing clock reset sources
+      0000EF 75 EF 06         [24] 1152 	mov	_RSTSRC,#0x06
+                                   1153 ;	radio/main.c:196: P0SKIP  =  0xCF;
+      0000F2 75 D4 CF         [24] 1154 	mov	_P0SKIP,#0xCF
+                                   1155 ;	radio/main.c:197: P1SKIP  =  0xFF;
+      0000F5 75 D5 FF         [24] 1156 	mov	_P1SKIP,#0xFF
+                                   1157 ;	radio/main.c:198: P2SKIP  =  0x28;
+      0000F8 75 D6 28         [24] 1158 	mov	_P2SKIP,#0x28
+                                   1159 ;	radio/main.c:206: P0MDOUT   =  0x10;		// UART Tx push-pull
+      0000FB 75 A4 10         [24] 1160 	mov	_P0MDOUT,#0x10
+                                   1161 ;	radio/main.c:207: SFRPAGE   =  CONFIG_PAGE;
+      0000FE 75 A7 0F         [24] 1162 	mov	_SFRPAGE,#0x0F
+                                   1163 ;	radio/main.c:208: P0DRV     =  0x10;		// UART TX
+      000101 75 A4 10         [24] 1164 	mov	_P0DRV,#0x10
+                                   1165 ;	radio/main.c:209: SFRPAGE   =  LEGACY_PAGE;
+      000104 75 A7 00         [24] 1166 	mov	_SFRPAGE,#0x00
+                                   1167 ;	radio/main.c:210: XBR0      =  0x01;		// UART enable
+      000107 75 E1 01         [24] 1168 	mov	_XBR0,#0x01
+                                   1169 ;	radio/main.c:214: XBR1    |= 0x41;	// Enable SPI1 (3 wire mode) + CEX0
+      00010A 43 E2 41         [24] 1170 	orl	_XBR1,#0x41
+                                   1171 ;	radio/main.c:215: P2MDOUT |= 0xFD;	// SCK1, MOSI1, & NSS1,push-pull
+      00010D 43 A6 FD         [24] 1172 	orl	_P2MDOUT,#0xFD
+                                   1173 ;	radio/main.c:226: SFRPAGE	 = CONFIG_PAGE;
+      000110 75 A7 0F         [24] 1174 	mov	_SFRPAGE,#0x0F
+                                   1175 ;	radio/main.c:227: P1DRV	|= 0xF5;	// SPI signals use high-current mode, LEDs and PAEN High current drive
+      000113 43 A5 F5         [24] 1176 	orl	_P1DRV,#0xF5
+                                   1177 ;	radio/main.c:230: P2DRV	 = 0xFD; // MOSI1, SCK1, NSS1, high-drive mode
+      000116 75 A6 FD         [24] 1178 	mov	_P2DRV,#0xFD
+                                   1179 ;	radio/main.c:232: P3MDOUT |= 0xC0;		/* Leds */
+      000119 43 B1 C0         [24] 1180 	orl	_P3MDOUT,#0xC0
+                                   1181 ;	radio/main.c:233: P3DRV   |= 0xC0;		/* Leds */
+      00011C 43 A1 C0         [24] 1182 	orl	_P3DRV,#0xC0
+                                   1183 ;	radio/main.c:239: RADIO_PAGE();
+      00011F 75 A7 02         [24] 1184 	mov	_SFRPAGE,#0x02
+                                   1185 ;	radio/main.c:240: SPI1CFG  = 0x40;  // master mode
+      000122 75 A1 40         [24] 1186 	mov	_SPI1CFG,#0x40
+                                   1187 ;	radio/main.c:241: SPI1CN   = 0x00;  // 3 wire master mode
+      000125 75 F8 00         [24] 1188 	mov	_SPI1CN,#0x00
+                                   1189 ;	radio/main.c:242: SPI1CKR  = 0x00;  // Initialise SPI prescaler to divide-by-2 (12.25MHz, technically out of spec)
+      000128 75 A2 00         [24] 1190 	mov	_SPI1CKR,#0x00
+                                   1191 ;	radio/main.c:243: SPI1CN  |= 0x01;  // enable SPI
+      00012B 43 F8 01         [24] 1192 	orl	_SPI1CN,#0x01
+                                   1193 ;	radio/main.c:244: NSS1     = 1;     // set NSS high
+      00012E D2 A3            [12] 1194 	setb	_NSS1
+                                   1195 ;	radio/main.c:247: SFRPAGE	 = LEGACY_PAGE;
+      000130 75 A7 00         [24] 1196 	mov	_SFRPAGE,#0x00
+                                   1197 ;	radio/main.c:250: IE0	 = 0;
+      000133 C2 89            [12] 1198 	clr	_IE0
+                                   1199 ;	radio/main.c:253: timer_init();
+      000135 12r00r00         [24] 1200 	lcall	_timer_init
+                                   1201 ;	radio/main.c:256: serial_init(param_get(PARAM_SERIAL_SPEED));
+      000138 75 82 01         [24] 1202 	mov	dpl,#0x01
+      00013B 12r00r00         [24] 1203 	lcall	_param_get
+      00013E AC 82            [24] 1204 	mov	r4,dpl
+      000140 8C 82            [24] 1205 	mov	dpl,r4
+      000142 12r00r00         [24] 1206 	lcall	_serial_init
+                                   1207 ;	radio/main.c:259: IP = 0;
+      000145 75 B8 00         [24] 1208 	mov	_IP,#0x00
+                                   1209 ;	radio/main.c:262: EA = 1;
+      000148 D2 AF            [12] 1210 	setb	_EA
+                                   1211 ;	radio/main.c:265: LED_RADIO = LED_OFF;
+      00014A C2 B7            [12] 1212 	clr	_LED_GREEN
+                                   1213 ;	radio/main.c:266: LED_BOOTLOADER = LED_OFF;
+      00014C C2 B6            [12] 1214 	clr	_LED_RED
+                                   1215 ;	radio/main.c:269: AD0EN = 1;	// Enable ADC0
+      00014E D2 EF            [12] 1216 	setb	_AD0EN
+                                   1217 ;	radio/main.c:270: ADC0CF = 0xF9;  // Set amp0gn=1 (1:1)
+      000150 75 BC F9         [24] 1218 	mov	_ADC0CF,#0xF9
+                                   1219 ;	radio/main.c:271: ADC0AC = 0x00;
+      000153 75 BA 00         [24] 1220 	mov	_ADC0AC,#0x00
+                                   1221 ;	radio/main.c:272: ADC0MX = 0x1B;	// Set ADC0MX to temp sensor
+      000156 75 BB 1B         [24] 1222 	mov	_ADC0MX,#0x1B
+                                   1223 ;	radio/main.c:273: REF0CN = 0x07;	// Define reference and enable temp sensor
+      000159 75 D1 07         [24] 1224 	mov	_REF0CN,#0x07
+                                   1225 ;	radio/main.c:283: XBR2	 =  0x40;		// Crossbar (GPIO) enable
+      00015C 75 E3 40         [24] 1226 	mov	_XBR2,#0x40
+      00015F 22               [24] 1227 	ret
+                                   1228 ;------------------------------------------------------------
+                                   1229 ;Allocation info for local variables in function 'radio_init'
+                                   1230 ;------------------------------------------------------------
+                                   1231 ;sloc0                     Allocated with name '_radio_init_sloc0_1_0'
+                                   1232 ;sloc1                     Allocated with name '_radio_init_sloc1_1_0'
+                                   1233 ;freq_min                  Allocated with name '_radio_init_freq_min_1_168'
+                                   1234 ;freq_max                  Allocated with name '_radio_init_freq_max_1_168'
+                                   1235 ;channel_spacing           Allocated with name '_radio_init_channel_spacing_1_168'
+                                   1236 ;txpower                   Allocated with name '_radio_init_txpower_1_168'
+                                   1237 ;------------------------------------------------------------
+                                   1238 ;	radio/main.c:287: radio_init(void)
+                                   1239 ;	-----------------------------------------
+                                   1240 ;	 function radio_init
+                                   1241 ;	-----------------------------------------
+      000160                       1242 _radio_init:
+                                   1243 ;	radio/main.c:294: if (!radio_initialise()) {
+      000160 12r00r00         [24] 1244 	lcall	_radio_initialise
+      000163 40 15            [24] 1245 	jc	00102$
+                                   1246 ;	radio/main.c:295: panic("radio_initialise failed");
+      000165 74r5A            [12] 1247 	mov	a,#___str_4
+      000167 C0 E0            [24] 1248 	push	acc
+      000169 74s00            [12] 1249 	mov	a,#(___str_4 >> 8)
+      00016B C0 E0            [24] 1250 	push	acc
+      00016D 74 80            [12] 1251 	mov	a,#0x80
+      00016F C0 E0            [24] 1252 	push	acc
+      000171 12r00r95         [24] 1253 	lcall	_panic
+      000174 15 81            [12] 1254 	dec	sp
+      000176 15 81            [12] 1255 	dec	sp
+      000178 15 81            [12] 1256 	dec	sp
+      00017A                       1257 00102$:
+                                   1258 ;	radio/main.c:298: switch (g_board_frequency) {
+      00017A 78r00            [12] 1259 	mov	r0,#_g_board_frequency
+      00017C E2               [24] 1260 	movx	a,@r0
+      00017D B4 43 02         [24] 1261 	cjne	a,#0x43,00193$
+      000180 80 1C            [24] 1262 	sjmp	00103$
+      000182                       1263 00193$:
+      000182 78r00            [12] 1264 	mov	r0,#_g_board_frequency
+      000184 E2               [24] 1265 	movx	a,@r0
+      000185 B4 47 02         [24] 1266 	cjne	a,#0x47,00194$
+      000188 80 44            [24] 1267 	sjmp	00104$
+      00018A                       1268 00194$:
+      00018A 78r00            [12] 1269 	mov	r0,#_g_board_frequency
+      00018C E2               [24] 1270 	movx	a,@r0
+      00018D B4 86 02         [24] 1271 	cjne	a,#0x86,00195$
+      000190 80 6C            [24] 1272 	sjmp	00105$
+      000192                       1273 00195$:
+      000192 78r00            [12] 1274 	mov	r0,#_g_board_frequency
+      000194 E2               [24] 1275 	movx	a,@r0
+      000195 B4 91 03         [24] 1276 	cjne	a,#0x91,00196$
+      000198 02r02r2C         [24] 1277 	ljmp	00106$
+      00019B                       1278 00196$:
+      00019B 02r02r5B         [24] 1279 	ljmp	00107$
+                                   1280 ;	radio/main.c:299: case FREQ_433:
+      00019E                       1281 00103$:
+                                   1282 ;	radio/main.c:300: freq_min = 433050000UL;
+      00019E 90r00r01         [24] 1283 	mov	dptr,#_radio_init_freq_min_1_168
+      0001A1 74 90            [12] 1284 	mov	a,#0x90
+      0001A3 F0               [24] 1285 	movx	@dptr,a
+      0001A4 74 D1            [12] 1286 	mov	a,#0xD1
+      0001A6 A3               [24] 1287 	inc	dptr
+      0001A7 F0               [24] 1288 	movx	@dptr,a
+      0001A8 74 CF            [12] 1289 	mov	a,#0xCF
+      0001AA A3               [24] 1290 	inc	dptr
+      0001AB F0               [24] 1291 	movx	@dptr,a
+      0001AC 74 19            [12] 1292 	mov	a,#0x19
+      0001AE A3               [24] 1293 	inc	dptr
+      0001AF F0               [24] 1294 	movx	@dptr,a
+                                   1295 ;	radio/main.c:301: freq_max = 434790000UL;
+      0001B0 90r00r05         [24] 1296 	mov	dptr,#_radio_init_freq_max_1_168
+      0001B3 74 70            [12] 1297 	mov	a,#0x70
+      0001B5 F0               [24] 1298 	movx	@dptr,a
+      0001B6 74 5E            [12] 1299 	mov	a,#0x5E
+      0001B8 A3               [24] 1300 	inc	dptr
+      0001B9 F0               [24] 1301 	movx	@dptr,a
+      0001BA 74 EA            [12] 1302 	mov	a,#0xEA
+      0001BC A3               [24] 1303 	inc	dptr
+      0001BD F0               [24] 1304 	movx	@dptr,a
+      0001BE 74 19            [12] 1305 	mov	a,#0x19
+      0001C0 A3               [24] 1306 	inc	dptr
+      0001C1 F0               [24] 1307 	movx	@dptr,a
+                                   1308 ;	radio/main.c:302: txpower = 10;
+      0001C2 90r00r0D         [24] 1309 	mov	dptr,#_radio_init_txpower_1_168
+      0001C5 74 0A            [12] 1310 	mov	a,#0x0A
+      0001C7 F0               [24] 1311 	movx	@dptr,a
+                                   1312 ;	radio/main.c:303: num_fh_channels = 10;
+      0001C8 78r00            [12] 1313 	mov	r0,#_num_fh_channels
+      0001CA F2               [24] 1314 	movx	@r0,a
+                                   1315 ;	radio/main.c:304: break;
+      0001CB 02r02r93         [24] 1316 	ljmp	00108$
+                                   1317 ;	radio/main.c:305: case FREQ_470:
+      0001CE                       1318 00104$:
+                                   1319 ;	radio/main.c:306: freq_min = 470000000UL;
+      0001CE 90r00r01         [24] 1320 	mov	dptr,#_radio_init_freq_min_1_168
+      0001D1 74 80            [12] 1321 	mov	a,#0x80
+      0001D3 F0               [24] 1322 	movx	@dptr,a
+      0001D4 74 A1            [12] 1323 	mov	a,#0xA1
+      0001D6 A3               [24] 1324 	inc	dptr
+      0001D7 F0               [24] 1325 	movx	@dptr,a
+      0001D8 74 03            [12] 1326 	mov	a,#0x03
+      0001DA A3               [24] 1327 	inc	dptr
+      0001DB F0               [24] 1328 	movx	@dptr,a
+      0001DC 74 1C            [12] 1329 	mov	a,#0x1C
+      0001DE A3               [24] 1330 	inc	dptr
+      0001DF F0               [24] 1331 	movx	@dptr,a
+                                   1332 ;	radio/main.c:307: freq_max = 471000000UL;
+      0001E0 90r00r05         [24] 1333 	mov	dptr,#_radio_init_freq_max_1_168
+      0001E3 74 C0            [12] 1334 	mov	a,#0xC0
+      0001E5 F0               [24] 1335 	movx	@dptr,a
+      0001E6 74 E3            [12] 1336 	mov	a,#0xE3
+      0001E8 A3               [24] 1337 	inc	dptr
+      0001E9 F0               [24] 1338 	movx	@dptr,a
+      0001EA 74 12            [12] 1339 	mov	a,#0x12
+      0001EC A3               [24] 1340 	inc	dptr
+      0001ED F0               [24] 1341 	movx	@dptr,a
+      0001EE 74 1C            [12] 1342 	mov	a,#0x1C
+      0001F0 A3               [24] 1343 	inc	dptr
+      0001F1 F0               [24] 1344 	movx	@dptr,a
+                                   1345 ;	radio/main.c:308: txpower = 10;
+      0001F2 90r00r0D         [24] 1346 	mov	dptr,#_radio_init_txpower_1_168
+      0001F5 74 0A            [12] 1347 	mov	a,#0x0A
+      0001F7 F0               [24] 1348 	movx	@dptr,a
+                                   1349 ;	radio/main.c:309: num_fh_channels = 10;
+      0001F8 78r00            [12] 1350 	mov	r0,#_num_fh_channels
+      0001FA F2               [24] 1351 	movx	@r0,a
+                                   1352 ;	radio/main.c:310: break;
+      0001FB 02r02r93         [24] 1353 	ljmp	00108$
+                                   1354 ;	radio/main.c:311: case FREQ_868:
+      0001FE                       1355 00105$:
+                                   1356 ;	radio/main.c:312: freq_min = 868000000UL;
+      0001FE 90r00r01         [24] 1357 	mov	dptr,#_radio_init_freq_min_1_168
+      000201 E4               [12] 1358 	clr	a
+      000202 F0               [24] 1359 	movx	@dptr,a
+      000203 74 A1            [12] 1360 	mov	a,#0xA1
+      000205 A3               [24] 1361 	inc	dptr
+      000206 F0               [24] 1362 	movx	@dptr,a
+      000207 74 BC            [12] 1363 	mov	a,#0xBC
+      000209 A3               [24] 1364 	inc	dptr
+      00020A F0               [24] 1365 	movx	@dptr,a
+      00020B 74 33            [12] 1366 	mov	a,#0x33
+      00020D A3               [24] 1367 	inc	dptr
+      00020E F0               [24] 1368 	movx	@dptr,a
+                                   1369 ;	radio/main.c:313: freq_max = 870000000UL;
+      00020F 90r00r05         [24] 1370 	mov	dptr,#_radio_init_freq_max_1_168
+      000212 74 80            [12] 1371 	mov	a,#0x80
+      000214 F0               [24] 1372 	movx	@dptr,a
+      000215 74 25            [12] 1373 	mov	a,#0x25
+      000217 A3               [24] 1374 	inc	dptr
+      000218 F0               [24] 1375 	movx	@dptr,a
+      000219 74 DB            [12] 1376 	mov	a,#0xDB
+      00021B A3               [24] 1377 	inc	dptr
+      00021C F0               [24] 1378 	movx	@dptr,a
+      00021D 74 33            [12] 1379 	mov	a,#0x33
+      00021F A3               [24] 1380 	inc	dptr
+      000220 F0               [24] 1381 	movx	@dptr,a
+                                   1382 ;	radio/main.c:314: txpower = 10;
+      000221 90r00r0D         [24] 1383 	mov	dptr,#_radio_init_txpower_1_168
+      000224 74 0A            [12] 1384 	mov	a,#0x0A
+      000226 F0               [24] 1385 	movx	@dptr,a
+                                   1386 ;	radio/main.c:315: num_fh_channels = 10;
+      000227 78r00            [12] 1387 	mov	r0,#_num_fh_channels
+      000229 F2               [24] 1388 	movx	@r0,a
+                                   1389 ;	radio/main.c:316: break;
+                                   1390 ;	radio/main.c:317: case FREQ_915:
+      00022A 80 67            [24] 1391 	sjmp	00108$
+      00022C                       1392 00106$:
+                                   1393 ;	radio/main.c:318: freq_min = 915000000UL;
+      00022C 90r00r01         [24] 1394 	mov	dptr,#_radio_init_freq_min_1_168
+      00022F 74 C0            [12] 1395 	mov	a,#0xC0
+      000231 F0               [24] 1396 	movx	@dptr,a
+      000232 74 CA            [12] 1397 	mov	a,#0xCA
+      000234 A3               [24] 1398 	inc	dptr
+      000235 F0               [24] 1399 	movx	@dptr,a
+      000236 74 89            [12] 1400 	mov	a,#0x89
+      000238 A3               [24] 1401 	inc	dptr
+      000239 F0               [24] 1402 	movx	@dptr,a
+      00023A 74 36            [12] 1403 	mov	a,#0x36
+      00023C A3               [24] 1404 	inc	dptr
+      00023D F0               [24] 1405 	movx	@dptr,a
+                                   1406 ;	radio/main.c:319: freq_max = 928000000UL;
+      00023E 90r00r05         [24] 1407 	mov	dptr,#_radio_init_freq_max_1_168
+      000241 E4               [12] 1408 	clr	a
+      000242 F0               [24] 1409 	movx	@dptr,a
+      000243 74 28            [12] 1410 	mov	a,#0x28
+      000245 A3               [24] 1411 	inc	dptr
+      000246 F0               [24] 1412 	movx	@dptr,a
+      000247 23               [12] 1413 	rl	a
+      000248 A3               [24] 1414 	inc	dptr
+      000249 F0               [24] 1415 	movx	@dptr,a
+      00024A 74 37            [12] 1416 	mov	a,#0x37
+      00024C A3               [24] 1417 	inc	dptr
+      00024D F0               [24] 1418 	movx	@dptr,a
+                                   1419 ;	radio/main.c:320: txpower = 20;
+      00024E 90r00r0D         [24] 1420 	mov	dptr,#_radio_init_txpower_1_168
+      000251 74 14            [12] 1421 	mov	a,#0x14
+      000253 F0               [24] 1422 	movx	@dptr,a
+                                   1423 ;	radio/main.c:321: num_fh_channels = MAX_FREQ_CHANNELS;
+      000254 78r00            [12] 1424 	mov	r0,#_num_fh_channels
+      000256 74 32            [12] 1425 	mov	a,#0x32
+      000258 F2               [24] 1426 	movx	@r0,a
+                                   1427 ;	radio/main.c:322: break;
+                                   1428 ;	radio/main.c:323: default:
+      000259 80 38            [24] 1429 	sjmp	00108$
+      00025B                       1430 00107$:
+                                   1431 ;	radio/main.c:324: freq_min = 0;
+      00025B 90r00r01         [24] 1432 	mov	dptr,#_radio_init_freq_min_1_168
+      00025E E4               [12] 1433 	clr	a
+      00025F F0               [24] 1434 	movx	@dptr,a
+      000260 A3               [24] 1435 	inc	dptr
+      000261 F0               [24] 1436 	movx	@dptr,a
+      000262 A3               [24] 1437 	inc	dptr
+      000263 F0               [24] 1438 	movx	@dptr,a
+      000264 A3               [24] 1439 	inc	dptr
+      000265 F0               [24] 1440 	movx	@dptr,a
+                                   1441 ;	radio/main.c:325: freq_max = 0;
+      000266 90r00r05         [24] 1442 	mov	dptr,#_radio_init_freq_max_1_168
+      000269 F0               [24] 1443 	movx	@dptr,a
+      00026A A3               [24] 1444 	inc	dptr
+      00026B F0               [24] 1445 	movx	@dptr,a
+      00026C A3               [24] 1446 	inc	dptr
+      00026D F0               [24] 1447 	movx	@dptr,a
+      00026E A3               [24] 1448 	inc	dptr
+      00026F F0               [24] 1449 	movx	@dptr,a
+                                   1450 ;	radio/main.c:326: txpower = 0;
+      000270 90r00r0D         [24] 1451 	mov	dptr,#_radio_init_txpower_1_168
+      000273 F0               [24] 1452 	movx	@dptr,a
+                                   1453 ;	radio/main.c:327: panic("bad board frequency %d", g_board_frequency);
+      000274 78r00            [12] 1454 	mov	r0,#_g_board_frequency
+      000276 E2               [24] 1455 	movx	a,@r0
+      000277 FE               [12] 1456 	mov	r6,a
+      000278 7F 00            [12] 1457 	mov	r7,#0x00
+      00027A C0 06            [24] 1458 	push	ar6
+      00027C C0 07            [24] 1459 	push	ar7
+      00027E 74r72            [12] 1460 	mov	a,#___str_5
+      000280 C0 E0            [24] 1461 	push	acc
+      000282 74s00            [12] 1462 	mov	a,#(___str_5 >> 8)
+      000284 C0 E0            [24] 1463 	push	acc
+      000286 74 80            [12] 1464 	mov	a,#0x80
+      000288 C0 E0            [24] 1465 	push	acc
+      00028A 12r00r95         [24] 1466 	lcall	_panic
+      00028D E5 81            [12] 1467 	mov	a,sp
+      00028F 24 FB            [12] 1468 	add	a,#0xfb
+      000291 F5 81            [12] 1469 	mov	sp,a
+                                   1470 ;	radio/main.c:329: }
+      000293                       1471 00108$:
+                                   1472 ;	radio/main.c:331: if (param_get(PARAM_NUM_CHANNELS) != 0) {
+      000293 75 82 0A         [24] 1473 	mov	dpl,#0x0A
+      000296 12r00r00         [24] 1474 	lcall	_param_get
+      000299 AC 82            [24] 1475 	mov	r4,dpl
+      00029B AD 83            [24] 1476 	mov	r5,dph
+      00029D AE F0            [24] 1477 	mov	r6,b
+      00029F FF               [12] 1478 	mov	r7,a
+      0002A0 EC               [12] 1479 	mov	a,r4
+      0002A1 4D               [12] 1480 	orl	a,r5
+      0002A2 4E               [12] 1481 	orl	a,r6
+      0002A3 4F               [12] 1482 	orl	a,r7
+      0002A4 60 11            [24] 1483 	jz	00110$
+                                   1484 ;	radio/main.c:332: num_fh_channels = param_get(PARAM_NUM_CHANNELS);
+      0002A6 75 82 0A         [24] 1485 	mov	dpl,#0x0A
+      0002A9 12r00r00         [24] 1486 	lcall	_param_get
+      0002AC AC 82            [24] 1487 	mov	r4,dpl
+      0002AE AD 83            [24] 1488 	mov	r5,dph
+      0002B0 AE F0            [24] 1489 	mov	r6,b
+      0002B2 FF               [12] 1490 	mov	r7,a
+      0002B3 78r00            [12] 1491 	mov	r0,#_num_fh_channels
+      0002B5 EC               [12] 1492 	mov	a,r4
+      0002B6 F2               [24] 1493 	movx	@r0,a
+      0002B7                       1494 00110$:
+                                   1495 ;	radio/main.c:334: if (param_get(PARAM_MIN_FREQ) != 0) {
+      0002B7 75 82 08         [24] 1496 	mov	dpl,#0x08
+      0002BA 12r00r00         [24] 1497 	lcall	_param_get
+      0002BD AC 82            [24] 1498 	mov	r4,dpl
+      0002BF AD 83            [24] 1499 	mov	r5,dph
+      0002C1 AE F0            [24] 1500 	mov	r6,b
+      0002C3 FF               [12] 1501 	mov	r7,a
+      0002C4 EC               [12] 1502 	mov	a,r4
+      0002C5 4D               [12] 1503 	orl	a,r5
+      0002C6 4E               [12] 1504 	orl	a,r6
+      0002C7 4F               [12] 1505 	orl	a,r7
+      0002C8 60 39            [24] 1506 	jz	00112$
+                                   1507 ;	radio/main.c:335: freq_min        = param_get(PARAM_MIN_FREQ) * 1000UL;
+      0002CA 75 82 08         [24] 1508 	mov	dpl,#0x08
+      0002CD 12r00r00         [24] 1509 	lcall	_param_get
+      0002D0 AC 82            [24] 1510 	mov	r4,dpl
+      0002D2 AD 83            [24] 1511 	mov	r5,dph
+      0002D4 AE F0            [24] 1512 	mov	r6,b
+      0002D6 FF               [12] 1513 	mov	r7,a
+      0002D7 90r00r00         [24] 1514 	mov	dptr,#__mullong_PARM_2
+      0002DA EC               [12] 1515 	mov	a,r4
+      0002DB F0               [24] 1516 	movx	@dptr,a
+      0002DC ED               [12] 1517 	mov	a,r5
+      0002DD A3               [24] 1518 	inc	dptr
+      0002DE F0               [24] 1519 	movx	@dptr,a
+      0002DF EE               [12] 1520 	mov	a,r6
+      0002E0 A3               [24] 1521 	inc	dptr
+      0002E1 F0               [24] 1522 	movx	@dptr,a
+      0002E2 EF               [12] 1523 	mov	a,r7
+      0002E3 A3               [24] 1524 	inc	dptr
+      0002E4 F0               [24] 1525 	movx	@dptr,a
+      0002E5 90 03 E8         [24] 1526 	mov	dptr,#0x03E8
+      0002E8 E4               [12] 1527 	clr	a
+      0002E9 F5 F0            [12] 1528 	mov	b,a
+      0002EB 12r00r00         [24] 1529 	lcall	__mullong
+      0002EE AC 82            [24] 1530 	mov	r4,dpl
+      0002F0 AD 83            [24] 1531 	mov	r5,dph
+      0002F2 AE F0            [24] 1532 	mov	r6,b
+      0002F4 FF               [12] 1533 	mov	r7,a
+      0002F5 90r00r01         [24] 1534 	mov	dptr,#_radio_init_freq_min_1_168
+      0002F8 EC               [12] 1535 	mov	a,r4
+      0002F9 F0               [24] 1536 	movx	@dptr,a
+      0002FA ED               [12] 1537 	mov	a,r5
+      0002FB A3               [24] 1538 	inc	dptr
+      0002FC F0               [24] 1539 	movx	@dptr,a
+      0002FD EE               [12] 1540 	mov	a,r6
+      0002FE A3               [24] 1541 	inc	dptr
+      0002FF F0               [24] 1542 	movx	@dptr,a
+      000300 EF               [12] 1543 	mov	a,r7
+      000301 A3               [24] 1544 	inc	dptr
+      000302 F0               [24] 1545 	movx	@dptr,a
+      000303                       1546 00112$:
+                                   1547 ;	radio/main.c:337: if (param_get(PARAM_MAX_FREQ) != 0) {
+      000303 75 82 09         [24] 1548 	mov	dpl,#0x09
+      000306 12r00r00         [24] 1549 	lcall	_param_get
+      000309 AC 82            [24] 1550 	mov	r4,dpl
+      00030B AD 83            [24] 1551 	mov	r5,dph
+      00030D AE F0            [24] 1552 	mov	r6,b
+      00030F FF               [12] 1553 	mov	r7,a
+      000310 EC               [12] 1554 	mov	a,r4
+      000311 4D               [12] 1555 	orl	a,r5
+      000312 4E               [12] 1556 	orl	a,r6
+      000313 4F               [12] 1557 	orl	a,r7
+      000314 60 39            [24] 1558 	jz	00114$
+                                   1559 ;	radio/main.c:338: freq_max        = param_get(PARAM_MAX_FREQ) * 1000UL;
+      000316 75 82 09         [24] 1560 	mov	dpl,#0x09
+      000319 12r00r00         [24] 1561 	lcall	_param_get
+      00031C AC 82            [24] 1562 	mov	r4,dpl
+      00031E AD 83            [24] 1563 	mov	r5,dph
+      000320 AE F0            [24] 1564 	mov	r6,b
+      000322 FF               [12] 1565 	mov	r7,a
+      000323 90r00r00         [24] 1566 	mov	dptr,#__mullong_PARM_2
+      000326 EC               [12] 1567 	mov	a,r4
+      000327 F0               [24] 1568 	movx	@dptr,a
+      000328 ED               [12] 1569 	mov	a,r5
+      000329 A3               [24] 1570 	inc	dptr
+      00032A F0               [24] 1571 	movx	@dptr,a
+      00032B EE               [12] 1572 	mov	a,r6
+      00032C A3               [24] 1573 	inc	dptr
+      00032D F0               [24] 1574 	movx	@dptr,a
+      00032E EF               [12] 1575 	mov	a,r7
+      00032F A3               [24] 1576 	inc	dptr
+      000330 F0               [24] 1577 	movx	@dptr,a
+      000331 90 03 E8         [24] 1578 	mov	dptr,#0x03E8
+      000334 E4               [12] 1579 	clr	a
+      000335 F5 F0            [12] 1580 	mov	b,a
+      000337 12r00r00         [24] 1581 	lcall	__mullong
+      00033A AC 82            [24] 1582 	mov	r4,dpl
+      00033C AD 83            [24] 1583 	mov	r5,dph
+      00033E AE F0            [24] 1584 	mov	r6,b
+      000340 FF               [12] 1585 	mov	r7,a
+      000341 90r00r05         [24] 1586 	mov	dptr,#_radio_init_freq_max_1_168
+      000344 EC               [12] 1587 	mov	a,r4
+      000345 F0               [24] 1588 	movx	@dptr,a
+      000346 ED               [12] 1589 	mov	a,r5
+      000347 A3               [24] 1590 	inc	dptr
+      000348 F0               [24] 1591 	movx	@dptr,a
+      000349 EE               [12] 1592 	mov	a,r6
+      00034A A3               [24] 1593 	inc	dptr
+      00034B F0               [24] 1594 	movx	@dptr,a
+      00034C EF               [12] 1595 	mov	a,r7
+      00034D A3               [24] 1596 	inc	dptr
+      00034E F0               [24] 1597 	movx	@dptr,a
+      00034F                       1598 00114$:
+                                   1599 ;	radio/main.c:340: if (param_get(PARAM_TXPOWER) != 0) {
+      00034F 75 82 04         [24] 1600 	mov	dpl,#0x04
+      000352 12r00r00         [24] 1601 	lcall	_param_get
+      000355 AC 82            [24] 1602 	mov	r4,dpl
+      000357 AD 83            [24] 1603 	mov	r5,dph
+      000359 AE F0            [24] 1604 	mov	r6,b
+      00035B FF               [12] 1605 	mov	r7,a
+      00035C EC               [12] 1606 	mov	a,r4
+      00035D 4D               [12] 1607 	orl	a,r5
+      00035E 4E               [12] 1608 	orl	a,r6
+      00035F 4F               [12] 1609 	orl	a,r7
+      000360 60 12            [24] 1610 	jz	00116$
+                                   1611 ;	radio/main.c:341: txpower = param_get(PARAM_TXPOWER);
+      000362 75 82 04         [24] 1612 	mov	dpl,#0x04
+      000365 12r00r00         [24] 1613 	lcall	_param_get
+      000368 AC 82            [24] 1614 	mov	r4,dpl
+      00036A AD 83            [24] 1615 	mov	r5,dph
+      00036C AE F0            [24] 1616 	mov	r6,b
+      00036E FF               [12] 1617 	mov	r7,a
+      00036F 90r00r0D         [24] 1618 	mov	dptr,#_radio_init_txpower_1_168
+      000372 EC               [12] 1619 	mov	a,r4
+      000373 F0               [24] 1620 	movx	@dptr,a
+      000374                       1621 00116$:
+                                   1622 ;	radio/main.c:345: txpower = constrain(txpower, BOARD_MINTXPOWER, BOARD_MAXTXPOWER);
+      000374 90r00r0D         [24] 1623 	mov	dptr,#_radio_init_txpower_1_168
+      000377 E0               [24] 1624 	movx	a,@dptr
+      000378 FF               [12] 1625 	mov	r7,a
+      000379 7E 00            [12] 1626 	mov	r6,#0x00
+      00037B 7D 00            [12] 1627 	mov	r5,#0x00
+      00037D 7C 00            [12] 1628 	mov	r4,#0x00
+      00037F 78r00            [12] 1629 	mov	r0,#_constrain_PARM_2
+      000381 E4               [12] 1630 	clr	a
+      000382 F2               [24] 1631 	movx	@r0,a
+      000383 08               [12] 1632 	inc	r0
+      000384 F2               [24] 1633 	movx	@r0,a
+      000385 08               [12] 1634 	inc	r0
+      000386 F2               [24] 1635 	movx	@r0,a
+      000387 08               [12] 1636 	inc	r0
+      000388 F2               [24] 1637 	movx	@r0,a
+      000389 78r00            [12] 1638 	mov	r0,#_constrain_PARM_3
+      00038B 74 14            [12] 1639 	mov	a,#0x14
+      00038D F2               [24] 1640 	movx	@r0,a
+      00038E 08               [12] 1641 	inc	r0
+      00038F E4               [12] 1642 	clr	a
+      000390 F2               [24] 1643 	movx	@r0,a
+      000391 08               [12] 1644 	inc	r0
+      000392 F2               [24] 1645 	movx	@r0,a
+      000393 08               [12] 1646 	inc	r0
+      000394 F2               [24] 1647 	movx	@r0,a
+      000395 8F 82            [24] 1648 	mov	dpl,r7
+      000397 8E 83            [24] 1649 	mov	dph,r6
+      000399 8D F0            [24] 1650 	mov	b,r5
+      00039B EC               [12] 1651 	mov	a,r4
+      00039C 12r00r00         [24] 1652 	lcall	_constrain
+      00039F AC 82            [24] 1653 	mov	r4,dpl
+                                   1654 ;	radio/main.c:346: num_fh_channels = constrain(num_fh_channels, 1, MAX_FREQ_CHANNELS);
+      0003A1 78r00            [12] 1655 	mov	r0,#_num_fh_channels
+      0003A3 E2               [24] 1656 	movx	a,@r0
+      0003A4 FB               [12] 1657 	mov	r3,a
+      0003A5 7D 00            [12] 1658 	mov	r5,#0x00
+      0003A7 7E 00            [12] 1659 	mov	r6,#0x00
+      0003A9 7F 00            [12] 1660 	mov	r7,#0x00
+      0003AB 78r00            [12] 1661 	mov	r0,#_constrain_PARM_2
+      0003AD 74 01            [12] 1662 	mov	a,#0x01
+      0003AF F2               [24] 1663 	movx	@r0,a
+      0003B0 08               [12] 1664 	inc	r0
+      0003B1 E4               [12] 1665 	clr	a
+      0003B2 F2               [24] 1666 	movx	@r0,a
+      0003B3 08               [12] 1667 	inc	r0
+      0003B4 F2               [24] 1668 	movx	@r0,a
+      0003B5 08               [12] 1669 	inc	r0
+      0003B6 F2               [24] 1670 	movx	@r0,a
+      0003B7 78r00            [12] 1671 	mov	r0,#_constrain_PARM_3
+      0003B9 74 32            [12] 1672 	mov	a,#0x32
+      0003BB F2               [24] 1673 	movx	@r0,a
+      0003BC 08               [12] 1674 	inc	r0
+      0003BD E4               [12] 1675 	clr	a
+      0003BE F2               [24] 1676 	movx	@r0,a
+      0003BF 08               [12] 1677 	inc	r0
+      0003C0 F2               [24] 1678 	movx	@r0,a
+      0003C1 08               [12] 1679 	inc	r0
+      0003C2 F2               [24] 1680 	movx	@r0,a
+      0003C3 8B 82            [24] 1681 	mov	dpl,r3
+      0003C5 8D 83            [24] 1682 	mov	dph,r5
+      0003C7 8E F0            [24] 1683 	mov	b,r6
+      0003C9 EF               [12] 1684 	mov	a,r7
+      0003CA C0 04            [24] 1685 	push	ar4
+      0003CC 12r00r00         [24] 1686 	lcall	_constrain
+      0003CF AB 82            [24] 1687 	mov	r3,dpl
+      0003D1 AD 83            [24] 1688 	mov	r5,dph
+      0003D3 AE F0            [24] 1689 	mov	r6,b
+      0003D5 FF               [12] 1690 	mov	r7,a
+      0003D6 D0 04            [24] 1691 	pop	ar4
+      0003D8 78r00            [12] 1692 	mov	r0,#_num_fh_channels
+      0003DA EB               [12] 1693 	mov	a,r3
+      0003DB F2               [24] 1694 	movx	@r0,a
+                                   1695 ;	radio/main.c:349: switch (g_board_frequency) {
+      0003DC 78r00            [12] 1696 	mov	r0,#_g_board_frequency
+      0003DE E2               [24] 1697 	movx	a,@r0
+      0003DF B4 43 02         [24] 1698 	cjne	a,#0x43,00201$
+      0003E2 80 1E            [24] 1699 	sjmp	00117$
+      0003E4                       1700 00201$:
+      0003E4 78r00            [12] 1701 	mov	r0,#_g_board_frequency
+      0003E6 E2               [24] 1702 	movx	a,@r0
+      0003E7 B4 47 03         [24] 1703 	cjne	a,#0x47,00202$
+      0003EA 02r04rA5         [24] 1704 	ljmp	00118$
+      0003ED                       1705 00202$:
+      0003ED 78r00            [12] 1706 	mov	r0,#_g_board_frequency
+      0003EF E2               [24] 1707 	movx	a,@r0
+      0003F0 B4 86 03         [24] 1708 	cjne	a,#0x86,00203$
+      0003F3 02r05r4A         [24] 1709 	ljmp	00119$
+      0003F6                       1710 00203$:
+      0003F6 78r00            [12] 1711 	mov	r0,#_g_board_frequency
+      0003F8 E2               [24] 1712 	movx	a,@r0
+      0003F9 B4 91 03         [24] 1713 	cjne	a,#0x91,00204$
+      0003FC 02r05rEF         [24] 1714 	ljmp	00120$
+      0003FF                       1715 00204$:
+      0003FF 02r06r91         [24] 1716 	ljmp	00121$
+                                   1717 ;	radio/main.c:350: case FREQ_433:
+      000402                       1718 00117$:
+                                   1719 ;	radio/main.c:351: freq_min = constrain(freq_min, 414000000UL, 460000000UL);
+      000402 90r00r01         [24] 1720 	mov	dptr,#_radio_init_freq_min_1_168
+      000405 E0               [24] 1721 	movx	a,@dptr
+      000406 FB               [12] 1722 	mov	r3,a
+      000407 A3               [24] 1723 	inc	dptr
+      000408 E0               [24] 1724 	movx	a,@dptr
+      000409 FD               [12] 1725 	mov	r5,a
+      00040A A3               [24] 1726 	inc	dptr
+      00040B E0               [24] 1727 	movx	a,@dptr
+      00040C FE               [12] 1728 	mov	r6,a
+      00040D A3               [24] 1729 	inc	dptr
+      00040E E0               [24] 1730 	movx	a,@dptr
+      00040F FF               [12] 1731 	mov	r7,a
+      000410 78r00            [12] 1732 	mov	r0,#_constrain_PARM_2
+      000412 74 80            [12] 1733 	mov	a,#0x80
+      000414 F2               [24] 1734 	movx	@r0,a
+      000415 08               [12] 1735 	inc	r0
+      000416 74 23            [12] 1736 	mov	a,#0x23
+      000418 F2               [24] 1737 	movx	@r0,a
+      000419 08               [12] 1738 	inc	r0
+      00041A 74 AD            [12] 1739 	mov	a,#0xAD
+      00041C F2               [24] 1740 	movx	@r0,a
+      00041D 08               [12] 1741 	inc	r0
+      00041E 74 18            [12] 1742 	mov	a,#0x18
+      000420 F2               [24] 1743 	movx	@r0,a
+      000421 78r00            [12] 1744 	mov	r0,#_constrain_PARM_3
+      000423 E4               [12] 1745 	clr	a
+      000424 F2               [24] 1746 	movx	@r0,a
+      000425 08               [12] 1747 	inc	r0
+      000426 74 0B            [12] 1748 	mov	a,#0x0B
+      000428 F2               [24] 1749 	movx	@r0,a
+      000429 08               [12] 1750 	inc	r0
+      00042A 74 6B            [12] 1751 	mov	a,#0x6B
+      00042C F2               [24] 1752 	movx	@r0,a
+      00042D 08               [12] 1753 	inc	r0
+      00042E 74 1B            [12] 1754 	mov	a,#0x1B
+      000430 F2               [24] 1755 	movx	@r0,a
+      000431 8B 82            [24] 1756 	mov	dpl,r3
+      000433 8D 83            [24] 1757 	mov	dph,r5
+      000435 8E F0            [24] 1758 	mov	b,r6
+      000437 EF               [12] 1759 	mov	a,r7
+      000438 C0 04            [24] 1760 	push	ar4
+      00043A 12r00r00         [24] 1761 	lcall	_constrain
+      00043D AB 82            [24] 1762 	mov	r3,dpl
+      00043F AD 83            [24] 1763 	mov	r5,dph
+      000441 AE F0            [24] 1764 	mov	r6,b
+      000443 FF               [12] 1765 	mov	r7,a
+      000444 90r00r01         [24] 1766 	mov	dptr,#_radio_init_freq_min_1_168
+      000447 EB               [12] 1767 	mov	a,r3
+      000448 F0               [24] 1768 	movx	@dptr,a
+      000449 ED               [12] 1769 	mov	a,r5
+      00044A A3               [24] 1770 	inc	dptr
+      00044B F0               [24] 1771 	movx	@dptr,a
+      00044C EE               [12] 1772 	mov	a,r6
+      00044D A3               [24] 1773 	inc	dptr
+      00044E F0               [24] 1774 	movx	@dptr,a
+      00044F EF               [12] 1775 	mov	a,r7
+      000450 A3               [24] 1776 	inc	dptr
+      000451 F0               [24] 1777 	movx	@dptr,a
+                                   1778 ;	radio/main.c:352: freq_max = constrain(freq_max, 414000000UL, 460000000UL);
+      000452 90r00r05         [24] 1779 	mov	dptr,#_radio_init_freq_max_1_168
+      000455 E0               [24] 1780 	movx	a,@dptr
+      000456 FB               [12] 1781 	mov	r3,a
+      000457 A3               [24] 1782 	inc	dptr
+      000458 E0               [24] 1783 	movx	a,@dptr
+      000459 FD               [12] 1784 	mov	r5,a
+      00045A A3               [24] 1785 	inc	dptr
+      00045B E0               [24] 1786 	movx	a,@dptr
+      00045C FE               [12] 1787 	mov	r6,a
+      00045D A3               [24] 1788 	inc	dptr
+      00045E E0               [24] 1789 	movx	a,@dptr
+      00045F FF               [12] 1790 	mov	r7,a
+      000460 78r00            [12] 1791 	mov	r0,#_constrain_PARM_2
+      000462 74 80            [12] 1792 	mov	a,#0x80
+      000464 F2               [24] 1793 	movx	@r0,a
+      000465 08               [12] 1794 	inc	r0
+      000466 74 23            [12] 1795 	mov	a,#0x23
+      000468 F2               [24] 1796 	movx	@r0,a
+      000469 08               [12] 1797 	inc	r0
+      00046A 74 AD            [12] 1798 	mov	a,#0xAD
+      00046C F2               [24] 1799 	movx	@r0,a
+      00046D 08               [12] 1800 	inc	r0
+      00046E 74 18            [12] 1801 	mov	a,#0x18
+      000470 F2               [24] 1802 	movx	@r0,a
+      000471 78r00            [12] 1803 	mov	r0,#_constrain_PARM_3
+      000473 E4               [12] 1804 	clr	a
+      000474 F2               [24] 1805 	movx	@r0,a
+      000475 08               [12] 1806 	inc	r0
+      000476 74 0B            [12] 1807 	mov	a,#0x0B
+      000478 F2               [24] 1808 	movx	@r0,a
+      000479 08               [12] 1809 	inc	r0
+      00047A 74 6B            [12] 1810 	mov	a,#0x6B
+      00047C F2               [24] 1811 	movx	@r0,a
+      00047D 08               [12] 1812 	inc	r0
+      00047E 74 1B            [12] 1813 	mov	a,#0x1B
+      000480 F2               [24] 1814 	movx	@r0,a
+      000481 8B 82            [24] 1815 	mov	dpl,r3
+      000483 8D 83            [24] 1816 	mov	dph,r5
+      000485 8E F0            [24] 1817 	mov	b,r6
+      000487 EF               [12] 1818 	mov	a,r7
+      000488 12r00r00         [24] 1819 	lcall	_constrain
+      00048B AB 82            [24] 1820 	mov	r3,dpl
+      00048D AD 83            [24] 1821 	mov	r5,dph
+      00048F AE F0            [24] 1822 	mov	r6,b
+      000491 FF               [12] 1823 	mov	r7,a
+      000492 D0 04            [24] 1824 	pop	ar4
+      000494 90r00r05         [24] 1825 	mov	dptr,#_radio_init_freq_max_1_168
+      000497 EB               [12] 1826 	mov	a,r3
+      000498 F0               [24] 1827 	movx	@dptr,a
+      000499 ED               [12] 1828 	mov	a,r5
+      00049A A3               [24] 1829 	inc	dptr
+      00049B F0               [24] 1830 	movx	@dptr,a
+      00049C EE               [12] 1831 	mov	a,r6
+      00049D A3               [24] 1832 	inc	dptr
+      00049E F0               [24] 1833 	movx	@dptr,a
+      00049F EF               [12] 1834 	mov	a,r7
+      0004A0 A3               [24] 1835 	inc	dptr
+      0004A1 F0               [24] 1836 	movx	@dptr,a
+                                   1837 ;	radio/main.c:353: break;
+      0004A2 02r06rB4         [24] 1838 	ljmp	00122$
+                                   1839 ;	radio/main.c:354: case FREQ_470:
+      0004A5                       1840 00118$:
+                                   1841 ;	radio/main.c:355: freq_min = constrain(freq_min, 450000000UL, 490000000UL);
+      0004A5 90r00r01         [24] 1842 	mov	dptr,#_radio_init_freq_min_1_168
+      0004A8 E0               [24] 1843 	movx	a,@dptr
+      0004A9 FB               [12] 1844 	mov	r3,a
+      0004AA A3               [24] 1845 	inc	dptr
+      0004AB E0               [24] 1846 	movx	a,@dptr
+      0004AC FD               [12] 1847 	mov	r5,a
+      0004AD A3               [24] 1848 	inc	dptr
+      0004AE E0               [24] 1849 	movx	a,@dptr
+      0004AF FE               [12] 1850 	mov	r6,a
+      0004B0 A3               [24] 1851 	inc	dptr
+      0004B1 E0               [24] 1852 	movx	a,@dptr
+      0004B2 FF               [12] 1853 	mov	r7,a
+      0004B3 78r00            [12] 1854 	mov	r0,#_constrain_PARM_2
+      0004B5 74 80            [12] 1855 	mov	a,#0x80
+      0004B7 F2               [24] 1856 	movx	@r0,a
+      0004B8 08               [12] 1857 	inc	r0
+      0004B9 74 74            [12] 1858 	mov	a,#0x74
+      0004BB F2               [24] 1859 	movx	@r0,a
+      0004BC 08               [12] 1860 	inc	r0
+      0004BD 74 D2            [12] 1861 	mov	a,#0xD2
+      0004BF F2               [24] 1862 	movx	@r0,a
+      0004C0 08               [12] 1863 	inc	r0
+      0004C1 74 1A            [12] 1864 	mov	a,#0x1A
+      0004C3 F2               [24] 1865 	movx	@r0,a
+      0004C4 78r00            [12] 1866 	mov	r0,#_constrain_PARM_3
+      0004C6 74 80            [12] 1867 	mov	a,#0x80
+      0004C8 F2               [24] 1868 	movx	@r0,a
+      0004C9 08               [12] 1869 	inc	r0
+      0004CA 74 CE            [12] 1870 	mov	a,#0xCE
+      0004CC F2               [24] 1871 	movx	@r0,a
+      0004CD 08               [12] 1872 	inc	r0
+      0004CE 74 34            [12] 1873 	mov	a,#0x34
+      0004D0 F2               [24] 1874 	movx	@r0,a
+      0004D1 08               [12] 1875 	inc	r0
+      0004D2 74 1D            [12] 1876 	mov	a,#0x1D
+      0004D4 F2               [24] 1877 	movx	@r0,a
+      0004D5 8B 82            [24] 1878 	mov	dpl,r3
+      0004D7 8D 83            [24] 1879 	mov	dph,r5
+      0004D9 8E F0            [24] 1880 	mov	b,r6
+      0004DB EF               [12] 1881 	mov	a,r7
+      0004DC C0 04            [24] 1882 	push	ar4
+      0004DE 12r00r00         [24] 1883 	lcall	_constrain
+      0004E1 AB 82            [24] 1884 	mov	r3,dpl
+      0004E3 AD 83            [24] 1885 	mov	r5,dph
+      0004E5 AE F0            [24] 1886 	mov	r6,b
+      0004E7 FF               [12] 1887 	mov	r7,a
+      0004E8 90r00r01         [24] 1888 	mov	dptr,#_radio_init_freq_min_1_168
+      0004EB EB               [12] 1889 	mov	a,r3
+      0004EC F0               [24] 1890 	movx	@dptr,a
+      0004ED ED               [12] 1891 	mov	a,r5
+      0004EE A3               [24] 1892 	inc	dptr
+      0004EF F0               [24] 1893 	movx	@dptr,a
+      0004F0 EE               [12] 1894 	mov	a,r6
+      0004F1 A3               [24] 1895 	inc	dptr
+      0004F2 F0               [24] 1896 	movx	@dptr,a
+      0004F3 EF               [12] 1897 	mov	a,r7
+      0004F4 A3               [24] 1898 	inc	dptr
+      0004F5 F0               [24] 1899 	movx	@dptr,a
+                                   1900 ;	radio/main.c:356: freq_max = constrain(freq_max, 450000000UL, 490000000UL);
+      0004F6 90r00r05         [24] 1901 	mov	dptr,#_radio_init_freq_max_1_168
+      0004F9 E0               [24] 1902 	movx	a,@dptr
+      0004FA FB               [12] 1903 	mov	r3,a
+      0004FB A3               [24] 1904 	inc	dptr
+      0004FC E0               [24] 1905 	movx	a,@dptr
+      0004FD FD               [12] 1906 	mov	r5,a
+      0004FE A3               [24] 1907 	inc	dptr
+      0004FF E0               [24] 1908 	movx	a,@dptr
+      000500 FE               [12] 1909 	mov	r6,a
+      000501 A3               [24] 1910 	inc	dptr
+      000502 E0               [24] 1911 	movx	a,@dptr
+      000503 FF               [12] 1912 	mov	r7,a
+      000504 78r00            [12] 1913 	mov	r0,#_constrain_PARM_2
+      000506 74 80            [12] 1914 	mov	a,#0x80
+      000508 F2               [24] 1915 	movx	@r0,a
+      000509 08               [12] 1916 	inc	r0
+      00050A 74 74            [12] 1917 	mov	a,#0x74
+      00050C F2               [24] 1918 	movx	@r0,a
+      00050D 08               [12] 1919 	inc	r0
+      00050E 74 D2            [12] 1920 	mov	a,#0xD2
+      000510 F2               [24] 1921 	movx	@r0,a
+      000511 08               [12] 1922 	inc	r0
+      000512 74 1A            [12] 1923 	mov	a,#0x1A
+      000514 F2               [24] 1924 	movx	@r0,a
+      000515 78r00            [12] 1925 	mov	r0,#_constrain_PARM_3
+      000517 74 80            [12] 1926 	mov	a,#0x80
+      000519 F2               [24] 1927 	movx	@r0,a
+      00051A 08               [12] 1928 	inc	r0
+      00051B 74 CE            [12] 1929 	mov	a,#0xCE
+      00051D F2               [24] 1930 	movx	@r0,a
+      00051E 08               [12] 1931 	inc	r0
+      00051F 74 34            [12] 1932 	mov	a,#0x34
+      000521 F2               [24] 1933 	movx	@r0,a
+      000522 08               [12] 1934 	inc	r0
+      000523 74 1D            [12] 1935 	mov	a,#0x1D
+      000525 F2               [24] 1936 	movx	@r0,a
+      000526 8B 82            [24] 1937 	mov	dpl,r3
+      000528 8D 83            [24] 1938 	mov	dph,r5
+      00052A 8E F0            [24] 1939 	mov	b,r6
+      00052C EF               [12] 1940 	mov	a,r7
+      00052D 12r00r00         [24] 1941 	lcall	_constrain
+      000530 AB 82            [24] 1942 	mov	r3,dpl
+      000532 AD 83            [24] 1943 	mov	r5,dph
+      000534 AE F0            [24] 1944 	mov	r6,b
+      000536 FF               [12] 1945 	mov	r7,a
+      000537 D0 04            [24] 1946 	pop	ar4
+      000539 90r00r05         [24] 1947 	mov	dptr,#_radio_init_freq_max_1_168
+      00053C EB               [12] 1948 	mov	a,r3
+      00053D F0               [24] 1949 	movx	@dptr,a
+      00053E ED               [12] 1950 	mov	a,r5
+      00053F A3               [24] 1951 	inc	dptr
+      000540 F0               [24] 1952 	movx	@dptr,a
+      000541 EE               [12] 1953 	mov	a,r6
+      000542 A3               [24] 1954 	inc	dptr
+      000543 F0               [24] 1955 	movx	@dptr,a
+      000544 EF               [12] 1956 	mov	a,r7
+      000545 A3               [24] 1957 	inc	dptr
+      000546 F0               [24] 1958 	movx	@dptr,a
+                                   1959 ;	radio/main.c:357: break;
+      000547 02r06rB4         [24] 1960 	ljmp	00122$
+                                   1961 ;	radio/main.c:358: case FREQ_868:
+      00054A                       1962 00119$:
+                                   1963 ;	radio/main.c:359: freq_min = constrain(freq_min, 849000000UL, 889000000UL);
+      00054A 90r00r01         [24] 1964 	mov	dptr,#_radio_init_freq_min_1_168
+      00054D E0               [24] 1965 	movx	a,@dptr
+      00054E FB               [12] 1966 	mov	r3,a
+      00054F A3               [24] 1967 	inc	dptr
+      000550 E0               [24] 1968 	movx	a,@dptr
+      000551 FD               [12] 1969 	mov	r5,a
+      000552 A3               [24] 1970 	inc	dptr
+      000553 E0               [24] 1971 	movx	a,@dptr
+      000554 FE               [12] 1972 	mov	r6,a
+      000555 A3               [24] 1973 	inc	dptr
+      000556 E0               [24] 1974 	movx	a,@dptr
+      000557 FF               [12] 1975 	mov	r7,a
+      000558 78r00            [12] 1976 	mov	r0,#_constrain_PARM_2
+      00055A 74 40            [12] 1977 	mov	a,#0x40
+      00055C F2               [24] 1978 	movx	@r0,a
+      00055D 08               [12] 1979 	inc	r0
+      00055E 74 B6            [12] 1980 	mov	a,#0xB6
+      000560 F2               [24] 1981 	movx	@r0,a
+      000561 08               [12] 1982 	inc	r0
+      000562 74 9A            [12] 1983 	mov	a,#0x9A
+      000564 F2               [24] 1984 	movx	@r0,a
+      000565 08               [12] 1985 	inc	r0
+      000566 74 32            [12] 1986 	mov	a,#0x32
+      000568 F2               [24] 1987 	movx	@r0,a
+      000569 78r00            [12] 1988 	mov	r0,#_constrain_PARM_3
+      00056B 74 40            [12] 1989 	mov	a,#0x40
+      00056D F2               [24] 1990 	movx	@r0,a
+      00056E 08               [12] 1991 	inc	r0
+      00056F 74 10            [12] 1992 	mov	a,#0x10
+      000571 F2               [24] 1993 	movx	@r0,a
+      000572 08               [12] 1994 	inc	r0
+      000573 74 FD            [12] 1995 	mov	a,#0xFD
+      000575 F2               [24] 1996 	movx	@r0,a
+      000576 08               [12] 1997 	inc	r0
+      000577 74 34            [12] 1998 	mov	a,#0x34
+      000579 F2               [24] 1999 	movx	@r0,a
+      00057A 8B 82            [24] 2000 	mov	dpl,r3
+      00057C 8D 83            [24] 2001 	mov	dph,r5
+      00057E 8E F0            [24] 2002 	mov	b,r6
+      000580 EF               [12] 2003 	mov	a,r7
+      000581 C0 04            [24] 2004 	push	ar4
+      000583 12r00r00         [24] 2005 	lcall	_constrain
+      000586 AB 82            [24] 2006 	mov	r3,dpl
+      000588 AD 83            [24] 2007 	mov	r5,dph
+      00058A AE F0            [24] 2008 	mov	r6,b
+      00058C FF               [12] 2009 	mov	r7,a
+      00058D 90r00r01         [24] 2010 	mov	dptr,#_radio_init_freq_min_1_168
+      000590 EB               [12] 2011 	mov	a,r3
+      000591 F0               [24] 2012 	movx	@dptr,a
+      000592 ED               [12] 2013 	mov	a,r5
+      000593 A3               [24] 2014 	inc	dptr
+      000594 F0               [24] 2015 	movx	@dptr,a
+      000595 EE               [12] 2016 	mov	a,r6
+      000596 A3               [24] 2017 	inc	dptr
+      000597 F0               [24] 2018 	movx	@dptr,a
+      000598 EF               [12] 2019 	mov	a,r7
+      000599 A3               [24] 2020 	inc	dptr
+      00059A F0               [24] 2021 	movx	@dptr,a
+                                   2022 ;	radio/main.c:360: freq_max = constrain(freq_max, 849000000UL, 889000000UL);
+      00059B 90r00r05         [24] 2023 	mov	dptr,#_radio_init_freq_max_1_168
+      00059E E0               [24] 2024 	movx	a,@dptr
+      00059F FB               [12] 2025 	mov	r3,a
+      0005A0 A3               [24] 2026 	inc	dptr
+      0005A1 E0               [24] 2027 	movx	a,@dptr
+      0005A2 FD               [12] 2028 	mov	r5,a
+      0005A3 A3               [24] 2029 	inc	dptr
+      0005A4 E0               [24] 2030 	movx	a,@dptr
+      0005A5 FE               [12] 2031 	mov	r6,a
+      0005A6 A3               [24] 2032 	inc	dptr
+      0005A7 E0               [24] 2033 	movx	a,@dptr
+      0005A8 FF               [12] 2034 	mov	r7,a
+      0005A9 78r00            [12] 2035 	mov	r0,#_constrain_PARM_2
+      0005AB 74 40            [12] 2036 	mov	a,#0x40
+      0005AD F2               [24] 2037 	movx	@r0,a
+      0005AE 08               [12] 2038 	inc	r0
+      0005AF 74 B6            [12] 2039 	mov	a,#0xB6
+      0005B1 F2               [24] 2040 	movx	@r0,a
+      0005B2 08               [12] 2041 	inc	r0
+      0005B3 74 9A            [12] 2042 	mov	a,#0x9A
+      0005B5 F2               [24] 2043 	movx	@r0,a
+      0005B6 08               [12] 2044 	inc	r0
+      0005B7 74 32            [12] 2045 	mov	a,#0x32
+      0005B9 F2               [24] 2046 	movx	@r0,a
+      0005BA 78r00            [12] 2047 	mov	r0,#_constrain_PARM_3
+      0005BC 74 40            [12] 2048 	mov	a,#0x40
+      0005BE F2               [24] 2049 	movx	@r0,a
+      0005BF 08               [12] 2050 	inc	r0
+      0005C0 74 10            [12] 2051 	mov	a,#0x10
+      0005C2 F2               [24] 2052 	movx	@r0,a
+      0005C3 08               [12] 2053 	inc	r0
+      0005C4 74 FD            [12] 2054 	mov	a,#0xFD
+      0005C6 F2               [24] 2055 	movx	@r0,a
+      0005C7 08               [12] 2056 	inc	r0
+      0005C8 74 34            [12] 2057 	mov	a,#0x34
+      0005CA F2               [24] 2058 	movx	@r0,a
+      0005CB 8B 82            [24] 2059 	mov	dpl,r3
+      0005CD 8D 83            [24] 2060 	mov	dph,r5
+      0005CF 8E F0            [24] 2061 	mov	b,r6
+      0005D1 EF               [12] 2062 	mov	a,r7
+      0005D2 12r00r00         [24] 2063 	lcall	_constrain
+      0005D5 AB 82            [24] 2064 	mov	r3,dpl
+      0005D7 AD 83            [24] 2065 	mov	r5,dph
+      0005D9 AE F0            [24] 2066 	mov	r6,b
+      0005DB FF               [12] 2067 	mov	r7,a
+      0005DC D0 04            [24] 2068 	pop	ar4
+      0005DE 90r00r05         [24] 2069 	mov	dptr,#_radio_init_freq_max_1_168
+      0005E1 EB               [12] 2070 	mov	a,r3
+      0005E2 F0               [24] 2071 	movx	@dptr,a
+      0005E3 ED               [12] 2072 	mov	a,r5
+      0005E4 A3               [24] 2073 	inc	dptr
+      0005E5 F0               [24] 2074 	movx	@dptr,a
+      0005E6 EE               [12] 2075 	mov	a,r6
+      0005E7 A3               [24] 2076 	inc	dptr
+      0005E8 F0               [24] 2077 	movx	@dptr,a
+      0005E9 EF               [12] 2078 	mov	a,r7
+      0005EA A3               [24] 2079 	inc	dptr
+      0005EB F0               [24] 2080 	movx	@dptr,a
+                                   2081 ;	radio/main.c:361: break;
+      0005EC 02r06rB4         [24] 2082 	ljmp	00122$
+                                   2083 ;	radio/main.c:362: case FREQ_915:
+      0005EF                       2084 00120$:
+                                   2085 ;	radio/main.c:363: freq_min = constrain(freq_min, 868000000UL, 935000000UL);
+      0005EF 90r00r01         [24] 2086 	mov	dptr,#_radio_init_freq_min_1_168
+      0005F2 E0               [24] 2087 	movx	a,@dptr
+      0005F3 FB               [12] 2088 	mov	r3,a
+      0005F4 A3               [24] 2089 	inc	dptr
+      0005F5 E0               [24] 2090 	movx	a,@dptr
+      0005F6 FD               [12] 2091 	mov	r5,a
+      0005F7 A3               [24] 2092 	inc	dptr
+      0005F8 E0               [24] 2093 	movx	a,@dptr
+      0005F9 FE               [12] 2094 	mov	r6,a
+      0005FA A3               [24] 2095 	inc	dptr
+      0005FB E0               [24] 2096 	movx	a,@dptr
+      0005FC FF               [12] 2097 	mov	r7,a
+      0005FD 78r00            [12] 2098 	mov	r0,#_constrain_PARM_2
+      0005FF E4               [12] 2099 	clr	a
+      000600 F2               [24] 2100 	movx	@r0,a
+      000601 08               [12] 2101 	inc	r0
+      000602 74 A1            [12] 2102 	mov	a,#0xA1
+      000604 F2               [24] 2103 	movx	@r0,a
+      000605 08               [12] 2104 	inc	r0
+      000606 74 BC            [12] 2105 	mov	a,#0xBC
+      000608 F2               [24] 2106 	movx	@r0,a
+      000609 08               [12] 2107 	inc	r0
+      00060A 74 33            [12] 2108 	mov	a,#0x33
+      00060C F2               [24] 2109 	movx	@r0,a
+      00060D 78r00            [12] 2110 	mov	r0,#_constrain_PARM_3
+      00060F 74 C0            [12] 2111 	mov	a,#0xC0
+      000611 F2               [24] 2112 	movx	@r0,a
+      000612 08               [12] 2113 	inc	r0
+      000613 74 F7            [12] 2114 	mov	a,#0xF7
+      000615 F2               [24] 2115 	movx	@r0,a
+      000616 08               [12] 2116 	inc	r0
+      000617 74 BA            [12] 2117 	mov	a,#0xBA
+      000619 F2               [24] 2118 	movx	@r0,a
+      00061A 08               [12] 2119 	inc	r0
+      00061B 74 37            [12] 2120 	mov	a,#0x37
+      00061D F2               [24] 2121 	movx	@r0,a
+      00061E 8B 82            [24] 2122 	mov	dpl,r3
+      000620 8D 83            [24] 2123 	mov	dph,r5
+      000622 8E F0            [24] 2124 	mov	b,r6
+      000624 EF               [12] 2125 	mov	a,r7
+      000625 C0 04            [24] 2126 	push	ar4
+      000627 12r00r00         [24] 2127 	lcall	_constrain
+      00062A AB 82            [24] 2128 	mov	r3,dpl
+      00062C AD 83            [24] 2129 	mov	r5,dph
+      00062E AE F0            [24] 2130 	mov	r6,b
+      000630 FF               [12] 2131 	mov	r7,a
+      000631 90r00r01         [24] 2132 	mov	dptr,#_radio_init_freq_min_1_168
+      000634 EB               [12] 2133 	mov	a,r3
+      000635 F0               [24] 2134 	movx	@dptr,a
+      000636 ED               [12] 2135 	mov	a,r5
+      000637 A3               [24] 2136 	inc	dptr
+      000638 F0               [24] 2137 	movx	@dptr,a
+      000639 EE               [12] 2138 	mov	a,r6
+      00063A A3               [24] 2139 	inc	dptr
+      00063B F0               [24] 2140 	movx	@dptr,a
+      00063C EF               [12] 2141 	mov	a,r7
+      00063D A3               [24] 2142 	inc	dptr
+      00063E F0               [24] 2143 	movx	@dptr,a
+                                   2144 ;	radio/main.c:364: freq_max = constrain(freq_max, 868000000UL, 935000000UL);
+      00063F 90r00r05         [24] 2145 	mov	dptr,#_radio_init_freq_max_1_168
+      000642 E0               [24] 2146 	movx	a,@dptr
+      000643 FB               [12] 2147 	mov	r3,a
+      000644 A3               [24] 2148 	inc	dptr
+      000645 E0               [24] 2149 	movx	a,@dptr
+      000646 FD               [12] 2150 	mov	r5,a
+      000647 A3               [24] 2151 	inc	dptr
+      000648 E0               [24] 2152 	movx	a,@dptr
+      000649 FE               [12] 2153 	mov	r6,a
+      00064A A3               [24] 2154 	inc	dptr
+      00064B E0               [24] 2155 	movx	a,@dptr
+      00064C FF               [12] 2156 	mov	r7,a
+      00064D 78r00            [12] 2157 	mov	r0,#_constrain_PARM_2
+      00064F E4               [12] 2158 	clr	a
+      000650 F2               [24] 2159 	movx	@r0,a
+      000651 08               [12] 2160 	inc	r0
+      000652 74 A1            [12] 2161 	mov	a,#0xA1
+      000654 F2               [24] 2162 	movx	@r0,a
+      000655 08               [12] 2163 	inc	r0
+      000656 74 BC            [12] 2164 	mov	a,#0xBC
+      000658 F2               [24] 2165 	movx	@r0,a
+      000659 08               [12] 2166 	inc	r0
+      00065A 74 33            [12] 2167 	mov	a,#0x33
+      00065C F2               [24] 2168 	movx	@r0,a
+      00065D 78r00            [12] 2169 	mov	r0,#_constrain_PARM_3
+      00065F 74 C0            [12] 2170 	mov	a,#0xC0
+      000661 F2               [24] 2171 	movx	@r0,a
+      000662 08               [12] 2172 	inc	r0
+      000663 74 F7            [12] 2173 	mov	a,#0xF7
+      000665 F2               [24] 2174 	movx	@r0,a
+      000666 08               [12] 2175 	inc	r0
+      000667 74 BA            [12] 2176 	mov	a,#0xBA
+      000669 F2               [24] 2177 	movx	@r0,a
+      00066A 08               [12] 2178 	inc	r0
+      00066B 74 37            [12] 2179 	mov	a,#0x37
+      00066D F2               [24] 2180 	movx	@r0,a
+      00066E 8B 82            [24] 2181 	mov	dpl,r3
+      000670 8D 83            [24] 2182 	mov	dph,r5
+      000672 8E F0            [24] 2183 	mov	b,r6
+      000674 EF               [12] 2184 	mov	a,r7
+      000675 12r00r00         [24] 2185 	lcall	_constrain
+      000678 AB 82            [24] 2186 	mov	r3,dpl
+      00067A AD 83            [24] 2187 	mov	r5,dph
+      00067C AE F0            [24] 2188 	mov	r6,b
+      00067E FF               [12] 2189 	mov	r7,a
+      00067F D0 04            [24] 2190 	pop	ar4
+      000681 90r00r05         [24] 2191 	mov	dptr,#_radio_init_freq_max_1_168
+      000684 EB               [12] 2192 	mov	a,r3
+      000685 F0               [24] 2193 	movx	@dptr,a
+      000686 ED               [12] 2194 	mov	a,r5
+      000687 A3               [24] 2195 	inc	dptr
+      000688 F0               [24] 2196 	movx	@dptr,a
+      000689 EE               [12] 2197 	mov	a,r6
+      00068A A3               [24] 2198 	inc	dptr
+      00068B F0               [24] 2199 	movx	@dptr,a
+      00068C EF               [12] 2200 	mov	a,r7
+      00068D A3               [24] 2201 	inc	dptr
+      00068E F0               [24] 2202 	movx	@dptr,a
+                                   2203 ;	radio/main.c:365: break;
+                                   2204 ;	radio/main.c:366: default:
+      00068F 80 23            [24] 2205 	sjmp	00122$
+      000691                       2206 00121$:
+                                   2207 ;	radio/main.c:367: panic("bad board frequency %d", g_board_frequency);
+      000691 78r00            [12] 2208 	mov	r0,#_g_board_frequency
+      000693 E2               [24] 2209 	movx	a,@r0
+      000694 FE               [12] 2210 	mov	r6,a
+      000695 7F 00            [12] 2211 	mov	r7,#0x00
+      000697 C0 04            [24] 2212 	push	ar4
+      000699 C0 06            [24] 2213 	push	ar6
+      00069B C0 07            [24] 2214 	push	ar7
+      00069D 74r72            [12] 2215 	mov	a,#___str_5
+      00069F C0 E0            [24] 2216 	push	acc
+      0006A1 74s00            [12] 2217 	mov	a,#(___str_5 >> 8)
+      0006A3 C0 E0            [24] 2218 	push	acc
+      0006A5 74 80            [12] 2219 	mov	a,#0x80
+      0006A7 C0 E0            [24] 2220 	push	acc
+      0006A9 12r00r95         [24] 2221 	lcall	_panic
+      0006AC E5 81            [12] 2222 	mov	a,sp
+      0006AE 24 FB            [12] 2223 	add	a,#0xfb
+      0006B0 F5 81            [12] 2224 	mov	sp,a
+      0006B2 D0 04            [24] 2225 	pop	ar4
+                                   2226 ;	radio/main.c:369: }
+      0006B4                       2227 00122$:
+                                   2228 ;	radio/main.c:371: if (freq_max == freq_min) {
+      0006B4 90r00r05         [24] 2229 	mov	dptr,#_radio_init_freq_max_1_168
+      0006B7 E0               [24] 2230 	movx	a,@dptr
+      0006B8 FB               [12] 2231 	mov	r3,a
+      0006B9 A3               [24] 2232 	inc	dptr
+      0006BA E0               [24] 2233 	movx	a,@dptr
+      0006BB FD               [12] 2234 	mov	r5,a
+      0006BC A3               [24] 2235 	inc	dptr
+      0006BD E0               [24] 2236 	movx	a,@dptr
+      0006BE FE               [12] 2237 	mov	r6,a
+      0006BF A3               [24] 2238 	inc	dptr
+      0006C0 E0               [24] 2239 	movx	a,@dptr
+      0006C1 FF               [12] 2240 	mov	r7,a
+      0006C2 90r00r01         [24] 2241 	mov	dptr,#_radio_init_freq_min_1_168
+      0006C5 E0               [24] 2242 	movx	a,@dptr
+      0006C6 F5*00            [12] 2243 	mov	_radio_init_sloc0_1_0,a
+      0006C8 A3               [24] 2244 	inc	dptr
+      0006C9 E0               [24] 2245 	movx	a,@dptr
+      0006CA F5*01            [12] 2246 	mov	(_radio_init_sloc0_1_0 + 1),a
+      0006CC A3               [24] 2247 	inc	dptr
+      0006CD E0               [24] 2248 	movx	a,@dptr
+      0006CE F5*02            [12] 2249 	mov	(_radio_init_sloc0_1_0 + 2),a
+      0006D0 A3               [24] 2250 	inc	dptr
+      0006D1 E0               [24] 2251 	movx	a,@dptr
+      0006D2 F5*03            [12] 2252 	mov	(_radio_init_sloc0_1_0 + 3),a
+      0006D4 EB               [12] 2253 	mov	a,r3
+      0006D5 B5*00 25         [24] 2254 	cjne	a,_radio_init_sloc0_1_0,00124$
+      0006D8 ED               [12] 2255 	mov	a,r5
+      0006D9 B5*01 21         [24] 2256 	cjne	a,(_radio_init_sloc0_1_0 + 1),00124$
+      0006DC EE               [12] 2257 	mov	a,r6
+      0006DD B5*02 1D         [24] 2258 	cjne	a,(_radio_init_sloc0_1_0 + 2),00124$
+      0006E0 EF               [12] 2259 	mov	a,r7
+      0006E1 B5*03 19         [24] 2260 	cjne	a,(_radio_init_sloc0_1_0 + 3),00124$
+                                   2261 ;	radio/main.c:372: freq_max = freq_min + 1000000UL;
+      0006E4 90r00r05         [24] 2262 	mov	dptr,#_radio_init_freq_max_1_168
+      0006E7 74 40            [12] 2263 	mov	a,#0x40
+      0006E9 25*00            [12] 2264 	add	a,_radio_init_sloc0_1_0
+      0006EB F0               [24] 2265 	movx	@dptr,a
+      0006EC 74 42            [12] 2266 	mov	a,#0x42
+      0006EE 35*01            [12] 2267 	addc	a,(_radio_init_sloc0_1_0 + 1)
+      0006F0 A3               [24] 2268 	inc	dptr
+      0006F1 F0               [24] 2269 	movx	@dptr,a
+      0006F2 74 0F            [12] 2270 	mov	a,#0x0F
+      0006F4 35*02            [12] 2271 	addc	a,(_radio_init_sloc0_1_0 + 2)
+      0006F6 A3               [24] 2272 	inc	dptr
+      0006F7 F0               [24] 2273 	movx	@dptr,a
+      0006F8 E4               [12] 2274 	clr	a
+      0006F9 35*03            [12] 2275 	addc	a,(_radio_init_sloc0_1_0 + 3)
+      0006FB A3               [24] 2276 	inc	dptr
+      0006FC F0               [24] 2277 	movx	@dptr,a
+      0006FD                       2278 00124$:
+                                   2279 ;	radio/main.c:376: duty_cycle = param_get(PARAM_DUTY_CYCLE);
+      0006FD 75 82 0B         [24] 2280 	mov	dpl,#0x0B
+      000700 C0 04            [24] 2281 	push	ar4
+      000702 12r00r00         [24] 2282 	lcall	_param_get
+      000705 AB 82            [24] 2283 	mov	r3,dpl
+      000707 78r00            [12] 2284 	mov	r0,#_duty_cycle
+      000709 EB               [12] 2285 	mov	a,r3
+      00070A F2               [24] 2286 	movx	@r0,a
+                                   2287 ;	radio/main.c:377: duty_cycle = constrain(duty_cycle, 0, 100);
+      00070B 7F 00            [12] 2288 	mov	r7,#0x00
+      00070D 7E 00            [12] 2289 	mov	r6,#0x00
+      00070F 7D 00            [12] 2290 	mov	r5,#0x00
+      000711 78r00            [12] 2291 	mov	r0,#_constrain_PARM_2
+      000713 E4               [12] 2292 	clr	a
+      000714 F2               [24] 2293 	movx	@r0,a
+      000715 08               [12] 2294 	inc	r0
+      000716 F2               [24] 2295 	movx	@r0,a
+      000717 08               [12] 2296 	inc	r0
+      000718 F2               [24] 2297 	movx	@r0,a
+      000719 08               [12] 2298 	inc	r0
+      00071A F2               [24] 2299 	movx	@r0,a
+      00071B 78r00            [12] 2300 	mov	r0,#_constrain_PARM_3
+      00071D 74 64            [12] 2301 	mov	a,#0x64
+      00071F F2               [24] 2302 	movx	@r0,a
+      000720 08               [12] 2303 	inc	r0
+      000721 E4               [12] 2304 	clr	a
+      000722 F2               [24] 2305 	movx	@r0,a
+      000723 08               [12] 2306 	inc	r0
+      000724 F2               [24] 2307 	movx	@r0,a
+      000725 08               [12] 2308 	inc	r0
+      000726 F2               [24] 2309 	movx	@r0,a
+      000727 8B 82            [24] 2310 	mov	dpl,r3
+      000729 8F 83            [24] 2311 	mov	dph,r7
+      00072B 8E F0            [24] 2312 	mov	b,r6
+      00072D ED               [12] 2313 	mov	a,r5
+      00072E 12r00r00         [24] 2314 	lcall	_constrain
+      000731 AB 82            [24] 2315 	mov	r3,dpl
+      000733 78r00            [12] 2316 	mov	r0,#_duty_cycle
+      000735 EB               [12] 2317 	mov	a,r3
+      000736 F2               [24] 2318 	movx	@r0,a
+                                   2319 ;	radio/main.c:378: param_set(PARAM_DUTY_CYCLE, duty_cycle);
+      000737 78r00            [12] 2320 	mov	r0,#_param_set_PARM_2
+      000739 EB               [12] 2321 	mov	a,r3
+      00073A F2               [24] 2322 	movx	@r0,a
+      00073B 08               [12] 2323 	inc	r0
+      00073C E4               [12] 2324 	clr	a
+      00073D F2               [24] 2325 	movx	@r0,a
+      00073E 08               [12] 2326 	inc	r0
+      00073F F2               [24] 2327 	movx	@r0,a
+      000740 08               [12] 2328 	inc	r0
+      000741 F2               [24] 2329 	movx	@r0,a
+      000742 75 82 0B         [24] 2330 	mov	dpl,#0x0B
+      000745 12r00r00         [24] 2331 	lcall	_param_set
+                                   2332 ;	radio/main.c:381: lbt_rssi = param_get(PARAM_LBT_RSSI);
+      000748 75 82 0C         [24] 2333 	mov	dpl,#0x0C
+      00074B 12r00r00         [24] 2334 	lcall	_param_get
+      00074E AB 82            [24] 2335 	mov	r3,dpl
+      000750 AD 83            [24] 2336 	mov	r5,dph
+      000752 AE F0            [24] 2337 	mov	r6,b
+      000754 FF               [12] 2338 	mov	r7,a
+      000755 D0 04            [24] 2339 	pop	ar4
+      000757 78r00            [12] 2340 	mov	r0,#_lbt_rssi
+      000759 EB               [12] 2341 	mov	a,r3
+      00075A F2               [24] 2342 	movx	@r0,a
+                                   2343 ;	radio/main.c:382: if (lbt_rssi != 0) {
+      00075B EB               [12] 2344 	mov	a,r3
+      00075C 60 37            [24] 2345 	jz	00126$
+                                   2346 ;	radio/main.c:384: lbt_rssi = constrain(lbt_rssi, 25, 220);
+      00075E 7F 00            [12] 2347 	mov	r7,#0x00
+      000760 7E 00            [12] 2348 	mov	r6,#0x00
+      000762 7D 00            [12] 2349 	mov	r5,#0x00
+      000764 78r00            [12] 2350 	mov	r0,#_constrain_PARM_2
+      000766 74 19            [12] 2351 	mov	a,#0x19
+      000768 F2               [24] 2352 	movx	@r0,a
+      000769 08               [12] 2353 	inc	r0
+      00076A E4               [12] 2354 	clr	a
+      00076B F2               [24] 2355 	movx	@r0,a
+      00076C 08               [12] 2356 	inc	r0
+      00076D F2               [24] 2357 	movx	@r0,a
+      00076E 08               [12] 2358 	inc	r0
+      00076F F2               [24] 2359 	movx	@r0,a
+      000770 78r00            [12] 2360 	mov	r0,#_constrain_PARM_3
+      000772 74 DC            [12] 2361 	mov	a,#0xDC
+      000774 F2               [24] 2362 	movx	@r0,a
+      000775 08               [12] 2363 	inc	r0
+      000776 E4               [12] 2364 	clr	a
+      000777 F2               [24] 2365 	movx	@r0,a
+      000778 08               [12] 2366 	inc	r0
+      000779 F2               [24] 2367 	movx	@r0,a
+      00077A 08               [12] 2368 	inc	r0
+      00077B F2               [24] 2369 	movx	@r0,a
+      00077C 8B 82            [24] 2370 	mov	dpl,r3
+      00077E 8F 83            [24] 2371 	mov	dph,r7
+      000780 8E F0            [24] 2372 	mov	b,r6
+      000782 ED               [12] 2373 	mov	a,r5
+      000783 C0 04            [24] 2374 	push	ar4
+      000785 12r00r00         [24] 2375 	lcall	_constrain
+      000788 AB 82            [24] 2376 	mov	r3,dpl
+      00078A AD 83            [24] 2377 	mov	r5,dph
+      00078C AE F0            [24] 2378 	mov	r6,b
+      00078E FF               [12] 2379 	mov	r7,a
+      00078F D0 04            [24] 2380 	pop	ar4
+      000791 78r00            [12] 2381 	mov	r0,#_lbt_rssi
+      000793 EB               [12] 2382 	mov	a,r3
+      000794 F2               [24] 2383 	movx	@r0,a
+      000795                       2384 00126$:
+                                   2385 ;	radio/main.c:386: param_set(PARAM_LBT_RSSI, lbt_rssi);
+      000795 C0 04            [24] 2386 	push	ar4
+      000797 78r00            [12] 2387 	mov	r0,#_lbt_rssi
+      000799 79r00            [12] 2388 	mov	r1,#_param_set_PARM_2
+      00079B E2               [24] 2389 	movx	a,@r0
+      00079C F3               [24] 2390 	movx	@r1,a
+      00079D 09               [12] 2391 	inc	r1
+      00079E E4               [12] 2392 	clr	a
+      00079F F3               [24] 2393 	movx	@r1,a
+      0007A0 09               [12] 2394 	inc	r1
+      0007A1 F3               [24] 2395 	movx	@r1,a
+      0007A2 09               [12] 2396 	inc	r1
+      0007A3 F3               [24] 2397 	movx	@r1,a
+      0007A4 75 82 0C         [24] 2398 	mov	dpl,#0x0C
+      0007A7 C0 04            [24] 2399 	push	ar4
+      0007A9 12r00r00         [24] 2400 	lcall	_param_set
+                                   2401 ;	radio/main.c:389: param_set(PARAM_MIN_FREQ, freq_min/1000);
+      0007AC 90r00r00         [24] 2402 	mov	dptr,#__divulong_PARM_2
+      0007AF 74 E8            [12] 2403 	mov	a,#0xE8
+      0007B1 F0               [24] 2404 	movx	@dptr,a
+      0007B2 74 03            [12] 2405 	mov	a,#0x03
+      0007B4 A3               [24] 2406 	inc	dptr
+      0007B5 F0               [24] 2407 	movx	@dptr,a
+      0007B6 E4               [12] 2408 	clr	a
+      0007B7 A3               [24] 2409 	inc	dptr
+      0007B8 F0               [24] 2410 	movx	@dptr,a
+      0007B9 A3               [24] 2411 	inc	dptr
+      0007BA F0               [24] 2412 	movx	@dptr,a
+      0007BB 85*00 82         [24] 2413 	mov	dpl,_radio_init_sloc0_1_0
+      0007BE 85*01 83         [24] 2414 	mov	dph,(_radio_init_sloc0_1_0 + 1)
+      0007C1 85*02 F0         [24] 2415 	mov	b,(_radio_init_sloc0_1_0 + 2)
+      0007C4 E5*03            [12] 2416 	mov	a,(_radio_init_sloc0_1_0 + 3)
+      0007C6 12r00r00         [24] 2417 	lcall	__divulong
+      0007C9 AB 82            [24] 2418 	mov	r3,dpl
+      0007CB AD 83            [24] 2419 	mov	r5,dph
+      0007CD AE F0            [24] 2420 	mov	r6,b
+      0007CF FF               [12] 2421 	mov	r7,a
+      0007D0 78r00            [12] 2422 	mov	r0,#_param_set_PARM_2
+      0007D2 EB               [12] 2423 	mov	a,r3
+      0007D3 F2               [24] 2424 	movx	@r0,a
+      0007D4 08               [12] 2425 	inc	r0
+      0007D5 ED               [12] 2426 	mov	a,r5
+      0007D6 F2               [24] 2427 	movx	@r0,a
+      0007D7 08               [12] 2428 	inc	r0
+      0007D8 EE               [12] 2429 	mov	a,r6
+      0007D9 F2               [24] 2430 	movx	@r0,a
+      0007DA 08               [12] 2431 	inc	r0
+      0007DB EF               [12] 2432 	mov	a,r7
+      0007DC F2               [24] 2433 	movx	@r0,a
+      0007DD 75 82 08         [24] 2434 	mov	dpl,#0x08
+      0007E0 12r00r00         [24] 2435 	lcall	_param_set
+      0007E3 D0 04            [24] 2436 	pop	ar4
+                                   2437 ;	radio/main.c:390: param_set(PARAM_MAX_FREQ, freq_max/1000);
+      0007E5 90r00r05         [24] 2438 	mov	dptr,#_radio_init_freq_max_1_168
+      0007E8 E0               [24] 2439 	movx	a,@dptr
+      0007E9 F5*04            [12] 2440 	mov	_radio_init_sloc1_1_0,a
+      0007EB A3               [24] 2441 	inc	dptr
+      0007EC E0               [24] 2442 	movx	a,@dptr
+      0007ED F5*05            [12] 2443 	mov	(_radio_init_sloc1_1_0 + 1),a
+      0007EF A3               [24] 2444 	inc	dptr
+      0007F0 E0               [24] 2445 	movx	a,@dptr
+      0007F1 F5*06            [12] 2446 	mov	(_radio_init_sloc1_1_0 + 2),a
+      0007F3 A3               [24] 2447 	inc	dptr
+      0007F4 E0               [24] 2448 	movx	a,@dptr
+      0007F5 F5*07            [12] 2449 	mov	(_radio_init_sloc1_1_0 + 3),a
+      0007F7 90r00r00         [24] 2450 	mov	dptr,#__divulong_PARM_2
+      0007FA 74 E8            [12] 2451 	mov	a,#0xE8
+      0007FC F0               [24] 2452 	movx	@dptr,a
+      0007FD 74 03            [12] 2453 	mov	a,#0x03
+      0007FF A3               [24] 2454 	inc	dptr
+      000800 F0               [24] 2455 	movx	@dptr,a
+      000801 E4               [12] 2456 	clr	a
+      000802 A3               [24] 2457 	inc	dptr
+      000803 F0               [24] 2458 	movx	@dptr,a
+      000804 A3               [24] 2459 	inc	dptr
+      000805 F0               [24] 2460 	movx	@dptr,a
+      000806 85*04 82         [24] 2461 	mov	dpl,_radio_init_sloc1_1_0
+      000809 85*05 83         [24] 2462 	mov	dph,(_radio_init_sloc1_1_0 + 1)
+      00080C 85*06 F0         [24] 2463 	mov	b,(_radio_init_sloc1_1_0 + 2)
+      00080F E5*07            [12] 2464 	mov	a,(_radio_init_sloc1_1_0 + 3)
+      000811 12r00r00         [24] 2465 	lcall	__divulong
+      000814 AA 82            [24] 2466 	mov	r2,dpl
+      000816 AC 83            [24] 2467 	mov	r4,dph
+      000818 AE F0            [24] 2468 	mov	r6,b
+      00081A FF               [12] 2469 	mov	r7,a
+      00081B 78r00            [12] 2470 	mov	r0,#_param_set_PARM_2
+      00081D EA               [12] 2471 	mov	a,r2
+      00081E F2               [24] 2472 	movx	@r0,a
+      00081F 08               [12] 2473 	inc	r0
+      000820 EC               [12] 2474 	mov	a,r4
+      000821 F2               [24] 2475 	movx	@r0,a
+      000822 08               [12] 2476 	inc	r0
+      000823 EE               [12] 2477 	mov	a,r6
+      000824 F2               [24] 2478 	movx	@r0,a
+      000825 08               [12] 2479 	inc	r0
+      000826 EF               [12] 2480 	mov	a,r7
+      000827 F2               [24] 2481 	movx	@r0,a
+      000828 75 82 09         [24] 2482 	mov	dpl,#0x09
+      00082B C0 04            [24] 2483 	push	ar4
+      00082D 12r00r00         [24] 2484 	lcall	_param_set
+                                   2485 ;	radio/main.c:391: param_set(PARAM_NUM_CHANNELS, num_fh_channels);
+      000830 78r00            [12] 2486 	mov	r0,#_num_fh_channels
+      000832 79r00            [12] 2487 	mov	r1,#_param_set_PARM_2
+      000834 E2               [24] 2488 	movx	a,@r0
+      000835 F3               [24] 2489 	movx	@r1,a
+      000836 09               [12] 2490 	inc	r1
+      000837 E4               [12] 2491 	clr	a
+      000838 F3               [24] 2492 	movx	@r1,a
+      000839 09               [12] 2493 	inc	r1
+      00083A F3               [24] 2494 	movx	@r1,a
+      00083B 09               [12] 2495 	inc	r1
+      00083C F3               [24] 2496 	movx	@r1,a
+      00083D 75 82 0A         [24] 2497 	mov	dpl,#0x0A
+      000840 12r00r00         [24] 2498 	lcall	_param_set
+      000843 D0 04            [24] 2499 	pop	ar4
+                                   2500 ;	radio/main.c:393: channel_spacing = (freq_max - freq_min) / (num_fh_channels+2);
+      000845 E5*04            [12] 2501 	mov	a,_radio_init_sloc1_1_0
+      000847 C3               [12] 2502 	clr	c
+      000848 95*00            [12] 2503 	subb	a,_radio_init_sloc0_1_0
+      00084A FC               [12] 2504 	mov	r4,a
+      00084B E5*05            [12] 2505 	mov	a,(_radio_init_sloc1_1_0 + 1)
+      00084D 95*01            [12] 2506 	subb	a,(_radio_init_sloc0_1_0 + 1)
+      00084F FD               [12] 2507 	mov	r5,a
+      000850 E5*06            [12] 2508 	mov	a,(_radio_init_sloc1_1_0 + 2)
+      000852 95*02            [12] 2509 	subb	a,(_radio_init_sloc0_1_0 + 2)
+      000854 FE               [12] 2510 	mov	r6,a
+      000855 E5*07            [12] 2511 	mov	a,(_radio_init_sloc1_1_0 + 3)
+      000857 95*03            [12] 2512 	subb	a,(_radio_init_sloc0_1_0 + 3)
+      000859 FF               [12] 2513 	mov	r7,a
+      00085A 78r00            [12] 2514 	mov	r0,#_num_fh_channels
+      00085C E2               [24] 2515 	movx	a,@r0
+      00085D FA               [12] 2516 	mov	r2,a
+      00085E 7B 00            [12] 2517 	mov	r3,#0x00
+      000860 74 02            [12] 2518 	mov	a,#0x02
+      000862 2A               [12] 2519 	add	a,r2
+      000863 FA               [12] 2520 	mov	r2,a
+      000864 E4               [12] 2521 	clr	a
+      000865 3B               [12] 2522 	addc	a,r3
+      000866 FB               [12] 2523 	mov	r3,a
+      000867 90r00r00         [24] 2524 	mov	dptr,#__divulong_PARM_2
+      00086A EA               [12] 2525 	mov	a,r2
+      00086B F0               [24] 2526 	movx	@dptr,a
+      00086C EB               [12] 2527 	mov	a,r3
+      00086D A3               [24] 2528 	inc	dptr
+      00086E F0               [24] 2529 	movx	@dptr,a
+      00086F EB               [12] 2530 	mov	a,r3
+      000870 33               [12] 2531 	rlc	a
+      000871 95 E0            [12] 2532 	subb	a,acc
+      000873 A3               [24] 2533 	inc	dptr
+      000874 F0               [24] 2534 	movx	@dptr,a
+      000875 A3               [24] 2535 	inc	dptr
+      000876 F0               [24] 2536 	movx	@dptr,a
+      000877 8C 82            [24] 2537 	mov	dpl,r4
+      000879 8D 83            [24] 2538 	mov	dph,r5
+      00087B 8E F0            [24] 2539 	mov	b,r6
+      00087D EF               [12] 2540 	mov	a,r7
+      00087E 12r00r00         [24] 2541 	lcall	__divulong
+      000881 AC 82            [24] 2542 	mov	r4,dpl
+      000883 AD 83            [24] 2543 	mov	r5,dph
+      000885 AE F0            [24] 2544 	mov	r6,b
+      000887 FF               [12] 2545 	mov	r7,a
+      000888 90r00r09         [24] 2546 	mov	dptr,#_radio_init_channel_spacing_1_168
+      00088B EC               [12] 2547 	mov	a,r4
+      00088C F0               [24] 2548 	movx	@dptr,a
+      00088D ED               [12] 2549 	mov	a,r5
+      00088E A3               [24] 2550 	inc	dptr
+      00088F F0               [24] 2551 	movx	@dptr,a
+      000890 EE               [12] 2552 	mov	a,r6
+      000891 A3               [24] 2553 	inc	dptr
+      000892 F0               [24] 2554 	movx	@dptr,a
+      000893 EF               [12] 2555 	mov	a,r7
+      000894 A3               [24] 2556 	inc	dptr
+      000895 F0               [24] 2557 	movx	@dptr,a
+                                   2558 ;	radio/main.c:397: freq_min += channel_spacing/2;
+      000896 EF               [12] 2559 	mov	a,r7
+      000897 C3               [12] 2560 	clr	c
+      000898 13               [12] 2561 	rrc	a
+      000899 FF               [12] 2562 	mov	r7,a
+      00089A EE               [12] 2563 	mov	a,r6
+      00089B 13               [12] 2564 	rrc	a
+      00089C FE               [12] 2565 	mov	r6,a
+      00089D ED               [12] 2566 	mov	a,r5
+      00089E 13               [12] 2567 	rrc	a
+      00089F FD               [12] 2568 	mov	r5,a
+      0008A0 EC               [12] 2569 	mov	a,r4
+      0008A1 13               [12] 2570 	rrc	a
+      0008A2 90r00r01         [24] 2571 	mov	dptr,#_radio_init_freq_min_1_168
+      0008A5 25*00            [12] 2572 	add	a,_radio_init_sloc0_1_0
+      0008A7 F0               [24] 2573 	movx	@dptr,a
+      0008A8 ED               [12] 2574 	mov	a,r5
+      0008A9 35*01            [12] 2575 	addc	a,(_radio_init_sloc0_1_0 + 1)
+      0008AB A3               [24] 2576 	inc	dptr
+      0008AC F0               [24] 2577 	movx	@dptr,a
+      0008AD EE               [12] 2578 	mov	a,r6
+      0008AE 35*02            [12] 2579 	addc	a,(_radio_init_sloc0_1_0 + 2)
+      0008B0 A3               [24] 2580 	inc	dptr
+      0008B1 F0               [24] 2581 	movx	@dptr,a
+      0008B2 EF               [12] 2582 	mov	a,r7
+      0008B3 35*03            [12] 2583 	addc	a,(_radio_init_sloc0_1_0 + 3)
+      0008B5 A3               [24] 2584 	inc	dptr
+      0008B6 F0               [24] 2585 	movx	@dptr,a
+                                   2586 ;	radio/main.c:402: srand(param_get(PARAM_NETID));
+      0008B7 75 82 03         [24] 2587 	mov	dpl,#0x03
+      0008BA 12r00r00         [24] 2588 	lcall	_param_get
+      0008BD AC 82            [24] 2589 	mov	r4,dpl
+      0008BF C0 04            [24] 2590 	push	ar4
+      0008C1 12r00r00         [24] 2591 	lcall	_srand
+      0008C4 D0 04            [24] 2592 	pop	ar4
+                                   2593 ;	radio/main.c:403: if (num_fh_channels > 5) {
+      0008C6 78r00            [12] 2594 	mov	r0,#_num_fh_channels
+      0008C8 C3               [12] 2595 	clr	c
+      0008C9 E2               [24] 2596 	movx	a,@r0
+      0008CA F5 F0            [12] 2597 	mov	b,a
+      0008CC 74 05            [12] 2598 	mov	a,#0x05
+      0008CE 95 F0            [12] 2599 	subb	a,b
+      0008D0 D0 04            [24] 2600 	pop	ar4
+      0008D2 40 03            [24] 2601 	jc	00208$
+      0008D4 02r09r61         [24] 2602 	ljmp	00128$
+      0008D7                       2603 00208$:
+                                   2604 ;	radio/main.c:404: freq_min += ((unsigned long)(rand()*625)) % channel_spacing;
+      0008D7 C0 04            [24] 2605 	push	ar4
+      0008D9 C0 04            [24] 2606 	push	ar4
+      0008DB 12r00r00         [24] 2607 	lcall	_rand
+      0008DE AE 82            [24] 2608 	mov	r6,dpl
+      0008E0 AF 83            [24] 2609 	mov	r7,dph
+      0008E2 90r00r00         [24] 2610 	mov	dptr,#__mulint_PARM_2
+      0008E5 EE               [12] 2611 	mov	a,r6
+      0008E6 F0               [24] 2612 	movx	@dptr,a
+      0008E7 EF               [12] 2613 	mov	a,r7
+      0008E8 A3               [24] 2614 	inc	dptr
+      0008E9 F0               [24] 2615 	movx	@dptr,a
+      0008EA 90 02 71         [24] 2616 	mov	dptr,#0x0271
+      0008ED 12r00r00         [24] 2617 	lcall	__mulint
+      0008F0 AE 82            [24] 2618 	mov	r6,dpl
+      0008F2 AF 83            [24] 2619 	mov	r7,dph
+      0008F4 D0 04            [24] 2620 	pop	ar4
+      0008F6 8E*04            [24] 2621 	mov	_radio_init_sloc1_1_0,r6
+      0008F8 EF               [12] 2622 	mov	a,r7
+      0008F9 F5*05            [12] 2623 	mov	(_radio_init_sloc1_1_0 + 1),a
+      0008FB 33               [12] 2624 	rlc	a
+      0008FC 95 E0            [12] 2625 	subb	a,acc
+      0008FE F5*06            [12] 2626 	mov	(_radio_init_sloc1_1_0 + 2),a
+      000900 F5*07            [12] 2627 	mov	(_radio_init_sloc1_1_0 + 3),a
+      000902 90r00r09         [24] 2628 	mov	dptr,#_radio_init_channel_spacing_1_168
+      000905 E0               [24] 2629 	movx	a,@dptr
+      000906 FA               [12] 2630 	mov	r2,a
+      000907 A3               [24] 2631 	inc	dptr
+      000908 E0               [24] 2632 	movx	a,@dptr
+      000909 FC               [12] 2633 	mov	r4,a
+      00090A A3               [24] 2634 	inc	dptr
+      00090B E0               [24] 2635 	movx	a,@dptr
+      00090C FE               [12] 2636 	mov	r6,a
+      00090D A3               [24] 2637 	inc	dptr
+      00090E E0               [24] 2638 	movx	a,@dptr
+      00090F FF               [12] 2639 	mov	r7,a
+      000910 90r00r00         [24] 2640 	mov	dptr,#__modulong_PARM_2
+      000913 EA               [12] 2641 	mov	a,r2
+      000914 F0               [24] 2642 	movx	@dptr,a
+      000915 EC               [12] 2643 	mov	a,r4
+      000916 A3               [24] 2644 	inc	dptr
+      000917 F0               [24] 2645 	movx	@dptr,a
+      000918 EE               [12] 2646 	mov	a,r6
+      000919 A3               [24] 2647 	inc	dptr
+      00091A F0               [24] 2648 	movx	@dptr,a
+      00091B EF               [12] 2649 	mov	a,r7
+      00091C A3               [24] 2650 	inc	dptr
+      00091D F0               [24] 2651 	movx	@dptr,a
+      00091E 85*04 82         [24] 2652 	mov	dpl,_radio_init_sloc1_1_0
+      000921 85*05 83         [24] 2653 	mov	dph,(_radio_init_sloc1_1_0 + 1)
+      000924 85*06 F0         [24] 2654 	mov	b,(_radio_init_sloc1_1_0 + 2)
+      000927 E5*07            [12] 2655 	mov	a,(_radio_init_sloc1_1_0 + 3)
+      000929 C0 04            [24] 2656 	push	ar4
+      00092B 12r00r00         [24] 2657 	lcall	__modulong
+      00092E 85 82*04         [24] 2658 	mov	_radio_init_sloc1_1_0,dpl
+      000931 85 83*05         [24] 2659 	mov	(_radio_init_sloc1_1_0 + 1),dph
+      000934 85 F0*06         [24] 2660 	mov	(_radio_init_sloc1_1_0 + 2),b
+      000937 F5*07            [12] 2661 	mov	(_radio_init_sloc1_1_0 + 3),a
+      000939 D0 04            [24] 2662 	pop	ar4
+      00093B 90r00r01         [24] 2663 	mov	dptr,#_radio_init_freq_min_1_168
+      00093E E0               [24] 2664 	movx	a,@dptr
+      00093F FA               [12] 2665 	mov	r2,a
+      000940 A3               [24] 2666 	inc	dptr
+      000941 E0               [24] 2667 	movx	a,@dptr
+      000942 FB               [12] 2668 	mov	r3,a
+      000943 A3               [24] 2669 	inc	dptr
+      000944 E0               [24] 2670 	movx	a,@dptr
+      000945 FE               [12] 2671 	mov	r6,a
+      000946 A3               [24] 2672 	inc	dptr
+      000947 E0               [24] 2673 	movx	a,@dptr
+      000948 FF               [12] 2674 	mov	r7,a
+      000949 90r00r01         [24] 2675 	mov	dptr,#_radio_init_freq_min_1_168
+      00094C E5*04            [12] 2676 	mov	a,_radio_init_sloc1_1_0
+      00094E 2A               [12] 2677 	add	a,r2
+      00094F F0               [24] 2678 	movx	@dptr,a
+      000950 E5*05            [12] 2679 	mov	a,(_radio_init_sloc1_1_0 + 1)
+      000952 3B               [12] 2680 	addc	a,r3
+      000953 A3               [24] 2681 	inc	dptr
+      000954 F0               [24] 2682 	movx	@dptr,a
+      000955 E5*06            [12] 2683 	mov	a,(_radio_init_sloc1_1_0 + 2)
+      000957 3E               [12] 2684 	addc	a,r6
+      000958 A3               [24] 2685 	inc	dptr
+      000959 F0               [24] 2686 	movx	@dptr,a
+      00095A E5*07            [12] 2687 	mov	a,(_radio_init_sloc1_1_0 + 3)
+      00095C 3F               [12] 2688 	addc	a,r7
+      00095D A3               [24] 2689 	inc	dptr
+      00095E F0               [24] 2690 	movx	@dptr,a
+                                   2691 ;	radio/main.c:448: tdm_init();
+      00095F D0 04            [24] 2692 	pop	ar4
+                                   2693 ;	radio/main.c:404: freq_min += ((unsigned long)(rand()*625)) % channel_spacing;
+      000961                       2694 00128$:
+                                   2695 ;	radio/main.c:412: radio_set_frequency(freq_min);
+      000961 90r00r01         [24] 2696 	mov	dptr,#_radio_init_freq_min_1_168
+      000964 E0               [24] 2697 	movx	a,@dptr
+      000965 FB               [12] 2698 	mov	r3,a
+      000966 A3               [24] 2699 	inc	dptr
+      000967 E0               [24] 2700 	movx	a,@dptr
+      000968 FD               [12] 2701 	mov	r5,a
+      000969 A3               [24] 2702 	inc	dptr
+      00096A E0               [24] 2703 	movx	a,@dptr
+      00096B FE               [12] 2704 	mov	r6,a
+      00096C A3               [24] 2705 	inc	dptr
+      00096D E0               [24] 2706 	movx	a,@dptr
+      00096E 8B 82            [24] 2707 	mov	dpl,r3
+      000970 8D 83            [24] 2708 	mov	dph,r5
+      000972 8E F0            [24] 2709 	mov	b,r6
+      000974 C0 04            [24] 2710 	push	ar4
+      000976 12r00r00         [24] 2711 	lcall	_radio_set_frequency
+      000979 D0 04            [24] 2712 	pop	ar4
+                                   2713 ;	radio/main.c:415: radio_set_channel_spacing(channel_spacing);
+      00097B 90r00r09         [24] 2714 	mov	dptr,#_radio_init_channel_spacing_1_168
+      00097E E0               [24] 2715 	movx	a,@dptr
+      00097F FB               [12] 2716 	mov	r3,a
+      000980 A3               [24] 2717 	inc	dptr
+      000981 E0               [24] 2718 	movx	a,@dptr
+      000982 FD               [12] 2719 	mov	r5,a
+      000983 A3               [24] 2720 	inc	dptr
+      000984 E0               [24] 2721 	movx	a,@dptr
+      000985 FE               [12] 2722 	mov	r6,a
+      000986 A3               [24] 2723 	inc	dptr
+      000987 E0               [24] 2724 	movx	a,@dptr
+      000988 8B 82            [24] 2725 	mov	dpl,r3
+      00098A 8D 83            [24] 2726 	mov	dph,r5
+      00098C 8E F0            [24] 2727 	mov	b,r6
+      00098E C0 04            [24] 2728 	push	ar4
+      000990 12r00r00         [24] 2729 	lcall	_radio_set_channel_spacing
+                                   2730 ;	radio/main.c:418: radio_set_channel(param_get(PARAM_NETID) % num_fh_channels);
+      000993 75 82 03         [24] 2731 	mov	dpl,#0x03
+      000996 12r00r00         [24] 2732 	lcall	_param_get
+      000999 AB 82            [24] 2733 	mov	r3,dpl
+      00099B AD 83            [24] 2734 	mov	r5,dph
+      00099D AE F0            [24] 2735 	mov	r6,b
+      00099F FF               [12] 2736 	mov	r7,a
+      0009A0 78r00            [12] 2737 	mov	r0,#_num_fh_channels
+      0009A2 90r00r00         [24] 2738 	mov	dptr,#__modulong_PARM_2
+      0009A5 E2               [24] 2739 	movx	a,@r0
+      0009A6 F0               [24] 2740 	movx	@dptr,a
+      0009A7 E4               [12] 2741 	clr	a
+      0009A8 A3               [24] 2742 	inc	dptr
+      0009A9 F0               [24] 2743 	movx	@dptr,a
+      0009AA A3               [24] 2744 	inc	dptr
+      0009AB F0               [24] 2745 	movx	@dptr,a
+      0009AC A3               [24] 2746 	inc	dptr
+      0009AD F0               [24] 2747 	movx	@dptr,a
+      0009AE 8B 82            [24] 2748 	mov	dpl,r3
+      0009B0 8D 83            [24] 2749 	mov	dph,r5
+      0009B2 8E F0            [24] 2750 	mov	b,r6
+      0009B4 EF               [12] 2751 	mov	a,r7
+      0009B5 12r00r00         [24] 2752 	lcall	__modulong
+      0009B8 12r00r00         [24] 2753 	lcall	_radio_set_channel
+                                   2754 ;	radio/main.c:421: if (!radio_configure(param_get(PARAM_AIR_SPEED)) &&
+      0009BB 75 82 02         [24] 2755 	mov	dpl,#0x02
+      0009BE 12r00r00         [24] 2756 	lcall	_param_get
+      0009C1 12r00r00         [24] 2757 	lcall	_radio_configure
+      0009C4 D0 04            [24] 2758 	pop	ar4
+      0009C6 40 37            [24] 2759 	jc	00130$
+                                   2760 ;	radio/main.c:422: !radio_configure(param_get(PARAM_AIR_SPEED)) &&
+      0009C8 75 82 02         [24] 2761 	mov	dpl,#0x02
+      0009CB C0 04            [24] 2762 	push	ar4
+      0009CD 12r00r00         [24] 2763 	lcall	_param_get
+      0009D0 12r00r00         [24] 2764 	lcall	_radio_configure
+      0009D3 D0 04            [24] 2765 	pop	ar4
+      0009D5 40 28            [24] 2766 	jc	00130$
+                                   2767 ;	radio/main.c:423: !radio_configure(param_get(PARAM_AIR_SPEED))) {
+      0009D7 75 82 02         [24] 2768 	mov	dpl,#0x02
+      0009DA C0 04            [24] 2769 	push	ar4
+      0009DC 12r00r00         [24] 2770 	lcall	_param_get
+      0009DF 12r00r00         [24] 2771 	lcall	_radio_configure
+      0009E2 D0 04            [24] 2772 	pop	ar4
+      0009E4 40 19            [24] 2773 	jc	00130$
+                                   2774 ;	radio/main.c:424: panic("radio_configure failed");
+      0009E6 C0 04            [24] 2775 	push	ar4
+      0009E8 74r89            [12] 2776 	mov	a,#___str_6
+      0009EA C0 E0            [24] 2777 	push	acc
+      0009EC 74s00            [12] 2778 	mov	a,#(___str_6 >> 8)
+      0009EE C0 E0            [24] 2779 	push	acc
+      0009F0 74 80            [12] 2780 	mov	a,#0x80
+      0009F2 C0 E0            [24] 2781 	push	acc
+      0009F4 12r00r95         [24] 2782 	lcall	_panic
+      0009F7 15 81            [12] 2783 	dec	sp
+      0009F9 15 81            [12] 2784 	dec	sp
+      0009FB 15 81            [12] 2785 	dec	sp
+      0009FD D0 04            [24] 2786 	pop	ar4
+      0009FF                       2787 00130$:
+                                   2788 ;	radio/main.c:428: param_set(PARAM_AIR_SPEED, radio_air_rate());
+      0009FF C0 04            [24] 2789 	push	ar4
+      000A01 12r00r00         [24] 2790 	lcall	_radio_air_rate
+      000A04 AF 82            [24] 2791 	mov	r7,dpl
+      000A06 78r00            [12] 2792 	mov	r0,#_param_set_PARM_2
+      000A08 EF               [12] 2793 	mov	a,r7
+      000A09 F2               [24] 2794 	movx	@r0,a
+      000A0A 08               [12] 2795 	inc	r0
+      000A0B E4               [12] 2796 	clr	a
+      000A0C F2               [24] 2797 	movx	@r0,a
+      000A0D 08               [12] 2798 	inc	r0
+      000A0E F2               [24] 2799 	movx	@r0,a
+      000A0F 08               [12] 2800 	inc	r0
+      000A10 F2               [24] 2801 	movx	@r0,a
+      000A11 75 82 02         [24] 2802 	mov	dpl,#0x02
+      000A14 12r00r00         [24] 2803 	lcall	_param_set
+                                   2804 ;	radio/main.c:431: radio_set_network_id(param_get(PARAM_NETID));
+      000A17 75 82 03         [24] 2805 	mov	dpl,#0x03
+      000A1A 12r00r00         [24] 2806 	lcall	_param_get
+      000A1D 12r00r00         [24] 2807 	lcall	_radio_set_network_id
+      000A20 D0 04            [24] 2808 	pop	ar4
+                                   2809 ;	radio/main.c:434: radio_set_transmit_power(txpower);
+      000A22 8C 82            [24] 2810 	mov	dpl,r4
+      000A24 12r00r00         [24] 2811 	lcall	_radio_set_transmit_power
+                                   2812 ;	radio/main.c:437: param_set(PARAM_TXPOWER, radio_get_transmit_power());
+      000A27 12r00r00         [24] 2813 	lcall	_radio_get_transmit_power
+      000A2A AF 82            [24] 2814 	mov	r7,dpl
+      000A2C 78r00            [12] 2815 	mov	r0,#_param_set_PARM_2
+      000A2E EF               [12] 2816 	mov	a,r7
+      000A2F F2               [24] 2817 	movx	@r0,a
+      000A30 08               [12] 2818 	inc	r0
+      000A31 E4               [12] 2819 	clr	a
+      000A32 F2               [24] 2820 	movx	@r0,a
+      000A33 08               [12] 2821 	inc	r0
+      000A34 F2               [24] 2822 	movx	@r0,a
+      000A35 08               [12] 2823 	inc	r0
+      000A36 F2               [24] 2824 	movx	@r0,a
+      000A37 75 82 04         [24] 2825 	mov	dpl,#0x04
+      000A3A 12r00r00         [24] 2826 	lcall	_param_set
+                                   2827 ;	radio/main.c:445: fhop_init();
+      000A3D 12r00r00         [24] 2828 	lcall	_fhop_init
+                                   2829 ;	radio/main.c:448: tdm_init();
+      000A40 02r00r00         [24] 2830 	ljmp	_tdm_init
+                                   2831 	.area CSEG    (CODE)
+                                   2832 	.area CONST   (CODE)
+      000000                       2833 _g_banner_string:
+      000000 52 46 44 20 53 69 4B  2834 	.ascii "RFD SiK 2.0 on RFD900U"
+             20 32 2E 30 20 6F 6E
+             20 52 46 44 39 30 30
+             55
+      000016 00                    2835 	.db 0x00
+      000017                       2836 _g_version_string:
+      000017 32 2E 30              2837 	.ascii "2.0"
+      00001A 00                    2838 	.db 0x00
+      00001B                       2839 ___str_0:
+      00001B 66 61 69 6C 65 64 20  2840 	.ascii "failed to enable receiver"
+             74 6F 20 65 6E 61 62
+             6C 65 20 72 65 63 65
+             69 76 65 72
+      000034 00                    2841 	.db 0x00
+      000035                       2842 ___str_1:
+      000035 66 61 69 6C 65 64 20  2843 	.ascii "failed to initialise aes"
+             74 6F 20 69 6E 69 74
+             69 61 6C 69 73 65 20
+             61 65 73
+      00004D 00                    2844 	.db 0x00
+      00004E                       2845 ___str_2:
+      00004E 0A                    2846 	.db 0x0A
+      00004F 2A 2A 50 41 4E 49 43  2847 	.ascii "**PANIC**"
+             2A 2A
+      000058 00                    2848 	.db 0x00
+      000059                       2849 ___str_3:
+      000059 00                    2850 	.db 0x00
+      00005A                       2851 ___str_4:
+      00005A 72 61 64 69 6F 5F 69  2852 	.ascii "radio_initialise failed"
+             6E 69 74 69 61 6C 69
+             73 65 20 66 61 69 6C
+             65 64
+      000071 00                    2853 	.db 0x00
+      000072                       2854 ___str_5:
+      000072 62 61 64 20 62 6F 61  2855 	.ascii "bad board frequency %d"
+             72 64 20 66 72 65 71
+             75 65 6E 63 79 20 25
+             64
+      000088 00                    2856 	.db 0x00
+      000089                       2857 ___str_6:
+      000089 72 61 64 69 6F 5F 63  2858 	.ascii "radio_configure failed"
+             6F 6E 66 69 67 75 72
+             65 20 66 61 69 6C 65
+             64
+      00009F 00                    2859 	.db 0x00
+                                   2860 	.area XINIT   (CODE)
+                                   2861 	.area CABS    (ABS,CODE)

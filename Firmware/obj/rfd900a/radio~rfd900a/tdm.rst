@@ -1,0 +1,4130 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.1.0 #7066 (Nov 22 2011) (Linux)
+                              4 ; This file was generated Wed Sep  7 09:33:09 2022
+                              5 ;--------------------------------------------------------
+                              6 	.module tdm
+                              7 	.optsdcc -mmcs51 --model-large
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _fhop_set_locked
+                             13 	.globl _fhop_window_change
+                             14 	.globl _fhop_receive_channel
+                             15 	.globl _fhop_transmit_channel
+                             16 	.globl _packet_inject
+                             17 	.globl _packet_set_max_xmit
+                             18 	.globl _packet_force_resend
+                             19 	.globl _packet_is_duplicate
+                             20 	.globl _packet_is_injected
+                             21 	.globl _packet_is_resend
+                             22 	.globl _packet_get_next
+                             23 	.globl _timer_entropy
+                             24 	.globl _delay_msec
+                             25 	.globl _timer2_tick
+                             26 	.globl _radio_temperature
+                             27 	.globl _MAVLink_report
+                             28 	.globl _radio_receive_in_progress
+                             29 	.globl _radio_get_transmit_power
+                             30 	.globl _radio_air_rate
+                             31 	.globl _radio_current_rssi
+                             32 	.globl _radio_last_rssi
+                             33 	.globl _radio_set_channel
+                             34 	.globl _radio_receiver_on
+                             35 	.globl _radio_transmit
+                             36 	.globl _radio_preamble_detected
+                             37 	.globl _radio_receive_packet
+                             38 	.globl _printf_end_capture
+                             39 	.globl _printf_start_capture
+                             40 	.globl _printfl
+                             41 	.globl _panic
+                             42 	.globl _at_command
+                             43 	.globl _constrain
+                             44 	.globl _param_get
+                             45 	.globl _pins_user_check
+                             46 	.globl _serial_write_buf
+                             47 	.globl _strlen
+                             48 	.globl _memset
+                             49 	.globl _memcpy
+                             50 	.globl _rand
+                             51 	.globl _NSS1
+                             52 	.globl _IRQ
+                             53 	.globl _PA_ENABLE
+                             54 	.globl _PIN_ENABLE
+                             55 	.globl _PIN_CONFIG
+                             56 	.globl _LED_GREEN
+                             57 	.globl _LED_RED
+                             58 	.globl _SPI0EN
+                             59 	.globl _TXBMT0
+                             60 	.globl _NSS0MD0
+                             61 	.globl _NSS0MD1
+                             62 	.globl _RXOVRN0
+                             63 	.globl _MODF0
+                             64 	.globl _WCOL0
+                             65 	.globl _SPIF0
+                             66 	.globl _AD0CM0
+                             67 	.globl _AD0CM1
+                             68 	.globl _AD0CM2
+                             69 	.globl _AD0WINT
+                             70 	.globl _AD0BUSY
+                             71 	.globl _AD0INT
+                             72 	.globl _BURSTEN
+                             73 	.globl _AD0EN
+                             74 	.globl _CCF0
+                             75 	.globl _CCF1
+                             76 	.globl _CCF2
+                             77 	.globl _CCF3
+                             78 	.globl _CCF4
+                             79 	.globl _CCF5
+                             80 	.globl _CR
+                             81 	.globl _CF
+                             82 	.globl _P
+                             83 	.globl _F1
+                             84 	.globl _OV
+                             85 	.globl _RS0
+                             86 	.globl _RS1
+                             87 	.globl _F0
+                             88 	.globl _AC
+                             89 	.globl _CY
+                             90 	.globl _T2XCLK
+                             91 	.globl _T2RCLK
+                             92 	.globl _TR2
+                             93 	.globl _T2SPLIT
+                             94 	.globl _TF2CEN
+                             95 	.globl _TF2LEN
+                             96 	.globl _TF2L
+                             97 	.globl _TF2H
+                             98 	.globl _SI
+                             99 	.globl _ACK
+                            100 	.globl _ARBLOST
+                            101 	.globl _ACKRQ
+                            102 	.globl _STO
+                            103 	.globl _STA
+                            104 	.globl _TXMODE
+                            105 	.globl _MASTER
+                            106 	.globl _PX0
+                            107 	.globl _PT0
+                            108 	.globl _PX1
+                            109 	.globl _PT1
+                            110 	.globl _PS0
+                            111 	.globl _PT2
+                            112 	.globl _PSPI0
+                            113 	.globl _SPI1EN
+                            114 	.globl _TXBMT1
+                            115 	.globl _NSS1MD0
+                            116 	.globl _NSS1MD1
+                            117 	.globl _RXOVRN1
+                            118 	.globl _MODF1
+                            119 	.globl _WCOL1
+                            120 	.globl _SPIF1
+                            121 	.globl _EX0
+                            122 	.globl _ET0
+                            123 	.globl _EX1
+                            124 	.globl _ET1
+                            125 	.globl _ES0
+                            126 	.globl _ET2
+                            127 	.globl _ESPI0
+                            128 	.globl _EA
+                            129 	.globl _RI0
+                            130 	.globl _TI0
+                            131 	.globl _RB80
+                            132 	.globl _TB80
+                            133 	.globl _REN0
+                            134 	.globl _MCE0
+                            135 	.globl _S0MODE
+                            136 	.globl _CRC0VAL
+                            137 	.globl _CRC0INIT
+                            138 	.globl _CRC0SEL
+                            139 	.globl _IT0
+                            140 	.globl _IE0
+                            141 	.globl _IT1
+                            142 	.globl _IE1
+                            143 	.globl _TR0
+                            144 	.globl _TF0
+                            145 	.globl _TR1
+                            146 	.globl _TF1
+                            147 	.globl _PCA0CP4
+                            148 	.globl _PCA0CP0
+                            149 	.globl _PCA0
+                            150 	.globl _PCA0CP3
+                            151 	.globl _PCA0CP2
+                            152 	.globl _PCA0CP1
+                            153 	.globl _PCA0CP5
+                            154 	.globl _TMR2
+                            155 	.globl _TMR2RL
+                            156 	.globl _ADC0LT
+                            157 	.globl _ADC0GT
+                            158 	.globl _ADC0
+                            159 	.globl _TMR3
+                            160 	.globl _TMR3RL
+                            161 	.globl _TOFF
+                            162 	.globl _DP
+                            163 	.globl _VDM0CN
+                            164 	.globl _PCA0CPH4
+                            165 	.globl _PCA0CPL4
+                            166 	.globl _PCA0CPH0
+                            167 	.globl _PCA0CPL0
+                            168 	.globl _PCA0H
+                            169 	.globl _PCA0L
+                            170 	.globl _SPI0CN
+                            171 	.globl _EIP2
+                            172 	.globl _EIP1
+                            173 	.globl _SMB0ADM
+                            174 	.globl _SMB0ADR
+                            175 	.globl _P2MDIN
+                            176 	.globl _P1MDIN
+                            177 	.globl _P0MDIN
+                            178 	.globl _B
+                            179 	.globl _RSTSRC
+                            180 	.globl _PCA0CPH3
+                            181 	.globl _PCA0CPL3
+                            182 	.globl _PCA0CPH2
+                            183 	.globl _PCA0CPL2
+                            184 	.globl _PCA0CPH1
+                            185 	.globl _PCA0CPL1
+                            186 	.globl _ADC0CN
+                            187 	.globl _EIE2
+                            188 	.globl _EIE1
+                            189 	.globl _FLWR
+                            190 	.globl _IT01CF
+                            191 	.globl _XBR2
+                            192 	.globl _XBR1
+                            193 	.globl _XBR0
+                            194 	.globl _ACC
+                            195 	.globl _PCA0PWM
+                            196 	.globl _PCA0CPM4
+                            197 	.globl _PCA0CPM3
+                            198 	.globl _PCA0CPM2
+                            199 	.globl _PCA0CPM1
+                            200 	.globl _PCA0CPM0
+                            201 	.globl _PCA0MD
+                            202 	.globl _PCA0CN
+                            203 	.globl _P0MAT
+                            204 	.globl _P2SKIP
+                            205 	.globl _P1SKIP
+                            206 	.globl _P0SKIP
+                            207 	.globl _PCA0CPH5
+                            208 	.globl _PCA0CPL5
+                            209 	.globl _REF0CN
+                            210 	.globl _PSW
+                            211 	.globl _P1MAT
+                            212 	.globl _PCA0CPM5
+                            213 	.globl _TMR2H
+                            214 	.globl _TMR2L
+                            215 	.globl _TMR2RLH
+                            216 	.globl _TMR2RLL
+                            217 	.globl _REG0CN
+                            218 	.globl _TMR2CN
+                            219 	.globl _P0MASK
+                            220 	.globl _ADC0LTH
+                            221 	.globl _ADC0LTL
+                            222 	.globl _ADC0GTH
+                            223 	.globl _ADC0GTL
+                            224 	.globl _SMB0DAT
+                            225 	.globl _SMB0CF
+                            226 	.globl _SMB0CN
+                            227 	.globl _P1MASK
+                            228 	.globl _ADC0H
+                            229 	.globl _ADC0L
+                            230 	.globl _ADC0TK
+                            231 	.globl _ADC0CF
+                            232 	.globl _ADC0MX
+                            233 	.globl _ADC0PWR
+                            234 	.globl _ADC0AC
+                            235 	.globl _IREF0CN
+                            236 	.globl _IP
+                            237 	.globl _FLKEY
+                            238 	.globl _FLSCL
+                            239 	.globl _PMU0CF
+                            240 	.globl _OSCICL
+                            241 	.globl _OSCICN
+                            242 	.globl _OSCXCN
+                            243 	.globl _SPI1CN
+                            244 	.globl _ONESHOT
+                            245 	.globl _EMI0TC
+                            246 	.globl _RTC0KEY
+                            247 	.globl _RTC0DAT
+                            248 	.globl _RTC0ADR
+                            249 	.globl _EMI0CF
+                            250 	.globl _EMI0CN
+                            251 	.globl _CLKSEL
+                            252 	.globl _IE
+                            253 	.globl _SFRPAGE
+                            254 	.globl _P2DRV
+                            255 	.globl _P2MDOUT
+                            256 	.globl _P1DRV
+                            257 	.globl _P1MDOUT
+                            258 	.globl _P0DRV
+                            259 	.globl _P0MDOUT
+                            260 	.globl _SPI0DAT
+                            261 	.globl _SPI0CKR
+                            262 	.globl _SPI0CFG
+                            263 	.globl _P2
+                            264 	.globl _CPT0MX
+                            265 	.globl _CPT1MX
+                            266 	.globl _CPT0MD
+                            267 	.globl _CPT1MD
+                            268 	.globl _CPT0CN
+                            269 	.globl _CPT1CN
+                            270 	.globl _SBUF0
+                            271 	.globl _SCON0
+                            272 	.globl _CRC0CNT
+                            273 	.globl _DC0CN
+                            274 	.globl _CRC0AUTO
+                            275 	.globl _DC0CF
+                            276 	.globl _TMR3H
+                            277 	.globl _CRC0FLIP
+                            278 	.globl _TMR3L
+                            279 	.globl _CRC0IN
+                            280 	.globl _TMR3RLH
+                            281 	.globl _CRC0CN
+                            282 	.globl _TMR3RLL
+                            283 	.globl _CRC0DAT
+                            284 	.globl _TMR3CN
+                            285 	.globl _P1
+                            286 	.globl _PSCTL
+                            287 	.globl _CKCON
+                            288 	.globl _TH1
+                            289 	.globl _TH0
+                            290 	.globl _TL1
+                            291 	.globl _TL0
+                            292 	.globl _TMOD
+                            293 	.globl _TCON
+                            294 	.globl _PCON
+                            295 	.globl _TOFFH
+                            296 	.globl _SPI1DAT
+                            297 	.globl _TOFFL
+                            298 	.globl _SPI1CKR
+                            299 	.globl _SPI1CFG
+                            300 	.globl _DPH
+                            301 	.globl _DPL
+                            302 	.globl _SP
+                            303 	.globl _P0
+                            304 	.globl _test_display
+                            305 	.globl _pbuf
+                            306 	.globl _trailer
+                            307 	.globl _lbt_rssi
+                            308 	.globl _duty_cycle_offset
+                            309 	.globl _duty_cycle
+                            310 	.globl _transmit_wait
+                            311 	.globl __canary
+                            312 	.globl _tdm_show_rssi
+                            313 	.globl _tdm_change_phase
+                            314 	.globl _tdm_remote_at
+                            315 	.globl _tdm_serial_loop
+                            316 	.globl _tdm_init
+                            317 	.globl _tdm_report_timing
+                            318 ;--------------------------------------------------------
+                            319 ; special function registers
+                            320 ;--------------------------------------------------------
+                            321 	.area RSEG    (ABS,DATA)
+   0000                     322 	.org 0x0000
+                    0080    323 _P0	=	0x0080
+                    0081    324 _SP	=	0x0081
+                    0082    325 _DPL	=	0x0082
+                    0083    326 _DPH	=	0x0083
+                    0084    327 _SPI1CFG	=	0x0084
+                    0085    328 _SPI1CKR	=	0x0085
+                    0085    329 _TOFFL	=	0x0085
+                    0086    330 _SPI1DAT	=	0x0086
+                    0086    331 _TOFFH	=	0x0086
+                    0087    332 _PCON	=	0x0087
+                    0088    333 _TCON	=	0x0088
+                    0089    334 _TMOD	=	0x0089
+                    008A    335 _TL0	=	0x008a
+                    008B    336 _TL1	=	0x008b
+                    008C    337 _TH0	=	0x008c
+                    008D    338 _TH1	=	0x008d
+                    008E    339 _CKCON	=	0x008e
+                    008F    340 _PSCTL	=	0x008f
+                    0090    341 _P1	=	0x0090
+                    0091    342 _TMR3CN	=	0x0091
+                    0091    343 _CRC0DAT	=	0x0091
+                    0092    344 _TMR3RLL	=	0x0092
+                    0092    345 _CRC0CN	=	0x0092
+                    0093    346 _TMR3RLH	=	0x0093
+                    0093    347 _CRC0IN	=	0x0093
+                    0094    348 _TMR3L	=	0x0094
+                    0095    349 _CRC0FLIP	=	0x0095
+                    0095    350 _TMR3H	=	0x0095
+                    0096    351 _DC0CF	=	0x0096
+                    0096    352 _CRC0AUTO	=	0x0096
+                    0097    353 _DC0CN	=	0x0097
+                    0097    354 _CRC0CNT	=	0x0097
+                    0098    355 _SCON0	=	0x0098
+                    0099    356 _SBUF0	=	0x0099
+                    009A    357 _CPT1CN	=	0x009a
+                    009B    358 _CPT0CN	=	0x009b
+                    009C    359 _CPT1MD	=	0x009c
+                    009D    360 _CPT0MD	=	0x009d
+                    009E    361 _CPT1MX	=	0x009e
+                    009F    362 _CPT0MX	=	0x009f
+                    00A0    363 _P2	=	0x00a0
+                    00A1    364 _SPI0CFG	=	0x00a1
+                    00A2    365 _SPI0CKR	=	0x00a2
+                    00A3    366 _SPI0DAT	=	0x00a3
+                    00A4    367 _P0MDOUT	=	0x00a4
+                    00A4    368 _P0DRV	=	0x00a4
+                    00A5    369 _P1MDOUT	=	0x00a5
+                    00A5    370 _P1DRV	=	0x00a5
+                    00A6    371 _P2MDOUT	=	0x00a6
+                    00A6    372 _P2DRV	=	0x00a6
+                    00A7    373 _SFRPAGE	=	0x00a7
+                    00A8    374 _IE	=	0x00a8
+                    00A9    375 _CLKSEL	=	0x00a9
+                    00AA    376 _EMI0CN	=	0x00aa
+                    00AB    377 _EMI0CF	=	0x00ab
+                    00AC    378 _RTC0ADR	=	0x00ac
+                    00AD    379 _RTC0DAT	=	0x00ad
+                    00AE    380 _RTC0KEY	=	0x00ae
+                    00AF    381 _EMI0TC	=	0x00af
+                    00AF    382 _ONESHOT	=	0x00af
+                    00B0    383 _SPI1CN	=	0x00b0
+                    00B1    384 _OSCXCN	=	0x00b1
+                    00B2    385 _OSCICN	=	0x00b2
+                    00B3    386 _OSCICL	=	0x00b3
+                    00B5    387 _PMU0CF	=	0x00b5
+                    00B6    388 _FLSCL	=	0x00b6
+                    00B7    389 _FLKEY	=	0x00b7
+                    00B8    390 _IP	=	0x00b8
+                    00B9    391 _IREF0CN	=	0x00b9
+                    00BA    392 _ADC0AC	=	0x00ba
+                    00BA    393 _ADC0PWR	=	0x00ba
+                    00BB    394 _ADC0MX	=	0x00bb
+                    00BC    395 _ADC0CF	=	0x00bc
+                    00BD    396 _ADC0TK	=	0x00bd
+                    00BD    397 _ADC0L	=	0x00bd
+                    00BE    398 _ADC0H	=	0x00be
+                    00BF    399 _P1MASK	=	0x00bf
+                    00C0    400 _SMB0CN	=	0x00c0
+                    00C1    401 _SMB0CF	=	0x00c1
+                    00C2    402 _SMB0DAT	=	0x00c2
+                    00C3    403 _ADC0GTL	=	0x00c3
+                    00C4    404 _ADC0GTH	=	0x00c4
+                    00C5    405 _ADC0LTL	=	0x00c5
+                    00C6    406 _ADC0LTH	=	0x00c6
+                    00C7    407 _P0MASK	=	0x00c7
+                    00C8    408 _TMR2CN	=	0x00c8
+                    00C9    409 _REG0CN	=	0x00c9
+                    00CA    410 _TMR2RLL	=	0x00ca
+                    00CB    411 _TMR2RLH	=	0x00cb
+                    00CC    412 _TMR2L	=	0x00cc
+                    00CD    413 _TMR2H	=	0x00cd
+                    00CE    414 _PCA0CPM5	=	0x00ce
+                    00CF    415 _P1MAT	=	0x00cf
+                    00D0    416 _PSW	=	0x00d0
+                    00D1    417 _REF0CN	=	0x00d1
+                    00D2    418 _PCA0CPL5	=	0x00d2
+                    00D3    419 _PCA0CPH5	=	0x00d3
+                    00D4    420 _P0SKIP	=	0x00d4
+                    00D5    421 _P1SKIP	=	0x00d5
+                    00D6    422 _P2SKIP	=	0x00d6
+                    00D7    423 _P0MAT	=	0x00d7
+                    00D8    424 _PCA0CN	=	0x00d8
+                    00D9    425 _PCA0MD	=	0x00d9
+                    00DA    426 _PCA0CPM0	=	0x00da
+                    00DB    427 _PCA0CPM1	=	0x00db
+                    00DC    428 _PCA0CPM2	=	0x00dc
+                    00DD    429 _PCA0CPM3	=	0x00dd
+                    00DE    430 _PCA0CPM4	=	0x00de
+                    00DF    431 _PCA0PWM	=	0x00df
+                    00E0    432 _ACC	=	0x00e0
+                    00E1    433 _XBR0	=	0x00e1
+                    00E2    434 _XBR1	=	0x00e2
+                    00E3    435 _XBR2	=	0x00e3
+                    00E4    436 _IT01CF	=	0x00e4
+                    00E5    437 _FLWR	=	0x00e5
+                    00E6    438 _EIE1	=	0x00e6
+                    00E7    439 _EIE2	=	0x00e7
+                    00E8    440 _ADC0CN	=	0x00e8
+                    00E9    441 _PCA0CPL1	=	0x00e9
+                    00EA    442 _PCA0CPH1	=	0x00ea
+                    00EB    443 _PCA0CPL2	=	0x00eb
+                    00EC    444 _PCA0CPH2	=	0x00ec
+                    00ED    445 _PCA0CPL3	=	0x00ed
+                    00EE    446 _PCA0CPH3	=	0x00ee
+                    00EF    447 _RSTSRC	=	0x00ef
+                    00F0    448 _B	=	0x00f0
+                    00F1    449 _P0MDIN	=	0x00f1
+                    00F2    450 _P1MDIN	=	0x00f2
+                    00F3    451 _P2MDIN	=	0x00f3
+                    00F4    452 _SMB0ADR	=	0x00f4
+                    00F5    453 _SMB0ADM	=	0x00f5
+                    00F6    454 _EIP1	=	0x00f6
+                    00F7    455 _EIP2	=	0x00f7
+                    00F8    456 _SPI0CN	=	0x00f8
+                    00F9    457 _PCA0L	=	0x00f9
+                    00FA    458 _PCA0H	=	0x00fa
+                    00FB    459 _PCA0CPL0	=	0x00fb
+                    00FC    460 _PCA0CPH0	=	0x00fc
+                    00FD    461 _PCA0CPL4	=	0x00fd
+                    00FE    462 _PCA0CPH4	=	0x00fe
+                    00FF    463 _VDM0CN	=	0x00ff
+                    8382    464 _DP	=	0x8382
+                    8685    465 _TOFF	=	0x8685
+                    9392    466 _TMR3RL	=	0x9392
+                    9594    467 _TMR3	=	0x9594
+                    BEBD    468 _ADC0	=	0xbebd
+                    C4C3    469 _ADC0GT	=	0xc4c3
+                    C6C5    470 _ADC0LT	=	0xc6c5
+                    CBCA    471 _TMR2RL	=	0xcbca
+                    CDCC    472 _TMR2	=	0xcdcc
+                    D3D2    473 _PCA0CP5	=	0xd3d2
+                    EAE9    474 _PCA0CP1	=	0xeae9
+                    ECEB    475 _PCA0CP2	=	0xeceb
+                    EEED    476 _PCA0CP3	=	0xeeed
+                    FAF9    477 _PCA0	=	0xfaf9
+                    FCFB    478 _PCA0CP0	=	0xfcfb
+                    FEFD    479 _PCA0CP4	=	0xfefd
+                            480 ;--------------------------------------------------------
+                            481 ; special function bits
+                            482 ;--------------------------------------------------------
+                            483 	.area RSEG    (ABS,DATA)
+   0000                     484 	.org 0x0000
+                    008F    485 _TF1	=	0x008f
+                    008E    486 _TR1	=	0x008e
+                    008D    487 _TF0	=	0x008d
+                    008C    488 _TR0	=	0x008c
+                    008B    489 _IE1	=	0x008b
+                    008A    490 _IT1	=	0x008a
+                    0089    491 _IE0	=	0x0089
+                    0088    492 _IT0	=	0x0088
+                    0096    493 _CRC0SEL	=	0x0096
+                    0095    494 _CRC0INIT	=	0x0095
+                    0094    495 _CRC0VAL	=	0x0094
+                    009F    496 _S0MODE	=	0x009f
+                    009D    497 _MCE0	=	0x009d
+                    009C    498 _REN0	=	0x009c
+                    009B    499 _TB80	=	0x009b
+                    009A    500 _RB80	=	0x009a
+                    0099    501 _TI0	=	0x0099
+                    0098    502 _RI0	=	0x0098
+                    00AF    503 _EA	=	0x00af
+                    00AE    504 _ESPI0	=	0x00ae
+                    00AD    505 _ET2	=	0x00ad
+                    00AC    506 _ES0	=	0x00ac
+                    00AB    507 _ET1	=	0x00ab
+                    00AA    508 _EX1	=	0x00aa
+                    00A9    509 _ET0	=	0x00a9
+                    00A8    510 _EX0	=	0x00a8
+                    00B7    511 _SPIF1	=	0x00b7
+                    00B6    512 _WCOL1	=	0x00b6
+                    00B5    513 _MODF1	=	0x00b5
+                    00B4    514 _RXOVRN1	=	0x00b4
+                    00B3    515 _NSS1MD1	=	0x00b3
+                    00B2    516 _NSS1MD0	=	0x00b2
+                    00B1    517 _TXBMT1	=	0x00b1
+                    00B0    518 _SPI1EN	=	0x00b0
+                    00BE    519 _PSPI0	=	0x00be
+                    00BD    520 _PT2	=	0x00bd
+                    00BC    521 _PS0	=	0x00bc
+                    00BB    522 _PT1	=	0x00bb
+                    00BA    523 _PX1	=	0x00ba
+                    00B9    524 _PT0	=	0x00b9
+                    00B8    525 _PX0	=	0x00b8
+                    00C7    526 _MASTER	=	0x00c7
+                    00C6    527 _TXMODE	=	0x00c6
+                    00C5    528 _STA	=	0x00c5
+                    00C4    529 _STO	=	0x00c4
+                    00C3    530 _ACKRQ	=	0x00c3
+                    00C2    531 _ARBLOST	=	0x00c2
+                    00C1    532 _ACK	=	0x00c1
+                    00C0    533 _SI	=	0x00c0
+                    00CF    534 _TF2H	=	0x00cf
+                    00CE    535 _TF2L	=	0x00ce
+                    00CD    536 _TF2LEN	=	0x00cd
+                    00CC    537 _TF2CEN	=	0x00cc
+                    00CB    538 _T2SPLIT	=	0x00cb
+                    00CA    539 _TR2	=	0x00ca
+                    00C9    540 _T2RCLK	=	0x00c9
+                    00C8    541 _T2XCLK	=	0x00c8
+                    00D7    542 _CY	=	0x00d7
+                    00D6    543 _AC	=	0x00d6
+                    00D5    544 _F0	=	0x00d5
+                    00D4    545 _RS1	=	0x00d4
+                    00D3    546 _RS0	=	0x00d3
+                    00D2    547 _OV	=	0x00d2
+                    00D1    548 _F1	=	0x00d1
+                    00D0    549 _P	=	0x00d0
+                    00DF    550 _CF	=	0x00df
+                    00DE    551 _CR	=	0x00de
+                    00DD    552 _CCF5	=	0x00dd
+                    00DC    553 _CCF4	=	0x00dc
+                    00DB    554 _CCF3	=	0x00db
+                    00DA    555 _CCF2	=	0x00da
+                    00D9    556 _CCF1	=	0x00d9
+                    00D8    557 _CCF0	=	0x00d8
+                    00EF    558 _AD0EN	=	0x00ef
+                    00EE    559 _BURSTEN	=	0x00ee
+                    00ED    560 _AD0INT	=	0x00ed
+                    00EC    561 _AD0BUSY	=	0x00ec
+                    00EB    562 _AD0WINT	=	0x00eb
+                    00EA    563 _AD0CM2	=	0x00ea
+                    00E9    564 _AD0CM1	=	0x00e9
+                    00E8    565 _AD0CM0	=	0x00e8
+                    00FF    566 _SPIF0	=	0x00ff
+                    00FE    567 _WCOL0	=	0x00fe
+                    00FD    568 _MODF0	=	0x00fd
+                    00FC    569 _RXOVRN0	=	0x00fc
+                    00FB    570 _NSS0MD1	=	0x00fb
+                    00FA    571 _NSS0MD0	=	0x00fa
+                    00F9    572 _TXBMT0	=	0x00f9
+                    00F8    573 _SPI0EN	=	0x00f8
+                    0096    574 _LED_RED	=	0x0096
+                    0095    575 _LED_GREEN	=	0x0095
+                    0082    576 _PIN_CONFIG	=	0x0082
+                    0083    577 _PIN_ENABLE	=	0x0083
+                    00A5    578 _PA_ENABLE	=	0x00a5
+                    0087    579 _IRQ	=	0x0087
+                    0094    580 _NSS1	=	0x0094
+                            581 ;--------------------------------------------------------
+                            582 ; overlayable register banks
+                            583 ;--------------------------------------------------------
+                            584 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     585 	.ds 8
+                            586 ;--------------------------------------------------------
+                            587 ; internal ram data
+                            588 ;--------------------------------------------------------
+                            589 	.area DSEG    (DATA)
+   002E                     590 _tdm_show_rssi_sloc0_1_0:
+   002E                     591 	.ds 2
+   0030                     592 _tdm_show_rssi_sloc1_1_0:
+   0030                     593 	.ds 2
+   0032                     594 _tdm_show_rssi_sloc2_1_0:
+   0032                     595 	.ds 2
+   0034                     596 _tdm_show_rssi_sloc3_1_0:
+   0034                     597 	.ds 2
+   0036                     598 _tdm_show_rssi_sloc4_1_0:
+   0036                     599 	.ds 2
+   0038                     600 _sync_tx_windows_old_state_1_1:
+   0038                     601 	.ds 1
+   0039                     602 _tdm_state_update_sloc0_1_0:
+   0039                     603 	.ds 2
+   003B                     604 _tdm_state_update_sloc1_1_0:
+   003B                     605 	.ds 4
+   003F                     606 _tdm_state_update_sloc2_1_0:
+   003F                     607 	.ds 4
+   0043                     608 _tdm_init_sloc0_1_0:
+   0043                     609 	.ds 4
+                            610 ;--------------------------------------------------------
+                            611 ; overlayable items in internal ram 
+                            612 ;--------------------------------------------------------
+                            613 	.area OSEG    (OVR,DATA)
+                            614 ;--------------------------------------------------------
+                            615 ; indirectly addressable internal ram data
+                            616 ;--------------------------------------------------------
+                            617 	.area ISEG    (DATA)
+                    00FF    618 __canary	=	0x00ff
+                            619 ;--------------------------------------------------------
+                            620 ; absolute internal ram data
+                            621 ;--------------------------------------------------------
+                            622 	.area IABS    (ABS,DATA)
+                            623 	.area IABS    (ABS,DATA)
+                            624 ;--------------------------------------------------------
+                            625 ; bit data
+                            626 ;--------------------------------------------------------
+                            627 	.area BSEG    (BIT)
+   000E                     628 _bonus_transmit:
+   000E                     629 	.ds 1
+   000F                     630 _transmit_yield:
+   000F                     631 	.ds 1
+   0010                     632 _blink_state:
+   0010                     633 	.ds 1
+   0011                     634 _received_packet:
+   0011                     635 	.ds 1
+   0012                     636 _duty_cycle_wait:
+   0012                     637 	.ds 1
+   0013                     638 _send_statistics:
+   0013                     639 	.ds 1
+   0014                     640 _send_at_command:
+   0014                     641 	.ds 1
+   0015                     642 _sync_tx_windows_sloc0_1_0:
+   0015                     643 	.ds 1
+   0016                     644 _tdm_state_update_sloc3_1_0:
+   0016                     645 	.ds 1
+   0017                     646 _tdm_serial_loop_sloc0_1_0:
+   0017                     647 	.ds 1
+                            648 ;--------------------------------------------------------
+                            649 ; paged external ram data
+                            650 ;--------------------------------------------------------
+                            651 	.area PSEG    (PAG,XDATA)
+   0016                     652 _tdm_state:
+   0016                     653 	.ds 1
+   0017                     654 _tdm_state_remaining:
+   0017                     655 	.ds 2
+   0019                     656 _tx_window_width:
+   0019                     657 	.ds 2
+   001B                     658 _max_data_packet_length:
+   001B                     659 	.ds 1
+   001C                     660 _silence_period:
+   001C                     661 	.ds 2
+   001E                     662 _packet_latency:
+   001E                     663 	.ds 2
+   0020                     664 _ticks_per_byte:
+   0020                     665 	.ds 2
+   0022                     666 _transmit_wait::
+   0022                     667 	.ds 2
+   0024                     668 _duty_cycle::
+   0024                     669 	.ds 1
+   0025                     670 _average_duty_cycle:
+   0025                     671 	.ds 4
+   0029                     672 _duty_cycle_offset::
+   0029                     673 	.ds 1
+   002A                     674 _transmitted_ticks:
+   002A                     675 	.ds 2
+   002C                     676 _lbt_rssi::
+   002C                     677 	.ds 1
+   002D                     678 _lbt_listen_time:
+   002D                     679 	.ds 2
+   002F                     680 _lbt_min_time:
+   002F                     681 	.ds 2
+   0031                     682 _lbt_rand:
+   0031                     683 	.ds 2
+   0033                     684 _trailer::
+   0033                     685 	.ds 2
+   0035                     686 _remote_at_cmd:
+   0035                     687 	.ds 17
+   0046                     688 _sync_tx_windows_delta_2_8:
+   0046                     689 	.ds 2
+   0048                     690 _tdm_serial_loop_len_1_1:
+   0048                     691 	.ds 1
+   0049                     692 _tdm_serial_loop_tdelta_1_1:
+   0049                     693 	.ds 2
+   004B                     694 _tdm_serial_loop_last_t_1_1:
+   004B                     695 	.ds 2
+   004D                     696 _tdm_serial_loop_last_link_update_1_1:
+   004D                     697 	.ds 2
+                            698 ;--------------------------------------------------------
+                            699 ; external ram data
+                            700 ;--------------------------------------------------------
+                            701 	.area XSEG    (XDATA)
+   0307                     702 _pbuf::
+   0307                     703 	.ds 252
+   0403                     704 _test_display::
+   0403                     705 	.ds 1
+   0404                     706 _link_update_unlock_count_1_1:
+   0404                     707 	.ds 1
+   0405                     708 _link_update_temperature_count_1_1:
+   0405                     709 	.ds 1
+   0406                     710 _tdm_init_i_1_1:
+   0406                     711 	.ds 2
+   0408                     712 _tdm_init_window_width_1_1:
+   0408                     713 	.ds 4
+                            714 ;--------------------------------------------------------
+                            715 ; absolute external ram data
+                            716 ;--------------------------------------------------------
+                            717 	.area XABS    (ABS,XDATA)
+                            718 ;--------------------------------------------------------
+                            719 ; external initialized ram data
+                            720 ;--------------------------------------------------------
+                            721 	.area XISEG   (XDATA)
+                            722 	.area HOME    (CODE)
+                            723 	.area GSINIT0 (CODE)
+                            724 	.area GSINIT1 (CODE)
+                            725 	.area GSINIT2 (CODE)
+                            726 	.area GSINIT3 (CODE)
+                            727 	.area GSINIT4 (CODE)
+                            728 	.area GSINIT5 (CODE)
+                            729 	.area GSINIT  (CODE)
+                            730 	.area GSFINAL (CODE)
+                            731 	.area CSEG    (CODE)
+                            732 ;--------------------------------------------------------
+                            733 ; global & static initialisations
+                            734 ;--------------------------------------------------------
+                            735 	.area HOME    (CODE)
+                            736 	.area GSINIT  (CODE)
+                            737 	.area GSFINAL (CODE)
+                            738 	.area GSINIT  (CODE)
+                            739 ;------------------------------------------------------------
+                            740 ;Allocation info for local variables in function 'link_update'
+                            741 ;------------------------------------------------------------
+                            742 ;old_remaining             Allocated to registers r6 r7 
+                            743 ;unlock_count              Allocated with name '_link_update_unlock_count_1_1'
+                            744 ;temperature_count         Allocated with name '_link_update_temperature_count_1_1'
+                            745 ;------------------------------------------------------------
+                            746 ;	radio/tdm.c:383: static uint8_t unlock_count = 10, temperature_count;
+   04DA 90 04 04            747 	mov	dptr,#_link_update_unlock_count_1_1
+   04DD 74 0A               748 	mov	a,#0x0A
+   04DF F0                  749 	movx	@dptr,a
+                            750 ;--------------------------------------------------------
+                            751 ; Home
+                            752 ;--------------------------------------------------------
+                            753 	.area HOME    (CODE)
+                            754 	.area HOME    (CODE)
+                            755 ;--------------------------------------------------------
+                            756 ; code
+                            757 ;--------------------------------------------------------
+                            758 	.area CSEG    (CODE)
+                            759 ;------------------------------------------------------------
+                            760 ;Allocation info for local variables in function 'tdm_show_rssi'
+                            761 ;------------------------------------------------------------
+                            762 ;sloc0                     Allocated with name '_tdm_show_rssi_sloc0_1_0'
+                            763 ;sloc1                     Allocated with name '_tdm_show_rssi_sloc1_1_0'
+                            764 ;sloc2                     Allocated with name '_tdm_show_rssi_sloc2_1_0'
+                            765 ;sloc3                     Allocated with name '_tdm_show_rssi_sloc3_1_0'
+                            766 ;sloc4                     Allocated with name '_tdm_show_rssi_sloc4_1_0'
+                            767 ;------------------------------------------------------------
+                            768 ;	radio/tdm.c:162: tdm_show_rssi(void)
+                            769 ;	-----------------------------------------
+                            770 ;	 function tdm_show_rssi
+                            771 ;	-----------------------------------------
+   1430                     772 _tdm_show_rssi:
+                    0007    773 	ar7 = 0x07
+                    0006    774 	ar6 = 0x06
+                    0005    775 	ar5 = 0x05
+                    0004    776 	ar4 = 0x04
+                    0003    777 	ar3 = 0x03
+                    0002    778 	ar2 = 0x02
+                    0001    779 	ar1 = 0x01
+                    0000    780 	ar0 = 0x00
+                            781 ;	radio/tdm.c:164: printf("L/R RSSI: %u/%u  L/R noise: %u/%u pkts: %u ",
+   1430 78 9A               782 	mov	r0,#(_statistics + 0x0002)
+   1432 E2                  783 	movx	a,@r0
+   1433 FE                  784 	mov	r6,a
+   1434 08                  785 	inc	r0
+   1435 E2                  786 	movx	a,@r0
+   1436 FF                  787 	mov	r7,a
+   1437 78 9D               788 	mov	r0,#(_remote_statistics + 0x0001)
+   1439 E2                  789 	movx	a,@r0
+   143A FD                  790 	mov	r5,a
+   143B 7C 00               791 	mov	r4,#0x00
+   143D 78 99               792 	mov	r0,#(_statistics + 0x0001)
+   143F E2                  793 	movx	a,@r0
+   1440 FB                  794 	mov	r3,a
+   1441 8B 2E               795 	mov	_tdm_show_rssi_sloc0_1_0,r3
+   1443 75 2F 00            796 	mov	(_tdm_show_rssi_sloc0_1_0 + 1),#0x00
+   1446 78 9C               797 	mov	r0,#_remote_statistics
+   1448 E2                  798 	movx	a,@r0
+   1449 FB                  799 	mov	r3,a
+   144A 8B 30               800 	mov	_tdm_show_rssi_sloc1_1_0,r3
+   144C 75 31 00            801 	mov	(_tdm_show_rssi_sloc1_1_0 + 1),#0x00
+   144F 78 98               802 	mov	r0,#_statistics
+   1451 E2                  803 	movx	a,@r0
+   1452 FB                  804 	mov	r3,a
+   1453 7A 00               805 	mov	r2,#0x00
+   1455 C0 06               806 	push	ar6
+   1457 C0 07               807 	push	ar7
+   1459 C0 05               808 	push	ar5
+   145B C0 04               809 	push	ar4
+   145D C0 2E               810 	push	_tdm_show_rssi_sloc0_1_0
+   145F C0 2F               811 	push	(_tdm_show_rssi_sloc0_1_0 + 1)
+   1461 C0 30               812 	push	_tdm_show_rssi_sloc1_1_0
+   1463 C0 31               813 	push	(_tdm_show_rssi_sloc1_1_0 + 1)
+   1465 C0 03               814 	push	ar3
+   1467 C0 02               815 	push	ar2
+   1469 74 3C               816 	mov	a,#__str_0
+   146B C0 E0               817 	push	acc
+   146D 74 70               818 	mov	a,#(__str_0 >> 8)
+   146F C0 E0               819 	push	acc
+   1471 74 80               820 	mov	a,#0x80
+   1473 C0 E0               821 	push	acc
+   1475 12 12 5A            822 	lcall	_printfl
+   1478 E5 81               823 	mov	a,sp
+   147A 24 F3               824 	add	a,#0xf3
+   147C F5 81               825 	mov	sp,a
+                            826 ;	radio/tdm.c:173: printf(" txe=%u rxe=%u stx=%u srx=%u ecc=%u/%u temp=%d dco=%u\n",
+   147E 78 29               827 	mov	r0,#_duty_cycle_offset
+   1480 E2                  828 	movx	a,@r0
+   1481 FE                  829 	mov	r6,a
+   1482 7F 00               830 	mov	r7,#0x00
+   1484 C0 07               831 	push	ar7
+   1486 C0 06               832 	push	ar6
+   1488 12 39 F0            833 	lcall	_radio_temperature
+   148B AC 82               834 	mov	r4,dpl
+   148D AD 83               835 	mov	r5,dph
+   148F D0 06               836 	pop	ar6
+   1491 D0 07               837 	pop	ar7
+   1493 78 96               838 	mov	r0,#(_errors + 0x000a)
+   1495 E2                  839 	movx	a,@r0
+   1496 F5 30               840 	mov	_tdm_show_rssi_sloc1_1_0,a
+   1498 08                  841 	inc	r0
+   1499 E2                  842 	movx	a,@r0
+   149A F5 31               843 	mov	(_tdm_show_rssi_sloc1_1_0 + 1),a
+   149C 78 94               844 	mov	r0,#(_errors + 0x0008)
+   149E E2                  845 	movx	a,@r0
+   149F F5 2E               846 	mov	_tdm_show_rssi_sloc0_1_0,a
+   14A1 08                  847 	inc	r0
+   14A2 E2                  848 	movx	a,@r0
+   14A3 F5 2F               849 	mov	(_tdm_show_rssi_sloc0_1_0 + 1),a
+   14A5 78 92               850 	mov	r0,#(_errors + 0x0006)
+   14A7 E2                  851 	movx	a,@r0
+   14A8 F5 32               852 	mov	_tdm_show_rssi_sloc2_1_0,a
+   14AA 08                  853 	inc	r0
+   14AB E2                  854 	movx	a,@r0
+   14AC F5 33               855 	mov	(_tdm_show_rssi_sloc2_1_0 + 1),a
+   14AE 78 90               856 	mov	r0,#(_errors + 0x0004)
+   14B0 E2                  857 	movx	a,@r0
+   14B1 F5 34               858 	mov	_tdm_show_rssi_sloc3_1_0,a
+   14B3 08                  859 	inc	r0
+   14B4 E2                  860 	movx	a,@r0
+   14B5 F5 35               861 	mov	(_tdm_show_rssi_sloc3_1_0 + 1),a
+   14B7 78 8C               862 	mov	r0,#_errors
+   14B9 E2                  863 	movx	a,@r0
+   14BA F5 36               864 	mov	_tdm_show_rssi_sloc4_1_0,a
+   14BC 08                  865 	inc	r0
+   14BD E2                  866 	movx	a,@r0
+   14BE F5 37               867 	mov	(_tdm_show_rssi_sloc4_1_0 + 1),a
+   14C0 78 8E               868 	mov	r0,#(_errors + 0x0002)
+   14C2 E2                  869 	movx	a,@r0
+   14C3 FA                  870 	mov	r2,a
+   14C4 08                  871 	inc	r0
+   14C5 E2                  872 	movx	a,@r0
+   14C6 FB                  873 	mov	r3,a
+   14C7 C0 06               874 	push	ar6
+   14C9 C0 07               875 	push	ar7
+   14CB C0 04               876 	push	ar4
+   14CD C0 05               877 	push	ar5
+   14CF C0 30               878 	push	_tdm_show_rssi_sloc1_1_0
+   14D1 C0 31               879 	push	(_tdm_show_rssi_sloc1_1_0 + 1)
+   14D3 C0 2E               880 	push	_tdm_show_rssi_sloc0_1_0
+   14D5 C0 2F               881 	push	(_tdm_show_rssi_sloc0_1_0 + 1)
+   14D7 C0 32               882 	push	_tdm_show_rssi_sloc2_1_0
+   14D9 C0 33               883 	push	(_tdm_show_rssi_sloc2_1_0 + 1)
+   14DB C0 34               884 	push	_tdm_show_rssi_sloc3_1_0
+   14DD C0 35               885 	push	(_tdm_show_rssi_sloc3_1_0 + 1)
+   14DF C0 36               886 	push	_tdm_show_rssi_sloc4_1_0
+   14E1 C0 37               887 	push	(_tdm_show_rssi_sloc4_1_0 + 1)
+   14E3 C0 02               888 	push	ar2
+   14E5 C0 03               889 	push	ar3
+   14E7 74 68               890 	mov	a,#__str_1
+   14E9 C0 E0               891 	push	acc
+   14EB 74 70               892 	mov	a,#(__str_1 >> 8)
+   14ED C0 E0               893 	push	acc
+   14EF 74 80               894 	mov	a,#0x80
+   14F1 C0 E0               895 	push	acc
+   14F3 12 12 5A            896 	lcall	_printfl
+   14F6 E5 81               897 	mov	a,sp
+   14F8 24 ED               898 	add	a,#0xed
+   14FA F5 81               899 	mov	sp,a
+                            900 ;	radio/tdm.c:186: statistics.receive_count = 0;
+   14FC 78 9A               901 	mov	r0,#(_statistics + 0x0002)
+   14FE E4                  902 	clr	a
+   14FF F2                  903 	movx	@r0,a
+   1500 08                  904 	inc	r0
+   1501 F2                  905 	movx	@r0,a
+   1502 22                  906 	ret
+                            907 ;------------------------------------------------------------
+                            908 ;Allocation info for local variables in function 'display_test_output'
+                            909 ;------------------------------------------------------------
+                            910 ;	radio/tdm.c:192: display_test_output(void)
+                            911 ;	-----------------------------------------
+                            912 ;	 function display_test_output
+                            913 ;	-----------------------------------------
+   1503                     914 _display_test_output:
+                            915 ;	radio/tdm.c:194: if (test_display & AT_TEST_RSSI) {
+   1503 90 04 03            916 	mov	dptr,#_test_display
+   1506 E0                  917 	movx	a,@dptr
+   1507 FF                  918 	mov	r7,a
+   1508 30 E0 03            919 	jnb	acc.0,00103$
+                            920 ;	radio/tdm.c:195: tdm_show_rssi();
+   150B 02 14 30            921 	ljmp	_tdm_show_rssi
+   150E                     922 00103$:
+   150E 22                  923 	ret
+                            924 ;------------------------------------------------------------
+                            925 ;Allocation info for local variables in function 'flight_time_estimate'
+                            926 ;------------------------------------------------------------
+                            927 ;	radio/tdm.c:205: static uint16_t flight_time_estimate(__pdata uint8_t packet_len)
+                            928 ;	-----------------------------------------
+                            929 ;	 function flight_time_estimate
+                            930 ;	-----------------------------------------
+   150F                     931 _flight_time_estimate:
+   150F AF 82               932 	mov	r7,dpl
+                            933 ;	radio/tdm.c:207: return packet_latency + (packet_len * ticks_per_byte);
+   1511 7E 00               934 	mov	r6,#0x00
+   1513 78 20               935 	mov	r0,#_ticks_per_byte
+   1515 90 05 F2            936 	mov	dptr,#__mulint_PARM_2
+   1518 E2                  937 	movx	a,@r0
+   1519 F0                  938 	movx	@dptr,a
+   151A 08                  939 	inc	r0
+   151B E2                  940 	movx	a,@r0
+   151C A3                  941 	inc	dptr
+   151D F0                  942 	movx	@dptr,a
+   151E 8F 82               943 	mov	dpl,r7
+   1520 8E 83               944 	mov	dph,r6
+   1522 12 67 2F            945 	lcall	__mulint
+   1525 AE 82               946 	mov	r6,dpl
+   1527 AF 83               947 	mov	r7,dph
+   1529 78 1E               948 	mov	r0,#_packet_latency
+   152B E2                  949 	movx	a,@r0
+   152C 2E                  950 	add	a,r6
+   152D FE                  951 	mov	r6,a
+   152E 08                  952 	inc	r0
+   152F E2                  953 	movx	a,@r0
+   1530 3F                  954 	addc	a,r7
+   1531 8E 82               955 	mov	dpl,r6
+   1533 F5 83               956 	mov	dph,a
+   1535 22                  957 	ret
+                            958 ;------------------------------------------------------------
+                            959 ;Allocation info for local variables in function 'sync_tx_windows'
+                            960 ;------------------------------------------------------------
+                            961 ;old_state                 Allocated with name '_sync_tx_windows_old_state_1_1'
+                            962 ;------------------------------------------------------------
+                            963 ;	radio/tdm.c:221: sync_tx_windows(__pdata uint8_t packet_length)
+                            964 ;	-----------------------------------------
+                            965 ;	 function sync_tx_windows
+                            966 ;	-----------------------------------------
+   1536                     967 _sync_tx_windows:
+   1536 AF 82               968 	mov	r7,dpl
+                            969 ;	radio/tdm.c:223: __data enum tdm_state old_state = tdm_state;
+   1538 78 16               970 	mov	r0,#_tdm_state
+   153A E2                  971 	movx	a,@r0
+   153B F5 38               972 	mov	_sync_tx_windows_old_state_1_1,a
+                            973 ;	radio/tdm.c:224: __pdata uint16_t old_remaining = tdm_state_remaining;
+   153D 78 17               974 	mov	r0,#_tdm_state_remaining
+   153F E2                  975 	movx	a,@r0
+   1540 FC                  976 	mov	r4,a
+   1541 08                  977 	inc	r0
+   1542 E2                  978 	movx	a,@r0
+   1543 FD                  979 	mov	r5,a
+                            980 ;	radio/tdm.c:226: if (trailer.bonus) {
+   1544 78 34               981 	mov	r0,#(_trailer + 0x0001)
+   1546 E2                  982 	movx	a,@r0
+   1547 30 E6 46            983 	jnb	acc.6,00109$
+                            984 ;	radio/tdm.c:229: if (old_state == TDM_SILENCE1) {
+   154A 74 01               985 	mov	a,#0x01
+   154C B5 38 10            986 	cjne	a,_sync_tx_windows_old_state_1_1,00106$
+                            987 ;	radio/tdm.c:235: tdm_state_remaining = silence_period;
+   154F 78 1C               988 	mov	r0,#_silence_period
+   1551 E2                  989 	movx	a,@r0
+   1552 FA                  990 	mov	r2,a
+   1553 08                  991 	inc	r0
+   1554 E2                  992 	movx	a,@r0
+   1555 FB                  993 	mov	r3,a
+   1556 78 17               994 	mov	r0,#_tdm_state_remaining
+   1558 EA                  995 	mov	a,r2
+   1559 F2                  996 	movx	@r0,a
+   155A 08                  997 	inc	r0
+   155B EB                  998 	mov	a,r3
+   155C F2                  999 	movx	@r0,a
+   155D 80 46              1000 	sjmp	00110$
+   155F                    1001 00106$:
+                           1002 ;	radio/tdm.c:236: } else if (old_state == TDM_RECEIVE || old_state == TDM_SILENCE2) {
+   155F 74 02              1003 	mov	a,#0x02
+   1561 B5 38 02           1004 	cjne	a,_sync_tx_windows_old_state_1_1,00135$
+   1564 80 05              1005 	sjmp	00101$
+   1566                    1006 00135$:
+   1566 74 03              1007 	mov	a,#0x03
+   1568 B5 38 0F           1008 	cjne	a,_sync_tx_windows_old_state_1_1,00102$
+   156B                    1009 00101$:
+                           1010 ;	radio/tdm.c:241: tdm_state = TDM_SILENCE2;
+   156B 78 16              1011 	mov	r0,#_tdm_state
+   156D 74 03              1012 	mov	a,#0x03
+   156F F2                 1013 	movx	@r0,a
+                           1014 ;	radio/tdm.c:242: tdm_state_remaining = 1;
+   1570 78 17              1015 	mov	r0,#_tdm_state_remaining
+   1572 74 01              1016 	mov	a,#0x01
+   1574 F2                 1017 	movx	@r0,a
+   1575 08                 1018 	inc	r0
+   1576 E4                 1019 	clr	a
+   1577 F2                 1020 	movx	@r0,a
+   1578 80 2B              1021 	sjmp	00110$
+   157A                    1022 00102$:
+                           1023 ;	radio/tdm.c:244: tdm_state = TDM_TRANSMIT;
+   157A 78 16              1024 	mov	r0,#_tdm_state
+   157C E4                 1025 	clr	a
+   157D F2                 1026 	movx	@r0,a
+                           1027 ;	radio/tdm.c:245: tdm_state_remaining = trailer.window;
+   157E 78 33              1028 	mov	r0,#_trailer
+   1580 E2                 1029 	movx	a,@r0
+   1581 FA                 1030 	mov	r2,a
+   1582 08                 1031 	inc	r0
+   1583 E2                 1032 	movx	a,@r0
+   1584 54 1F              1033 	anl	a,#0x1F
+   1586 FB                 1034 	mov	r3,a
+   1587 78 17              1035 	mov	r0,#_tdm_state_remaining
+   1589 EA                 1036 	mov	a,r2
+   158A F2                 1037 	movx	@r0,a
+   158B 08                 1038 	inc	r0
+   158C EB                 1039 	mov	a,r3
+   158D F2                 1040 	movx	@r0,a
+   158E 80 15              1041 	sjmp	00110$
+   1590                    1042 00109$:
+                           1043 ;	radio/tdm.c:250: tdm_state = TDM_RECEIVE;
+   1590 78 16              1044 	mov	r0,#_tdm_state
+   1592 74 02              1045 	mov	a,#0x02
+   1594 F2                 1046 	movx	@r0,a
+                           1047 ;	radio/tdm.c:251: tdm_state_remaining = trailer.window;
+   1595 78 33              1048 	mov	r0,#_trailer
+   1597 E2                 1049 	movx	a,@r0
+   1598 FA                 1050 	mov	r2,a
+   1599 08                 1051 	inc	r0
+   159A E2                 1052 	movx	a,@r0
+   159B 54 1F              1053 	anl	a,#0x1F
+   159D FB                 1054 	mov	r3,a
+   159E 78 17              1055 	mov	r0,#_tdm_state_remaining
+   15A0 EA                 1056 	mov	a,r2
+   15A1 F2                 1057 	movx	@r0,a
+   15A2 08                 1058 	inc	r0
+   15A3 EB                 1059 	mov	a,r3
+   15A4 F2                 1060 	movx	@r0,a
+   15A5                    1061 00110$:
+                           1062 ;	radio/tdm.c:256: bonus_transmit = (tdm_state == TDM_RECEIVE && packet_length==0);
+   15A5 78 16              1063 	mov	r0,#_tdm_state
+   15A7 E2                 1064 	movx	a,@r0
+   15A8 B4 02 09           1065 	cjne	a,#0x02,00121$
+   15AB EF                 1066 	mov	a,r7
+   15AC B4 01 00           1067 	cjne	a,#0x01,00140$
+   15AF                    1068 00140$:
+   15AF E4                 1069 	clr	a
+   15B0 33                 1070 	rlc	a
+   15B1 FB                 1071 	mov	r3,a
+   15B2 70 04              1072 	jnz	00122$
+   15B4                    1073 00121$:
+   15B4 C2 15              1074 	clr	_sync_tx_windows_sloc0_1_0
+   15B6 80 02              1075 	sjmp	00123$
+   15B8                    1076 00122$:
+   15B8 D2 15              1077 	setb	_sync_tx_windows_sloc0_1_0
+   15BA                    1078 00123$:
+   15BA A2 15              1079 	mov	c,_sync_tx_windows_sloc0_1_0
+   15BC 92 0E              1080 	mov	_bonus_transmit,c
+                           1081 ;	radio/tdm.c:259: if (tdm_state != TDM_TRANSMIT) {
+   15BE 78 16              1082 	mov	r0,#_tdm_state
+   15C0 E2                 1083 	movx	a,@r0
+   15C1 60 02              1084 	jz	00112$
+                           1085 ;	radio/tdm.c:260: transmit_yield = 0;
+   15C3 C2 0F              1086 	clr	_transmit_yield
+   15C5                    1087 00112$:
+                           1088 ;	radio/tdm.c:263: if (at_testmode & AT_TEST_TDM) {
+   15C5 78 51              1089 	mov	r0,#_at_testmode
+   15C7 E2                 1090 	movx	a,@r0
+   15C8 54 02              1091 	anl	a,#0x02
+   15CA 70 01              1092 	jnz	00143$
+   15CC 22                 1093 	ret
+   15CD                    1094 00143$:
+                           1095 ;	radio/tdm.c:265: delta = old_remaining - tdm_state_remaining;
+   15CD 78 17              1096 	mov	r0,#_tdm_state_remaining
+   15CF D3                 1097 	setb	c
+   15D0 E2                 1098 	movx	a,@r0
+   15D1 9C                 1099 	subb	a,r4
+   15D2 F4                 1100 	cpl	a
+   15D3 B3                 1101 	cpl	c
+   15D4 FC                 1102 	mov	r4,a
+   15D5 B3                 1103 	cpl	c
+   15D6 08                 1104 	inc	r0
+   15D7 E2                 1105 	movx	a,@r0
+   15D8 9D                 1106 	subb	a,r5
+   15D9 F4                 1107 	cpl	a
+   15DA FD                 1108 	mov	r5,a
+   15DB 78 46              1109 	mov	r0,#_sync_tx_windows_delta_2_8
+   15DD EC                 1110 	mov	a,r4
+   15DE F2                 1111 	movx	@r0,a
+   15DF 08                 1112 	inc	r0
+   15E0 ED                 1113 	mov	a,r5
+   15E1 F2                 1114 	movx	@r0,a
+                           1115 ;	radio/tdm.c:266: if (old_state != tdm_state ||
+   15E2 78 16              1116 	mov	r0,#_tdm_state
+   15E4 E2                 1117 	movx	a,@r0
+   15E5 B5 38 6E           1118 	cjne	a,_sync_tx_windows_old_state_1_1,00113$
+                           1119 ;	radio/tdm.c:267: delta > (int16_t)packet_latency/2 ||
+   15E8 C0 07              1120 	push	ar7
+   15EA 78 1E              1121 	mov	r0,#_packet_latency
+   15EC E2                 1122 	movx	a,@r0
+   15ED FA                 1123 	mov	r2,a
+   15EE 08                 1124 	inc	r0
+   15EF E2                 1125 	movx	a,@r0
+   15F0 FB                 1126 	mov	r3,a
+   15F1 90 06 0F           1127 	mov	dptr,#__divsint_PARM_2
+   15F4 74 02              1128 	mov	a,#0x02
+   15F6 F0                 1129 	movx	@dptr,a
+   15F7 A3                 1130 	inc	dptr
+   15F8 E4                 1131 	clr	a
+   15F9 F0                 1132 	movx	@dptr,a
+   15FA 8A 82              1133 	mov	dpl,r2
+   15FC 8B 83              1134 	mov	dph,r3
+   15FE C0 03              1135 	push	ar3
+   1600 C0 02              1136 	push	ar2
+   1602 12 6A 44           1137 	lcall	__divsint
+   1605 AE 82              1138 	mov	r6,dpl
+   1607 AF 83              1139 	mov	r7,dph
+   1609 D0 02              1140 	pop	ar2
+   160B D0 03              1141 	pop	ar3
+   160D 78 46              1142 	mov	r0,#_sync_tx_windows_delta_2_8
+   160F C3                 1143 	clr	c
+   1610 E2                 1144 	movx	a,@r0
+   1611 F5 F0              1145 	mov	b,a
+   1613 EE                 1146 	mov	a,r6
+   1614 95 F0              1147 	subb	a,b
+   1616 08                 1148 	inc	r0
+   1617 E2                 1149 	movx	a,@r0
+   1618 F5 F0              1150 	mov	b,a
+   161A EF                 1151 	mov	a,r7
+   161B 64 80              1152 	xrl	a,#0x80
+   161D 63 F0 80           1153 	xrl	b,#0x80
+   1620 95 F0              1154 	subb	a,b
+   1622 D0 07              1155 	pop	ar7
+                           1156 ;	radio/tdm.c:268: delta < -(int16_t)packet_latency/2) {
+   1624 40 30              1157 	jc	00113$
+   1626 E4                 1158 	clr	a
+   1627 9A                 1159 	subb	a,r2
+   1628 FA                 1160 	mov	r2,a
+   1629 E4                 1161 	clr	a
+   162A 9B                 1162 	subb	a,r3
+   162B FB                 1163 	mov	r3,a
+   162C 90 06 0F           1164 	mov	dptr,#__divsint_PARM_2
+   162F 74 02              1165 	mov	a,#0x02
+   1631 F0                 1166 	movx	@dptr,a
+   1632 A3                 1167 	inc	dptr
+   1633 E4                 1168 	clr	a
+   1634 F0                 1169 	movx	@dptr,a
+   1635 8A 82              1170 	mov	dpl,r2
+   1637 8B 83              1171 	mov	dph,r3
+   1639 C0 07              1172 	push	ar7
+   163B 12 6A 44           1173 	lcall	__divsint
+   163E AB 82              1174 	mov	r3,dpl
+   1640 AE 83              1175 	mov	r6,dph
+   1642 D0 07              1176 	pop	ar7
+   1644 78 46              1177 	mov	r0,#_sync_tx_windows_delta_2_8
+   1646 C3                 1178 	clr	c
+   1647 E2                 1179 	movx	a,@r0
+   1648 9B                 1180 	subb	a,r3
+   1649 08                 1181 	inc	r0
+   164A E2                 1182 	movx	a,@r0
+   164B 64 80              1183 	xrl	a,#0x80
+   164D 8E F0              1184 	mov	b,r6
+   164F 63 F0 80           1185 	xrl	b,#0x80
+   1652 95 F0              1186 	subb	a,b
+   1654 50 4B              1187 	jnc	00119$
+   1656                    1188 00113$:
+                           1189 ;	radio/tdm.c:269: printf("TDM: %u/%u len=%u ",
+   1656 7E 00              1190 	mov	r6,#0x00
+   1658 78 16              1191 	mov	r0,#_tdm_state
+   165A E2                 1192 	movx	a,@r0
+   165B FA                 1193 	mov	r2,a
+   165C 7B 00              1194 	mov	r3,#0x00
+   165E AC 38              1195 	mov	r4,_sync_tx_windows_old_state_1_1
+   1660 7D 00              1196 	mov	r5,#0x00
+   1662 C0 07              1197 	push	ar7
+   1664 C0 06              1198 	push	ar6
+   1666 C0 02              1199 	push	ar2
+   1668 C0 03              1200 	push	ar3
+   166A C0 04              1201 	push	ar4
+   166C C0 05              1202 	push	ar5
+   166E 74 9F              1203 	mov	a,#__str_2
+   1670 C0 E0              1204 	push	acc
+   1672 74 70              1205 	mov	a,#(__str_2 >> 8)
+   1674 C0 E0              1206 	push	acc
+   1676 74 80              1207 	mov	a,#0x80
+   1678 C0 E0              1208 	push	acc
+   167A 12 12 5A           1209 	lcall	_printfl
+   167D E5 81              1210 	mov	a,sp
+   167F 24 F7              1211 	add	a,#0xf7
+   1681 F5 81              1212 	mov	sp,a
+                           1213 ;	radio/tdm.c:273: printf(" delta: %d\n",(int)delta);
+   1683 78 46              1214 	mov	r0,#_sync_tx_windows_delta_2_8
+   1685 E2                 1215 	movx	a,@r0
+   1686 C0 E0              1216 	push	acc
+   1688 08                 1217 	inc	r0
+   1689 E2                 1218 	movx	a,@r0
+   168A C0 E0              1219 	push	acc
+   168C 74 B2              1220 	mov	a,#__str_3
+   168E C0 E0              1221 	push	acc
+   1690 74 70              1222 	mov	a,#(__str_3 >> 8)
+   1692 C0 E0              1223 	push	acc
+   1694 74 80              1224 	mov	a,#0x80
+   1696 C0 E0              1225 	push	acc
+   1698 12 12 5A           1226 	lcall	_printfl
+   169B E5 81              1227 	mov	a,sp
+   169D 24 FB              1228 	add	a,#0xfb
+   169F F5 81              1229 	mov	sp,a
+   16A1                    1230 00119$:
+   16A1 22                 1231 	ret
+                           1232 ;------------------------------------------------------------
+                           1233 ;Allocation info for local variables in function 'tdm_state_update'
+                           1234 ;------------------------------------------------------------
+                           1235 ;sloc0                     Allocated with name '_tdm_state_update_sloc0_1_0'
+                           1236 ;sloc1                     Allocated with name '_tdm_state_update_sloc1_1_0'
+                           1237 ;sloc2                     Allocated with name '_tdm_state_update_sloc2_1_0'
+                           1238 ;------------------------------------------------------------
+                           1239 ;	radio/tdm.c:281: tdm_state_update(__pdata uint16_t tdelta)
+                           1240 ;	-----------------------------------------
+                           1241 ;	 function tdm_state_update
+                           1242 ;	-----------------------------------------
+   16A2                    1243 _tdm_state_update:
+   16A2 AE 82              1244 	mov	r6,dpl
+   16A4 AF 83              1245 	mov	r7,dph
+                           1246 ;	radio/tdm.c:285: if (tdelta > transmit_wait) {
+   16A6 78 22              1247 	mov	r0,#_transmit_wait
+   16A8 C3                 1248 	clr	c
+   16A9 E2                 1249 	movx	a,@r0
+   16AA 9E                 1250 	subb	a,r6
+   16AB 08                 1251 	inc	r0
+   16AC E2                 1252 	movx	a,@r0
+   16AD 9F                 1253 	subb	a,r7
+   16AE 50 08              1254 	jnc	00102$
+                           1255 ;	radio/tdm.c:286: transmit_wait = 0;
+   16B0 78 22              1256 	mov	r0,#_transmit_wait
+   16B2 E4                 1257 	clr	a
+   16B3 F2                 1258 	movx	@r0,a
+   16B4 08                 1259 	inc	r0
+   16B5 F2                 1260 	movx	@r0,a
+   16B6 80 0A              1261 	sjmp	00116$
+   16B8                    1262 00102$:
+                           1263 ;	radio/tdm.c:288: transmit_wait -= tdelta;
+   16B8 78 22              1264 	mov	r0,#_transmit_wait
+   16BA E2                 1265 	movx	a,@r0
+   16BB C3                 1266 	clr	c
+   16BC 9E                 1267 	subb	a,r6
+   16BD F2                 1268 	movx	@r0,a
+   16BE 08                 1269 	inc	r0
+   16BF E2                 1270 	movx	a,@r0
+   16C0 9F                 1271 	subb	a,r7
+   16C1 F2                 1272 	movx	@r0,a
+                           1273 ;	radio/tdm.c:292: while (tdelta >= tdm_state_remaining) {
+   16C2                    1274 00116$:
+   16C2 78 17              1275 	mov	r0,#_tdm_state_remaining
+   16C4 C3                 1276 	clr	c
+   16C5 E2                 1277 	movx	a,@r0
+   16C6 F5 F0              1278 	mov	b,a
+   16C8 EE                 1279 	mov	a,r6
+   16C9 95 F0              1280 	subb	a,b
+   16CB 08                 1281 	inc	r0
+   16CC E2                 1282 	movx	a,@r0
+   16CD F5 F0              1283 	mov	b,a
+   16CF EF                 1284 	mov	a,r7
+   16D0 95 F0              1285 	subb	a,b
+   16D2 50 03              1286 	jnc	00130$
+   16D4 02 19 0F           1287 	ljmp	00118$
+   16D7                    1288 00130$:
+                           1289 ;	radio/tdm.c:294: tdm_state = (tdm_state+1) % 4;
+   16D7 78 16              1290 	mov	r0,#_tdm_state
+   16D9 E2                 1291 	movx	a,@r0
+   16DA FC                 1292 	mov	r4,a
+   16DB 7D 00              1293 	mov	r5,#0x00
+   16DD 0C                 1294 	inc	r4
+   16DE BC 00 01           1295 	cjne	r4,#0x00,00131$
+   16E1 0D                 1296 	inc	r5
+   16E2                    1297 00131$:
+   16E2 90 05 FE           1298 	mov	dptr,#__modsint_PARM_2
+   16E5 74 04              1299 	mov	a,#0x04
+   16E7 F0                 1300 	movx	@dptr,a
+   16E8 A3                 1301 	inc	dptr
+   16E9 E4                 1302 	clr	a
+   16EA F0                 1303 	movx	@dptr,a
+   16EB 8C 82              1304 	mov	dpl,r4
+   16ED 8D 83              1305 	mov	dph,r5
+   16EF C0 07              1306 	push	ar7
+   16F1 C0 06              1307 	push	ar6
+   16F3 12 68 4F           1308 	lcall	__modsint
+   16F6 AC 82              1309 	mov	r4,dpl
+   16F8 AD 83              1310 	mov	r5,dph
+   16FA D0 06              1311 	pop	ar6
+   16FC D0 07              1312 	pop	ar7
+   16FE 78 16              1313 	mov	r0,#_tdm_state
+   1700 EC                 1314 	mov	a,r4
+   1701 F2                 1315 	movx	@r0,a
+                           1316 ;	radio/tdm.c:297: tdelta -= tdm_state_remaining;
+   1702 78 17              1317 	mov	r0,#_tdm_state_remaining
+   1704 D3                 1318 	setb	c
+   1705 E2                 1319 	movx	a,@r0
+   1706 9E                 1320 	subb	a,r6
+   1707 F4                 1321 	cpl	a
+   1708 B3                 1322 	cpl	c
+   1709 FE                 1323 	mov	r6,a
+   170A B3                 1324 	cpl	c
+   170B 08                 1325 	inc	r0
+   170C E2                 1326 	movx	a,@r0
+   170D 9F                 1327 	subb	a,r7
+   170E F4                 1328 	cpl	a
+   170F FF                 1329 	mov	r7,a
+                           1330 ;	radio/tdm.c:299: if (tdm_state == TDM_TRANSMIT || tdm_state == TDM_RECEIVE) {
+   1710 78 16              1331 	mov	r0,#_tdm_state
+   1712 E2                 1332 	movx	a,@r0
+   1713 60 06              1333 	jz	00104$
+   1715 78 16              1334 	mov	r0,#_tdm_state
+   1717 E2                 1335 	movx	a,@r0
+   1718 B4 02 10           1336 	cjne	a,#0x02,00105$
+   171B                    1337 00104$:
+                           1338 ;	radio/tdm.c:300: tdm_state_remaining = tx_window_width;
+   171B 78 19              1339 	mov	r0,#_tx_window_width
+   171D E2                 1340 	movx	a,@r0
+   171E FC                 1341 	mov	r4,a
+   171F 08                 1342 	inc	r0
+   1720 E2                 1343 	movx	a,@r0
+   1721 FD                 1344 	mov	r5,a
+   1722 78 17              1345 	mov	r0,#_tdm_state_remaining
+   1724 EC                 1346 	mov	a,r4
+   1725 F2                 1347 	movx	@r0,a
+   1726 08                 1348 	inc	r0
+   1727 ED                 1349 	mov	a,r5
+   1728 F2                 1350 	movx	@r0,a
+   1729 80 0E              1351 	sjmp	00106$
+   172B                    1352 00105$:
+                           1353 ;	radio/tdm.c:302: tdm_state_remaining = silence_period;
+   172B 78 1C              1354 	mov	r0,#_silence_period
+   172D E2                 1355 	movx	a,@r0
+   172E FC                 1356 	mov	r4,a
+   172F 08                 1357 	inc	r0
+   1730 E2                 1358 	movx	a,@r0
+   1731 FD                 1359 	mov	r5,a
+   1732 78 17              1360 	mov	r0,#_tdm_state_remaining
+   1734 EC                 1361 	mov	a,r4
+   1735 F2                 1362 	movx	@r0,a
+   1736 08                 1363 	inc	r0
+   1737 ED                 1364 	mov	a,r5
+   1738 F2                 1365 	movx	@r0,a
+   1739                    1366 00106$:
+                           1367 ;	radio/tdm.c:308: if (tdm_state == TDM_TRANSMIT || tdm_state == TDM_SILENCE1) {
+   1739 78 16              1368 	mov	r0,#_tdm_state
+   173B E2                 1369 	movx	a,@r0
+   173C 60 06              1370 	jz	00110$
+   173E 78 16              1371 	mov	r0,#_tdm_state
+   1740 E2                 1372 	movx	a,@r0
+   1741 B4 01 26           1373 	cjne	a,#0x01,00111$
+   1744                    1374 00110$:
+                           1375 ;	radio/tdm.c:309: fhop_window_change();
+   1744 C0 07              1376 	push	ar7
+   1746 C0 06              1377 	push	ar6
+   1748 12 13 9E           1378 	lcall	_fhop_window_change
+                           1379 ;	radio/tdm.c:310: radio_receiver_on();
+   174B 12 31 DC           1380 	lcall	_radio_receiver_on
+   174E D0 06              1381 	pop	ar6
+   1750 D0 07              1382 	pop	ar7
+                           1383 ;	radio/tdm.c:312: if (num_fh_channels > 1) {
+   1752 78 13              1384 	mov	r0,#_num_fh_channels
+   1754 C3                 1385 	clr	c
+   1755 E2                 1386 	movx	a,@r0
+   1756 F5 F0              1387 	mov	b,a
+   1758 74 01              1388 	mov	a,#0x01
+   175A 95 F0              1389 	subb	a,b
+   175C 50 0C              1390 	jnc	00111$
+                           1391 ;	radio/tdm.c:314: lbt_listen_time = 0;
+   175E 78 2D              1392 	mov	r0,#_lbt_listen_time
+   1760 E4                 1393 	clr	a
+   1761 F2                 1394 	movx	@r0,a
+   1762 08                 1395 	inc	r0
+   1763 F2                 1396 	movx	@r0,a
+                           1397 ;	radio/tdm.c:315: lbt_rand = 0;
+   1764 78 31              1398 	mov	r0,#_lbt_rand
+   1766 E4                 1399 	clr	a
+   1767 F2                 1400 	movx	@r0,a
+   1768 08                 1401 	inc	r0
+   1769 F2                 1402 	movx	@r0,a
+   176A                    1403 00111$:
+                           1404 ;	radio/tdm.c:319: if (tdm_state == TDM_TRANSMIT && (duty_cycle - duty_cycle_offset) != 100) {
+   176A 78 16              1405 	mov	r0,#_tdm_state
+   176C E2                 1406 	movx	a,@r0
+   176D 60 03              1407 	jz	00139$
+   176F 02 19 02           1408 	ljmp	00114$
+   1772                    1409 00139$:
+   1772 C0 06              1410 	push	ar6
+   1774 C0 07              1411 	push	ar7
+   1776 78 24              1412 	mov	r0,#_duty_cycle
+   1778 E2                 1413 	movx	a,@r0
+   1779 FC                 1414 	mov	r4,a
+   177A 7D 00              1415 	mov	r5,#0x00
+   177C 78 29              1416 	mov	r0,#_duty_cycle_offset
+   177E E2                 1417 	movx	a,@r0
+   177F F5 39              1418 	mov	_tdm_state_update_sloc0_1_0,a
+   1781 75 3A 00           1419 	mov	(_tdm_state_update_sloc0_1_0 + 1),#0x00
+   1784 EC                 1420 	mov	a,r4
+   1785 C3                 1421 	clr	c
+   1786 95 39              1422 	subb	a,_tdm_state_update_sloc0_1_0
+   1788 FE                 1423 	mov	r6,a
+   1789 ED                 1424 	mov	a,r5
+   178A 95 3A              1425 	subb	a,(_tdm_state_update_sloc0_1_0 + 1)
+   178C FF                 1426 	mov	r7,a
+   178D BE 64 0A           1427 	cjne	r6,#0x64,00140$
+   1790 BF 00 07           1428 	cjne	r7,#0x00,00140$
+   1793 D0 07              1429 	pop	ar7
+   1795 D0 06              1430 	pop	ar6
+   1797 02 19 02           1431 	ljmp	00114$
+   179A                    1432 00140$:
+   179A D0 07              1433 	pop	ar7
+   179C D0 06              1434 	pop	ar6
+                           1435 ;	radio/tdm.c:321: average_duty_cycle = (0.95*average_duty_cycle) + (0.05*(100.0*transmitted_ticks)/(2*(silence_period+tx_window_width)));
+   179E C0 06              1436 	push	ar6
+   17A0 C0 07              1437 	push	ar7
+   17A2 C0 07              1438 	push	ar7
+   17A4 C0 06              1439 	push	ar6
+   17A6 C0 05              1440 	push	ar5
+   17A8 C0 04              1441 	push	ar4
+   17AA 78 25              1442 	mov	r0,#_average_duty_cycle
+   17AC E2                 1443 	movx	a,@r0
+   17AD C0 E0              1444 	push	acc
+   17AF 08                 1445 	inc	r0
+   17B0 E2                 1446 	movx	a,@r0
+   17B1 C0 E0              1447 	push	acc
+   17B3 08                 1448 	inc	r0
+   17B4 E2                 1449 	movx	a,@r0
+   17B5 C0 E0              1450 	push	acc
+   17B7 08                 1451 	inc	r0
+   17B8 E2                 1452 	movx	a,@r0
+   17B9 C0 E0              1453 	push	acc
+   17BB 90 33 33           1454 	mov	dptr,#0x3333
+   17BE 75 F0 73           1455 	mov	b,#0x73
+   17C1 74 3F              1456 	mov	a,#0x3F
+   17C3 12 63 92           1457 	lcall	___fsmul
+   17C6 85 82 3B           1458 	mov	_tdm_state_update_sloc1_1_0,dpl
+   17C9 85 83 3C           1459 	mov	(_tdm_state_update_sloc1_1_0 + 1),dph
+   17CC 85 F0 3D           1460 	mov	(_tdm_state_update_sloc1_1_0 + 2),b
+   17CF F5 3E              1461 	mov	(_tdm_state_update_sloc1_1_0 + 3),a
+   17D1 E5 81              1462 	mov	a,sp
+   17D3 24 FC              1463 	add	a,#0xfc
+   17D5 F5 81              1464 	mov	sp,a
+   17D7 D0 04              1465 	pop	ar4
+   17D9 D0 05              1466 	pop	ar5
+   17DB D0 06              1467 	pop	ar6
+   17DD D0 07              1468 	pop	ar7
+   17DF 78 2A              1469 	mov	r0,#_transmitted_ticks
+   17E1 E2                 1470 	movx	a,@r0
+   17E2 F5 82              1471 	mov	dpl,a
+   17E4 08                 1472 	inc	r0
+   17E5 E2                 1473 	movx	a,@r0
+   17E6 F5 83              1474 	mov	dph,a
+   17E8 C0 05              1475 	push	ar5
+   17EA C0 04              1476 	push	ar4
+   17EC 12 6B CB           1477 	lcall	___uint2fs
+   17EF AA 82              1478 	mov	r2,dpl
+   17F1 AB 83              1479 	mov	r3,dph
+   17F3 AE F0              1480 	mov	r6,b
+   17F5 FF                 1481 	mov	r7,a
+   17F6 D0 04              1482 	pop	ar4
+   17F8 D0 05              1483 	pop	ar5
+   17FA C0 07              1484 	push	ar7
+   17FC C0 06              1485 	push	ar6
+   17FE C0 05              1486 	push	ar5
+   1800 C0 04              1487 	push	ar4
+   1802 C0 02              1488 	push	ar2
+   1804 C0 03              1489 	push	ar3
+   1806 C0 06              1490 	push	ar6
+   1808 C0 07              1491 	push	ar7
+   180A 90 00 00           1492 	mov	dptr,#0x0000
+   180D 75 F0 A0           1493 	mov	b,#0xA0
+   1810 74 40              1494 	mov	a,#0x40
+   1812 12 63 92           1495 	lcall	___fsmul
+   1815 85 82 3F           1496 	mov	_tdm_state_update_sloc2_1_0,dpl
+   1818 85 83 40           1497 	mov	(_tdm_state_update_sloc2_1_0 + 1),dph
+   181B 85 F0 41           1498 	mov	(_tdm_state_update_sloc2_1_0 + 2),b
+   181E F5 42              1499 	mov	(_tdm_state_update_sloc2_1_0 + 3),a
+   1820 E5 81              1500 	mov	a,sp
+   1822 24 FC              1501 	add	a,#0xfc
+   1824 F5 81              1502 	mov	sp,a
+   1826 D0 04              1503 	pop	ar4
+   1828 D0 05              1504 	pop	ar5
+   182A D0 06              1505 	pop	ar6
+   182C D0 07              1506 	pop	ar7
+   182E 78 1C              1507 	mov	r0,#_silence_period
+   1830 79 19              1508 	mov	r1,#_tx_window_width
+   1832 E3                 1509 	movx	a,@r1
+   1833 C5 F0              1510 	xch	a,b
+   1835 E2                 1511 	movx	a,@r0
+   1836 25 F0              1512 	add	a,b
+   1838 FE                 1513 	mov	r6,a
+   1839 09                 1514 	inc	r1
+   183A E3                 1515 	movx	a,@r1
+   183B C5 F0              1516 	xch	a,b
+   183D 08                 1517 	inc	r0
+   183E E2                 1518 	movx	a,@r0
+   183F 35 F0              1519 	addc	a,b
+   1841 CE                 1520 	xch	a,r6
+   1842 25 E0              1521 	add	a,acc
+   1844 CE                 1522 	xch	a,r6
+   1845 33                 1523 	rlc	a
+   1846 FF                 1524 	mov	r7,a
+   1847 8E 82              1525 	mov	dpl,r6
+   1849 8F 83              1526 	mov	dph,r7
+   184B C0 05              1527 	push	ar5
+   184D C0 04              1528 	push	ar4
+   184F 12 6B CB           1529 	lcall	___uint2fs
+   1852 AA 82              1530 	mov	r2,dpl
+   1854 AB 83              1531 	mov	r3,dph
+   1856 AE F0              1532 	mov	r6,b
+   1858 FF                 1533 	mov	r7,a
+   1859 C0 02              1534 	push	ar2
+   185B C0 03              1535 	push	ar3
+   185D C0 06              1536 	push	ar6
+   185F C0 07              1537 	push	ar7
+   1861 85 3F 82           1538 	mov	dpl,_tdm_state_update_sloc2_1_0
+   1864 85 40 83           1539 	mov	dph,(_tdm_state_update_sloc2_1_0 + 1)
+   1867 85 41 F0           1540 	mov	b,(_tdm_state_update_sloc2_1_0 + 2)
+   186A E5 42              1541 	mov	a,(_tdm_state_update_sloc2_1_0 + 3)
+   186C 12 6C D6           1542 	lcall	___fsdiv
+   186F AA 82              1543 	mov	r2,dpl
+   1871 AB 83              1544 	mov	r3,dph
+   1873 AE F0              1545 	mov	r6,b
+   1875 FF                 1546 	mov	r7,a
+   1876 E5 81              1547 	mov	a,sp
+   1878 24 FC              1548 	add	a,#0xfc
+   187A F5 81              1549 	mov	sp,a
+   187C C0 02              1550 	push	ar2
+   187E C0 03              1551 	push	ar3
+   1880 C0 06              1552 	push	ar6
+   1882 C0 07              1553 	push	ar7
+   1884 85 3B 82           1554 	mov	dpl,_tdm_state_update_sloc1_1_0
+   1887 85 3C 83           1555 	mov	dph,(_tdm_state_update_sloc1_1_0 + 1)
+   188A 85 3D F0           1556 	mov	b,(_tdm_state_update_sloc1_1_0 + 2)
+   188D E5 3E              1557 	mov	a,(_tdm_state_update_sloc1_1_0 + 3)
+   188F 12 6A B5           1558 	lcall	___fsadd
+   1892 AA 82              1559 	mov	r2,dpl
+   1894 AB 83              1560 	mov	r3,dph
+   1896 AE F0              1561 	mov	r6,b
+   1898 FF                 1562 	mov	r7,a
+   1899 E5 81              1563 	mov	a,sp
+   189B 24 FC              1564 	add	a,#0xfc
+   189D F5 81              1565 	mov	sp,a
+   189F D0 04              1566 	pop	ar4
+   18A1 D0 05              1567 	pop	ar5
+   18A3 78 25              1568 	mov	r0,#_average_duty_cycle
+   18A5 EA                 1569 	mov	a,r2
+   18A6 F2                 1570 	movx	@r0,a
+   18A7 08                 1571 	inc	r0
+   18A8 EB                 1572 	mov	a,r3
+   18A9 F2                 1573 	movx	@r0,a
+   18AA 08                 1574 	inc	r0
+   18AB EE                 1575 	mov	a,r6
+   18AC F2                 1576 	movx	@r0,a
+   18AD 08                 1577 	inc	r0
+   18AE EF                 1578 	mov	a,r7
+   18AF F2                 1579 	movx	@r0,a
+                           1580 ;	radio/tdm.c:322: transmitted_ticks = 0;
+   18B0 78 2A              1581 	mov	r0,#_transmitted_ticks
+   18B2 E4                 1582 	clr	a
+   18B3 F2                 1583 	movx	@r0,a
+   18B4 08                 1584 	inc	r0
+   18B5 F2                 1585 	movx	@r0,a
+                           1586 ;	radio/tdm.c:323: duty_cycle_wait = (average_duty_cycle >= (duty_cycle - duty_cycle_offset));
+   18B6 EC                 1587 	mov	a,r4
+   18B7 C3                 1588 	clr	c
+   18B8 95 39              1589 	subb	a,_tdm_state_update_sloc0_1_0
+   18BA FC                 1590 	mov	r4,a
+   18BB ED                 1591 	mov	a,r5
+   18BC 95 3A              1592 	subb	a,(_tdm_state_update_sloc0_1_0 + 1)
+   18BE FD                 1593 	mov	r5,a
+   18BF 8C 82              1594 	mov	dpl,r4
+   18C1 8D 83              1595 	mov	dph,r5
+   18C3 12 6B 83           1596 	lcall	___sint2fs
+   18C6 AC 82              1597 	mov	r4,dpl
+   18C8 AD 83              1598 	mov	r5,dph
+   18CA AE F0              1599 	mov	r6,b
+   18CC FF                 1600 	mov	r7,a
+   18CD C0 07              1601 	push	ar7
+   18CF C0 06              1602 	push	ar6
+   18D1 C0 04              1603 	push	ar4
+   18D3 C0 05              1604 	push	ar5
+   18D5 C0 06              1605 	push	ar6
+   18D7 C0 07              1606 	push	ar7
+   18D9 78 25              1607 	mov	r0,#_average_duty_cycle
+   18DB E2                 1608 	movx	a,@r0
+   18DC F5 82              1609 	mov	dpl,a
+   18DE 08                 1610 	inc	r0
+   18DF E2                 1611 	movx	a,@r0
+   18E0 F5 83              1612 	mov	dph,a
+   18E2 08                 1613 	inc	r0
+   18E3 E2                 1614 	movx	a,@r0
+   18E4 F5 F0              1615 	mov	b,a
+   18E6 08                 1616 	inc	r0
+   18E7 E2                 1617 	movx	a,@r0
+   18E8 12 66 FF           1618 	lcall	___fslt
+   18EB E5 81              1619 	mov	a,sp
+   18ED 24 FC              1620 	add	a,#0xfc
+   18EF F5 81              1621 	mov	sp,a
+   18F1 D0 06              1622 	pop	ar6
+   18F3 D0 07              1623 	pop	ar7
+   18F5 E5 82              1624 	mov	a,dpl
+   18F7 24 FF              1625 	add	a,#0xFF
+   18F9 B3                 1626 	cpl	c
+   18FA 92 16              1627 	mov	_tdm_state_update_sloc3_1_0,c
+   18FC 92 12              1628 	mov	_duty_cycle_wait,c
+                           1629 ;	radio/tdm.c:336: tdm_state_remaining -= tdelta;
+   18FE D0 07              1630 	pop	ar7
+   1900 D0 06              1631 	pop	ar6
+                           1632 ;	radio/tdm.c:323: duty_cycle_wait = (average_duty_cycle >= (duty_cycle - duty_cycle_offset));
+   1902                    1633 00114$:
+                           1634 ;	radio/tdm.c:327: bonus_transmit = 0;
+   1902 C2 0E              1635 	clr	_bonus_transmit
+                           1636 ;	radio/tdm.c:330: transmit_yield = 0;
+   1904 C2 0F              1637 	clr	_transmit_yield
+                           1638 ;	radio/tdm.c:333: transmit_wait = 0;
+   1906 78 22              1639 	mov	r0,#_transmit_wait
+   1908 E4                 1640 	clr	a
+   1909 F2                 1641 	movx	@r0,a
+   190A 08                 1642 	inc	r0
+   190B F2                 1643 	movx	@r0,a
+   190C 02 16 C2           1644 	ljmp	00116$
+   190F                    1645 00118$:
+                           1646 ;	radio/tdm.c:336: tdm_state_remaining -= tdelta;
+   190F 78 17              1647 	mov	r0,#_tdm_state_remaining
+   1911 E2                 1648 	movx	a,@r0
+   1912 C3                 1649 	clr	c
+   1913 9E                 1650 	subb	a,r6
+   1914 F2                 1651 	movx	@r0,a
+   1915 08                 1652 	inc	r0
+   1916 E2                 1653 	movx	a,@r0
+   1917 9F                 1654 	subb	a,r7
+   1918 F2                 1655 	movx	@r0,a
+   1919 22                 1656 	ret
+                           1657 ;------------------------------------------------------------
+                           1658 ;Allocation info for local variables in function 'tdm_change_phase'
+                           1659 ;------------------------------------------------------------
+                           1660 ;	radio/tdm.c:342: tdm_change_phase(void)
+                           1661 ;	-----------------------------------------
+                           1662 ;	 function tdm_change_phase
+                           1663 ;	-----------------------------------------
+   191A                    1664 _tdm_change_phase:
+                           1665 ;	radio/tdm.c:344: tdm_state = (tdm_state+2) % 4;
+   191A 78 16              1666 	mov	r0,#_tdm_state
+   191C E2                 1667 	movx	a,@r0
+   191D FE                 1668 	mov	r6,a
+   191E 7F 00              1669 	mov	r7,#0x00
+   1920 74 02              1670 	mov	a,#0x02
+   1922 2E                 1671 	add	a,r6
+   1923 FE                 1672 	mov	r6,a
+   1924 E4                 1673 	clr	a
+   1925 3F                 1674 	addc	a,r7
+   1926 FF                 1675 	mov	r7,a
+   1927 90 05 FE           1676 	mov	dptr,#__modsint_PARM_2
+   192A 74 04              1677 	mov	a,#0x04
+   192C F0                 1678 	movx	@dptr,a
+   192D A3                 1679 	inc	dptr
+   192E E4                 1680 	clr	a
+   192F F0                 1681 	movx	@dptr,a
+   1930 8E 82              1682 	mov	dpl,r6
+   1932 8F 83              1683 	mov	dph,r7
+   1934 12 68 4F           1684 	lcall	__modsint
+   1937 AE 82              1685 	mov	r6,dpl
+   1939 78 16              1686 	mov	r0,#_tdm_state
+   193B EE                 1687 	mov	a,r6
+   193C F2                 1688 	movx	@r0,a
+   193D 22                 1689 	ret
+                           1690 ;------------------------------------------------------------
+                           1691 ;Allocation info for local variables in function 'temperature_update'
+                           1692 ;------------------------------------------------------------
+                           1693 ;diff                      Allocated to registers r6 r7 
+                           1694 ;------------------------------------------------------------
+                           1695 ;	radio/tdm.c:349: static void temperature_update(void)
+                           1696 ;	-----------------------------------------
+                           1697 ;	 function temperature_update
+                           1698 ;	-----------------------------------------
+   193E                    1699 _temperature_update:
+                           1700 ;	radio/tdm.c:352: if (radio_get_transmit_power() <= 20) {
+   193E 12 36 25           1701 	lcall	_radio_get_transmit_power
+   1941 E5 82              1702 	mov	a,dpl
+   1943 FF                 1703 	mov	r7,a
+   1944 24 EB              1704 	add	a,#0xff - 0x14
+   1946 40 05              1705 	jc	00102$
+                           1706 ;	radio/tdm.c:353: duty_cycle_offset = 0;
+   1948 78 29              1707 	mov	r0,#_duty_cycle_offset
+   194A E4                 1708 	clr	a
+   194B F2                 1709 	movx	@r0,a
+                           1710 ;	radio/tdm.c:354: return;
+   194C 22                 1711 	ret
+   194D                    1712 00102$:
+                           1713 ;	radio/tdm.c:357: diff = radio_temperature() - MAX_PA_TEMPERATURE;
+   194D 12 39 F0           1714 	lcall	_radio_temperature
+   1950 E5 82              1715 	mov	a,dpl
+   1952 85 83 F0           1716 	mov	b,dph
+   1955 24 9C              1717 	add	a,#0x9C
+   1957 FE                 1718 	mov	r6,a
+   1958 E5 F0              1719 	mov	a,b
+   195A 34 FF              1720 	addc	a,#0xFF
+   195C FF                 1721 	mov	r7,a
+                           1722 ;	radio/tdm.c:358: if (diff <= 0 && duty_cycle_offset > 0) {
+   195D C3                 1723 	clr	c
+   195E E4                 1724 	clr	a
+   195F 9E                 1725 	subb	a,r6
+   1960 E4                 1726 	clr	a
+   1961 64 80              1727 	xrl	a,#0x80
+   1963 8F F0              1728 	mov	b,r7
+   1965 63 F0 80           1729 	xrl	b,#0x80
+   1968 95 F0              1730 	subb	a,b
+   196A E4                 1731 	clr	a
+   196B 33                 1732 	rlc	a
+   196C FD                 1733 	mov	r5,a
+   196D 70 0C              1734 	jnz	00112$
+   196F 78 29              1735 	mov	r0,#_duty_cycle_offset
+   1971 E2                 1736 	movx	a,@r0
+   1972 60 07              1737 	jz	00112$
+                           1738 ;	radio/tdm.c:360: duty_cycle_offset -= 1;
+   1974 78 29              1739 	mov	r0,#_duty_cycle_offset
+   1976 E2                 1740 	movx	a,@r0
+   1977 14                 1741 	dec	a
+   1978 F2                 1742 	movx	@r0,a
+   1979 80 39              1743 	sjmp	00113$
+   197B                    1744 00112$:
+                           1745 ;	radio/tdm.c:361: } else if (diff > 10) {
+   197B C3                 1746 	clr	c
+   197C 74 0A              1747 	mov	a,#0x0A
+   197E 9E                 1748 	subb	a,r6
+   197F E4                 1749 	clr	a
+   1980 64 80              1750 	xrl	a,#0x80
+   1982 8F F0              1751 	mov	b,r7
+   1984 63 F0 80           1752 	xrl	b,#0x80
+   1987 95 F0              1753 	subb	a,b
+   1989 50 08              1754 	jnc	00109$
+                           1755 ;	radio/tdm.c:363: duty_cycle_offset += 10;
+   198B 78 29              1756 	mov	r0,#_duty_cycle_offset
+   198D E2                 1757 	movx	a,@r0
+   198E 24 0A              1758 	add	a,#0x0A
+   1990 F2                 1759 	movx	@r0,a
+   1991 80 21              1760 	sjmp	00113$
+   1993                    1761 00109$:
+                           1762 ;	radio/tdm.c:364: } else if (diff > 5) {
+   1993 C3                 1763 	clr	c
+   1994 74 05              1764 	mov	a,#0x05
+   1996 9E                 1765 	subb	a,r6
+   1997 E4                 1766 	clr	a
+   1998 64 80              1767 	xrl	a,#0x80
+   199A 8F F0              1768 	mov	b,r7
+   199C 63 F0 80           1769 	xrl	b,#0x80
+   199F 95 F0              1770 	subb	a,b
+   19A1 50 08              1771 	jnc	00106$
+                           1772 ;	radio/tdm.c:366: duty_cycle_offset += 5;
+   19A3 78 29              1773 	mov	r0,#_duty_cycle_offset
+   19A5 E2                 1774 	movx	a,@r0
+   19A6 24 05              1775 	add	a,#0x05
+   19A8 F2                 1776 	movx	@r0,a
+   19A9 80 09              1777 	sjmp	00113$
+   19AB                    1778 00106$:
+                           1779 ;	radio/tdm.c:367: } else if (diff > 0) {
+   19AB ED                 1780 	mov	a,r5
+   19AC 60 06              1781 	jz	00113$
+                           1782 ;	radio/tdm.c:369: duty_cycle_offset += 1;				
+   19AE 78 29              1783 	mov	r0,#_duty_cycle_offset
+   19B0 E2                 1784 	movx	a,@r0
+   19B1 24 01              1785 	add	a,#0x01
+   19B3 F2                 1786 	movx	@r0,a
+   19B4                    1787 00113$:
+                           1788 ;	radio/tdm.c:372: if ((duty_cycle-duty_cycle_offset) < 20) {
+   19B4 78 24              1789 	mov	r0,#_duty_cycle
+   19B6 E2                 1790 	movx	a,@r0
+   19B7 FE                 1791 	mov	r6,a
+   19B8 7F 00              1792 	mov	r7,#0x00
+   19BA 78 29              1793 	mov	r0,#_duty_cycle_offset
+   19BC E2                 1794 	movx	a,@r0
+   19BD FC                 1795 	mov	r4,a
+   19BE 7D 00              1796 	mov	r5,#0x00
+   19C0 EE                 1797 	mov	a,r6
+   19C1 C3                 1798 	clr	c
+   19C2 9C                 1799 	subb	a,r4
+   19C3 FE                 1800 	mov	r6,a
+   19C4 EF                 1801 	mov	a,r7
+   19C5 9D                 1802 	subb	a,r5
+   19C6 FF                 1803 	mov	r7,a
+   19C7 C3                 1804 	clr	c
+   19C8 EE                 1805 	mov	a,r6
+   19C9 94 14              1806 	subb	a,#0x14
+   19CB EF                 1807 	mov	a,r7
+   19CC 64 80              1808 	xrl	a,#0x80
+   19CE 94 80              1809 	subb	a,#0x80
+   19D0 50 08              1810 	jnc	00117$
+                           1811 ;	radio/tdm.c:373: duty_cycle_offset = duty_cycle - 20;
+   19D2 78 24              1812 	mov	r0,#_duty_cycle
+   19D4 79 29              1813 	mov	r1,#_duty_cycle_offset
+   19D6 E2                 1814 	movx	a,@r0
+   19D7 24 EC              1815 	add	a,#0xEC
+   19D9 F3                 1816 	movx	@r1,a
+   19DA                    1817 00117$:
+   19DA 22                 1818 	ret
+                           1819 ;------------------------------------------------------------
+                           1820 ;Allocation info for local variables in function 'link_update'
+                           1821 ;------------------------------------------------------------
+                           1822 ;old_remaining             Allocated to registers r6 r7 
+                           1823 ;unlock_count              Allocated with name '_link_update_unlock_count_1_1'
+                           1824 ;temperature_count         Allocated with name '_link_update_temperature_count_1_1'
+                           1825 ;------------------------------------------------------------
+                           1826 ;	radio/tdm.c:381: link_update(void)
+                           1827 ;	-----------------------------------------
+                           1828 ;	 function link_update
+                           1829 ;	-----------------------------------------
+   19DB                    1830 _link_update:
+                           1831 ;	radio/tdm.c:384: if (received_packet) {
+   19DB 30 11 09           1832 	jnb	_received_packet,00102$
+                           1833 ;	radio/tdm.c:385: unlock_count = 0;
+   19DE 90 04 04           1834 	mov	dptr,#_link_update_unlock_count_1_1
+   19E1 E4                 1835 	clr	a
+   19E2 F0                 1836 	movx	@dptr,a
+                           1837 ;	radio/tdm.c:386: received_packet = false;
+   19E3 C2 11              1838 	clr	_received_packet
+   19E5 80 07              1839 	sjmp	00103$
+   19E7                    1840 00102$:
+                           1841 ;	radio/tdm.c:391: unlock_count++;
+   19E7 90 04 04           1842 	mov	dptr,#_link_update_unlock_count_1_1
+   19EA E0                 1843 	movx	a,@dptr
+   19EB 24 01              1844 	add	a,#0x01
+   19ED F0                 1845 	movx	@dptr,a
+   19EE                    1846 00103$:
+                           1847 ;	radio/tdm.c:394: if (unlock_count < 2) {
+   19EE 90 04 04           1848 	mov	dptr,#_link_update_unlock_count_1_1
+   19F1 E0                 1849 	movx	a,@dptr
+   19F2 FF                 1850 	mov	r7,a
+   19F3 BF 02 00           1851 	cjne	r7,#0x02,00137$
+   19F6                    1852 00137$:
+   19F6 50 04              1853 	jnc	00105$
+                           1854 ;	radio/tdm.c:395: LED_RADIO = LED_ON;
+   19F8 D2 95              1855 	setb	_LED_GREEN
+   19FA 80 06              1856 	sjmp	00106$
+   19FC                    1857 00105$:
+                           1858 ;	radio/tdm.c:401: LED_RADIO = blink_state;
+   19FC A2 10              1859 	mov	c,_blink_state
+   19FE 92 95              1860 	mov	_LED_GREEN,c
+                           1861 ;	radio/tdm.c:402: blink_state = !blink_state;
+   1A00 B2 10              1862 	cpl	_blink_state
+   1A02                    1863 00106$:
+                           1864 ;	radio/tdm.c:405: if (unlock_count > 40) {
+   1A02 EF                 1865 	mov	a,r7
+   1A03 24 D7              1866 	add	a,#0xff - 0x28
+   1A05 40 03              1867 	jc	00139$
+   1A07 02 1A 92           1868 	ljmp	00117$
+   1A0A                    1869 00139$:
+                           1870 ;	radio/tdm.c:409: unlock_count = 5;
+   1A0A 90 04 04           1871 	mov	dptr,#_link_update_unlock_count_1_1
+   1A0D 74 05              1872 	mov	a,#0x05
+   1A0F F0                 1873 	movx	@dptr,a
+                           1874 ;	radio/tdm.c:413: if (timer_entropy() & 1) {
+   1A10 12 60 00           1875 	lcall	_timer_entropy
+   1A13 E5 82              1876 	mov	a,dpl
+   1A15 30 E0 59           1877 	jnb	acc.0,00113$
+                           1878 ;	radio/tdm.c:414: register uint16_t old_remaining = tdm_state_remaining;
+   1A18 78 17              1879 	mov	r0,#_tdm_state_remaining
+   1A1A E2                 1880 	movx	a,@r0
+   1A1B FE                 1881 	mov	r6,a
+   1A1C 08                 1882 	inc	r0
+   1A1D E2                 1883 	movx	a,@r0
+   1A1E FF                 1884 	mov	r7,a
+                           1885 ;	radio/tdm.c:415: if (tdm_state_remaining > silence_period) {
+   1A1F 78 1C              1886 	mov	r0,#_silence_period
+   1A21 C3                 1887 	clr	c
+   1A22 E2                 1888 	movx	a,@r0
+   1A23 9E                 1889 	subb	a,r6
+   1A24 08                 1890 	inc	r0
+   1A25 E2                 1891 	movx	a,@r0
+   1A26 9F                 1892 	subb	a,r7
+   1A27 50 17              1893 	jnc	00108$
+                           1894 ;	radio/tdm.c:416: tdm_state_remaining -= packet_latency;
+   1A29 78 1E              1895 	mov	r0,#_packet_latency
+   1A2B D3                 1896 	setb	c
+   1A2C E2                 1897 	movx	a,@r0
+   1A2D 9E                 1898 	subb	a,r6
+   1A2E F4                 1899 	cpl	a
+   1A2F B3                 1900 	cpl	c
+   1A30 FC                 1901 	mov	r4,a
+   1A31 B3                 1902 	cpl	c
+   1A32 08                 1903 	inc	r0
+   1A33 E2                 1904 	movx	a,@r0
+   1A34 9F                 1905 	subb	a,r7
+   1A35 F4                 1906 	cpl	a
+   1A36 FD                 1907 	mov	r5,a
+   1A37 78 17              1908 	mov	r0,#_tdm_state_remaining
+   1A39 EC                 1909 	mov	a,r4
+   1A3A F2                 1910 	movx	@r0,a
+   1A3B 08                 1911 	inc	r0
+   1A3C ED                 1912 	mov	a,r5
+   1A3D F2                 1913 	movx	@r0,a
+   1A3E 80 08              1914 	sjmp	00109$
+   1A40                    1915 00108$:
+                           1916 ;	radio/tdm.c:418: tdm_state_remaining = 1;
+   1A40 78 17              1917 	mov	r0,#_tdm_state_remaining
+   1A42 74 01              1918 	mov	a,#0x01
+   1A44 F2                 1919 	movx	@r0,a
+   1A45 08                 1920 	inc	r0
+   1A46 E4                 1921 	clr	a
+   1A47 F2                 1922 	movx	@r0,a
+   1A48                    1923 00109$:
+                           1924 ;	radio/tdm.c:420: if (at_testmode & AT_TEST_TDM) {
+   1A48 78 51              1925 	mov	r0,#_at_testmode
+   1A4A E2                 1926 	movx	a,@r0
+   1A4B 54 02              1927 	anl	a,#0x02
+   1A4D 60 22              1928 	jz	00113$
+                           1929 ;	radio/tdm.c:421: printf("TDM: change timing %u/%u\n",
+   1A4F 78 17              1930 	mov	r0,#_tdm_state_remaining
+   1A51 E2                 1931 	movx	a,@r0
+   1A52 C0 E0              1932 	push	acc
+   1A54 08                 1933 	inc	r0
+   1A55 E2                 1934 	movx	a,@r0
+   1A56 C0 E0              1935 	push	acc
+   1A58 C0 06              1936 	push	ar6
+   1A5A C0 07              1937 	push	ar7
+   1A5C 74 BE              1938 	mov	a,#__str_4
+   1A5E C0 E0              1939 	push	acc
+   1A60 74 70              1940 	mov	a,#(__str_4 >> 8)
+   1A62 C0 E0              1941 	push	acc
+   1A64 74 80              1942 	mov	a,#0x80
+   1A66 C0 E0              1943 	push	acc
+   1A68 12 12 5A           1944 	lcall	_printfl
+   1A6B E5 81              1945 	mov	a,sp
+   1A6D 24 F9              1946 	add	a,#0xf9
+   1A6F F5 81              1947 	mov	sp,a
+   1A71                    1948 00113$:
+                           1949 ;	radio/tdm.c:427: if (at_testmode & AT_TEST_TDM) {
+   1A71 78 51              1950 	mov	r0,#_at_testmode
+   1A73 E2                 1951 	movx	a,@r0
+   1A74 54 02              1952 	anl	a,#0x02
+   1A76 60 15              1953 	jz	00115$
+                           1954 ;	radio/tdm.c:428: printf("TDM: scanning\n");
+   1A78 74 D8              1955 	mov	a,#__str_5
+   1A7A C0 E0              1956 	push	acc
+   1A7C 74 70              1957 	mov	a,#(__str_5 >> 8)
+   1A7E C0 E0              1958 	push	acc
+   1A80 74 80              1959 	mov	a,#0x80
+   1A82 C0 E0              1960 	push	acc
+   1A84 12 12 5A           1961 	lcall	_printfl
+   1A87 15 81              1962 	dec	sp
+   1A89 15 81              1963 	dec	sp
+   1A8B 15 81              1964 	dec	sp
+   1A8D                    1965 00115$:
+                           1966 ;	radio/tdm.c:430: fhop_set_locked(false);
+   1A8D C2 0D              1967 	clr	_fhop_set_locked_PARM_1
+   1A8F 12 14 00           1968 	lcall	_fhop_set_locked
+   1A92                    1969 00117$:
+                           1970 ;	radio/tdm.c:433: if (unlock_count != 0) {
+   1A92 90 04 04           1971 	mov	dptr,#_link_update_unlock_count_1_1
+   1A95 E0                 1972 	movx	a,@dptr
+   1A96 FF                 1973 	mov	r7,a
+   1A97 60 39              1974 	jz	00119$
+                           1975 ;	radio/tdm.c:434: statistics.average_rssi = (radio_last_rssi() + 3*(uint16_t)statistics.average_rssi)/4;
+   1A99 12 2F 5A           1976 	lcall	_radio_last_rssi
+   1A9C AF 82              1977 	mov	r7,dpl
+   1A9E 78 98              1978 	mov	r0,#_statistics
+   1AA0 E2                 1979 	movx	a,@r0
+   1AA1 90 05 F2           1980 	mov	dptr,#__mulint_PARM_2
+   1AA4 F0                 1981 	movx	@dptr,a
+   1AA5 A3                 1982 	inc	dptr
+   1AA6 E4                 1983 	clr	a
+   1AA7 F0                 1984 	movx	@dptr,a
+   1AA8 90 00 03           1985 	mov	dptr,#0x0003
+   1AAB C0 07              1986 	push	ar7
+   1AAD 12 67 2F           1987 	lcall	__mulint
+   1AB0 AD 82              1988 	mov	r5,dpl
+   1AB2 AE 83              1989 	mov	r6,dph
+   1AB4 D0 07              1990 	pop	ar7
+   1AB6 7C 00              1991 	mov	r4,#0x00
+   1AB8 ED                 1992 	mov	a,r5
+   1AB9 2F                 1993 	add	a,r7
+   1ABA FD                 1994 	mov	r5,a
+   1ABB EE                 1995 	mov	a,r6
+   1ABC 3C                 1996 	addc	a,r4
+   1ABD C3                 1997 	clr	c
+   1ABE 13                 1998 	rrc	a
+   1ABF CD                 1999 	xch	a,r5
+   1AC0 13                 2000 	rrc	a
+   1AC1 CD                 2001 	xch	a,r5
+   1AC2 C3                 2002 	clr	c
+   1AC3 13                 2003 	rrc	a
+   1AC4 CD                 2004 	xch	a,r5
+   1AC5 13                 2005 	rrc	a
+   1AC6 CD                 2006 	xch	a,r5
+   1AC7 FE                 2007 	mov	r6,a
+   1AC8 78 98              2008 	mov	r0,#_statistics
+   1ACA ED                 2009 	mov	a,r5
+   1ACB F2                 2010 	movx	@r0,a
+                           2011 ;	radio/tdm.c:437: statistics.receive_count = 0;
+   1ACC 78 9A              2012 	mov	r0,#(_statistics + 0x0002)
+   1ACE E4                 2013 	clr	a
+   1ACF F2                 2014 	movx	@r0,a
+   1AD0 08                 2015 	inc	r0
+   1AD1 F2                 2016 	movx	@r0,a
+   1AD2                    2017 00119$:
+                           2018 ;	radio/tdm.c:440: if (unlock_count > 5) {
+   1AD2 90 04 04           2019 	mov	dptr,#_link_update_unlock_count_1_1
+   1AD5 E0                 2020 	movx	a,@dptr
+   1AD6 FF                 2021 	mov  r7,a
+   1AD7 24 FA              2022 	add	a,#0xff - 0x05
+   1AD9 50 17              2023 	jnc	00121$
+                           2024 ;	radio/tdm.c:441: memset(&remote_statistics, 0, sizeof(remote_statistics));
+   1ADB 90 05 E4           2025 	mov	dptr,#_memset_PARM_2
+   1ADE E4                 2026 	clr	a
+   1ADF F0                 2027 	movx	@dptr,a
+   1AE0 90 05 E5           2028 	mov	dptr,#_memset_PARM_3
+   1AE3 74 04              2029 	mov	a,#0x04
+   1AE5 F0                 2030 	movx	@dptr,a
+   1AE6 A3                 2031 	inc	dptr
+   1AE7 E4                 2032 	clr	a
+   1AE8 F0                 2033 	movx	@dptr,a
+   1AE9 90 00 9C           2034 	mov	dptr,#_remote_statistics
+   1AEC 75 F0 60           2035 	mov	b,#0x60
+   1AEF 12 66 1C           2036 	lcall	_memset
+   1AF2                    2037 00121$:
+                           2038 ;	radio/tdm.c:444: test_display = at_testmode;
+   1AF2 78 51              2039 	mov	r0,#_at_testmode
+   1AF4 90 04 03           2040 	mov	dptr,#_test_display
+   1AF7 E2                 2041 	movx	a,@r0
+   1AF8 F0                 2042 	movx	@dptr,a
+                           2043 ;	radio/tdm.c:445: send_statistics = 1;
+   1AF9 D2 13              2044 	setb	_send_statistics
+                           2045 ;	radio/tdm.c:447: temperature_count++;
+   1AFB 90 04 05           2046 	mov	dptr,#_link_update_temperature_count_1_1
+   1AFE E0                 2047 	movx	a,@dptr
+   1AFF 24 01              2048 	add	a,#0x01
+   1B01 F0                 2049 	movx	@dptr,a
+                           2050 ;	radio/tdm.c:448: if (temperature_count == 4) {
+   1B02 90 04 05           2051 	mov	dptr,#_link_update_temperature_count_1_1
+   1B05 E0                 2052 	movx	a,@dptr
+   1B06 FF                 2053 	mov	r7,a
+   1B07 BF 04 08           2054 	cjne	r7,#0x04,00124$
+                           2055 ;	radio/tdm.c:450: temperature_update();
+   1B0A 12 19 3E           2056 	lcall	_temperature_update
+                           2057 ;	radio/tdm.c:451: temperature_count = 0;
+   1B0D 90 04 05           2058 	mov	dptr,#_link_update_temperature_count_1_1
+   1B10 E4                 2059 	clr	a
+   1B11 F0                 2060 	movx	@dptr,a
+   1B12                    2061 00124$:
+   1B12 22                 2062 	ret
+                           2063 ;------------------------------------------------------------
+                           2064 ;Allocation info for local variables in function 'tdm_remote_at'
+                           2065 ;------------------------------------------------------------
+                           2066 ;	radio/tdm.c:457: tdm_remote_at(void)
+                           2067 ;	-----------------------------------------
+                           2068 ;	 function tdm_remote_at
+                           2069 ;	-----------------------------------------
+   1B13                    2070 _tdm_remote_at:
+                           2071 ;	radio/tdm.c:459: memcpy(remote_at_cmd, at_cmd, strlen(at_cmd)+1);
+   1B13 90 04 0C           2072 	mov	dptr,#_at_cmd
+   1B16 75 F0 00           2073 	mov	b,#0x00
+   1B19 12 6C BE           2074 	lcall	_strlen
+   1B1C E5 82              2075 	mov	a,dpl
+   1B1E 85 83 F0           2076 	mov	b,dph
+   1B21 24 01              2077 	add	a,#0x01
+   1B23 FE                 2078 	mov	r6,a
+   1B24 E4                 2079 	clr	a
+   1B25 35 F0              2080 	addc	a,b
+   1B27 FF                 2081 	mov	r7,a
+   1B28 90 05 E7           2082 	mov	dptr,#_memcpy_PARM_2
+   1B2B 74 0C              2083 	mov	a,#_at_cmd
+   1B2D F0                 2084 	movx	@dptr,a
+   1B2E A3                 2085 	inc	dptr
+   1B2F 74 04              2086 	mov	a,#(_at_cmd >> 8)
+   1B31 F0                 2087 	movx	@dptr,a
+   1B32 A3                 2088 	inc	dptr
+   1B33 E4                 2089 	clr	a
+   1B34 F0                 2090 	movx	@dptr,a
+   1B35 90 05 EA           2091 	mov	dptr,#_memcpy_PARM_3
+   1B38 EE                 2092 	mov	a,r6
+   1B39 F0                 2093 	movx	@dptr,a
+   1B3A A3                 2094 	inc	dptr
+   1B3B EF                 2095 	mov	a,r7
+   1B3C F0                 2096 	movx	@dptr,a
+   1B3D 90 00 35           2097 	mov	dptr,#_remote_at_cmd
+   1B40 75 F0 60           2098 	mov	b,#0x60
+   1B43 12 66 44           2099 	lcall	_memcpy
+                           2100 ;	radio/tdm.c:460: send_at_command = true;
+   1B46 D2 14              2101 	setb	_send_at_command
+   1B48 22                 2102 	ret
+                           2103 ;------------------------------------------------------------
+                           2104 ;Allocation info for local variables in function 'handle_at_command'
+                           2105 ;------------------------------------------------------------
+                           2106 ;	radio/tdm.c:468: handle_at_command(__pdata uint8_t len)
+                           2107 ;	-----------------------------------------
+                           2108 ;	 function handle_at_command
+                           2109 ;	-----------------------------------------
+   1B49                    2110 _handle_at_command:
+   1B49 AF 82              2111 	mov	r7,dpl
+                           2112 ;	radio/tdm.c:470: if (len < 2 || len > AT_CMD_MAXLEN ||
+   1B4B BF 02 00           2113 	cjne	r7,#0x02,00114$
+   1B4E                    2114 00114$:
+   1B4E 40 17              2115 	jc	00101$
+   1B50 EF                 2116 	mov	a,r7
+   1B51 24 EF              2117 	add	a,#0xff - 0x10
+   1B53 40 12              2118 	jc	00101$
+                           2119 ;	radio/tdm.c:471: pbuf[0] != (uint8_t)'R' ||
+   1B55 90 03 07           2120 	mov	dptr,#_pbuf
+   1B58 E0                 2121 	movx	a,@dptr
+   1B59 FE                 2122 	mov	r6,a
+   1B5A BE 52 0A           2123 	cjne	r6,#0x52,00101$
+                           2124 ;	radio/tdm.c:472: pbuf[1] != (uint8_t)'T') {
+   1B5D 90 03 08           2125 	mov	dptr,#(_pbuf + 0x0001)
+   1B60 E0                 2126 	movx	a,@dptr
+   1B61 FE                 2127 	mov	r6,a
+   1B62 BE 54 02           2128 	cjne	r6,#0x54,00119$
+   1B65 80 02              2129 	sjmp	00102$
+   1B67                    2130 00119$:
+   1B67                    2131 00101$:
+                           2132 ;	radio/tdm.c:473: return true;
+   1B67 D3                 2133 	setb	c
+   1B68 22                 2134 	ret
+   1B69                    2135 00102$:
+                           2136 ;	radio/tdm.c:477: memcpy(at_cmd, pbuf, len);
+   1B69 90 05 E7           2137 	mov	dptr,#_memcpy_PARM_2
+   1B6C 74 07              2138 	mov	a,#_pbuf
+   1B6E F0                 2139 	movx	@dptr,a
+   1B6F A3                 2140 	inc	dptr
+   1B70 74 03              2141 	mov	a,#(_pbuf >> 8)
+   1B72 F0                 2142 	movx	@dptr,a
+   1B73 A3                 2143 	inc	dptr
+   1B74 E4                 2144 	clr	a
+   1B75 F0                 2145 	movx	@dptr,a
+   1B76 90 05 EA           2146 	mov	dptr,#_memcpy_PARM_3
+   1B79 EF                 2147 	mov	a,r7
+   1B7A F0                 2148 	movx	@dptr,a
+   1B7B A3                 2149 	inc	dptr
+   1B7C E4                 2150 	clr	a
+   1B7D F0                 2151 	movx	@dptr,a
+   1B7E 90 04 0C           2152 	mov	dptr,#_at_cmd
+   1B81 75 F0 00           2153 	mov	b,#0x00
+   1B84 C0 07              2154 	push	ar7
+   1B86 12 66 44           2155 	lcall	_memcpy
+   1B89 D0 07              2156 	pop	ar7
+                           2157 ;	radio/tdm.c:478: at_cmd[len] = 0;
+   1B8B EF                 2158 	mov	a,r7
+   1B8C 24 0C              2159 	add	a,#_at_cmd
+   1B8E F5 82              2160 	mov	dpl,a
+   1B90 E4                 2161 	clr	a
+   1B91 34 04              2162 	addc	a,#(_at_cmd >> 8)
+   1B93 F5 83              2163 	mov	dph,a
+   1B95 E4                 2164 	clr	a
+   1B96 F0                 2165 	movx	@dptr,a
+                           2166 ;	radio/tdm.c:479: at_cmd[0] = 'A'; // replace 'R'
+   1B97 90 04 0C           2167 	mov	dptr,#_at_cmd
+   1B9A 74 41              2168 	mov	a,#0x41
+   1B9C F0                 2169 	movx	@dptr,a
+                           2170 ;	radio/tdm.c:480: at_cmd_len = len;
+   1B9D 78 50              2171 	mov	r0,#_at_cmd_len
+   1B9F EF                 2172 	mov	a,r7
+   1BA0 F2                 2173 	movx	@r0,a
+                           2174 ;	radio/tdm.c:481: at_cmd_ready = true;
+   1BA1 D2 19              2175 	setb	_at_cmd_ready
+                           2176 ;	radio/tdm.c:486: printf_start_capture(pbuf, sizeof(pbuf));
+   1BA3 90 02 CD           2177 	mov	dptr,#_printf_start_capture_PARM_2
+   1BA6 74 FC              2178 	mov	a,#0xFC
+   1BA8 F0                 2179 	movx	@dptr,a
+   1BA9 90 03 07           2180 	mov	dptr,#_pbuf
+   1BAC 12 0F 45           2181 	lcall	_printf_start_capture
+                           2182 ;	radio/tdm.c:487: at_command();
+   1BAF 12 26 D2           2183 	lcall	_at_command
+                           2184 ;	radio/tdm.c:488: len = printf_end_capture();
+   1BB2 12 0F 6E           2185 	lcall	_printf_end_capture
+                           2186 ;	radio/tdm.c:489: if (len > 0) {
+   1BB5 E5 82              2187 	mov	a,dpl
+   1BB7 FF                 2188 	mov	r7,a
+   1BB8 60 0A              2189 	jz	00107$
+                           2190 ;	radio/tdm.c:490: packet_inject(pbuf, len);
+   1BBA 78 0C              2191 	mov	r0,#_packet_inject_PARM_2
+   1BBC EF                 2192 	mov	a,r7
+   1BBD F2                 2193 	movx	@r0,a
+   1BBE 90 03 07           2194 	mov	dptr,#_pbuf
+   1BC1 12 0E C5           2195 	lcall	_packet_inject
+   1BC4                    2196 00107$:
+                           2197 ;	radio/tdm.c:492: return false;
+   1BC4 C3                 2198 	clr	c
+   1BC5 22                 2199 	ret
+                           2200 ;------------------------------------------------------------
+                           2201 ;Allocation info for local variables in function 'tdm_serial_loop'
+                           2202 ;------------------------------------------------------------
+                           2203 ;	radio/tdm.c:501: tdm_serial_loop(void)
+                           2204 ;	-----------------------------------------
+                           2205 ;	 function tdm_serial_loop
+                           2206 ;	-----------------------------------------
+   1BC6                    2207 _tdm_serial_loop:
+                           2208 ;	radio/tdm.c:516: __pdata uint16_t last_t = timer2_tick();
+   1BC6 12 5F AA           2209 	lcall	_timer2_tick
+   1BC9 78 4B              2210 	mov	r0,#_tdm_serial_loop_last_t_1_1
+   1BCB E5 82              2211 	mov	a,dpl
+   1BCD F2                 2212 	movx	@r0,a
+   1BCE 08                 2213 	inc	r0
+   1BCF E5 83              2214 	mov	a,dph
+   1BD1 F2                 2215 	movx	@r0,a
+                           2216 ;	radio/tdm.c:517: __pdata uint16_t last_link_update = last_t;
+   1BD2 78 4B              2217 	mov	r0,#_tdm_serial_loop_last_t_1_1
+   1BD4 79 4D              2218 	mov	r1,#_tdm_serial_loop_last_link_update_1_1
+   1BD6 E2                 2219 	movx	a,@r0
+   1BD7 F3                 2220 	movx	@r1,a
+   1BD8 08                 2221 	inc	r0
+   1BD9 E2                 2222 	movx	a,@r0
+   1BDA 09                 2223 	inc	r1
+   1BDB F3                 2224 	movx	@r1,a
+                           2225 ;	radio/tdm.c:520: _canary = 42;
+   1BDC 78 FF              2226 	mov	r0,#__canary
+   1BDE 76 2A              2227 	mov	@r0,#0x2A
+   1BE0                    2228 00194$:
+                           2229 ;	radio/tdm.c:523: if (_canary != 42) {
+   1BE0 78 FF              2230 	mov	r0,#__canary
+   1BE2 B6 2A 02           2231 	cjne	@r0,#0x2A,00247$
+   1BE5 80 15              2232 	sjmp	00102$
+   1BE7                    2233 00247$:
+                           2234 ;	radio/tdm.c:524: panic("stack blown\n");
+   1BE7 74 E7              2235 	mov	a,#__str_6
+   1BE9 C0 E0              2236 	push	acc
+   1BEB 74 70              2237 	mov	a,#(__str_6 >> 8)
+   1BED C0 E0              2238 	push	acc
+   1BEF 74 80              2239 	mov	a,#0x80
+   1BF1 C0 E0              2240 	push	acc
+   1BF3 12 44 BB           2241 	lcall	_panic
+   1BF6 15 81              2242 	dec	sp
+   1BF8 15 81              2243 	dec	sp
+   1BFA 15 81              2244 	dec	sp
+   1BFC                    2245 00102$:
+                           2246 ;	radio/tdm.c:527: if (pdata_canary != 0x41) {
+   1BFC 78 4F              2247 	mov	r0,#_pdata_canary
+   1BFE E2                 2248 	movx	a,@r0
+   1BFF B4 41 02           2249 	cjne	a,#0x41,00248$
+   1C02 80 15              2250 	sjmp	00104$
+   1C04                    2251 00248$:
+                           2252 ;	radio/tdm.c:528: panic("pdata canary changed\n");
+   1C04 74 F4              2253 	mov	a,#__str_7
+   1C06 C0 E0              2254 	push	acc
+   1C08 74 70              2255 	mov	a,#(__str_7 >> 8)
+   1C0A C0 E0              2256 	push	acc
+   1C0C 74 80              2257 	mov	a,#0x80
+   1C0E C0 E0              2258 	push	acc
+   1C10 12 44 BB           2259 	lcall	_panic
+   1C13 15 81              2260 	dec	sp
+   1C15 15 81              2261 	dec	sp
+   1C17 15 81              2262 	dec	sp
+   1C19                    2263 00104$:
+                           2264 ;	radio/tdm.c:532: at_command();
+   1C19 12 26 D2           2265 	lcall	_at_command
+                           2266 ;	radio/tdm.c:535: if (test_display) {
+   1C1C 90 04 03           2267 	mov	dptr,#_test_display
+   1C1F E0                 2268 	movx	a,@dptr
+   1C20 FB                 2269 	mov	r3,a
+   1C21 60 08              2270 	jz	00106$
+                           2271 ;	radio/tdm.c:536: display_test_output();
+   1C23 12 15 03           2272 	lcall	_display_test_output
+                           2273 ;	radio/tdm.c:537: test_display = 0;
+   1C26 90 04 03           2274 	mov	dptr,#_test_display
+   1C29 E4                 2275 	clr	a
+   1C2A F0                 2276 	movx	@dptr,a
+   1C2B                    2277 00106$:
+                           2278 ;	radio/tdm.c:540: if (seen_mavlink && feature_mavlink_framing && !at_mode_active) {
+   1C2B 30 05 0F           2279 	jnb	_seen_mavlink,00108$
+   1C2E 90 05 80           2280 	mov	dptr,#_feature_mavlink_framing
+   1C31 E0                 2281 	movx	a,@dptr
+   1C32 FB                 2282 	mov	r3,a
+   1C33 60 08              2283 	jz	00108$
+   1C35 20 18 05           2284 	jb	_at_mode_active,00108$
+                           2285 ;	radio/tdm.c:541: seen_mavlink = false;
+   1C38 C2 05              2286 	clr	_seen_mavlink
+                           2287 ;	radio/tdm.c:542: MAVLink_report();
+   1C3A 12 05 FA           2288 	lcall	_MAVLink_report
+   1C3D                    2289 00108$:
+                           2290 ;	radio/tdm.c:546: radio_set_channel(fhop_receive_channel());
+   1C3D 12 13 8E           2291 	lcall	_fhop_receive_channel
+   1C40 12 32 DD           2292 	lcall	_radio_set_channel
+                           2293 ;	radio/tdm.c:549: tnow = timer2_tick();
+   1C43 12 5F AA           2294 	lcall	_timer2_tick
+   1C46 AA 82              2295 	mov	r2,dpl
+   1C48 AB 83              2296 	mov	r3,dph
+                           2297 ;	radio/tdm.c:552: if (radio_receive_packet(&len, pbuf)) {
+   1C4A 78 65              2298 	mov	r0,#_radio_receive_packet_PARM_2
+   1C4C 74 07              2299 	mov	a,#_pbuf
+   1C4E F2                 2300 	movx	@r0,a
+   1C4F 08                 2301 	inc	r0
+   1C50 74 03              2302 	mov	a,#(_pbuf >> 8)
+   1C52 F2                 2303 	movx	@r0,a
+   1C53 90 00 48           2304 	mov	dptr,#_tdm_serial_loop_len_1_1
+   1C56 75 F0 60           2305 	mov	b,#0x60
+   1C59 C0 03              2306 	push	ar3
+   1C5B C0 02              2307 	push	ar2
+   1C5D 12 2E 63           2308 	lcall	_radio_receive_packet
+   1C60 D0 02              2309 	pop	ar2
+   1C62 D0 03              2310 	pop	ar3
+   1C64 40 03              2311 	jc	00253$
+   1C66 02 1D E4           2312 	ljmp	00129$
+   1C69                    2313 00253$:
+                           2314 ;	radio/tdm.c:555: received_packet = true;
+   1C69 D2 11              2315 	setb	_received_packet
+                           2316 ;	radio/tdm.c:556: fhop_set_locked(true);
+   1C6B D2 0D              2317 	setb	_fhop_set_locked_PARM_1
+   1C6D C0 03              2318 	push	ar3
+   1C6F C0 02              2319 	push	ar2
+   1C71 12 14 00           2320 	lcall	_fhop_set_locked
+                           2321 ;	radio/tdm.c:559: statistics.average_rssi = (radio_last_rssi() + 7*(uint16_t)statistics.average_rssi)/8;
+   1C74 12 2F 5A           2322 	lcall	_radio_last_rssi
+   1C77 AD 82              2323 	mov	r5,dpl
+   1C79 D0 02              2324 	pop	ar2
+   1C7B D0 03              2325 	pop	ar3
+   1C7D 78 98              2326 	mov	r0,#_statistics
+   1C7F E2                 2327 	movx	a,@r0
+   1C80 90 05 F2           2328 	mov	dptr,#__mulint_PARM_2
+   1C83 F0                 2329 	movx	@dptr,a
+   1C84 A3                 2330 	inc	dptr
+   1C85 E4                 2331 	clr	a
+   1C86 F0                 2332 	movx	@dptr,a
+   1C87 90 00 07           2333 	mov	dptr,#0x0007
+   1C8A C0 05              2334 	push	ar5
+   1C8C C0 03              2335 	push	ar3
+   1C8E C0 02              2336 	push	ar2
+   1C90 12 67 2F           2337 	lcall	__mulint
+   1C93 AC 82              2338 	mov	r4,dpl
+   1C95 AF 83              2339 	mov	r7,dph
+   1C97 D0 02              2340 	pop	ar2
+   1C99 D0 03              2341 	pop	ar3
+   1C9B D0 05              2342 	pop	ar5
+   1C9D 7E 00              2343 	mov	r6,#0x00
+   1C9F EC                 2344 	mov	a,r4
+   1CA0 2D                 2345 	add	a,r5
+   1CA1 FC                 2346 	mov	r4,a
+   1CA2 EF                 2347 	mov	a,r7
+   1CA3 3E                 2348 	addc	a,r6
+   1CA4 C4                 2349 	swap	a
+   1CA5 23                 2350 	rl	a
+   1CA6 CC                 2351 	xch	a,r4
+   1CA7 C4                 2352 	swap	a
+   1CA8 23                 2353 	rl	a
+   1CA9 54 1F              2354 	anl	a,#0x1F
+   1CAB 6C                 2355 	xrl	a,r4
+   1CAC CC                 2356 	xch	a,r4
+   1CAD 54 1F              2357 	anl	a,#0x1F
+   1CAF CC                 2358 	xch	a,r4
+   1CB0 6C                 2359 	xrl	a,r4
+   1CB1 CC                 2360 	xch	a,r4
+   1CB2 78 98              2361 	mov	r0,#_statistics
+   1CB4 EC                 2362 	mov	a,r4
+   1CB5 F2                 2363 	movx	@r0,a
+                           2364 ;	radio/tdm.c:560: statistics.receive_count++;
+   1CB6 78 9A              2365 	mov	r0,#(_statistics + 0x0002)
+   1CB8 E2                 2366 	movx	a,@r0
+   1CB9 FE                 2367 	mov	r6,a
+   1CBA 08                 2368 	inc	r0
+   1CBB E2                 2369 	movx	a,@r0
+   1CBC FF                 2370 	mov	r7,a
+   1CBD 0E                 2371 	inc	r6
+   1CBE BE 00 01           2372 	cjne	r6,#0x00,00254$
+   1CC1 0F                 2373 	inc	r7
+   1CC2                    2374 00254$:
+   1CC2 78 9A              2375 	mov	r0,#(_statistics + 0x0002)
+   1CC4 EE                 2376 	mov	a,r6
+   1CC5 F2                 2377 	movx	@r0,a
+   1CC6 08                 2378 	inc	r0
+   1CC7 EF                 2379 	mov	a,r7
+   1CC8 F2                 2380 	movx	@r0,a
+                           2381 ;	radio/tdm.c:564: transmit_wait = 0;
+   1CC9 78 22              2382 	mov	r0,#_transmit_wait
+   1CCB E4                 2383 	clr	a
+   1CCC F2                 2384 	movx	@r0,a
+   1CCD 08                 2385 	inc	r0
+   1CCE F2                 2386 	movx	@r0,a
+                           2387 ;	radio/tdm.c:566: if (len < 2) {
+   1CCF 78 48              2388 	mov	r0,#_tdm_serial_loop_len_1_1
+   1CD1 E2                 2389 	movx	a,@r0
+   1CD2 B4 02 00           2390 	cjne	a,#0x02,00255$
+   1CD5                    2391 00255$:
+   1CD5 50 03              2392 	jnc	00256$
+   1CD7 02 1B E0           2393 	ljmp	00194$
+   1CDA                    2394 00256$:
+                           2395 ;	radio/tdm.c:573: memcpy(&trailer, &pbuf[len-sizeof(trailer)], sizeof(trailer));
+   1CDA 78 48              2396 	mov	r0,#_tdm_serial_loop_len_1_1
+   1CDC E2                 2397 	movx	a,@r0
+   1CDD 24 FE              2398 	add	a,#0xFE
+   1CDF 24 07              2399 	add	a,#_pbuf
+   1CE1 FE                 2400 	mov	r6,a
+   1CE2 E4                 2401 	clr	a
+   1CE3 34 03              2402 	addc	a,#(_pbuf >> 8)
+   1CE5 FF                 2403 	mov	r7,a
+   1CE6 90 05 E7           2404 	mov	dptr,#_memcpy_PARM_2
+   1CE9 EE                 2405 	mov	a,r6
+   1CEA F0                 2406 	movx	@dptr,a
+   1CEB A3                 2407 	inc	dptr
+   1CEC EF                 2408 	mov	a,r7
+   1CED F0                 2409 	movx	@dptr,a
+   1CEE A3                 2410 	inc	dptr
+   1CEF E4                 2411 	clr	a
+   1CF0 F0                 2412 	movx	@dptr,a
+   1CF1 90 05 EA           2413 	mov	dptr,#_memcpy_PARM_3
+   1CF4 74 02              2414 	mov	a,#0x02
+   1CF6 F0                 2415 	movx	@dptr,a
+   1CF7 A3                 2416 	inc	dptr
+   1CF8 E4                 2417 	clr	a
+   1CF9 F0                 2418 	movx	@dptr,a
+   1CFA 90 00 33           2419 	mov	dptr,#_trailer
+   1CFD 75 F0 60           2420 	mov	b,#0x60
+   1D00 C0 03              2421 	push	ar3
+   1D02 C0 02              2422 	push	ar2
+   1D04 12 66 44           2423 	lcall	_memcpy
+   1D07 D0 02              2424 	pop	ar2
+   1D09 D0 03              2425 	pop	ar3
+                           2426 ;	radio/tdm.c:574: len -= sizeof(trailer);
+   1D0B 78 48              2427 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D0D E2                 2428 	movx	a,@r0
+   1D0E 14                 2429 	dec	a
+   1D0F 14                 2430 	dec	a
+   1D10 F2                 2431 	movx	@r0,a
+                           2432 ;	radio/tdm.c:576: if (trailer.window == 0 && len != 0) {
+   1D11 78 33              2433 	mov	r0,#_trailer
+   1D13 E2                 2434 	movx	a,@r0
+   1D14 FE                 2435 	mov	r6,a
+   1D15 08                 2436 	inc	r0
+   1D16 E2                 2437 	movx	a,@r0
+   1D17 54 1F              2438 	anl	a,#0x1F
+   1D19 FF                 2439 	mov	r7,a
+   1D1A 4E                 2440 	orl	a,r6
+   1D1B 70 41              2441 	jnz	00125$
+   1D1D 78 48              2442 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D1F E2                 2443 	movx	a,@r0
+   1D20 60 3C              2444 	jz	00125$
+                           2445 ;	radio/tdm.c:578: if (len == sizeof(struct statistics)) {
+   1D22 78 48              2446 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D24 E2                 2447 	movx	a,@r0
+   1D25 B4 04 20           2448 	cjne	a,#0x04,00114$
+                           2449 ;	radio/tdm.c:579: memcpy(&remote_statistics, pbuf, len);
+   1D28 90 05 E7           2450 	mov	dptr,#_memcpy_PARM_2
+   1D2B 74 07              2451 	mov	a,#_pbuf
+   1D2D F0                 2452 	movx	@dptr,a
+   1D2E A3                 2453 	inc	dptr
+   1D2F 74 03              2454 	mov	a,#(_pbuf >> 8)
+   1D31 F0                 2455 	movx	@dptr,a
+   1D32 A3                 2456 	inc	dptr
+   1D33 E4                 2457 	clr	a
+   1D34 F0                 2458 	movx	@dptr,a
+   1D35 78 48              2459 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D37 90 05 EA           2460 	mov	dptr,#_memcpy_PARM_3
+   1D3A E2                 2461 	movx	a,@r0
+   1D3B F0                 2462 	movx	@dptr,a
+   1D3C A3                 2463 	inc	dptr
+   1D3D E4                 2464 	clr	a
+   1D3E F0                 2465 	movx	@dptr,a
+   1D3F 90 00 9C           2466 	mov	dptr,#_remote_statistics
+   1D42 75 F0 60           2467 	mov	b,#0x60
+   1D45 12 66 44           2468 	lcall	_memcpy
+   1D48                    2469 00114$:
+                           2470 ;	radio/tdm.c:583: statistics.receive_count--;
+   1D48 78 9A              2471 	mov	r0,#(_statistics + 0x0002)
+   1D4A E2                 2472 	movx	a,@r0
+   1D4B FE                 2473 	mov	r6,a
+   1D4C 08                 2474 	inc	r0
+   1D4D E2                 2475 	movx	a,@r0
+   1D4E FF                 2476 	mov	r7,a
+   1D4F 1E                 2477 	dec	r6
+   1D50 BE FF 01           2478 	cjne	r6,#0xFF,00261$
+   1D53 1F                 2479 	dec	r7
+   1D54                    2480 00261$:
+   1D54 78 9A              2481 	mov	r0,#(_statistics + 0x0002)
+   1D56 EE                 2482 	mov	a,r6
+   1D57 F2                 2483 	movx	@r0,a
+   1D58 08                 2484 	inc	r0
+   1D59 EF                 2485 	mov	a,r7
+   1D5A F2                 2486 	movx	@r0,a
+   1D5B 02 1B E0           2487 	ljmp	00194$
+   1D5E                    2488 00125$:
+                           2489 ;	radio/tdm.c:584: } else if (trailer.window != 0) {
+   1D5E 78 33              2490 	mov	r0,#_trailer
+   1D60 E2                 2491 	movx	a,@r0
+   1D61 FE                 2492 	mov	r6,a
+   1D62 08                 2493 	inc	r0
+   1D63 E2                 2494 	movx	a,@r0
+   1D64 54 1F              2495 	anl	a,#0x1F
+   1D66 FF                 2496 	mov	r7,a
+   1D67 4E                 2497 	orl	a,r6
+   1D68 70 03              2498 	jnz	00262$
+   1D6A 02 1B E0           2499 	ljmp	00194$
+   1D6D                    2500 00262$:
+                           2501 ;	radio/tdm.c:587: sync_tx_windows(len);
+   1D6D 78 48              2502 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D6F E2                 2503 	movx	a,@r0
+   1D70 F5 82              2504 	mov	dpl,a
+   1D72 C0 03              2505 	push	ar3
+   1D74 C0 02              2506 	push	ar2
+   1D76 12 15 36           2507 	lcall	_sync_tx_windows
+   1D79 D0 02              2508 	pop	ar2
+   1D7B D0 03              2509 	pop	ar3
+                           2510 ;	radio/tdm.c:588: last_t = tnow;
+   1D7D 78 4B              2511 	mov	r0,#_tdm_serial_loop_last_t_1_1
+   1D7F EA                 2512 	mov	a,r2
+   1D80 F2                 2513 	movx	@r0,a
+   1D81 08                 2514 	inc	r0
+   1D82 EB                 2515 	mov	a,r3
+   1D83 F2                 2516 	movx	@r0,a
+                           2517 ;	radio/tdm.c:597: if ((trailer.command == 1 && handle_at_command(len)) 
+   1D84 78 34              2518 	mov	r0,#(_trailer + 0x0001)
+   1D86 E2                 2519 	movx	a,@r0
+   1D87 C4                 2520 	swap	a
+   1D88 03                 2521 	rr	a
+   1D89 54 01              2522 	anl	a,#0x01
+   1D8B FF                 2523 	mov	r7,a
+   1D8C BF 01 0A           2524 	cjne	r7,#0x01,00121$
+   1D8F 78 48              2525 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D91 E2                 2526 	movx	a,@r0
+   1D92 F5 82              2527 	mov	dpl,a
+   1D94 12 1B 49           2528 	lcall	_handle_at_command
+   1D97 40 38              2529 	jc	00115$
+   1D99                    2530 00121$:
+                           2531 ;	radio/tdm.c:599: (len != 0 && trailer.command == 0 &&
+   1D99 78 48              2532 	mov	r0,#_tdm_serial_loop_len_1_1
+   1D9B E2                 2533 	movx	a,@r0
+   1D9C 70 03              2534 	jnz	00266$
+   1D9E 02 1B E0           2535 	ljmp	00194$
+   1DA1                    2536 00266$:
+   1DA1 78 34              2537 	mov	r0,#(_trailer + 0x0001)
+   1DA3 E2                 2538 	movx	a,@r0
+   1DA4 30 E5 03           2539 	jnb	acc.5,00267$
+   1DA7 02 1B E0           2540 	ljmp	00194$
+   1DAA                    2541 00267$:
+                           2542 ;	radio/tdm.c:600: !packet_is_duplicate(len, pbuf, trailer.resend) &&
+   1DAA 78 34              2543 	mov	r0,#(_trailer + 0x0001)
+   1DAC E2                 2544 	movx	a,@r0
+   1DAD 23                 2545 	rl	a
+   1DAE 54 01              2546 	anl	a,#0x01
+   1DB0 24 FF              2547 	add	a,#0xff
+   1DB2 92 06              2548 	mov	_packet_is_duplicate_PARM_3,c
+   1DB4 90 02 C6           2549 	mov	dptr,#_packet_is_duplicate_PARM_2
+   1DB7 74 07              2550 	mov	a,#_pbuf
+   1DB9 F0                 2551 	movx	@dptr,a
+   1DBA A3                 2552 	inc	dptr
+   1DBB 74 03              2553 	mov	a,#(_pbuf >> 8)
+   1DBD F0                 2554 	movx	@dptr,a
+   1DBE 78 48              2555 	mov	r0,#_tdm_serial_loop_len_1_1
+   1DC0 E2                 2556 	movx	a,@r0
+   1DC1 F5 82              2557 	mov	dpl,a
+   1DC3 12 0E 3B           2558 	lcall	_packet_is_duplicate
+   1DC6 50 03              2559 	jnc	00268$
+   1DC8 02 1B E0           2560 	ljmp	00194$
+   1DCB                    2561 00268$:
+                           2562 ;	radio/tdm.c:601: !at_mode_active
+   1DCB 30 18 03           2563 	jnb	_at_mode_active,00269$
+   1DCE 02 1B E0           2564 	ljmp	00194$
+   1DD1                    2565 00269$:
+   1DD1                    2566 00115$:
+                           2567 ;	radio/tdm.c:620: LED_ACTIVITY = LED_ON;
+   1DD1 D2 96              2568 	setb	_LED_RED
+                           2569 ;	radio/tdm.c:621: serial_write_buf(pbuf, len);
+   1DD3 78 48              2570 	mov	r0,#_tdm_serial_loop_len_1_1
+   1DD5 79 BA              2571 	mov	r1,#_serial_write_buf_PARM_2
+   1DD7 E2                 2572 	movx	a,@r0
+   1DD8 F3                 2573 	movx	@r1,a
+   1DD9 90 03 07           2574 	mov	dptr,#_pbuf
+   1DDC 12 59 44           2575 	lcall	_serial_write_buf
+                           2576 ;	radio/tdm.c:622: LED_ACTIVITY = LED_OFF;
+   1DDF C2 96              2577 	clr	_LED_RED
+                           2578 ;	radio/tdm.c:627: continue;
+   1DE1 02 1B E0           2579 	ljmp	00194$
+   1DE4                    2580 00129$:
+                           2581 ;	radio/tdm.c:633: tnow = timer2_tick();
+   1DE4 12 5F AA           2582 	lcall	_timer2_tick
+   1DE7 AA 82              2583 	mov	r2,dpl
+   1DE9 AB 83              2584 	mov	r3,dph
+                           2585 ;	radio/tdm.c:634: tdelta = tnow - last_t;
+   1DEB 78 4B              2586 	mov	r0,#_tdm_serial_loop_last_t_1_1
+   1DED 79 49              2587 	mov	r1,#_tdm_serial_loop_tdelta_1_1
+   1DEF D3                 2588 	setb	c
+   1DF0 E2                 2589 	movx	a,@r0
+   1DF1 9A                 2590 	subb	a,r2
+   1DF2 F4                 2591 	cpl	a
+   1DF3 B3                 2592 	cpl	c
+   1DF4 F3                 2593 	movx	@r1,a
+   1DF5 B3                 2594 	cpl	c
+   1DF6 08                 2595 	inc	r0
+   1DF7 E2                 2596 	movx	a,@r0
+   1DF8 9B                 2597 	subb	a,r3
+   1DF9 F4                 2598 	cpl	a
+   1DFA 09                 2599 	inc	r1
+   1DFB F3                 2600 	movx	@r1,a
+                           2601 ;	radio/tdm.c:635: tdm_state_update(tdelta);
+   1DFC 78 49              2602 	mov	r0,#_tdm_serial_loop_tdelta_1_1
+   1DFE E2                 2603 	movx	a,@r0
+   1DFF F5 82              2604 	mov	dpl,a
+   1E01 08                 2605 	inc	r0
+   1E02 E2                 2606 	movx	a,@r0
+   1E03 F5 83              2607 	mov	dph,a
+   1E05 C0 03              2608 	push	ar3
+   1E07 C0 02              2609 	push	ar2
+   1E09 12 16 A2           2610 	lcall	_tdm_state_update
+   1E0C D0 02              2611 	pop	ar2
+   1E0E D0 03              2612 	pop	ar3
+                           2613 ;	radio/tdm.c:636: last_t = tnow;
+   1E10 78 4B              2614 	mov	r0,#_tdm_serial_loop_last_t_1_1
+   1E12 EA                 2615 	mov	a,r2
+   1E13 F2                 2616 	movx	@r0,a
+   1E14 08                 2617 	inc	r0
+   1E15 EB                 2618 	mov	a,r3
+   1E16 F2                 2619 	movx	@r0,a
+                           2620 ;	radio/tdm.c:639: if (tnow - last_link_update > 32768) {
+   1E17 78 4D              2621 	mov	r0,#_tdm_serial_loop_last_link_update_1_1
+   1E19 D3                 2622 	setb	c
+   1E1A E2                 2623 	movx	a,@r0
+   1E1B 9A                 2624 	subb	a,r2
+   1E1C F4                 2625 	cpl	a
+   1E1D B3                 2626 	cpl	c
+   1E1E FC                 2627 	mov	r4,a
+   1E1F B3                 2628 	cpl	c
+   1E20 08                 2629 	inc	r0
+   1E21 E2                 2630 	movx	a,@r0
+   1E22 9B                 2631 	subb	a,r3
+   1E23 F4                 2632 	cpl	a
+   1E24 FD                 2633 	mov	r5,a
+   1E25 7E 00              2634 	mov	r6,#0x00
+   1E27 7F 00              2635 	mov	r7,#0x00
+   1E29 C3                 2636 	clr	c
+   1E2A E4                 2637 	clr	a
+   1E2B 9C                 2638 	subb	a,r4
+   1E2C 74 80              2639 	mov	a,#0x80
+   1E2E 9D                 2640 	subb	a,r5
+   1E2F E4                 2641 	clr	a
+   1E30 9E                 2642 	subb	a,r6
+   1E31 E4                 2643 	clr	a
+   1E32 64 80              2644 	xrl	a,#0x80
+   1E34 8F F0              2645 	mov	b,r7
+   1E36 63 F0 80           2646 	xrl	b,#0x80
+   1E39 95 F0              2647 	subb	a,b
+   1E3B 50 12              2648 	jnc	00131$
+                           2649 ;	radio/tdm.c:640: link_update();
+   1E3D C0 03              2650 	push	ar3
+   1E3F C0 02              2651 	push	ar2
+   1E41 12 19 DB           2652 	lcall	_link_update
+   1E44 D0 02              2653 	pop	ar2
+   1E46 D0 03              2654 	pop	ar3
+                           2655 ;	radio/tdm.c:641: last_link_update = tnow;
+   1E48 78 4D              2656 	mov	r0,#_tdm_serial_loop_last_link_update_1_1
+   1E4A EA                 2657 	mov	a,r2
+   1E4B F2                 2658 	movx	@r0,a
+   1E4C 08                 2659 	inc	r0
+   1E4D EB                 2660 	mov	a,r3
+   1E4E F2                 2661 	movx	@r0,a
+   1E4F                    2662 00131$:
+                           2663 ;	radio/tdm.c:645: if (lbt_rssi != 0) {
+   1E4F 78 2C              2664 	mov	r0,#_lbt_rssi
+   1E51 E2                 2665 	movx	a,@r0
+   1E52 70 03              2666 	jnz	00271$
+   1E54 02 1E D4           2667 	ljmp	00140$
+   1E57                    2668 00271$:
+                           2669 ;	radio/tdm.c:647: if (radio_current_rssi() < lbt_rssi) {
+   1E57 12 2F 60           2670 	lcall	_radio_current_rssi
+   1E5A AF 82              2671 	mov	r7,dpl
+   1E5C 78 2C              2672 	mov	r0,#_lbt_rssi
+   1E5E C3                 2673 	clr	c
+   1E5F E2                 2674 	movx	a,@r0
+   1E60 F5 F0              2675 	mov	b,a
+   1E62 EF                 2676 	mov	a,r7
+   1E63 95 F0              2677 	subb	a,b
+   1E65 50 16              2678 	jnc	00135$
+                           2679 ;	radio/tdm.c:648: lbt_listen_time += tdelta;
+   1E67 78 2D              2680 	mov	r0,#_lbt_listen_time
+   1E69 79 49              2681 	mov	r1,#_tdm_serial_loop_tdelta_1_1
+   1E6B E3                 2682 	movx	a,@r1
+   1E6C C5 F0              2683 	xch	a,b
+   1E6E E2                 2684 	movx	a,@r0
+   1E6F 25 F0              2685 	add	a,b
+   1E71 F2                 2686 	movx	@r0,a
+   1E72 09                 2687 	inc	r1
+   1E73 E3                 2688 	movx	a,@r1
+   1E74 C5 F0              2689 	xch	a,b
+   1E76 08                 2690 	inc	r0
+   1E77 E2                 2691 	movx	a,@r0
+   1E78 35 F0              2692 	addc	a,b
+   1E7A F2                 2693 	movx	@r0,a
+   1E7B 80 36              2694 	sjmp	00136$
+   1E7D                    2695 00135$:
+                           2696 ;	radio/tdm.c:650: lbt_listen_time = 0;
+   1E7D 78 2D              2697 	mov	r0,#_lbt_listen_time
+   1E7F E4                 2698 	clr	a
+   1E80 F2                 2699 	movx	@r0,a
+   1E81 08                 2700 	inc	r0
+   1E82 F2                 2701 	movx	@r0,a
+                           2702 ;	radio/tdm.c:651: if (lbt_rand == 0) {
+   1E83 78 31              2703 	mov	r0,#_lbt_rand
+   1E85 E2                 2704 	movx	a,@r0
+   1E86 F5 F0              2705 	mov	b,a
+   1E88 08                 2706 	inc	r0
+   1E89 E2                 2707 	movx	a,@r0
+   1E8A 45 F0              2708 	orl	a,b
+   1E8C 70 25              2709 	jnz	00136$
+                           2710 ;	radio/tdm.c:652: lbt_rand = ((uint16_t)rand()) % lbt_min_time;
+   1E8E 12 64 35           2711 	lcall	_rand
+   1E91 AE 82              2712 	mov	r6,dpl
+   1E93 AF 83              2713 	mov	r7,dph
+   1E95 78 2F              2714 	mov	r0,#_lbt_min_time
+   1E97 90 06 02           2715 	mov	dptr,#__moduint_PARM_2
+   1E9A E2                 2716 	movx	a,@r0
+   1E9B F0                 2717 	movx	@dptr,a
+   1E9C 08                 2718 	inc	r0
+   1E9D E2                 2719 	movx	a,@r0
+   1E9E A3                 2720 	inc	dptr
+   1E9F F0                 2721 	movx	@dptr,a
+   1EA0 8E 82              2722 	mov	dpl,r6
+   1EA2 8F 83              2723 	mov	dph,r7
+   1EA4 12 68 B8           2724 	lcall	__moduint
+   1EA7 E5 82              2725 	mov	a,dpl
+   1EA9 85 83 F0           2726 	mov	b,dph
+   1EAC 78 31              2727 	mov	r0,#_lbt_rand
+   1EAE F2                 2728 	movx	@r0,a
+   1EAF 08                 2729 	inc	r0
+   1EB0 E5 F0              2730 	mov	a,b
+   1EB2 F2                 2731 	movx	@r0,a
+   1EB3                    2732 00136$:
+                           2733 ;	radio/tdm.c:655: if (lbt_listen_time < lbt_min_time + lbt_rand) {
+   1EB3 78 2F              2734 	mov	r0,#_lbt_min_time
+   1EB5 79 31              2735 	mov	r1,#_lbt_rand
+   1EB7 E3                 2736 	movx	a,@r1
+   1EB8 C5 F0              2737 	xch	a,b
+   1EBA E2                 2738 	movx	a,@r0
+   1EBB 25 F0              2739 	add	a,b
+   1EBD FE                 2740 	mov	r6,a
+   1EBE 09                 2741 	inc	r1
+   1EBF E3                 2742 	movx	a,@r1
+   1EC0 C5 F0              2743 	xch	a,b
+   1EC2 08                 2744 	inc	r0
+   1EC3 E2                 2745 	movx	a,@r0
+   1EC4 35 F0              2746 	addc	a,b
+   1EC6 FF                 2747 	mov	r7,a
+   1EC7 78 2D              2748 	mov	r0,#_lbt_listen_time
+   1EC9 C3                 2749 	clr	c
+   1ECA E2                 2750 	movx	a,@r0
+   1ECB 9E                 2751 	subb	a,r6
+   1ECC 08                 2752 	inc	r0
+   1ECD E2                 2753 	movx	a,@r0
+   1ECE 9F                 2754 	subb	a,r7
+   1ECF 50 03              2755 	jnc	00274$
+   1ED1 02 1B E0           2756 	ljmp	00194$
+   1ED4                    2757 00274$:
+                           2758 ;	radio/tdm.c:657: continue;
+   1ED4                    2759 00140$:
+                           2760 ;	radio/tdm.c:665: if (tdm_state != TDM_TRANSMIT &&
+   1ED4 78 16              2761 	mov	r0,#_tdm_state
+   1ED6 E2                 2762 	movx	a,@r0
+   1ED7 60 11              2763 	jz	00142$
+                           2764 ;	radio/tdm.c:666: !(bonus_transmit && tdm_state == TDM_RECEIVE)) {
+   1ED9 20 0E 03           2765 	jb	_bonus_transmit,00276$
+   1EDC 02 1B E0           2766 	ljmp	00194$
+   1EDF                    2767 00276$:
+   1EDF 78 16              2768 	mov	r0,#_tdm_state
+   1EE1 E2                 2769 	movx	a,@r0
+   1EE2 B4 02 02           2770 	cjne	a,#0x02,00277$
+   1EE5 80 03              2771 	sjmp	00278$
+   1EE7                    2772 00277$:
+   1EE7 02 1B E0           2773 	ljmp	00194$
+   1EEA                    2774 00278$:
+                           2775 ;	radio/tdm.c:668: continue;
+   1EEA                    2776 00142$:
+                           2777 ;	radio/tdm.c:676: if (transmit_yield != 0) {
+   1EEA 30 0F 03           2778 	jnb	_transmit_yield,00279$
+   1EED 02 1B E0           2779 	ljmp	00194$
+   1EF0                    2780 00279$:
+                           2781 ;	radio/tdm.c:681: if (transmit_wait != 0) {
+   1EF0 78 22              2782 	mov	r0,#_transmit_wait
+   1EF2 E2                 2783 	movx	a,@r0
+   1EF3 F5 F0              2784 	mov	b,a
+   1EF5 08                 2785 	inc	r0
+   1EF6 E2                 2786 	movx	a,@r0
+   1EF7 45 F0              2787 	orl	a,b
+   1EF9 60 03              2788 	jz	00280$
+   1EFB 02 1B E0           2789 	ljmp	00194$
+   1EFE                    2790 00280$:
+                           2791 ;	radio/tdm.c:686: if (!received_packet &&
+   1EFE 20 11 05           2792 	jb	_received_packet,00152$
+                           2793 ;	radio/tdm.c:687: radio_preamble_detected() ||
+   1F01 12 2F 43           2794 	lcall	_radio_preamble_detected
+   1F04 40 05              2795 	jc	00149$
+   1F06                    2796 00152$:
+                           2797 ;	radio/tdm.c:688: radio_receive_in_progress()) {
+   1F06 12 2F 2A           2798 	lcall	_radio_receive_in_progress
+   1F09 50 11              2799 	jnc	00150$
+   1F0B                    2800 00149$:
+                           2801 ;	radio/tdm.c:691: transmit_wait = packet_latency;
+   1F0B 78 1E              2802 	mov	r0,#_packet_latency
+   1F0D E2                 2803 	movx	a,@r0
+   1F0E FE                 2804 	mov	r6,a
+   1F0F 08                 2805 	inc	r0
+   1F10 E2                 2806 	movx	a,@r0
+   1F11 FF                 2807 	mov	r7,a
+   1F12 78 22              2808 	mov	r0,#_transmit_wait
+   1F14 EE                 2809 	mov	a,r6
+   1F15 F2                 2810 	movx	@r0,a
+   1F16 08                 2811 	inc	r0
+   1F17 EF                 2812 	mov	a,r7
+   1F18 F2                 2813 	movx	@r0,a
+                           2814 ;	radio/tdm.c:692: continue;
+   1F19 02 1B E0           2815 	ljmp	00194$
+   1F1C                    2816 00150$:
+                           2817 ;	radio/tdm.c:698: statistics.average_noise = (radio_current_rssi() + 3*(uint16_t)statistics.average_noise)/4;
+   1F1C 12 2F 60           2818 	lcall	_radio_current_rssi
+   1F1F AF 82              2819 	mov	r7,dpl
+   1F21 78 99              2820 	mov	r0,#(_statistics + 0x0001)
+   1F23 E2                 2821 	movx	a,@r0
+   1F24 90 05 F2           2822 	mov	dptr,#__mulint_PARM_2
+   1F27 F0                 2823 	movx	@dptr,a
+   1F28 A3                 2824 	inc	dptr
+   1F29 E4                 2825 	clr	a
+   1F2A F0                 2826 	movx	@dptr,a
+   1F2B 90 00 03           2827 	mov	dptr,#0x0003
+   1F2E C0 07              2828 	push	ar7
+   1F30 12 67 2F           2829 	lcall	__mulint
+   1F33 AD 82              2830 	mov	r5,dpl
+   1F35 AE 83              2831 	mov	r6,dph
+   1F37 D0 07              2832 	pop	ar7
+   1F39 7C 00              2833 	mov	r4,#0x00
+   1F3B ED                 2834 	mov	a,r5
+   1F3C 2F                 2835 	add	a,r7
+   1F3D FD                 2836 	mov	r5,a
+   1F3E EE                 2837 	mov	a,r6
+   1F3F 3C                 2838 	addc	a,r4
+   1F40 C3                 2839 	clr	c
+   1F41 13                 2840 	rrc	a
+   1F42 CD                 2841 	xch	a,r5
+   1F43 13                 2842 	rrc	a
+   1F44 CD                 2843 	xch	a,r5
+   1F45 C3                 2844 	clr	c
+   1F46 13                 2845 	rrc	a
+   1F47 CD                 2846 	xch	a,r5
+   1F48 13                 2847 	rrc	a
+   1F49 CD                 2848 	xch	a,r5
+   1F4A FE                 2849 	mov	r6,a
+   1F4B 78 99              2850 	mov	r0,#(_statistics + 0x0001)
+   1F4D ED                 2851 	mov	a,r5
+   1F4E F2                 2852 	movx	@r0,a
+                           2853 ;	radio/tdm.c:700: if (duty_cycle_wait) {
+   1F4F 30 12 03           2854 	jnb	_duty_cycle_wait,00284$
+   1F52 02 1B E0           2855 	ljmp	00194$
+   1F55                    2856 00284$:
+                           2857 ;	radio/tdm.c:707: if (tdm_state_remaining < packet_latency) {
+   1F55 78 17              2858 	mov	r0,#_tdm_state_remaining
+   1F57 79 1E              2859 	mov	r1,#_packet_latency
+   1F59 C3                 2860 	clr	c
+   1F5A E3                 2861 	movx	a,@r1
+   1F5B F5 F0              2862 	mov	b,a
+   1F5D E2                 2863 	movx	a,@r0
+   1F5E 95 F0              2864 	subb	a,b
+   1F60 09                 2865 	inc	r1
+   1F61 E3                 2866 	movx	a,@r1
+   1F62 F5 F0              2867 	mov	b,a
+   1F64 08                 2868 	inc	r0
+   1F65 E2                 2869 	movx	a,@r0
+   1F66 95 F0              2870 	subb	a,b
+   1F68 50 03              2871 	jnc	00285$
+   1F6A 02 1B E0           2872 	ljmp	00194$
+   1F6D                    2873 00285$:
+                           2874 ;	radio/tdm.c:711: max_xmit = (tdm_state_remaining - packet_latency) / ticks_per_byte;
+   1F6D 78 17              2875 	mov	r0,#_tdm_state_remaining
+   1F6F 79 1E              2876 	mov	r1,#_packet_latency
+   1F71 E3                 2877 	movx	a,@r1
+   1F72 F5 F0              2878 	mov	b,a
+   1F74 C3                 2879 	clr	c
+   1F75 E2                 2880 	movx	a,@r0
+   1F76 95 F0              2881 	subb	a,b
+   1F78 FE                 2882 	mov	r6,a
+   1F79 09                 2883 	inc	r1
+   1F7A E3                 2884 	movx	a,@r1
+   1F7B F5 F0              2885 	mov	b,a
+   1F7D 08                 2886 	inc	r0
+   1F7E E2                 2887 	movx	a,@r0
+   1F7F 95 F0              2888 	subb	a,b
+   1F81 FF                 2889 	mov	r7,a
+   1F82 78 20              2890 	mov	r0,#_ticks_per_byte
+   1F84 90 05 96           2891 	mov	dptr,#__divuint_PARM_2
+   1F87 E2                 2892 	movx	a,@r0
+   1F88 F0                 2893 	movx	@dptr,a
+   1F89 08                 2894 	inc	r0
+   1F8A E2                 2895 	movx	a,@r0
+   1F8B A3                 2896 	inc	dptr
+   1F8C F0                 2897 	movx	@dptr,a
+   1F8D 8E 82              2898 	mov	dpl,r6
+   1F8F 8F 83              2899 	mov	dph,r7
+   1F91 12 60 04           2900 	lcall	__divuint
+   1F94 AE 82              2901 	mov	r6,dpl
+   1F96 AF 83              2902 	mov	r7,dph
+                           2903 ;	radio/tdm.c:712: if (max_xmit < PACKET_OVERHEAD) {
+   1F98 BE 12 00           2904 	cjne	r6,#0x12,00286$
+   1F9B                    2905 00286$:
+   1F9B 50 03              2906 	jnc	00287$
+   1F9D 02 1B E0           2907 	ljmp	00194$
+   1FA0                    2908 00287$:
+                           2909 ;	radio/tdm.c:717: max_xmit -= sizeof(trailer)+1;
+   1FA0 1E                 2910 	dec	r6
+   1FA1 1E                 2911 	dec	r6
+   1FA2 1E                 2912 	dec	r6
+                           2913 ;	radio/tdm.c:731: if (max_xmit > max_data_packet_length) {
+   1FA3 78 1B              2914 	mov	r0,#_max_data_packet_length
+   1FA5 C3                 2915 	clr	c
+   1FA6 E2                 2916 	movx	a,@r0
+   1FA7 9E                 2917 	subb	a,r6
+   1FA8 50 04              2918 	jnc	00160$
+                           2919 ;	radio/tdm.c:732: max_xmit = max_data_packet_length;
+   1FAA 78 1B              2920 	mov	r0,#_max_data_packet_length
+   1FAC E2                 2921 	movx	a,@r0
+   1FAD FE                 2922 	mov	r6,a
+   1FAE                    2923 00160$:
+                           2924 ;	radio/tdm.c:737: pins_user_check();
+   1FAE C0 06              2925 	push	ar6
+   1FB0 12 56 89           2926 	lcall	_pins_user_check
+   1FB3 D0 06              2927 	pop	ar6
+                           2928 ;	radio/tdm.c:741: if (send_at_command && 
+   1FB5 30 14 57           2929 	jnb	_send_at_command,00165$
+                           2930 ;	radio/tdm.c:742: max_xmit >= strlen(remote_at_cmd)) {
+   1FB8 90 00 35           2931 	mov	dptr,#_remote_at_cmd
+   1FBB 75 F0 60           2932 	mov	b,#0x60
+   1FBE C0 06              2933 	push	ar6
+   1FC0 12 6C BE           2934 	lcall	_strlen
+   1FC3 AD 82              2935 	mov	r5,dpl
+   1FC5 AF 83              2936 	mov	r7,dph
+   1FC7 D0 06              2937 	pop	ar6
+   1FC9 8E 03              2938 	mov	ar3,r6
+   1FCB 7C 00              2939 	mov	r4,#0x00
+   1FCD C3                 2940 	clr	c
+   1FCE EB                 2941 	mov	a,r3
+   1FCF 9D                 2942 	subb	a,r5
+   1FD0 EC                 2943 	mov	a,r4
+   1FD1 9F                 2944 	subb	a,r7
+   1FD2 40 3B              2945 	jc	00165$
+                           2946 ;	radio/tdm.c:744: len = strlen(remote_at_cmd);
+   1FD4 90 00 35           2947 	mov	dptr,#_remote_at_cmd
+   1FD7 75 F0 60           2948 	mov	b,#0x60
+   1FDA C0 06              2949 	push	ar6
+   1FDC 12 6C BE           2950 	lcall	_strlen
+   1FDF AD 82              2951 	mov	r5,dpl
+   1FE1 78 48              2952 	mov	r0,#_tdm_serial_loop_len_1_1
+   1FE3 ED                 2953 	mov	a,r5
+   1FE4 F2                 2954 	movx	@r0,a
+                           2955 ;	radio/tdm.c:745: memcpy(pbuf, remote_at_cmd, len);
+   1FE5 90 05 E7           2956 	mov	dptr,#_memcpy_PARM_2
+   1FE8 74 35              2957 	mov	a,#_remote_at_cmd
+   1FEA F0                 2958 	movx	@dptr,a
+   1FEB A3                 2959 	inc	dptr
+   1FEC E4                 2960 	clr	a
+   1FED F0                 2961 	movx	@dptr,a
+   1FEE A3                 2962 	inc	dptr
+   1FEF 74 60              2963 	mov	a,#0x60
+   1FF1 F0                 2964 	movx	@dptr,a
+   1FF2 90 05 EA           2965 	mov	dptr,#_memcpy_PARM_3
+   1FF5 ED                 2966 	mov	a,r5
+   1FF6 F0                 2967 	movx	@dptr,a
+   1FF7 A3                 2968 	inc	dptr
+   1FF8 E4                 2969 	clr	a
+   1FF9 F0                 2970 	movx	@dptr,a
+   1FFA 90 03 07           2971 	mov	dptr,#_pbuf
+   1FFD 75 F0 00           2972 	mov	b,#0x00
+   2000 12 66 44           2973 	lcall	_memcpy
+   2003 D0 06              2974 	pop	ar6
+                           2975 ;	radio/tdm.c:746: trailer.command = 1;
+   2005 78 34              2976 	mov	r0,#(_trailer + 0x0001)
+   2007 E2                 2977 	movx	a,@r0
+   2008 44 20              2978 	orl	a,#0x20
+   200A F2                 2979 	movx	@r0,a
+                           2980 ;	radio/tdm.c:747: send_at_command = false;
+   200B C2 14              2981 	clr	_send_at_command
+   200D 80 37              2982 	sjmp	00166$
+   200F                    2983 00165$:
+                           2984 ;	radio/tdm.c:750: len = packet_get_next(max_xmit, pbuf);
+   200F 90 02 C1           2985 	mov	dptr,#_packet_get_next_PARM_2
+   2012 74 07              2986 	mov	a,#_pbuf
+   2014 F0                 2987 	movx	@dptr,a
+   2015 A3                 2988 	inc	dptr
+   2016 74 03              2989 	mov	a,#(_pbuf >> 8)
+   2018 F0                 2990 	movx	@dptr,a
+   2019 8E 82              2991 	mov	dpl,r6
+   201B C0 06              2992 	push	ar6
+   201D 12 09 5B           2993 	lcall	_packet_get_next
+   2020 AF 82              2994 	mov	r7,dpl
+   2022 D0 06              2995 	pop	ar6
+   2024 78 48              2996 	mov	r0,#_tdm_serial_loop_len_1_1
+   2026 EF                 2997 	mov	a,r7
+   2027 F2                 2998 	movx	@r0,a
+                           2999 ;	radio/tdm.c:752: if (len > 0) {
+   2028 EF                 3000 	mov	a,r7
+   2029 60 15              3001 	jz	00162$
+                           3002 ;	radio/tdm.c:753: trailer.command = packet_is_injected();
+   202B C0 06              3003 	push	ar6
+   202D 12 0D E5           3004 	lcall	_packet_is_injected
+   2030 D0 06              3005 	pop	ar6
+   2032 92 17              3006 	mov  _tdm_serial_loop_sloc0_1_0,c
+   2034 E4                 3007 	clr	a
+   2035 33                 3008 	rlc	a
+   2036 FF                 3009 	mov	r7,a
+   2037 78 34              3010 	mov	r0,#(_trailer + 0x0001)
+   2039 13                 3011 	rrc	a
+   203A E2                 3012 	movx	a,@r0
+   203B 92 E5              3013 	mov	acc.5,c
+   203D F2                 3014 	movx	@r0,a
+   203E 80 06              3015 	sjmp	00166$
+   2040                    3016 00162$:
+                           3017 ;	radio/tdm.c:755: trailer.command = 0;
+   2040 78 34              3018 	mov	r0,#(_trailer + 0x0001)
+   2042 E2                 3019 	movx	a,@r0
+   2043 54 DF              3020 	anl	a,#0xDF
+   2045 F2                 3021 	movx	@r0,a
+   2046                    3022 00166$:
+                           3023 ;	radio/tdm.c:762: if (len > max_data_packet_length) {
+   2046 78 48              3024 	mov	r0,#_tdm_serial_loop_len_1_1
+   2048 79 1B              3025 	mov	r1,#_max_data_packet_length
+   204A C3                 3026 	clr	c
+   204B E2                 3027 	movx	a,@r0
+   204C F5 F0              3028 	mov	b,a
+   204E E3                 3029 	movx	a,@r1
+   204F 95 F0              3030 	subb	a,b
+   2051 50 19              3031 	jnc	00169$
+                           3032 ;	radio/tdm.c:763: panic("oversized tdm packet");
+   2053 C0 06              3033 	push	ar6
+   2055 74 0A              3034 	mov	a,#__str_8
+   2057 C0 E0              3035 	push	acc
+   2059 74 71              3036 	mov	a,#(__str_8 >> 8)
+   205B C0 E0              3037 	push	acc
+   205D 74 80              3038 	mov	a,#0x80
+   205F C0 E0              3039 	push	acc
+   2061 12 44 BB           3040 	lcall	_panic
+   2064 15 81              3041 	dec	sp
+   2066 15 81              3042 	dec	sp
+   2068 15 81              3043 	dec	sp
+   206A D0 06              3044 	pop	ar6
+   206C                    3045 00169$:
+                           3046 ;	radio/tdm.c:766: trailer.bonus = (tdm_state == TDM_RECEIVE);
+   206C 78 16              3047 	mov	r0,#_tdm_state
+   206E E2                 3048 	movx	a,@r0
+   206F B4 02 03           3049 	cjne	a,#0x02,00293$
+   2072 D3                 3050 	setb	c
+   2073 80 01              3051 	sjmp	00294$
+   2075                    3052 00293$:
+   2075 C3                 3053 	clr	c
+   2076                    3054 00294$:
+   2076 92 17              3055 	mov  _tdm_serial_loop_sloc0_1_0,c
+   2078 E4                 3056 	clr	a
+   2079 33                 3057 	rlc	a
+   207A 78 34              3058 	mov	r0,#(_trailer + 0x0001)
+   207C 13                 3059 	rrc	a
+   207D E2                 3060 	movx	a,@r0
+   207E 92 E6              3061 	mov	acc.6,c
+   2080 F2                 3062 	movx	@r0,a
+                           3063 ;	radio/tdm.c:767: trailer.resend = packet_is_resend();
+   2081 C0 06              3064 	push	ar6
+   2083 12 0D E2           3065 	lcall	_packet_is_resend
+   2086 D0 06              3066 	pop	ar6
+   2088 92 17              3067 	mov  _tdm_serial_loop_sloc0_1_0,c
+   208A E4                 3068 	clr	a
+   208B 33                 3069 	rlc	a
+   208C FF                 3070 	mov	r7,a
+   208D 78 34              3071 	mov	r0,#(_trailer + 0x0001)
+   208F 13                 3072 	rrc	a
+   2090 E2                 3073 	movx	a,@r0
+   2091 92 E7              3074 	mov	acc.7,c
+   2093 F2                 3075 	movx	@r0,a
+                           3076 ;	radio/tdm.c:769: if (tdm_state == TDM_TRANSMIT &&
+   2094 78 16              3077 	mov	r0,#_tdm_state
+   2096 E2                 3078 	movx	a,@r0
+   2097 70 44              3079 	jnz	00171$
+                           3080 ;	radio/tdm.c:770: len == 0 &&
+   2099 78 48              3081 	mov	r0,#_tdm_serial_loop_len_1_1
+   209B E2                 3082 	movx	a,@r0
+   209C 70 3F              3083 	jnz	00171$
+                           3084 ;	radio/tdm.c:771: send_statistics &&
+   209E 30 13 3C           3085 	jnb	_send_statistics,00171$
+                           3086 ;	radio/tdm.c:772: max_xmit >= sizeof(statistics)) {
+   20A1 BE 04 00           3087 	cjne	r6,#0x04,00298$
+   20A4                    3088 00298$:
+   20A4 40 37              3089 	jc	00171$
+                           3090 ;	radio/tdm.c:774: send_statistics = 0;
+   20A6 C2 13              3091 	clr	_send_statistics
+                           3092 ;	radio/tdm.c:775: memcpy(pbuf, &statistics, sizeof(statistics));
+   20A8 90 05 E7           3093 	mov	dptr,#_memcpy_PARM_2
+   20AB 74 98              3094 	mov	a,#_statistics
+   20AD F0                 3095 	movx	@dptr,a
+   20AE A3                 3096 	inc	dptr
+   20AF E4                 3097 	clr	a
+   20B0 F0                 3098 	movx	@dptr,a
+   20B1 A3                 3099 	inc	dptr
+   20B2 74 60              3100 	mov	a,#0x60
+   20B4 F0                 3101 	movx	@dptr,a
+   20B5 90 05 EA           3102 	mov	dptr,#_memcpy_PARM_3
+   20B8 74 04              3103 	mov	a,#0x04
+   20BA F0                 3104 	movx	@dptr,a
+   20BB A3                 3105 	inc	dptr
+   20BC E4                 3106 	clr	a
+   20BD F0                 3107 	movx	@dptr,a
+   20BE 90 03 07           3108 	mov	dptr,#_pbuf
+   20C1 75 F0 00           3109 	mov	b,#0x00
+   20C4 12 66 44           3110 	lcall	_memcpy
+                           3111 ;	radio/tdm.c:776: len = sizeof(statistics);
+   20C7 78 48              3112 	mov	r0,#_tdm_serial_loop_len_1_1
+   20C9 74 04              3113 	mov	a,#0x04
+   20CB F2                 3114 	movx	@r0,a
+                           3115 ;	radio/tdm.c:779: trailer.window = 0;
+   20CC 78 33              3116 	mov	r0,#_trailer
+   20CE E4                 3117 	clr	a
+   20CF F2                 3118 	movx	@r0,a
+   20D0 08                 3119 	inc	r0
+   20D1 E2                 3120 	movx	a,@r0
+   20D2 54 E0              3121 	anl	a,#0xE0
+   20D4 F2                 3122 	movx	@r0,a
+                           3123 ;	radio/tdm.c:780: trailer.resend = 0;
+   20D5 78 34              3124 	mov	r0,#(_trailer + 0x0001)
+   20D7 E2                 3125 	movx	a,@r0
+   20D8 54 7F              3126 	anl	a,#0x7F
+   20DA F2                 3127 	movx	@r0,a
+   20DB 80 28              3128 	sjmp	00172$
+   20DD                    3129 00171$:
+                           3130 ;	radio/tdm.c:794: trailer.window = (uint16_t)(tdm_state_remaining - flight_time_estimate(len+sizeof(trailer)));
+   20DD 78 48              3131 	mov	r0,#_tdm_serial_loop_len_1_1
+   20DF E2                 3132 	movx	a,@r0
+   20E0 24 02              3133 	add	a,#0x02
+   20E2 F5 82              3134 	mov	dpl,a
+   20E4 12 15 0F           3135 	lcall	_flight_time_estimate
+   20E7 AE 82              3136 	mov	r6,dpl
+   20E9 AF 83              3137 	mov	r7,dph
+   20EB 78 17              3138 	mov	r0,#_tdm_state_remaining
+   20ED E2                 3139 	movx	a,@r0
+   20EE C3                 3140 	clr	c
+   20EF 9E                 3141 	subb	a,r6
+   20F0 FE                 3142 	mov	r6,a
+   20F1 08                 3143 	inc	r0
+   20F2 E2                 3144 	movx	a,@r0
+   20F3 9F                 3145 	subb	a,r7
+   20F4 FF                 3146 	mov	r7,a
+   20F5 78 33              3147 	mov	r0,#_trailer
+   20F7 EE                 3148 	mov	a,r6
+   20F8 F2                 3149 	movx	@r0,a
+   20F9 08                 3150 	inc	r0
+   20FA EF                 3151 	mov	a,r7
+   20FB 54 1F              3152 	anl	a,#0x1F
+   20FD F5 F0              3153 	mov	b,a
+   20FF E2                 3154 	movx	a,@r0
+   2100 54 E0              3155 	anl	a,#0xE0
+   2102 45 F0              3156 	orl	a,b
+   2104 F2                 3157 	movx	@r0,a
+   2105                    3158 00172$:
+                           3159 ;	radio/tdm.c:799: radio_set_channel(fhop_transmit_channel());
+   2105 12 13 7E           3160 	lcall	_fhop_transmit_channel
+   2108 12 32 DD           3161 	lcall	_radio_set_channel
+                           3162 ;	radio/tdm.c:801: memcpy(&pbuf[len], &trailer, sizeof(trailer));
+   210B 78 48              3163 	mov	r0,#_tdm_serial_loop_len_1_1
+   210D E2                 3164 	movx	a,@r0
+   210E 24 07              3165 	add	a,#_pbuf
+   2110 FE                 3166 	mov	r6,a
+   2111 E4                 3167 	clr	a
+   2112 34 03              3168 	addc	a,#(_pbuf >> 8)
+   2114 FF                 3169 	mov	r7,a
+   2115 7D 00              3170 	mov	r5,#0x00
+   2117 90 05 E7           3171 	mov	dptr,#_memcpy_PARM_2
+   211A 74 33              3172 	mov	a,#_trailer
+   211C F0                 3173 	movx	@dptr,a
+   211D A3                 3174 	inc	dptr
+   211E E4                 3175 	clr	a
+   211F F0                 3176 	movx	@dptr,a
+   2120 A3                 3177 	inc	dptr
+   2121 74 60              3178 	mov	a,#0x60
+   2123 F0                 3179 	movx	@dptr,a
+   2124 90 05 EA           3180 	mov	dptr,#_memcpy_PARM_3
+   2127 74 02              3181 	mov	a,#0x02
+   2129 F0                 3182 	movx	@dptr,a
+   212A A3                 3183 	inc	dptr
+   212B E4                 3184 	clr	a
+   212C F0                 3185 	movx	@dptr,a
+   212D 8E 82              3186 	mov	dpl,r6
+   212F 8F 83              3187 	mov	dph,r7
+   2131 8D F0              3188 	mov	b,r5
+   2133 12 66 44           3189 	lcall	_memcpy
+                           3190 ;	radio/tdm.c:803: if (len != 0 && trailer.window != 0) {
+   2136 78 48              3191 	mov	r0,#_tdm_serial_loop_len_1_1
+   2138 E2                 3192 	movx	a,@r0
+   2139 60 0E              3193 	jz	00177$
+   213B 78 33              3194 	mov	r0,#_trailer
+   213D E2                 3195 	movx	a,@r0
+   213E FE                 3196 	mov	r6,a
+   213F 08                 3197 	inc	r0
+   2140 E2                 3198 	movx	a,@r0
+   2141 54 1F              3199 	anl	a,#0x1F
+   2143 FF                 3200 	mov	r7,a
+   2144 4E                 3201 	orl	a,r6
+   2145 60 02              3202 	jz	00177$
+                           3203 ;	radio/tdm.c:805: LED_ACTIVITY = LED_ON;
+   2147 D2 96              3204 	setb	_LED_RED
+   2149                    3205 00177$:
+                           3206 ;	radio/tdm.c:808: if (len == 0) {
+   2149 78 48              3207 	mov	r0,#_tdm_serial_loop_len_1_1
+   214B E2                 3208 	movx	a,@r0
+   214C 70 02              3209 	jnz	00180$
+                           3210 ;	radio/tdm.c:812: transmit_yield = 1;
+   214E D2 0F              3211 	setb	_transmit_yield
+   2150                    3212 00180$:
+                           3213 ;	radio/tdm.c:818: transmit_wait = packet_latency;
+   2150 78 1E              3214 	mov	r0,#_packet_latency
+   2152 E2                 3215 	movx	a,@r0
+   2153 FE                 3216 	mov	r6,a
+   2154 08                 3217 	inc	r0
+   2155 E2                 3218 	movx	a,@r0
+   2156 FF                 3219 	mov	r7,a
+   2157 78 22              3220 	mov	r0,#_transmit_wait
+   2159 EE                 3221 	mov	a,r6
+   215A F2                 3222 	movx	@r0,a
+   215B 08                 3223 	inc	r0
+   215C EF                 3224 	mov	a,r7
+   215D F2                 3225 	movx	@r0,a
+                           3226 ;	radio/tdm.c:822: if ((duty_cycle - duty_cycle_offset) != 100) {
+   215E 78 24              3227 	mov	r0,#_duty_cycle
+   2160 E2                 3228 	movx	a,@r0
+   2161 FE                 3229 	mov	r6,a
+   2162 7F 00              3230 	mov	r7,#0x00
+   2164 78 29              3231 	mov	r0,#_duty_cycle_offset
+   2166 E2                 3232 	movx	a,@r0
+   2167 FC                 3233 	mov	r4,a
+   2168 7D 00              3234 	mov	r5,#0x00
+   216A EE                 3235 	mov	a,r6
+   216B C3                 3236 	clr	c
+   216C 9C                 3237 	subb	a,r4
+   216D FE                 3238 	mov	r6,a
+   216E EF                 3239 	mov	a,r7
+   216F 9D                 3240 	subb	a,r5
+   2170 FF                 3241 	mov	r7,a
+   2171 BE 64 05           3242 	cjne	r6,#0x64,00303$
+   2174 BF 00 02           3243 	cjne	r7,#0x00,00303$
+   2177 80 17              3244 	sjmp	00182$
+   2179                    3245 00303$:
+                           3246 ;	radio/tdm.c:823: transmitted_ticks += flight_time_estimate(len+sizeof(trailer));
+   2179 78 48              3247 	mov	r0,#_tdm_serial_loop_len_1_1
+   217B E2                 3248 	movx	a,@r0
+   217C 24 02              3249 	add	a,#0x02
+   217E F5 82              3250 	mov	dpl,a
+   2180 12 15 0F           3251 	lcall	_flight_time_estimate
+   2183 AE 82              3252 	mov	r6,dpl
+   2185 AF 83              3253 	mov	r7,dph
+   2187 78 2A              3254 	mov	r0,#_transmitted_ticks
+   2189 E2                 3255 	movx	a,@r0
+   218A 2E                 3256 	add	a,r6
+   218B F2                 3257 	movx	@r0,a
+   218C 08                 3258 	inc	r0
+   218D E2                 3259 	movx	a,@r0
+   218E 3F                 3260 	addc	a,r7
+   218F F2                 3261 	movx	@r0,a
+   2190                    3262 00182$:
+                           3263 ;	radio/tdm.c:827: if (!radio_transmit(len + sizeof(trailer), pbuf, tdm_state_remaining + (silence_period/2)) &&
+   2190 78 48              3264 	mov	r0,#_tdm_serial_loop_len_1_1
+   2192 E2                 3265 	movx	a,@r0
+   2193 24 02              3266 	add	a,#0x02
+   2195 FF                 3267 	mov	r7,a
+   2196 78 1C              3268 	mov	r0,#_silence_period
+   2198 E2                 3269 	movx	a,@r0
+   2199 FD                 3270 	mov	r5,a
+   219A 08                 3271 	inc	r0
+   219B E2                 3272 	movx	a,@r0
+   219C C3                 3273 	clr	c
+   219D 13                 3274 	rrc	a
+   219E CD                 3275 	xch	a,r5
+   219F 13                 3276 	rrc	a
+   21A0 CD                 3277 	xch	a,r5
+   21A1 FE                 3278 	mov	r6,a
+   21A2 78 17              3279 	mov	r0,#_tdm_state_remaining
+   21A4 E2                 3280 	movx	a,@r0
+   21A5 2D                 3281 	add	a,r5
+   21A6 FD                 3282 	mov	r5,a
+   21A7 08                 3283 	inc	r0
+   21A8 E2                 3284 	movx	a,@r0
+   21A9 3E                 3285 	addc	a,r6
+   21AA FE                 3286 	mov	r6,a
+   21AB 78 6D              3287 	mov	r0,#_radio_transmit_PARM_2
+   21AD 74 07              3288 	mov	a,#_pbuf
+   21AF F2                 3289 	movx	@r0,a
+   21B0 08                 3290 	inc	r0
+   21B1 74 03              3291 	mov	a,#(_pbuf >> 8)
+   21B3 F2                 3292 	movx	@r0,a
+   21B4 78 6F              3293 	mov	r0,#_radio_transmit_PARM_3
+   21B6 ED                 3294 	mov	a,r5
+   21B7 F2                 3295 	movx	@r0,a
+   21B8 08                 3296 	inc	r0
+   21B9 EE                 3297 	mov	a,r6
+   21BA F2                 3298 	movx	@r0,a
+   21BB 8F 82              3299 	mov	dpl,r7
+   21BD 12 31 A5           3300 	lcall	_radio_transmit
+   21C0 40 1A              3301 	jc	00184$
+                           3302 ;	radio/tdm.c:828: len != 0 && trailer.window != 0 && trailer.command == 0) {
+   21C2 78 48              3303 	mov	r0,#_tdm_serial_loop_len_1_1
+   21C4 E2                 3304 	movx	a,@r0
+   21C5 60 15              3305 	jz	00184$
+   21C7 78 33              3306 	mov	r0,#_trailer
+   21C9 E2                 3307 	movx	a,@r0
+   21CA FE                 3308 	mov	r6,a
+   21CB 08                 3309 	inc	r0
+   21CC E2                 3310 	movx	a,@r0
+   21CD 54 1F              3311 	anl	a,#0x1F
+   21CF FF                 3312 	mov	r7,a
+   21D0 4E                 3313 	orl	a,r6
+   21D1 60 09              3314 	jz	00184$
+   21D3 78 34              3315 	mov	r0,#(_trailer + 0x0001)
+   21D5 E2                 3316 	movx	a,@r0
+   21D6 20 E5 03           3317 	jb	acc.5,00184$
+                           3318 ;	radio/tdm.c:829: packet_force_resend();
+   21D9 12 0D E8           3319 	lcall	_packet_force_resend
+   21DC                    3320 00184$:
+                           3321 ;	radio/tdm.c:832: if (lbt_rssi != 0) {
+   21DC 78 2C              3322 	mov	r0,#_lbt_rssi
+   21DE E2                 3323 	movx	a,@r0
+   21DF 60 0C              3324 	jz	00189$
+                           3325 ;	radio/tdm.c:834: lbt_listen_time = 0;
+   21E1 78 2D              3326 	mov	r0,#_lbt_listen_time
+   21E3 E4                 3327 	clr	a
+   21E4 F2                 3328 	movx	@r0,a
+   21E5 08                 3329 	inc	r0
+   21E6 F2                 3330 	movx	@r0,a
+                           3331 ;	radio/tdm.c:835: lbt_rand = 0;
+   21E7 78 31              3332 	mov	r0,#_lbt_rand
+   21E9 E4                 3333 	clr	a
+   21EA F2                 3334 	movx	@r0,a
+   21EB 08                 3335 	inc	r0
+   21EC F2                 3336 	movx	@r0,a
+   21ED                    3337 00189$:
+                           3338 ;	radio/tdm.c:838: if (len != 0 && trailer.window != 0) {
+   21ED 78 48              3339 	mov	r0,#_tdm_serial_loop_len_1_1
+   21EF E2                 3340 	movx	a,@r0
+   21F0 60 0E              3341 	jz	00191$
+   21F2 78 33              3342 	mov	r0,#_trailer
+   21F4 E2                 3343 	movx	a,@r0
+   21F5 FE                 3344 	mov	r6,a
+   21F6 08                 3345 	inc	r0
+   21F7 E2                 3346 	movx	a,@r0
+   21F8 54 1F              3347 	anl	a,#0x1F
+   21FA FF                 3348 	mov	r7,a
+   21FB 4E                 3349 	orl	a,r6
+   21FC 60 02              3350 	jz	00191$
+                           3351 ;	radio/tdm.c:839: LED_ACTIVITY = LED_OFF;
+   21FE C2 96              3352 	clr	_LED_RED
+   2200                    3353 00191$:
+                           3354 ;	radio/tdm.c:860: radio_set_channel(fhop_receive_channel());
+   2200 12 13 8E           3355 	lcall	_fhop_receive_channel
+   2203 12 32 DD           3356 	lcall	_radio_set_channel
+                           3357 ;	radio/tdm.c:863: radio_receiver_on();
+   2206 12 31 DC           3358 	lcall	_radio_receiver_on
+   2209 02 1B E0           3359 	ljmp	00194$
+                           3360 ;------------------------------------------------------------
+                           3361 ;Allocation info for local variables in function 'tdm_init'
+                           3362 ;------------------------------------------------------------
+                           3363 ;sloc0                     Allocated with name '_tdm_init_sloc0_1_0'
+                           3364 ;i                         Allocated with name '_tdm_init_i_1_1'
+                           3365 ;air_rate                  Allocated with name '_tdm_init_air_rate_1_1'
+                           3366 ;window_width              Allocated with name '_tdm_init_window_width_1_1'
+                           3367 ;------------------------------------------------------------
+                           3368 ;	radio/tdm.c:982: tdm_init(void)
+                           3369 ;	-----------------------------------------
+                           3370 ;	 function tdm_init
+                           3371 ;	-----------------------------------------
+   220C                    3372 _tdm_init:
+                           3373 ;	radio/tdm.c:985: __xdata uint8_t air_rate = radio_air_rate();
+   220C 12 2F 66           3374 	lcall	_radio_air_rate
+   220F AF 82              3375 	mov	r7,dpl
+                           3376 ;	radio/tdm.c:994: ticks_per_byte = (8+(8000000UL/(air_rate*1000UL)))/16;
+   2211 90 05 FA           3377 	mov	dptr,#__mullong_PARM_2
+   2214 EF                 3378 	mov	a,r7
+   2215 F0                 3379 	movx	@dptr,a
+   2216 A3                 3380 	inc	dptr
+   2217 E4                 3381 	clr	a
+   2218 F0                 3382 	movx	@dptr,a
+   2219 A3                 3383 	inc	dptr
+   221A F0                 3384 	movx	@dptr,a
+   221B A3                 3385 	inc	dptr
+   221C F0                 3386 	movx	@dptr,a
+   221D 90 03 E8           3387 	mov	dptr,#0x03E8
+   2220 E4                 3388 	clr	a
+   2221 F5 F0              3389 	mov	b,a
+   2223 12 67 E3           3390 	lcall	__mullong
+   2226 AC 82              3391 	mov	r4,dpl
+   2228 AD 83              3392 	mov	r5,dph
+   222A AE F0              3393 	mov	r6,b
+   222C FF                 3394 	mov	r7,a
+   222D 90 05 D8           3395 	mov	dptr,#__divulong_PARM_2
+   2230 EC                 3396 	mov	a,r4
+   2231 F0                 3397 	movx	@dptr,a
+   2232 A3                 3398 	inc	dptr
+   2233 ED                 3399 	mov	a,r5
+   2234 F0                 3400 	movx	@dptr,a
+   2235 A3                 3401 	inc	dptr
+   2236 EE                 3402 	mov	a,r6
+   2237 F0                 3403 	movx	@dptr,a
+   2238 A3                 3404 	inc	dptr
+   2239 EF                 3405 	mov	a,r7
+   223A F0                 3406 	movx	@dptr,a
+   223B 90 12 00           3407 	mov	dptr,#0x1200
+   223E 75 F0 7A           3408 	mov	b,#0x7A
+   2241 E4                 3409 	clr	a
+   2242 12 64 DE           3410 	lcall	__divulong
+   2245 AC 82              3411 	mov	r4,dpl
+   2247 AD 83              3412 	mov	r5,dph
+   2249 AE F0              3413 	mov	r6,b
+   224B FF                 3414 	mov	r7,a
+   224C 74 08              3415 	mov	a,#0x08
+   224E 2C                 3416 	add	a,r4
+   224F FC                 3417 	mov	r4,a
+   2250 E4                 3418 	clr	a
+   2251 3D                 3419 	addc	a,r5
+   2252 FD                 3420 	mov	r5,a
+   2253 E4                 3421 	clr	a
+   2254 3E                 3422 	addc	a,r6
+   2255 FE                 3423 	mov	r6,a
+   2256 E4                 3424 	clr	a
+   2257 3F                 3425 	addc	a,r7
+   2258 FF                 3426 	mov	r7,a
+   2259 ED                 3427 	mov	a,r5
+   225A C4                 3428 	swap	a
+   225B CC                 3429 	xch	a,r4
+   225C C4                 3430 	swap	a
+   225D 54 0F              3431 	anl	a,#0x0F
+   225F 6C                 3432 	xrl	a,r4
+   2260 CC                 3433 	xch	a,r4
+   2261 54 0F              3434 	anl	a,#0x0F
+   2263 CC                 3435 	xch	a,r4
+   2264 6C                 3436 	xrl	a,r4
+   2265 CC                 3437 	xch	a,r4
+   2266 FD                 3438 	mov	r5,a
+   2267 EE                 3439 	mov	a,r6
+   2268 C4                 3440 	swap	a
+   2269 54 F0              3441 	anl	a,#0xF0
+   226B 4D                 3442 	orl	a,r5
+   226C FD                 3443 	mov	r5,a
+   226D EF                 3444 	mov	a,r7
+   226E C4                 3445 	swap	a
+   226F CE                 3446 	xch	a,r6
+   2270 C4                 3447 	swap	a
+   2271 54 0F              3448 	anl	a,#0x0F
+   2273 6E                 3449 	xrl	a,r6
+   2274 CE                 3450 	xch	a,r6
+   2275 54 0F              3451 	anl	a,#0x0F
+   2277 CE                 3452 	xch	a,r6
+   2278 6E                 3453 	xrl	a,r6
+   2279 CE                 3454 	xch	a,r6
+                           3455 ;	radio/tdm.c:995: ticks_per_byte++;
+   227A 74 01              3456 	mov	a,#0x01
+   227C 2C                 3457 	add	a,r4
+   227D FE                 3458 	mov	r6,a
+   227E E4                 3459 	clr	a
+   227F 3D                 3460 	addc	a,r5
+   2280 FF                 3461 	mov	r7,a
+   2281 78 20              3462 	mov	r0,#_ticks_per_byte
+   2283 EE                 3463 	mov	a,r6
+   2284 F2                 3464 	movx	@r0,a
+   2285 08                 3465 	inc	r0
+   2286 EF                 3466 	mov	a,r7
+   2287 F2                 3467 	movx	@r0,a
+                           3468 ;	radio/tdm.c:1002: packet_latency = (8+(10/2)) * ticks_per_byte + 13;
+   2288 90 05 F2           3469 	mov	dptr,#__mulint_PARM_2
+   228B EE                 3470 	mov	a,r6
+   228C F0                 3471 	movx	@dptr,a
+   228D A3                 3472 	inc	dptr
+   228E EF                 3473 	mov	a,r7
+   228F F0                 3474 	movx	@dptr,a
+   2290 90 00 0D           3475 	mov	dptr,#0x000D
+   2293 C0 07              3476 	push	ar7
+   2295 C0 06              3477 	push	ar6
+   2297 12 67 2F           3478 	lcall	__mulint
+   229A E5 82              3479 	mov	a,dpl
+   229C 85 83 F0           3480 	mov	b,dph
+   229F D0 06              3481 	pop	ar6
+   22A1 D0 07              3482 	pop	ar7
+   22A3 24 0D              3483 	add	a,#0x0D
+   22A5 FC                 3484 	mov	r4,a
+   22A6 E4                 3485 	clr	a
+   22A7 35 F0              3486 	addc	a,b
+   22A9 FD                 3487 	mov	r5,a
+   22AA 78 1E              3488 	mov	r0,#_packet_latency
+   22AC EC                 3489 	mov	a,r4
+   22AD F2                 3490 	movx	@r0,a
+   22AE 08                 3491 	inc	r0
+   22AF ED                 3492 	mov	a,r5
+   22B0 F2                 3493 	movx	@r0,a
+                           3494 ;	radio/tdm.c:1004: if (feature_golay) {
+   22B1 30 24 2E           3495 	jnb	_feature_golay,00102$
+                           3496 ;	radio/tdm.c:1005: max_data_packet_length = (MAX_PACKET_LENGTH/2) - (6+sizeof(trailer));
+   22B4 78 1B              3497 	mov	r0,#_max_data_packet_length
+   22B6 74 76              3498 	mov	a,#0x76
+   22B8 F2                 3499 	movx	@r0,a
+                           3500 ;	radio/tdm.c:1008: ticks_per_byte *= 2;
+   22B9 EF                 3501 	mov	a,r7
+   22BA CE                 3502 	xch	a,r6
+   22BB 25 E0              3503 	add	a,acc
+   22BD CE                 3504 	xch	a,r6
+   22BE 33                 3505 	rlc	a
+   22BF FF                 3506 	mov	r7,a
+   22C0 78 20              3507 	mov	r0,#_ticks_per_byte
+   22C2 EE                 3508 	mov	a,r6
+   22C3 F2                 3509 	movx	@r0,a
+   22C4 08                 3510 	inc	r0
+   22C5 EF                 3511 	mov	a,r7
+   22C6 F2                 3512 	movx	@r0,a
+                           3513 ;	radio/tdm.c:1011: packet_latency += 4*ticks_per_byte;
+   22C7 EF                 3514 	mov	a,r7
+   22C8 CE                 3515 	xch	a,r6
+   22C9 25 E0              3516 	add	a,acc
+   22CB CE                 3517 	xch	a,r6
+   22CC 33                 3518 	rlc	a
+   22CD CE                 3519 	xch	a,r6
+   22CE 25 E0              3520 	add	a,acc
+   22D0 CE                 3521 	xch	a,r6
+   22D1 33                 3522 	rlc	a
+   22D2 FF                 3523 	mov	r7,a
+   22D3 EE                 3524 	mov	a,r6
+   22D4 2C                 3525 	add	a,r4
+   22D5 FC                 3526 	mov	r4,a
+   22D6 EF                 3527 	mov	a,r7
+   22D7 3D                 3528 	addc	a,r5
+   22D8 FD                 3529 	mov	r5,a
+   22D9 78 1E              3530 	mov	r0,#_packet_latency
+   22DB EC                 3531 	mov	a,r4
+   22DC F2                 3532 	movx	@r0,a
+   22DD 08                 3533 	inc	r0
+   22DE ED                 3534 	mov	a,r5
+   22DF F2                 3535 	movx	@r0,a
+   22E0 80 05              3536 	sjmp	00103$
+   22E2                    3537 00102$:
+                           3538 ;	radio/tdm.c:1013: max_data_packet_length = MAX_PACKET_LENGTH - sizeof(trailer);
+   22E2 78 1B              3539 	mov	r0,#_max_data_packet_length
+   22E4 74 FA              3540 	mov	a,#0xFA
+   22E6 F2                 3541 	movx	@r0,a
+   22E7                    3542 00103$:
+                           3543 ;	radio/tdm.c:1017: silence_period = 2*packet_latency;
+   22E7 78 1E              3544 	mov	r0,#_packet_latency
+   22E9 79 1C              3545 	mov	r1,#_silence_period
+   22EB E2                 3546 	movx	a,@r0
+   22EC F3                 3547 	movx	@r1,a
+   22ED 08                 3548 	inc	r0
+   22EE E2                 3549 	movx	a,@r0
+   22EF F5 F0              3550 	mov	b,a
+   22F1 E3                 3551 	movx	a,@r1
+   22F2 25 E0              3552 	add	a,acc
+   22F4 C5 F0              3553 	xch	a,b
+   22F6 33                 3554 	rlc	a
+   22F7 C5 F0              3555 	xch	a,b
+   22F9 F3                 3556 	movx	@r1,a
+   22FA 09                 3557 	inc	r1
+   22FB E5 F0              3558 	mov	a,b
+   22FD F3                 3559 	movx	@r1,a
+                           3560 ;	radio/tdm.c:1020: window_width = 3*(packet_latency+(max_data_packet_length*(uint32_t)ticks_per_byte));
+   22FE 78 20              3561 	mov	r0,#_ticks_per_byte
+   2300 90 05 FA           3562 	mov	dptr,#__mullong_PARM_2
+   2303 E2                 3563 	movx	a,@r0
+   2304 F0                 3564 	movx	@dptr,a
+   2305 08                 3565 	inc	r0
+   2306 E2                 3566 	movx	a,@r0
+   2307 A3                 3567 	inc	dptr
+   2308 F0                 3568 	movx	@dptr,a
+   2309 A3                 3569 	inc	dptr
+   230A E4                 3570 	clr	a
+   230B F0                 3571 	movx	@dptr,a
+   230C A3                 3572 	inc	dptr
+   230D F0                 3573 	movx	@dptr,a
+   230E 78 1B              3574 	mov	r0,#_max_data_packet_length
+   2310 E2                 3575 	movx	a,@r0
+   2311 FC                 3576 	mov	r4,a
+   2312 7D 00              3577 	mov	r5,#0x00
+   2314 7E 00              3578 	mov	r6,#0x00
+   2316 7F 00              3579 	mov	r7,#0x00
+   2318 8C 82              3580 	mov	dpl,r4
+   231A 8D 83              3581 	mov	dph,r5
+   231C 8E F0              3582 	mov	b,r6
+   231E EF                 3583 	mov	a,r7
+   231F 12 67 E3           3584 	lcall	__mullong
+   2322 85 82 43           3585 	mov	_tdm_init_sloc0_1_0,dpl
+   2325 85 83 44           3586 	mov	(_tdm_init_sloc0_1_0 + 1),dph
+   2328 85 F0 45           3587 	mov	(_tdm_init_sloc0_1_0 + 2),b
+   232B F5 46              3588 	mov	(_tdm_init_sloc0_1_0 + 3),a
+   232D 78 1E              3589 	mov	r0,#_packet_latency
+   232F E2                 3590 	movx	a,@r0
+   2330 FA                 3591 	mov	r2,a
+   2331 08                 3592 	inc	r0
+   2332 E2                 3593 	movx	a,@r0
+   2333 FB                 3594 	mov	r3,a
+   2334 7E 00              3595 	mov	r6,#0x00
+   2336 7F 00              3596 	mov	r7,#0x00
+   2338 90 05 FA           3597 	mov	dptr,#__mullong_PARM_2
+   233B E5 43              3598 	mov	a,_tdm_init_sloc0_1_0
+   233D 2A                 3599 	add	a,r2
+   233E F0                 3600 	movx	@dptr,a
+   233F E5 44              3601 	mov	a,(_tdm_init_sloc0_1_0 + 1)
+   2341 3B                 3602 	addc	a,r3
+   2342 A3                 3603 	inc	dptr
+   2343 F0                 3604 	movx	@dptr,a
+   2344 E5 45              3605 	mov	a,(_tdm_init_sloc0_1_0 + 2)
+   2346 3E                 3606 	addc	a,r6
+   2347 A3                 3607 	inc	dptr
+   2348 F0                 3608 	movx	@dptr,a
+   2349 E5 46              3609 	mov	a,(_tdm_init_sloc0_1_0 + 3)
+   234B 3F                 3610 	addc	a,r7
+   234C A3                 3611 	inc	dptr
+   234D F0                 3612 	movx	@dptr,a
+   234E 90 00 03           3613 	mov	dptr,#(0x03&0x00ff)
+   2351 E4                 3614 	clr	a
+   2352 F5 F0              3615 	mov	b,a
+   2354 12 67 E3           3616 	lcall	__mullong
+   2357 AC 82              3617 	mov	r4,dpl
+   2359 AD 83              3618 	mov	r5,dph
+   235B AE F0              3619 	mov	r6,b
+   235D FF                 3620 	mov	r7,a
+   235E 90 04 08           3621 	mov	dptr,#_tdm_init_window_width_1_1
+   2361 EC                 3622 	mov	a,r4
+   2362 F0                 3623 	movx	@dptr,a
+   2363 A3                 3624 	inc	dptr
+   2364 ED                 3625 	mov	a,r5
+   2365 F0                 3626 	movx	@dptr,a
+   2366 A3                 3627 	inc	dptr
+   2367 EE                 3628 	mov	a,r6
+   2368 F0                 3629 	movx	@dptr,a
+   2369 A3                 3630 	inc	dptr
+   236A EF                 3631 	mov	a,r7
+   236B F0                 3632 	movx	@dptr,a
+                           3633 ;	radio/tdm.c:1023: lbt_min_time = LBT_MIN_TIME_USEC/16;
+   236C 78 2F              3634 	mov	r0,#_lbt_min_time
+   236E 74 38              3635 	mov	a,#0x38
+   2370 F2                 3636 	movx	@r0,a
+   2371 08                 3637 	inc	r0
+   2372 74 01              3638 	mov	a,#0x01
+   2374 F2                 3639 	movx	@r0,a
+                           3640 ;	radio/tdm.c:1026: if (lbt_rssi != 0) {
+   2375 78 2C              3641 	mov	r0,#_lbt_rssi
+   2377 E2                 3642 	movx	a,@r0
+   2378 60 3A              3643 	jz	00105$
+                           3644 ;	radio/tdm.c:1027: window_width = constrain(window_width, 3*lbt_min_time, window_width);
+   237A 78 82              3645 	mov	r0,#_constrain_PARM_2
+   237C 74 A8              3646 	mov	a,#0xA8
+   237E F2                 3647 	movx	@r0,a
+   237F 08                 3648 	inc	r0
+   2380 74 03              3649 	mov	a,#0x03
+   2382 F2                 3650 	movx	@r0,a
+   2383 08                 3651 	inc	r0
+   2384 E4                 3652 	clr	a
+   2385 F2                 3653 	movx	@r0,a
+   2386 08                 3654 	inc	r0
+   2387 F2                 3655 	movx	@r0,a
+   2388 78 86              3656 	mov	r0,#_constrain_PARM_3
+   238A EC                 3657 	mov	a,r4
+   238B F2                 3658 	movx	@r0,a
+   238C 08                 3659 	inc	r0
+   238D ED                 3660 	mov	a,r5
+   238E F2                 3661 	movx	@r0,a
+   238F 08                 3662 	inc	r0
+   2390 EE                 3663 	mov	a,r6
+   2391 F2                 3664 	movx	@r0,a
+   2392 08                 3665 	inc	r0
+   2393 EF                 3666 	mov	a,r7
+   2394 F2                 3667 	movx	@r0,a
+   2395 8C 82              3668 	mov	dpl,r4
+   2397 8D 83              3669 	mov	dph,r5
+   2399 8E F0              3670 	mov	b,r6
+   239B EF                 3671 	mov	a,r7
+   239C 12 42 B2           3672 	lcall	_constrain
+   239F AC 82              3673 	mov	r4,dpl
+   23A1 AD 83              3674 	mov	r5,dph
+   23A3 AE F0              3675 	mov	r6,b
+   23A5 FF                 3676 	mov	r7,a
+   23A6 90 04 08           3677 	mov	dptr,#_tdm_init_window_width_1_1
+   23A9 EC                 3678 	mov	a,r4
+   23AA F0                 3679 	movx	@dptr,a
+   23AB A3                 3680 	inc	dptr
+   23AC ED                 3681 	mov	a,r5
+   23AD F0                 3682 	movx	@dptr,a
+   23AE A3                 3683 	inc	dptr
+   23AF EE                 3684 	mov	a,r6
+   23B0 F0                 3685 	movx	@dptr,a
+   23B1 A3                 3686 	inc	dptr
+   23B2 EF                 3687 	mov	a,r7
+   23B3 F0                 3688 	movx	@dptr,a
+   23B4                    3689 00105$:
+                           3690 ;	radio/tdm.c:1032: if (window_width >= REGULATORY_MAX_WINDOW && num_fh_channels > 1) {
+   23B4 90 04 08           3691 	mov	dptr,#_tdm_init_window_width_1_1
+   23B7 E0                 3692 	movx	a,@dptr
+   23B8 FC                 3693 	mov	r4,a
+   23B9 A3                 3694 	inc	dptr
+   23BA E0                 3695 	movx	a,@dptr
+   23BB FD                 3696 	mov	r5,a
+   23BC A3                 3697 	inc	dptr
+   23BD E0                 3698 	movx	a,@dptr
+   23BE FE                 3699 	mov	r6,a
+   23BF A3                 3700 	inc	dptr
+   23C0 E0                 3701 	movx	a,@dptr
+   23C1 FF                 3702 	mov	r7,a
+   23C2 C3                 3703 	clr	c
+   23C3 EC                 3704 	mov	a,r4
+   23C4 94 A8              3705 	subb	a,#0xA8
+   23C6 ED                 3706 	mov	a,r5
+   23C7 94 61              3707 	subb	a,#0x61
+   23C9 EE                 3708 	mov	a,r6
+   23CA 94 00              3709 	subb	a,#0x00
+   23CC EF                 3710 	mov	a,r7
+   23CD 94 00              3711 	subb	a,#0x00
+   23CF 40 1B              3712 	jc	00107$
+   23D1 78 13              3713 	mov	r0,#_num_fh_channels
+   23D3 C3                 3714 	clr	c
+   23D4 E2                 3715 	movx	a,@r0
+   23D5 F5 F0              3716 	mov	b,a
+   23D7 74 01              3717 	mov	a,#0x01
+   23D9 95 F0              3718 	subb	a,b
+   23DB 50 0F              3719 	jnc	00107$
+                           3720 ;	radio/tdm.c:1033: window_width = REGULATORY_MAX_WINDOW;
+   23DD 90 04 08           3721 	mov	dptr,#_tdm_init_window_width_1_1
+   23E0 74 A8              3722 	mov	a,#0xA8
+   23E2 F0                 3723 	movx	@dptr,a
+   23E3 A3                 3724 	inc	dptr
+   23E4 74 61              3725 	mov	a,#0x61
+   23E6 F0                 3726 	movx	@dptr,a
+   23E7 A3                 3727 	inc	dptr
+   23E8 E4                 3728 	clr	a
+   23E9 F0                 3729 	movx	@dptr,a
+   23EA A3                 3730 	inc	dptr
+   23EB F0                 3731 	movx	@dptr,a
+   23EC                    3732 00107$:
+                           3733 ;	radio/tdm.c:1037: if (window_width > param_get(PARAM_MAX_WINDOW)*(1000/16)) {
+   23EC 75 82 0F           3734 	mov	dpl,#0x0F
+   23EF 12 3E B2           3735 	lcall	_param_get
+   23F2 AC 82              3736 	mov	r4,dpl
+   23F4 AD 83              3737 	mov	r5,dph
+   23F6 AE F0              3738 	mov	r6,b
+   23F8 FF                 3739 	mov	r7,a
+   23F9 90 05 FA           3740 	mov	dptr,#__mullong_PARM_2
+   23FC EC                 3741 	mov	a,r4
+   23FD F0                 3742 	movx	@dptr,a
+   23FE A3                 3743 	inc	dptr
+   23FF ED                 3744 	mov	a,r5
+   2400 F0                 3745 	movx	@dptr,a
+   2401 A3                 3746 	inc	dptr
+   2402 EE                 3747 	mov	a,r6
+   2403 F0                 3748 	movx	@dptr,a
+   2404 A3                 3749 	inc	dptr
+   2405 EF                 3750 	mov	a,r7
+   2406 F0                 3751 	movx	@dptr,a
+   2407 90 00 3E           3752 	mov	dptr,#(0x3E&0x00ff)
+   240A E4                 3753 	clr	a
+   240B F5 F0              3754 	mov	b,a
+   240D 12 67 E3           3755 	lcall	__mullong
+   2410 85 82 43           3756 	mov	_tdm_init_sloc0_1_0,dpl
+   2413 85 83 44           3757 	mov	(_tdm_init_sloc0_1_0 + 1),dph
+   2416 85 F0 45           3758 	mov	(_tdm_init_sloc0_1_0 + 2),b
+   2419 F5 46              3759 	mov	(_tdm_init_sloc0_1_0 + 3),a
+   241B 90 04 08           3760 	mov	dptr,#_tdm_init_window_width_1_1
+   241E E0                 3761 	movx	a,@dptr
+   241F FA                 3762 	mov	r2,a
+   2420 A3                 3763 	inc	dptr
+   2421 E0                 3764 	movx	a,@dptr
+   2422 FB                 3765 	mov	r3,a
+   2423 A3                 3766 	inc	dptr
+   2424 E0                 3767 	movx	a,@dptr
+   2425 FE                 3768 	mov	r6,a
+   2426 A3                 3769 	inc	dptr
+   2427 E0                 3770 	movx	a,@dptr
+   2428 FF                 3771 	mov	r7,a
+   2429 C3                 3772 	clr	c
+   242A E5 43              3773 	mov	a,_tdm_init_sloc0_1_0
+   242C 9A                 3774 	subb	a,r2
+   242D E5 44              3775 	mov	a,(_tdm_init_sloc0_1_0 + 1)
+   242F 9B                 3776 	subb	a,r3
+   2430 E5 45              3777 	mov	a,(_tdm_init_sloc0_1_0 + 2)
+   2432 9E                 3778 	subb	a,r6
+   2433 E5 46              3779 	mov	a,(_tdm_init_sloc0_1_0 + 3)
+   2435 9F                 3780 	subb	a,r7
+   2436 50 39              3781 	jnc	00110$
+                           3782 ;	radio/tdm.c:1038: window_width = param_get(PARAM_MAX_WINDOW)*(1000/16);
+   2438 75 82 0F           3783 	mov	dpl,#0x0F
+   243B 12 3E B2           3784 	lcall	_param_get
+   243E AC 82              3785 	mov	r4,dpl
+   2440 AD 83              3786 	mov	r5,dph
+   2442 AE F0              3787 	mov	r6,b
+   2444 FF                 3788 	mov	r7,a
+   2445 90 05 FA           3789 	mov	dptr,#__mullong_PARM_2
+   2448 EC                 3790 	mov	a,r4
+   2449 F0                 3791 	movx	@dptr,a
+   244A A3                 3792 	inc	dptr
+   244B ED                 3793 	mov	a,r5
+   244C F0                 3794 	movx	@dptr,a
+   244D A3                 3795 	inc	dptr
+   244E EE                 3796 	mov	a,r6
+   244F F0                 3797 	movx	@dptr,a
+   2450 A3                 3798 	inc	dptr
+   2451 EF                 3799 	mov	a,r7
+   2452 F0                 3800 	movx	@dptr,a
+   2453 90 00 3E           3801 	mov	dptr,#(0x3E&0x00ff)
+   2456 E4                 3802 	clr	a
+   2457 F5 F0              3803 	mov	b,a
+   2459 12 67 E3           3804 	lcall	__mullong
+   245C AC 82              3805 	mov	r4,dpl
+   245E AD 83              3806 	mov	r5,dph
+   2460 AE F0              3807 	mov	r6,b
+   2462 FF                 3808 	mov	r7,a
+   2463 90 04 08           3809 	mov	dptr,#_tdm_init_window_width_1_1
+   2466 EC                 3810 	mov	a,r4
+   2467 F0                 3811 	movx	@dptr,a
+   2468 A3                 3812 	inc	dptr
+   2469 ED                 3813 	mov	a,r5
+   246A F0                 3814 	movx	@dptr,a
+   246B A3                 3815 	inc	dptr
+   246C EE                 3816 	mov	a,r6
+   246D F0                 3817 	movx	@dptr,a
+   246E A3                 3818 	inc	dptr
+   246F EF                 3819 	mov	a,r7
+   2470 F0                 3820 	movx	@dptr,a
+   2471                    3821 00110$:
+                           3822 ;	radio/tdm.c:1042: if (window_width > 0x1fff) {
+   2471 90 04 08           3823 	mov	dptr,#_tdm_init_window_width_1_1
+   2474 E0                 3824 	movx	a,@dptr
+   2475 FC                 3825 	mov	r4,a
+   2476 A3                 3826 	inc	dptr
+   2477 E0                 3827 	movx	a,@dptr
+   2478 FD                 3828 	mov	r5,a
+   2479 A3                 3829 	inc	dptr
+   247A E0                 3830 	movx	a,@dptr
+   247B FE                 3831 	mov	r6,a
+   247C A3                 3832 	inc	dptr
+   247D E0                 3833 	movx	a,@dptr
+   247E FF                 3834 	mov	r7,a
+   247F ED                 3835 	mov	a,r5
+   2480 54 E0              3836 	anl	a,#0xE0
+   2482 70 06              3837 	jnz	00129$
+   2484 EE                 3838 	mov	a,r6
+   2485 70 03              3839 	jnz	00129$
+   2487 EF                 3840 	mov	a,r7
+   2488 60 0F              3841 	jz	00112$
+   248A                    3842 00129$:
+                           3843 ;	radio/tdm.c:1043: window_width = 0x1fff;
+   248A 90 04 08           3844 	mov	dptr,#_tdm_init_window_width_1_1
+   248D 74 FF              3845 	mov	a,#0xFF
+   248F F0                 3846 	movx	@dptr,a
+   2490 A3                 3847 	inc	dptr
+   2491 74 1F              3848 	mov	a,#0x1F
+   2493 F0                 3849 	movx	@dptr,a
+   2494 A3                 3850 	inc	dptr
+   2495 E4                 3851 	clr	a
+   2496 F0                 3852 	movx	@dptr,a
+   2497 A3                 3853 	inc	dptr
+   2498 F0                 3854 	movx	@dptr,a
+   2499                    3855 00112$:
+                           3856 ;	radio/tdm.c:1046: tx_window_width = window_width;
+   2499 90 04 08           3857 	mov	dptr,#_tdm_init_window_width_1_1
+   249C E0                 3858 	movx	a,@dptr
+   249D FC                 3859 	mov	r4,a
+   249E A3                 3860 	inc	dptr
+   249F E0                 3861 	movx	a,@dptr
+   24A0 FD                 3862 	mov	r5,a
+   24A1 A3                 3863 	inc	dptr
+   24A2 E0                 3864 	movx	a,@dptr
+   24A3 A3                 3865 	inc	dptr
+   24A4 E0                 3866 	movx	a,@dptr
+   24A5 78 19              3867 	mov	r0,#_tx_window_width
+   24A7 EC                 3868 	mov	a,r4
+   24A8 F2                 3869 	movx	@r0,a
+   24A9 08                 3870 	inc	r0
+   24AA ED                 3871 	mov	a,r5
+   24AB F2                 3872 	movx	@r0,a
+                           3873 ;	radio/tdm.c:1051: packet_latency += ((settings.preamble_length-10)/2) * ticks_per_byte;
+   24AC 78 64              3874 	mov	r0,#(_settings + 0x000b)
+   24AE E2                 3875 	movx	a,@r0
+   24AF 7E 00              3876 	mov	r6,#0x00
+   24B1 24 F6              3877 	add	a,#0xF6
+   24B3 FF                 3878 	mov	r7,a
+   24B4 EE                 3879 	mov	a,r6
+   24B5 34 FF              3880 	addc	a,#0xFF
+   24B7 FE                 3881 	mov	r6,a
+   24B8 90 06 0F           3882 	mov	dptr,#__divsint_PARM_2
+   24BB 74 02              3883 	mov	a,#0x02
+   24BD F0                 3884 	movx	@dptr,a
+   24BE A3                 3885 	inc	dptr
+   24BF E4                 3886 	clr	a
+   24C0 F0                 3887 	movx	@dptr,a
+   24C1 8F 82              3888 	mov	dpl,r7
+   24C3 8E 83              3889 	mov	dph,r6
+   24C5 C0 05              3890 	push	ar5
+   24C7 C0 04              3891 	push	ar4
+   24C9 12 6A 44           3892 	lcall	__divsint
+   24CC AE 82              3893 	mov	r6,dpl
+   24CE AF 83              3894 	mov	r7,dph
+   24D0 78 20              3895 	mov	r0,#_ticks_per_byte
+   24D2 90 05 F2           3896 	mov	dptr,#__mulint_PARM_2
+   24D5 E2                 3897 	movx	a,@r0
+   24D6 F0                 3898 	movx	@dptr,a
+   24D7 08                 3899 	inc	r0
+   24D8 E2                 3900 	movx	a,@r0
+   24D9 A3                 3901 	inc	dptr
+   24DA F0                 3902 	movx	@dptr,a
+   24DB 8E 82              3903 	mov	dpl,r6
+   24DD 8F 83              3904 	mov	dph,r7
+   24DF 12 67 2F           3905 	lcall	__mulint
+   24E2 AE 82              3906 	mov	r6,dpl
+   24E4 AF 83              3907 	mov	r7,dph
+   24E6 D0 04              3908 	pop	ar4
+   24E8 D0 05              3909 	pop	ar5
+   24EA 78 1E              3910 	mov	r0,#_packet_latency
+   24EC E2                 3911 	movx	a,@r0
+   24ED 2E                 3912 	add	a,r6
+   24EE F2                 3913 	movx	@r0,a
+   24EF 08                 3914 	inc	r0
+   24F0 E2                 3915 	movx	a,@r0
+   24F1 3F                 3916 	addc	a,r7
+   24F2 F2                 3917 	movx	@r0,a
+                           3918 ;	radio/tdm.c:1055: i = (tx_window_width - packet_latency) / ticks_per_byte;
+   24F3 78 1E              3919 	mov	r0,#_packet_latency
+   24F5 D3                 3920 	setb	c
+   24F6 E2                 3921 	movx	a,@r0
+   24F7 9C                 3922 	subb	a,r4
+   24F8 F4                 3923 	cpl	a
+   24F9 B3                 3924 	cpl	c
+   24FA FC                 3925 	mov	r4,a
+   24FB B3                 3926 	cpl	c
+   24FC 08                 3927 	inc	r0
+   24FD E2                 3928 	movx	a,@r0
+   24FE 9D                 3929 	subb	a,r5
+   24FF F4                 3930 	cpl	a
+   2500 FD                 3931 	mov	r5,a
+   2501 78 20              3932 	mov	r0,#_ticks_per_byte
+   2503 90 05 96           3933 	mov	dptr,#__divuint_PARM_2
+   2506 E2                 3934 	movx	a,@r0
+   2507 F0                 3935 	movx	@dptr,a
+   2508 08                 3936 	inc	r0
+   2509 E2                 3937 	movx	a,@r0
+   250A A3                 3938 	inc	dptr
+   250B F0                 3939 	movx	@dptr,a
+   250C 8C 82              3940 	mov	dpl,r4
+   250E 8D 83              3941 	mov	dph,r5
+   2510 12 60 04           3942 	lcall	__divuint
+   2513 AE 82              3943 	mov	r6,dpl
+   2515 AF 83              3944 	mov	r7,dph
+   2517 90 04 06           3945 	mov	dptr,#_tdm_init_i_1_1
+   251A EE                 3946 	mov	a,r6
+   251B F0                 3947 	movx	@dptr,a
+   251C A3                 3948 	inc	dptr
+   251D EF                 3949 	mov	a,r7
+   251E F0                 3950 	movx	@dptr,a
+                           3951 ;	radio/tdm.c:1056: if (i > max_data_packet_length) {
+   251F 78 1B              3952 	mov	r0,#_max_data_packet_length
+   2521 E2                 3953 	movx	a,@r0
+   2522 FC                 3954 	mov	r4,a
+   2523 7D 00              3955 	mov	r5,#0x00
+   2525 C3                 3956 	clr	c
+   2526 EC                 3957 	mov	a,r4
+   2527 9E                 3958 	subb	a,r6
+   2528 ED                 3959 	mov	a,r5
+   2529 9F                 3960 	subb	a,r7
+   252A 50 08              3961 	jnc	00114$
+                           3962 ;	radio/tdm.c:1057: i = max_data_packet_length;
+   252C 90 04 06           3963 	mov	dptr,#_tdm_init_i_1_1
+   252F EC                 3964 	mov	a,r4
+   2530 F0                 3965 	movx	@dptr,a
+   2531 A3                 3966 	inc	dptr
+   2532 ED                 3967 	mov	a,r5
+   2533 F0                 3968 	movx	@dptr,a
+   2534                    3969 00114$:
+                           3970 ;	radio/tdm.c:1059: packet_set_max_xmit(i);
+   2534 90 04 06           3971 	mov	dptr,#_tdm_init_i_1_1
+   2537 E0                 3972 	movx	a,@dptr
+   2538 FE                 3973 	mov	r6,a
+   2539 A3                 3974 	inc	dptr
+   253A E0                 3975 	movx	a,@dptr
+   253B 8E 82              3976 	mov	dpl,r6
+   253D 02 0D EB           3977 	ljmp	_packet_set_max_xmit
+                           3978 ;------------------------------------------------------------
+                           3979 ;Allocation info for local variables in function 'tdm_report_timing'
+                           3980 ;------------------------------------------------------------
+                           3981 ;	radio/tdm.c:1075: tdm_report_timing(void)
+                           3982 ;	-----------------------------------------
+                           3983 ;	 function tdm_report_timing
+                           3984 ;	-----------------------------------------
+   2540                    3985 _tdm_report_timing:
+                           3986 ;	radio/tdm.c:1077: printf("silence_period: %u\n", (unsigned)silence_period); delay_msec(1);
+   2540 78 1C              3987 	mov	r0,#_silence_period
+   2542 E2                 3988 	movx	a,@r0
+   2543 C0 E0              3989 	push	acc
+   2545 08                 3990 	inc	r0
+   2546 E2                 3991 	movx	a,@r0
+   2547 C0 E0              3992 	push	acc
+   2549 74 1F              3993 	mov	a,#__str_9
+   254B C0 E0              3994 	push	acc
+   254D 74 71              3995 	mov	a,#(__str_9 >> 8)
+   254F C0 E0              3996 	push	acc
+   2551 74 80              3997 	mov	a,#0x80
+   2553 C0 E0              3998 	push	acc
+   2555 12 12 5A           3999 	lcall	_printfl
+   2558 E5 81              4000 	mov	a,sp
+   255A 24 FB              4001 	add	a,#0xfb
+   255C F5 81              4002 	mov	sp,a
+   255E 90 00 01           4003 	mov	dptr,#0x0001
+   2561 12 5F 39           4004 	lcall	_delay_msec
+                           4005 ;	radio/tdm.c:1078: printf("tx_window_width: %u\n", (unsigned)tx_window_width); delay_msec(1);
+   2564 78 19              4006 	mov	r0,#_tx_window_width
+   2566 E2                 4007 	movx	a,@r0
+   2567 C0 E0              4008 	push	acc
+   2569 08                 4009 	inc	r0
+   256A E2                 4010 	movx	a,@r0
+   256B C0 E0              4011 	push	acc
+   256D 74 33              4012 	mov	a,#__str_10
+   256F C0 E0              4013 	push	acc
+   2571 74 71              4014 	mov	a,#(__str_10 >> 8)
+   2573 C0 E0              4015 	push	acc
+   2575 74 80              4016 	mov	a,#0x80
+   2577 C0 E0              4017 	push	acc
+   2579 12 12 5A           4018 	lcall	_printfl
+   257C E5 81              4019 	mov	a,sp
+   257E 24 FB              4020 	add	a,#0xfb
+   2580 F5 81              4021 	mov	sp,a
+   2582 90 00 01           4022 	mov	dptr,#0x0001
+   2585 12 5F 39           4023 	lcall	_delay_msec
+                           4024 ;	radio/tdm.c:1079: printf("max_data_packet_length: %u\n", (unsigned)max_data_packet_length); delay_msec(1);
+   2588 78 1B              4025 	mov	r0,#_max_data_packet_length
+   258A E2                 4026 	movx	a,@r0
+   258B FE                 4027 	mov	r6,a
+   258C 7F 00              4028 	mov	r7,#0x00
+   258E C0 06              4029 	push	ar6
+   2590 C0 07              4030 	push	ar7
+   2592 74 48              4031 	mov	a,#__str_11
+   2594 C0 E0              4032 	push	acc
+   2596 74 71              4033 	mov	a,#(__str_11 >> 8)
+   2598 C0 E0              4034 	push	acc
+   259A 74 80              4035 	mov	a,#0x80
+   259C C0 E0              4036 	push	acc
+   259E 12 12 5A           4037 	lcall	_printfl
+   25A1 E5 81              4038 	mov	a,sp
+   25A3 24 FB              4039 	add	a,#0xfb
+   25A5 F5 81              4040 	mov	sp,a
+   25A7 90 00 01           4041 	mov	dptr,#0x0001
+   25AA 02 5F 39           4042 	ljmp	_delay_msec
+                           4043 	.area CSEG    (CODE)
+                           4044 	.area CONST   (CODE)
+   703C                    4045 __str_0:
+   703C 4C 2F 52 20 52 53  4046 	.ascii "L/R RSSI: %u/%u  L/R noise: %u/%u pkts: %u "
+        53 49 3A 20 25 75
+        2F 25 75 20 20 4C
+        2F 52 20 6E 6F 69
+        73 65 3A 20 25 75
+        2F 25 75 20 70 6B
+        74 73 3A 20 25 75
+        20
+   7067 00                 4047 	.db 0x00
+   7068                    4048 __str_1:
+   7068 20 74 78 65 3D 25  4049 	.ascii " txe=%u rxe=%u stx=%u srx=%u ecc=%u/%u temp=%d dco=%u"
+        75 20 72 78 65 3D
+        25 75 20 73 74 78
+        3D 25 75 20 73 72
+        78 3D 25 75 20 65
+        63 63 3D 25 75 2F
+        25 75 20 74 65 6D
+        70 3D 25 64 20 64
+        63 6F 3D 25 75
+   709D 0A                 4050 	.db 0x0A
+   709E 00                 4051 	.db 0x00
+   709F                    4052 __str_2:
+   709F 54 44 4D 3A 20 25  4053 	.ascii "TDM: %u/%u len=%u "
+        75 2F 25 75 20 6C
+        65 6E 3D 25 75 20
+   70B1 00                 4054 	.db 0x00
+   70B2                    4055 __str_3:
+   70B2 20 64 65 6C 74 61  4056 	.ascii " delta: %d"
+        3A 20 25 64
+   70BC 0A                 4057 	.db 0x0A
+   70BD 00                 4058 	.db 0x00
+   70BE                    4059 __str_4:
+   70BE 54 44 4D 3A 20 63  4060 	.ascii "TDM: change timing %u/%u"
+        68 61 6E 67 65 20
+        74 69 6D 69 6E 67
+        20 25 75 2F 25 75
+   70D6 0A                 4061 	.db 0x0A
+   70D7 00                 4062 	.db 0x00
+   70D8                    4063 __str_5:
+   70D8 54 44 4D 3A 20 73  4064 	.ascii "TDM: scanning"
+        63 61 6E 6E 69 6E
+        67
+   70E5 0A                 4065 	.db 0x0A
+   70E6 00                 4066 	.db 0x00
+   70E7                    4067 __str_6:
+   70E7 73 74 61 63 6B 20  4068 	.ascii "stack blown"
+        62 6C 6F 77 6E
+   70F2 0A                 4069 	.db 0x0A
+   70F3 00                 4070 	.db 0x00
+   70F4                    4071 __str_7:
+   70F4 70 64 61 74 61 20  4072 	.ascii "pdata canary changed"
+        63 61 6E 61 72 79
+        20 63 68 61 6E 67
+        65 64
+   7108 0A                 4073 	.db 0x0A
+   7109 00                 4074 	.db 0x00
+   710A                    4075 __str_8:
+   710A 6F 76 65 72 73 69  4076 	.ascii "oversized tdm packet"
+        7A 65 64 20 74 64
+        6D 20 70 61 63 6B
+        65 74
+   711E 00                 4077 	.db 0x00
+   711F                    4078 __str_9:
+   711F 73 69 6C 65 6E 63  4079 	.ascii "silence_period: %u"
+        65 5F 70 65 72 69
+        6F 64 3A 20 25 75
+   7131 0A                 4080 	.db 0x0A
+   7132 00                 4081 	.db 0x00
+   7133                    4082 __str_10:
+   7133 74 78 5F 77 69 6E  4083 	.ascii "tx_window_width: %u"
+        64 6F 77 5F 77 69
+        64 74 68 3A 20 25
+        75
+   7146 0A                 4084 	.db 0x0A
+   7147 00                 4085 	.db 0x00
+   7148                    4086 __str_11:
+   7148 6D 61 78 5F 64 61  4087 	.ascii "max_data_packet_length: %u"
+        74 61 5F 70 61 63
+        6B 65 74 5F 6C 65
+        6E 67 74 68 3A 20
+        25 75
+   7162 0A                 4088 	.db 0x0A
+   7163 00                 4089 	.db 0x00
+                           4090 	.area XINIT   (CODE)
+                           4091 	.area CABS    (ABS,CODE)

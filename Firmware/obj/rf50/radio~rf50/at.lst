@@ -1,0 +1,1921 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Sep  7 2022) (Linux)
+                                      4 ; This file was generated Wed Sep  7 10:05:05 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module at
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _tdm_show_rssi
+                                     13 	.globl _tdm_change_phase
+                                     14 	.globl _tdm_remote_at
+                                     15 	.globl _tdm_report_timing
+                                     16 	.globl _printfl
+                                     17 	.globl _param_default
+                                     18 	.globl _param_save
+                                     19 	.globl _param_name
+                                     20 	.globl _param_get
+                                     21 	.globl _param_set
+                                     22 	.globl _strcmp
+                                     23 	.globl _putchar
+                                     24 	.globl _isdigit
+                                     25 	.globl _toupper
+                                     26 	.globl _isprint
+                                     27 	.globl _SDN
+                                     28 	.globl _NSS1
+                                     29 	.globl _IRQ
+                                     30 	.globl _BUTTON_DOWN
+                                     31 	.globl _BUTTON_UP
+                                     32 	.globl _BUTTON_ENTER
+                                     33 	.globl _LED_GREEN
+                                     34 	.globl _LED_RED
+                                     35 	.globl _SPI0EN
+                                     36 	.globl _TXBMT0
+                                     37 	.globl _NSS0MD0
+                                     38 	.globl _NSS0MD1
+                                     39 	.globl _RXOVRN0
+                                     40 	.globl _MODF0
+                                     41 	.globl _WCOL0
+                                     42 	.globl _SPIF0
+                                     43 	.globl _AD0CM0
+                                     44 	.globl _AD0CM1
+                                     45 	.globl _AD0CM2
+                                     46 	.globl _AD0WINT
+                                     47 	.globl _AD0BUSY
+                                     48 	.globl _AD0INT
+                                     49 	.globl _BURSTEN
+                                     50 	.globl _AD0EN
+                                     51 	.globl _CCF0
+                                     52 	.globl _CCF1
+                                     53 	.globl _CCF2
+                                     54 	.globl _CCF3
+                                     55 	.globl _CCF4
+                                     56 	.globl _CCF5
+                                     57 	.globl _CR
+                                     58 	.globl _CF
+                                     59 	.globl _P
+                                     60 	.globl _F1
+                                     61 	.globl _OV
+                                     62 	.globl _RS0
+                                     63 	.globl _RS1
+                                     64 	.globl _F0
+                                     65 	.globl _AC
+                                     66 	.globl _CY
+                                     67 	.globl _T2XCLK
+                                     68 	.globl _T2RCLK
+                                     69 	.globl _TR2
+                                     70 	.globl _T2SPLIT
+                                     71 	.globl _TF2CEN
+                                     72 	.globl _TF2LEN
+                                     73 	.globl _TF2L
+                                     74 	.globl _TF2H
+                                     75 	.globl _SI
+                                     76 	.globl _ACK
+                                     77 	.globl _ARBLOST
+                                     78 	.globl _ACKRQ
+                                     79 	.globl _STO
+                                     80 	.globl _STA
+                                     81 	.globl _TXMODE
+                                     82 	.globl _MASTER
+                                     83 	.globl _PX0
+                                     84 	.globl _PT0
+                                     85 	.globl _PX1
+                                     86 	.globl _PT1
+                                     87 	.globl _PS0
+                                     88 	.globl _PT2
+                                     89 	.globl _PSPI0
+                                     90 	.globl _SPI1EN
+                                     91 	.globl _TXBMT1
+                                     92 	.globl _NSS1MD0
+                                     93 	.globl _NSS1MD1
+                                     94 	.globl _RXOVRN1
+                                     95 	.globl _MODF1
+                                     96 	.globl _WCOL1
+                                     97 	.globl _SPIF1
+                                     98 	.globl _EX0
+                                     99 	.globl _ET0
+                                    100 	.globl _EX1
+                                    101 	.globl _ET1
+                                    102 	.globl _ES0
+                                    103 	.globl _ET2
+                                    104 	.globl _ESPI0
+                                    105 	.globl _EA
+                                    106 	.globl _RI0
+                                    107 	.globl _TI0
+                                    108 	.globl _RB80
+                                    109 	.globl _TB80
+                                    110 	.globl _REN0
+                                    111 	.globl _MCE0
+                                    112 	.globl _S0MODE
+                                    113 	.globl _CRC0VAL
+                                    114 	.globl _CRC0INIT
+                                    115 	.globl _CRC0SEL
+                                    116 	.globl _IT0
+                                    117 	.globl _IE0
+                                    118 	.globl _IT1
+                                    119 	.globl _IE1
+                                    120 	.globl _TR0
+                                    121 	.globl _TF0
+                                    122 	.globl _TR1
+                                    123 	.globl _TF1
+                                    124 	.globl _PCA0CP4
+                                    125 	.globl _PCA0CP0
+                                    126 	.globl _PCA0
+                                    127 	.globl _PCA0CP3
+                                    128 	.globl _PCA0CP2
+                                    129 	.globl _PCA0CP1
+                                    130 	.globl _PCA0CP5
+                                    131 	.globl _TMR2
+                                    132 	.globl _TMR2RL
+                                    133 	.globl _ADC0LT
+                                    134 	.globl _ADC0GT
+                                    135 	.globl _ADC0
+                                    136 	.globl _TMR3
+                                    137 	.globl _TMR3RL
+                                    138 	.globl _TOFF
+                                    139 	.globl _DP
+                                    140 	.globl _VDM0CN
+                                    141 	.globl _PCA0CPH4
+                                    142 	.globl _PCA0CPL4
+                                    143 	.globl _PCA0CPH0
+                                    144 	.globl _PCA0CPL0
+                                    145 	.globl _PCA0H
+                                    146 	.globl _PCA0L
+                                    147 	.globl _SPI0CN
+                                    148 	.globl _EIP2
+                                    149 	.globl _EIP1
+                                    150 	.globl _SMB0ADM
+                                    151 	.globl _SMB0ADR
+                                    152 	.globl _P2MDIN
+                                    153 	.globl _P1MDIN
+                                    154 	.globl _P0MDIN
+                                    155 	.globl _B
+                                    156 	.globl _RSTSRC
+                                    157 	.globl _PCA0CPH3
+                                    158 	.globl _PCA0CPL3
+                                    159 	.globl _PCA0CPH2
+                                    160 	.globl _PCA0CPL2
+                                    161 	.globl _PCA0CPH1
+                                    162 	.globl _PCA0CPL1
+                                    163 	.globl _ADC0CN
+                                    164 	.globl _EIE2
+                                    165 	.globl _EIE1
+                                    166 	.globl _FLWR
+                                    167 	.globl _IT01CF
+                                    168 	.globl _XBR2
+                                    169 	.globl _XBR1
+                                    170 	.globl _XBR0
+                                    171 	.globl _ACC
+                                    172 	.globl _PCA0PWM
+                                    173 	.globl _PCA0CPM4
+                                    174 	.globl _PCA0CPM3
+                                    175 	.globl _PCA0CPM2
+                                    176 	.globl _PCA0CPM1
+                                    177 	.globl _PCA0CPM0
+                                    178 	.globl _PCA0MD
+                                    179 	.globl _PCA0CN
+                                    180 	.globl _P0MAT
+                                    181 	.globl _P2SKIP
+                                    182 	.globl _P1SKIP
+                                    183 	.globl _P0SKIP
+                                    184 	.globl _PCA0CPH5
+                                    185 	.globl _PCA0CPL5
+                                    186 	.globl _REF0CN
+                                    187 	.globl _PSW
+                                    188 	.globl _P1MAT
+                                    189 	.globl _PCA0CPM5
+                                    190 	.globl _TMR2H
+                                    191 	.globl _TMR2L
+                                    192 	.globl _TMR2RLH
+                                    193 	.globl _TMR2RLL
+                                    194 	.globl _REG0CN
+                                    195 	.globl _TMR2CN
+                                    196 	.globl _P0MASK
+                                    197 	.globl _ADC0LTH
+                                    198 	.globl _ADC0LTL
+                                    199 	.globl _ADC0GTH
+                                    200 	.globl _ADC0GTL
+                                    201 	.globl _SMB0DAT
+                                    202 	.globl _SMB0CF
+                                    203 	.globl _SMB0CN
+                                    204 	.globl _P1MASK
+                                    205 	.globl _ADC0H
+                                    206 	.globl _ADC0L
+                                    207 	.globl _ADC0TK
+                                    208 	.globl _ADC0CF
+                                    209 	.globl _ADC0MX
+                                    210 	.globl _ADC0PWR
+                                    211 	.globl _ADC0AC
+                                    212 	.globl _IREF0CN
+                                    213 	.globl _IP
+                                    214 	.globl _FLKEY
+                                    215 	.globl _FLSCL
+                                    216 	.globl _PMU0CF
+                                    217 	.globl _OSCICL
+                                    218 	.globl _OSCICN
+                                    219 	.globl _OSCXCN
+                                    220 	.globl _SPI1CN
+                                    221 	.globl _ONESHOT
+                                    222 	.globl _EMI0TC
+                                    223 	.globl _RTC0KEY
+                                    224 	.globl _RTC0DAT
+                                    225 	.globl _RTC0ADR
+                                    226 	.globl _EMI0CF
+                                    227 	.globl _EMI0CN
+                                    228 	.globl _CLKSEL
+                                    229 	.globl _IE
+                                    230 	.globl _SFRPAGE
+                                    231 	.globl _P2DRV
+                                    232 	.globl _P2MDOUT
+                                    233 	.globl _P1DRV
+                                    234 	.globl _P1MDOUT
+                                    235 	.globl _P0DRV
+                                    236 	.globl _P0MDOUT
+                                    237 	.globl _SPI0DAT
+                                    238 	.globl _SPI0CKR
+                                    239 	.globl _SPI0CFG
+                                    240 	.globl _P2
+                                    241 	.globl _CPT0MX
+                                    242 	.globl _CPT1MX
+                                    243 	.globl _CPT0MD
+                                    244 	.globl _CPT1MD
+                                    245 	.globl _CPT0CN
+                                    246 	.globl _CPT1CN
+                                    247 	.globl _SBUF0
+                                    248 	.globl _SCON0
+                                    249 	.globl _CRC0CNT
+                                    250 	.globl _DC0CN
+                                    251 	.globl _CRC0AUTO
+                                    252 	.globl _DC0CF
+                                    253 	.globl _TMR3H
+                                    254 	.globl _CRC0FLIP
+                                    255 	.globl _TMR3L
+                                    256 	.globl _CRC0IN
+                                    257 	.globl _TMR3RLH
+                                    258 	.globl _CRC0CN
+                                    259 	.globl _TMR3RLL
+                                    260 	.globl _CRC0DAT
+                                    261 	.globl _TMR3CN
+                                    262 	.globl _P1
+                                    263 	.globl _PSCTL
+                                    264 	.globl _CKCON
+                                    265 	.globl _TH1
+                                    266 	.globl _TH0
+                                    267 	.globl _TL1
+                                    268 	.globl _TL0
+                                    269 	.globl _TMOD
+                                    270 	.globl _TCON
+                                    271 	.globl _PCON
+                                    272 	.globl _TOFFH
+                                    273 	.globl _SPI1DAT
+                                    274 	.globl _TOFFL
+                                    275 	.globl _SPI1CKR
+                                    276 	.globl _SPI1CFG
+                                    277 	.globl _DPH
+                                    278 	.globl _DPL
+                                    279 	.globl _SP
+                                    280 	.globl _P0
+                                    281 	.globl _at_num
+                                    282 	.globl _idx
+                                    283 	.globl _at_cmd
+                                    284 	.globl _at_testmode
+                                    285 	.globl _at_cmd_len
+                                    286 	.globl _pdata_canary
+                                    287 	.globl _at_cmd_ready
+                                    288 	.globl _at_mode_active
+                                    289 	.globl _at_input
+                                    290 	.globl _at_plus_detector
+                                    291 	.globl _at_timer
+                                    292 	.globl _at_command
+                                    293 ;--------------------------------------------------------
+                                    294 ; special function registers
+                                    295 ;--------------------------------------------------------
+                                    296 	.area RSEG    (ABS,DATA)
+      000000                        297 	.org 0x0000
+                           000080   298 _P0	=	0x0080
+                           000081   299 _SP	=	0x0081
+                           000082   300 _DPL	=	0x0082
+                           000083   301 _DPH	=	0x0083
+                           000084   302 _SPI1CFG	=	0x0084
+                           000085   303 _SPI1CKR	=	0x0085
+                           000085   304 _TOFFL	=	0x0085
+                           000086   305 _SPI1DAT	=	0x0086
+                           000086   306 _TOFFH	=	0x0086
+                           000087   307 _PCON	=	0x0087
+                           000088   308 _TCON	=	0x0088
+                           000089   309 _TMOD	=	0x0089
+                           00008A   310 _TL0	=	0x008a
+                           00008B   311 _TL1	=	0x008b
+                           00008C   312 _TH0	=	0x008c
+                           00008D   313 _TH1	=	0x008d
+                           00008E   314 _CKCON	=	0x008e
+                           00008F   315 _PSCTL	=	0x008f
+                           000090   316 _P1	=	0x0090
+                           000091   317 _TMR3CN	=	0x0091
+                           000091   318 _CRC0DAT	=	0x0091
+                           000092   319 _TMR3RLL	=	0x0092
+                           000092   320 _CRC0CN	=	0x0092
+                           000093   321 _TMR3RLH	=	0x0093
+                           000093   322 _CRC0IN	=	0x0093
+                           000094   323 _TMR3L	=	0x0094
+                           000095   324 _CRC0FLIP	=	0x0095
+                           000095   325 _TMR3H	=	0x0095
+                           000096   326 _DC0CF	=	0x0096
+                           000096   327 _CRC0AUTO	=	0x0096
+                           000097   328 _DC0CN	=	0x0097
+                           000097   329 _CRC0CNT	=	0x0097
+                           000098   330 _SCON0	=	0x0098
+                           000099   331 _SBUF0	=	0x0099
+                           00009A   332 _CPT1CN	=	0x009a
+                           00009B   333 _CPT0CN	=	0x009b
+                           00009C   334 _CPT1MD	=	0x009c
+                           00009D   335 _CPT0MD	=	0x009d
+                           00009E   336 _CPT1MX	=	0x009e
+                           00009F   337 _CPT0MX	=	0x009f
+                           0000A0   338 _P2	=	0x00a0
+                           0000A1   339 _SPI0CFG	=	0x00a1
+                           0000A2   340 _SPI0CKR	=	0x00a2
+                           0000A3   341 _SPI0DAT	=	0x00a3
+                           0000A4   342 _P0MDOUT	=	0x00a4
+                           0000A4   343 _P0DRV	=	0x00a4
+                           0000A5   344 _P1MDOUT	=	0x00a5
+                           0000A5   345 _P1DRV	=	0x00a5
+                           0000A6   346 _P2MDOUT	=	0x00a6
+                           0000A6   347 _P2DRV	=	0x00a6
+                           0000A7   348 _SFRPAGE	=	0x00a7
+                           0000A8   349 _IE	=	0x00a8
+                           0000A9   350 _CLKSEL	=	0x00a9
+                           0000AA   351 _EMI0CN	=	0x00aa
+                           0000AB   352 _EMI0CF	=	0x00ab
+                           0000AC   353 _RTC0ADR	=	0x00ac
+                           0000AD   354 _RTC0DAT	=	0x00ad
+                           0000AE   355 _RTC0KEY	=	0x00ae
+                           0000AF   356 _EMI0TC	=	0x00af
+                           0000AF   357 _ONESHOT	=	0x00af
+                           0000B0   358 _SPI1CN	=	0x00b0
+                           0000B1   359 _OSCXCN	=	0x00b1
+                           0000B2   360 _OSCICN	=	0x00b2
+                           0000B3   361 _OSCICL	=	0x00b3
+                           0000B5   362 _PMU0CF	=	0x00b5
+                           0000B6   363 _FLSCL	=	0x00b6
+                           0000B7   364 _FLKEY	=	0x00b7
+                           0000B8   365 _IP	=	0x00b8
+                           0000B9   366 _IREF0CN	=	0x00b9
+                           0000BA   367 _ADC0AC	=	0x00ba
+                           0000BA   368 _ADC0PWR	=	0x00ba
+                           0000BB   369 _ADC0MX	=	0x00bb
+                           0000BC   370 _ADC0CF	=	0x00bc
+                           0000BD   371 _ADC0TK	=	0x00bd
+                           0000BD   372 _ADC0L	=	0x00bd
+                           0000BE   373 _ADC0H	=	0x00be
+                           0000BF   374 _P1MASK	=	0x00bf
+                           0000C0   375 _SMB0CN	=	0x00c0
+                           0000C1   376 _SMB0CF	=	0x00c1
+                           0000C2   377 _SMB0DAT	=	0x00c2
+                           0000C3   378 _ADC0GTL	=	0x00c3
+                           0000C4   379 _ADC0GTH	=	0x00c4
+                           0000C5   380 _ADC0LTL	=	0x00c5
+                           0000C6   381 _ADC0LTH	=	0x00c6
+                           0000C7   382 _P0MASK	=	0x00c7
+                           0000C8   383 _TMR2CN	=	0x00c8
+                           0000C9   384 _REG0CN	=	0x00c9
+                           0000CA   385 _TMR2RLL	=	0x00ca
+                           0000CB   386 _TMR2RLH	=	0x00cb
+                           0000CC   387 _TMR2L	=	0x00cc
+                           0000CD   388 _TMR2H	=	0x00cd
+                           0000CE   389 _PCA0CPM5	=	0x00ce
+                           0000CF   390 _P1MAT	=	0x00cf
+                           0000D0   391 _PSW	=	0x00d0
+                           0000D1   392 _REF0CN	=	0x00d1
+                           0000D2   393 _PCA0CPL5	=	0x00d2
+                           0000D3   394 _PCA0CPH5	=	0x00d3
+                           0000D4   395 _P0SKIP	=	0x00d4
+                           0000D5   396 _P1SKIP	=	0x00d5
+                           0000D6   397 _P2SKIP	=	0x00d6
+                           0000D7   398 _P0MAT	=	0x00d7
+                           0000D8   399 _PCA0CN	=	0x00d8
+                           0000D9   400 _PCA0MD	=	0x00d9
+                           0000DA   401 _PCA0CPM0	=	0x00da
+                           0000DB   402 _PCA0CPM1	=	0x00db
+                           0000DC   403 _PCA0CPM2	=	0x00dc
+                           0000DD   404 _PCA0CPM3	=	0x00dd
+                           0000DE   405 _PCA0CPM4	=	0x00de
+                           0000DF   406 _PCA0PWM	=	0x00df
+                           0000E0   407 _ACC	=	0x00e0
+                           0000E1   408 _XBR0	=	0x00e1
+                           0000E2   409 _XBR1	=	0x00e2
+                           0000E3   410 _XBR2	=	0x00e3
+                           0000E4   411 _IT01CF	=	0x00e4
+                           0000E5   412 _FLWR	=	0x00e5
+                           0000E6   413 _EIE1	=	0x00e6
+                           0000E7   414 _EIE2	=	0x00e7
+                           0000E8   415 _ADC0CN	=	0x00e8
+                           0000E9   416 _PCA0CPL1	=	0x00e9
+                           0000EA   417 _PCA0CPH1	=	0x00ea
+                           0000EB   418 _PCA0CPL2	=	0x00eb
+                           0000EC   419 _PCA0CPH2	=	0x00ec
+                           0000ED   420 _PCA0CPL3	=	0x00ed
+                           0000EE   421 _PCA0CPH3	=	0x00ee
+                           0000EF   422 _RSTSRC	=	0x00ef
+                           0000F0   423 _B	=	0x00f0
+                           0000F1   424 _P0MDIN	=	0x00f1
+                           0000F2   425 _P1MDIN	=	0x00f2
+                           0000F3   426 _P2MDIN	=	0x00f3
+                           0000F4   427 _SMB0ADR	=	0x00f4
+                           0000F5   428 _SMB0ADM	=	0x00f5
+                           0000F6   429 _EIP1	=	0x00f6
+                           0000F7   430 _EIP2	=	0x00f7
+                           0000F8   431 _SPI0CN	=	0x00f8
+                           0000F9   432 _PCA0L	=	0x00f9
+                           0000FA   433 _PCA0H	=	0x00fa
+                           0000FB   434 _PCA0CPL0	=	0x00fb
+                           0000FC   435 _PCA0CPH0	=	0x00fc
+                           0000FD   436 _PCA0CPL4	=	0x00fd
+                           0000FE   437 _PCA0CPH4	=	0x00fe
+                           0000FF   438 _VDM0CN	=	0x00ff
+                           008382   439 _DP	=	0x8382
+                           008685   440 _TOFF	=	0x8685
+                           009392   441 _TMR3RL	=	0x9392
+                           009594   442 _TMR3	=	0x9594
+                           00BEBD   443 _ADC0	=	0xbebd
+                           00C4C3   444 _ADC0GT	=	0xc4c3
+                           00C6C5   445 _ADC0LT	=	0xc6c5
+                           00CBCA   446 _TMR2RL	=	0xcbca
+                           00CDCC   447 _TMR2	=	0xcdcc
+                           00D3D2   448 _PCA0CP5	=	0xd3d2
+                           00EAE9   449 _PCA0CP1	=	0xeae9
+                           00ECEB   450 _PCA0CP2	=	0xeceb
+                           00EEED   451 _PCA0CP3	=	0xeeed
+                           00FAF9   452 _PCA0	=	0xfaf9
+                           00FCFB   453 _PCA0CP0	=	0xfcfb
+                           00FEFD   454 _PCA0CP4	=	0xfefd
+                                    455 ;--------------------------------------------------------
+                                    456 ; special function bits
+                                    457 ;--------------------------------------------------------
+                                    458 	.area RSEG    (ABS,DATA)
+      000000                        459 	.org 0x0000
+                           00008F   460 _TF1	=	0x008f
+                           00008E   461 _TR1	=	0x008e
+                           00008D   462 _TF0	=	0x008d
+                           00008C   463 _TR0	=	0x008c
+                           00008B   464 _IE1	=	0x008b
+                           00008A   465 _IT1	=	0x008a
+                           000089   466 _IE0	=	0x0089
+                           000088   467 _IT0	=	0x0088
+                           000096   468 _CRC0SEL	=	0x0096
+                           000095   469 _CRC0INIT	=	0x0095
+                           000094   470 _CRC0VAL	=	0x0094
+                           00009F   471 _S0MODE	=	0x009f
+                           00009D   472 _MCE0	=	0x009d
+                           00009C   473 _REN0	=	0x009c
+                           00009B   474 _TB80	=	0x009b
+                           00009A   475 _RB80	=	0x009a
+                           000099   476 _TI0	=	0x0099
+                           000098   477 _RI0	=	0x0098
+                           0000AF   478 _EA	=	0x00af
+                           0000AE   479 _ESPI0	=	0x00ae
+                           0000AD   480 _ET2	=	0x00ad
+                           0000AC   481 _ES0	=	0x00ac
+                           0000AB   482 _ET1	=	0x00ab
+                           0000AA   483 _EX1	=	0x00aa
+                           0000A9   484 _ET0	=	0x00a9
+                           0000A8   485 _EX0	=	0x00a8
+                           0000B7   486 _SPIF1	=	0x00b7
+                           0000B6   487 _WCOL1	=	0x00b6
+                           0000B5   488 _MODF1	=	0x00b5
+                           0000B4   489 _RXOVRN1	=	0x00b4
+                           0000B3   490 _NSS1MD1	=	0x00b3
+                           0000B2   491 _NSS1MD0	=	0x00b2
+                           0000B1   492 _TXBMT1	=	0x00b1
+                           0000B0   493 _SPI1EN	=	0x00b0
+                           0000BE   494 _PSPI0	=	0x00be
+                           0000BD   495 _PT2	=	0x00bd
+                           0000BC   496 _PS0	=	0x00bc
+                           0000BB   497 _PT1	=	0x00bb
+                           0000BA   498 _PX1	=	0x00ba
+                           0000B9   499 _PT0	=	0x00b9
+                           0000B8   500 _PX0	=	0x00b8
+                           0000C7   501 _MASTER	=	0x00c7
+                           0000C6   502 _TXMODE	=	0x00c6
+                           0000C5   503 _STA	=	0x00c5
+                           0000C4   504 _STO	=	0x00c4
+                           0000C3   505 _ACKRQ	=	0x00c3
+                           0000C2   506 _ARBLOST	=	0x00c2
+                           0000C1   507 _ACK	=	0x00c1
+                           0000C0   508 _SI	=	0x00c0
+                           0000CF   509 _TF2H	=	0x00cf
+                           0000CE   510 _TF2L	=	0x00ce
+                           0000CD   511 _TF2LEN	=	0x00cd
+                           0000CC   512 _TF2CEN	=	0x00cc
+                           0000CB   513 _T2SPLIT	=	0x00cb
+                           0000CA   514 _TR2	=	0x00ca
+                           0000C9   515 _T2RCLK	=	0x00c9
+                           0000C8   516 _T2XCLK	=	0x00c8
+                           0000D7   517 _CY	=	0x00d7
+                           0000D6   518 _AC	=	0x00d6
+                           0000D5   519 _F0	=	0x00d5
+                           0000D4   520 _RS1	=	0x00d4
+                           0000D3   521 _RS0	=	0x00d3
+                           0000D2   522 _OV	=	0x00d2
+                           0000D1   523 _F1	=	0x00d1
+                           0000D0   524 _P	=	0x00d0
+                           0000DF   525 _CF	=	0x00df
+                           0000DE   526 _CR	=	0x00de
+                           0000DD   527 _CCF5	=	0x00dd
+                           0000DC   528 _CCF4	=	0x00dc
+                           0000DB   529 _CCF3	=	0x00db
+                           0000DA   530 _CCF2	=	0x00da
+                           0000D9   531 _CCF1	=	0x00d9
+                           0000D8   532 _CCF0	=	0x00d8
+                           0000EF   533 _AD0EN	=	0x00ef
+                           0000EE   534 _BURSTEN	=	0x00ee
+                           0000ED   535 _AD0INT	=	0x00ed
+                           0000EC   536 _AD0BUSY	=	0x00ec
+                           0000EB   537 _AD0WINT	=	0x00eb
+                           0000EA   538 _AD0CM2	=	0x00ea
+                           0000E9   539 _AD0CM1	=	0x00e9
+                           0000E8   540 _AD0CM0	=	0x00e8
+                           0000FF   541 _SPIF0	=	0x00ff
+                           0000FE   542 _WCOL0	=	0x00fe
+                           0000FD   543 _MODF0	=	0x00fd
+                           0000FC   544 _RXOVRN0	=	0x00fc
+                           0000FB   545 _NSS0MD1	=	0x00fb
+                           0000FA   546 _NSS0MD0	=	0x00fa
+                           0000F9   547 _TXBMT0	=	0x00f9
+                           0000F8   548 _SPI0EN	=	0x00f8
+                           0000A0   549 _LED_RED	=	0x00a0
+                           0000A5   550 _LED_GREEN	=	0x00a5
+                           000086   551 _BUTTON_ENTER	=	0x0086
+                           000095   552 _BUTTON_UP	=	0x0095
+                           000096   553 _BUTTON_DOWN	=	0x0096
+                           000087   554 _IRQ	=	0x0087
+                           000094   555 _NSS1	=	0x0094
+                           0000A6   556 _SDN	=	0x00a6
+                                    557 ;--------------------------------------------------------
+                                    558 ; overlayable register banks
+                                    559 ;--------------------------------------------------------
+                                    560 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        561 	.ds 8
+                                    562 ;--------------------------------------------------------
+                                    563 ; internal ram data
+                                    564 ;--------------------------------------------------------
+                                    565 	.area DSEG    (DATA)
+      000000                        566 _print_ID_vals_id_1_166:
+      000000                        567 	.ds 1
+      000001                        568 _print_ID_vals_sloc0_1_0:
+      000001                        569 	.ds 1
+      000002                        570 _print_ID_vals_sloc1_1_0:
+      000002                        571 	.ds 3
+                                    572 ;--------------------------------------------------------
+                                    573 ; overlayable items in internal ram 
+                                    574 ;--------------------------------------------------------
+                                    575 ;--------------------------------------------------------
+                                    576 ; indirectly addressable internal ram data
+                                    577 ;--------------------------------------------------------
+                                    578 	.area ISEG    (DATA)
+                                    579 ;--------------------------------------------------------
+                                    580 ; absolute internal ram data
+                                    581 ;--------------------------------------------------------
+                                    582 	.area IABS    (ABS,DATA)
+                                    583 	.area IABS    (ABS,DATA)
+                                    584 ;--------------------------------------------------------
+                                    585 ; bit data
+                                    586 ;--------------------------------------------------------
+                                    587 	.area BSEG    (BIT)
+      000000                        588 _at_mode_active::
+      000000                        589 	.ds 1
+      000001                        590 _at_cmd_ready::
+      000001                        591 	.ds 1
+                                    592 ;--------------------------------------------------------
+                                    593 ; paged external ram data
+                                    594 ;--------------------------------------------------------
+                                    595 	.area PSEG    (PAG,XDATA)
+      000000                        596 _pdata_canary::
+      000000                        597 	.ds 1
+      000001                        598 _at_cmd_len::
+      000001                        599 	.ds 1
+      000002                        600 _at_testmode::
+      000002                        601 	.ds 1
+      000003                        602 _at_plus_state:
+      000003                        603 	.ds 1
+      000004                        604 _at_plus_counter:
+      000004                        605 	.ds 1
+                                    606 ;--------------------------------------------------------
+                                    607 ; external ram data
+                                    608 ;--------------------------------------------------------
+                                    609 	.area XSEG    (XDATA)
+      000000                        610 _at_cmd::
+      000000                        611 	.ds 17
+      000011                        612 _idx::
+      000011                        613 	.ds 1
+      000012                        614 _at_num::
+      000012                        615 	.ds 4
+      000016                        616 _print_ID_vals_PARM_2:
+      000016                        617 	.ds 1
+      000017                        618 _print_ID_vals_PARM_3:
+      000017                        619 	.ds 2
+      000019                        620 _print_ID_vals_PARM_4:
+      000019                        621 	.ds 2
+      00001B                        622 _print_ID_vals_param_1_163:
+      00001B                        623 	.ds 1
+                                    624 ;--------------------------------------------------------
+                                    625 ; absolute external ram data
+                                    626 ;--------------------------------------------------------
+                                    627 	.area XABS    (ABS,XDATA)
+                                    628 ;--------------------------------------------------------
+                                    629 ; external initialized ram data
+                                    630 ;--------------------------------------------------------
+                                    631 	.area XISEG   (XDATA)
+                                    632 	.area HOME    (CODE)
+                                    633 	.area GSINIT0 (CODE)
+                                    634 	.area GSINIT1 (CODE)
+                                    635 	.area GSINIT2 (CODE)
+                                    636 	.area GSINIT3 (CODE)
+                                    637 	.area GSINIT4 (CODE)
+                                    638 	.area GSINIT5 (CODE)
+                                    639 	.area GSINIT  (CODE)
+                                    640 	.area GSFINAL (CODE)
+                                    641 	.area CSEG    (CODE)
+                                    642 ;--------------------------------------------------------
+                                    643 ; global & static initialisations
+                                    644 ;--------------------------------------------------------
+                                    645 	.area HOME    (CODE)
+                                    646 	.area GSINIT  (CODE)
+                                    647 	.area GSFINAL (CODE)
+                                    648 	.area GSINIT  (CODE)
+                                    649 ;	radio/at.c:48: __pdata uint8_t pdata_canary = 0x41;
+      000000 78r00            [12]  650 	mov	r0,#_pdata_canary
+      000002 74 41            [12]  651 	mov	a,#0x41
+      000004 F2               [24]  652 	movx	@r0,a
+                                    653 ;	radio/at.c:140: static __pdata uint8_t	at_plus_counter = ATP_COUNT_1S;
+      000005 78r04            [12]  654 	mov	r0,#_at_plus_counter
+      000007 74 64            [12]  655 	mov	a,#0x64
+      000009 F2               [24]  656 	movx	@r0,a
+                                    657 ;--------------------------------------------------------
+                                    658 ; Home
+                                    659 ;--------------------------------------------------------
+                                    660 	.area HOME    (CODE)
+                                    661 	.area HOME    (CODE)
+                                    662 ;--------------------------------------------------------
+                                    663 ; code
+                                    664 ;--------------------------------------------------------
+                                    665 	.area CSEG    (CODE)
+                                    666 ;------------------------------------------------------------
+                                    667 ;Allocation info for local variables in function 'at_input'
+                                    668 ;------------------------------------------------------------
+                                    669 ;c                         Allocated to registers r7 
+                                    670 ;------------------------------------------------------------
+                                    671 ;	radio/at.c:73: at_input(register uint8_t c)
+                                    672 ;	-----------------------------------------
+                                    673 ;	 function at_input
+                                    674 ;	-----------------------------------------
+      000000                        675 _at_input:
+                           000007   676 	ar7 = 0x07
+                           000006   677 	ar6 = 0x06
+                           000005   678 	ar5 = 0x05
+                           000004   679 	ar4 = 0x04
+                           000003   680 	ar3 = 0x03
+                           000002   681 	ar2 = 0x02
+                           000001   682 	ar1 = 0x01
+                           000000   683 	ar0 = 0x00
+      000000 AF 82            [24]  684 	mov	r7,dpl
+                                    685 ;	radio/at.c:76: switch (c) {
+      000002 8F 06            [24]  686 	mov	ar6,r7
+      000004 BE 08 02         [24]  687 	cjne	r6,#0x08,00132$
+      000007 80 21            [24]  688 	sjmp	00103$
+      000009                        689 00132$:
+      000009 BE 0D 02         [24]  690 	cjne	r6,#0x0D,00133$
+      00000C 80 05            [24]  691 	sjmp	00101$
+      00000E                        692 00133$:
+                                    693 ;	radio/at.c:78: case '\r':
+      00000E BE 7F 36         [24]  694 	cjne	r6,#0x7F,00106$
+      000011 80 17            [24]  695 	sjmp	00103$
+      000013                        696 00101$:
+                                    697 ;	radio/at.c:79: putchar('\n');
+      000013 75 82 0A         [24]  698 	mov	dpl,#0x0A
+      000016 12r00r00         [24]  699 	lcall	_putchar
+                                    700 ;	radio/at.c:80: at_cmd[at_cmd_len] = 0;
+      000019 78r01            [12]  701 	mov	r0,#_at_cmd_len
+      00001B E2               [24]  702 	movx	a,@r0
+      00001C 24r00            [12]  703 	add	a,#_at_cmd
+      00001E F5 82            [12]  704 	mov	dpl,a
+      000020 E4               [12]  705 	clr	a
+      000021 34s00            [12]  706 	addc	a,#(_at_cmd >> 8)
+      000023 F5 83            [12]  707 	mov	dph,a
+      000025 E4               [12]  708 	clr	a
+      000026 F0               [24]  709 	movx	@dptr,a
+                                    710 ;	radio/at.c:81: at_cmd_ready = true;
+      000027 D2*01            [12]  711 	setb	_at_cmd_ready
+                                    712 ;	radio/at.c:82: break;
+                                    713 ;	radio/at.c:87: case '\x7f':
+      000029 22               [24]  714 	ret
+      00002A                        715 00103$:
+                                    716 ;	radio/at.c:88: if (at_cmd_len > 0) {
+      00002A 78r01            [12]  717 	mov	r0,#_at_cmd_len
+      00002C E2               [24]  718 	movx	a,@r0
+      00002D 60 66            [24]  719 	jz	00112$
+                                    720 ;	radio/at.c:89: putchar('\b');
+      00002F 75 82 08         [24]  721 	mov	dpl,#0x08
+      000032 12r00r00         [24]  722 	lcall	_putchar
+                                    723 ;	radio/at.c:90: putchar(' ');
+      000035 75 82 20         [24]  724 	mov	dpl,#0x20
+      000038 12r00r00         [24]  725 	lcall	_putchar
+                                    726 ;	radio/at.c:91: putchar('\b');
+      00003B 75 82 08         [24]  727 	mov	dpl,#0x08
+      00003E 12r00r00         [24]  728 	lcall	_putchar
+                                    729 ;	radio/at.c:92: at_cmd_len--;
+      000041 78r01            [12]  730 	mov	r0,#_at_cmd_len
+      000043 E2               [24]  731 	movx	a,@r0
+      000044 14               [12]  732 	dec	a
+      000045 F2               [24]  733 	movx	@r0,a
+                                    734 ;	radio/at.c:94: break;
+                                    735 ;	radio/at.c:97: default:
+      000046 22               [24]  736 	ret
+      000047                        737 00106$:
+                                    738 ;	radio/at.c:98: if (at_cmd_len < AT_CMD_MAXLEN) {
+      000047 78r01            [12]  739 	mov	r0,#_at_cmd_len
+      000049 E2               [24]  740 	movx	a,@r0
+      00004A B4 10 00         [24]  741 	cjne	a,#0x10,00136$
+      00004D                        742 00136$:
+      00004D 50 40            [24]  743 	jnc	00110$
+                                    744 ;	radio/at.c:99: if (isprint(c)) {
+      00004F 8F 05            [24]  745 	mov	ar5,r7
+      000051 7E 00            [12]  746 	mov	r6,#0x00
+      000053 8D 82            [24]  747 	mov	dpl,r5
+      000055 8E 83            [24]  748 	mov	dph,r6
+      000057 C0 06            [24]  749 	push	ar6
+      000059 C0 05            [24]  750 	push	ar5
+      00005B 12r00r00         [24]  751 	lcall	_isprint
+      00005E E5 82            [12]  752 	mov	a,dpl
+      000060 85 83 F0         [24]  753 	mov	b,dph
+      000063 D0 05            [24]  754 	pop	ar5
+      000065 D0 06            [24]  755 	pop	ar6
+      000067 45 F0            [12]  756 	orl	a,b
+      000069 60 2A            [24]  757 	jz	00112$
+                                    758 ;	radio/at.c:100: c = toupper(c);
+      00006B 8D 82            [24]  759 	mov	dpl,r5
+      00006D 8E 83            [24]  760 	mov	dph,r6
+      00006F 12r00r00         [24]  761 	lcall	_toupper
+      000072 AD 82            [24]  762 	mov	r5,dpl
+      000074 8D 07            [24]  763 	mov	ar7,r5
+                                    764 ;	radio/at.c:101: at_cmd[at_cmd_len++] = c;
+      000076 78r01            [12]  765 	mov	r0,#_at_cmd_len
+      000078 E2               [24]  766 	movx	a,@r0
+      000079 FE               [12]  767 	mov	r6,a
+      00007A 78r01            [12]  768 	mov	r0,#_at_cmd_len
+      00007C 04               [12]  769 	inc	a
+      00007D F2               [24]  770 	movx	@r0,a
+      00007E EE               [12]  771 	mov	a,r6
+      00007F 24r00            [12]  772 	add	a,#_at_cmd
+      000081 F5 82            [12]  773 	mov	dpl,a
+      000083 E4               [12]  774 	clr	a
+      000084 34s00            [12]  775 	addc	a,#(_at_cmd >> 8)
+      000086 F5 83            [12]  776 	mov	dph,a
+      000088 EF               [12]  777 	mov	a,r7
+      000089 F0               [24]  778 	movx	@dptr,a
+                                    779 ;	radio/at.c:102: putchar(c);
+      00008A 8F 82            [24]  780 	mov	dpl,r7
+                                    781 ;	radio/at.c:104: break;
+      00008C 02r00r00         [24]  782 	ljmp	_putchar
+      00008F                        783 00110$:
+                                    784 ;	radio/at.c:112: at_mode_active = 0;
+      00008F C2*00            [12]  785 	clr	_at_mode_active
+                                    786 ;	radio/at.c:113: at_cmd_len = 0;
+      000091 78r01            [12]  787 	mov	r0,#_at_cmd_len
+      000093 E4               [12]  788 	clr	a
+      000094 F2               [24]  789 	movx	@r0,a
+                                    790 ;	radio/at.c:115: }
+      000095                        791 00112$:
+      000095 22               [24]  792 	ret
+                                    793 ;------------------------------------------------------------
+                                    794 ;Allocation info for local variables in function 'at_plus_detector'
+                                    795 ;------------------------------------------------------------
+                                    796 ;c                         Allocated to registers r7 
+                                    797 ;------------------------------------------------------------
+                                    798 ;	radio/at.c:145: at_plus_detector(register uint8_t c)
+                                    799 ;	-----------------------------------------
+                                    800 ;	 function at_plus_detector
+                                    801 ;	-----------------------------------------
+      000096                        802 _at_plus_detector:
+      000096 AF 82            [24]  803 	mov	r7,dpl
+                                    804 ;	radio/at.c:151: if (c != (uint8_t)'+')
+      000098 BF 2B 02         [24]  805 	cjne	r7,#0x2B,00118$
+      00009B 80 04            [24]  806 	sjmp	00102$
+      00009D                        807 00118$:
+                                    808 ;	radio/at.c:152: at_plus_state = ATP_WAIT_FOR_IDLE;
+      00009D 78r03            [12]  809 	mov	r0,#_at_plus_state
+      00009F E4               [12]  810 	clr	a
+      0000A0 F2               [24]  811 	movx	@r0,a
+      0000A1                        812 00102$:
+                                    813 ;	radio/at.c:156: switch (at_plus_state) {
+      0000A1 78r03            [12]  814 	mov	r0,#_at_plus_state
+      0000A3 C3               [12]  815 	clr	c
+      0000A4 E2               [24]  816 	movx	a,@r0
+      0000A5 F5 F0            [12]  817 	mov	b,a
+      0000A7 74 04            [12]  818 	mov	a,#0x04
+      0000A9 95 F0            [12]  819 	subb	a,b
+      0000AB 40 2C            [24]  820 	jc	00106$
+      0000AD 78r03            [12]  821 	mov	r0,#_at_plus_state
+      0000AF E2               [24]  822 	movx	a,@r0
+      0000B0 75 F0 03         [24]  823 	mov	b,#0x03
+      0000B3 A4               [48]  824 	mul	ab
+      0000B4 90r00rB8         [24]  825 	mov	dptr,#00120$
+      0000B7 73               [24]  826 	jmp	@a+dptr
+      0000B8                        827 00120$:
+      0000B8 02r00rDD         [24]  828 	ljmp	00107$
+      0000BB 02r00rC7         [24]  829 	ljmp	00103$
+      0000BE 02r00rC7         [24]  830 	ljmp	00104$
+      0000C1 02r00rCE         [24]  831 	ljmp	00105$
+      0000C4 02r00rDD         [24]  832 	ljmp	00108$
+                                    833 ;	radio/at.c:158: case ATP_WAIT_FOR_PLUS1:
+      0000C7                        834 00103$:
+                                    835 ;	radio/at.c:159: case ATP_WAIT_FOR_PLUS2:
+      0000C7                        836 00104$:
+                                    837 ;	radio/at.c:160: at_plus_state++;
+      0000C7 78r03            [12]  838 	mov	r0,#_at_plus_state
+      0000C9 E2               [24]  839 	movx	a,@r0
+      0000CA 24 01            [12]  840 	add	a,#0x01
+      0000CC F2               [24]  841 	movx	@r0,a
+                                    842 ;	radio/at.c:161: break;
+                                    843 ;	radio/at.c:163: case ATP_WAIT_FOR_PLUS3:
+      0000CD 22               [24]  844 	ret
+      0000CE                        845 00105$:
+                                    846 ;	radio/at.c:164: at_plus_state = ATP_WAIT_FOR_ENABLE;
+      0000CE 78r03            [12]  847 	mov	r0,#_at_plus_state
+      0000D0 74 04            [12]  848 	mov	a,#0x04
+      0000D2 F2               [24]  849 	movx	@r0,a
+                                    850 ;	radio/at.c:165: at_plus_counter = ATP_COUNT_1S;
+      0000D3 78r04            [12]  851 	mov	r0,#_at_plus_counter
+      0000D5 74 64            [12]  852 	mov	a,#0x64
+      0000D7 F2               [24]  853 	movx	@r0,a
+                                    854 ;	radio/at.c:166: break;
+                                    855 ;	radio/at.c:168: default:
+      0000D8 22               [24]  856 	ret
+      0000D9                        857 00106$:
+                                    858 ;	radio/at.c:169: at_plus_state = ATP_WAIT_FOR_IDLE;
+      0000D9 78r03            [12]  859 	mov	r0,#_at_plus_state
+      0000DB E4               [12]  860 	clr	a
+      0000DC F2               [24]  861 	movx	@r0,a
+                                    862 ;	radio/at.c:171: case ATP_WAIT_FOR_IDLE:
+      0000DD                        863 00107$:
+                                    864 ;	radio/at.c:172: case ATP_WAIT_FOR_ENABLE:
+      0000DD                        865 00108$:
+                                    866 ;	radio/at.c:173: at_plus_counter = ATP_COUNT_1S;
+      0000DD 78r04            [12]  867 	mov	r0,#_at_plus_counter
+      0000DF 74 64            [12]  868 	mov	a,#0x64
+      0000E1 F2               [24]  869 	movx	@r0,a
+                                    870 ;	radio/at.c:175: }
+      0000E2 22               [24]  871 	ret
+                                    872 ;------------------------------------------------------------
+                                    873 ;Allocation info for local variables in function 'at_timer'
+                                    874 ;------------------------------------------------------------
+                                    875 ;	radio/at.c:182: at_timer(void)
+                                    876 ;	-----------------------------------------
+                                    877 ;	 function at_timer
+                                    878 ;	-----------------------------------------
+      0000E3                        879 _at_timer:
+                                    880 ;	radio/at.c:185: if (at_plus_counter > 0) {
+      0000E3 78r04            [12]  881 	mov	r0,#_at_plus_counter
+      0000E5 E2               [24]  882 	movx	a,@r0
+      0000E6 60 3B            [24]  883 	jz	00109$
+                                    884 ;	radio/at.c:188: if (--at_plus_counter == 0) {
+      0000E8 78r04            [12]  885 	mov	r0,#_at_plus_counter
+      0000EA E2               [24]  886 	movx	a,@r0
+      0000EB 14               [12]  887 	dec	a
+      0000EC F2               [24]  888 	movx	@r0,a
+      0000ED 78r04            [12]  889 	mov	r0,#_at_plus_counter
+      0000EF E2               [24]  890 	movx	a,@r0
+      0000F0 70 31            [24]  891 	jnz	00109$
+                                    892 ;	radio/at.c:191: switch (at_plus_state) {
+      0000F2 78r03            [12]  893 	mov	r0,#_at_plus_state
+      0000F4 E2               [24]  894 	movx	a,@r0
+      0000F5 60 08            [24]  895 	jz	00101$
+      0000F7 78r03            [12]  896 	mov	r0,#_at_plus_state
+      0000F9 E2               [24]  897 	movx	a,@r0
+                                    898 ;	radio/at.c:192: case ATP_WAIT_FOR_IDLE:
+      0000FA B4 04 26         [24]  899 	cjne	a,#0x04,00109$
+      0000FD 80 06            [24]  900 	sjmp	00102$
+      0000FF                        901 00101$:
+                                    902 ;	radio/at.c:193: at_plus_state = ATP_WAIT_FOR_PLUS1;
+      0000FF 78r03            [12]  903 	mov	r0,#_at_plus_state
+      000101 74 01            [12]  904 	mov	a,#0x01
+      000103 F2               [24]  905 	movx	@r0,a
+                                    906 ;	radio/at.c:194: break;
+                                    907 ;	radio/at.c:196: case ATP_WAIT_FOR_ENABLE:
+      000104 22               [24]  908 	ret
+      000105                        909 00102$:
+                                    910 ;	radio/at.c:197: at_mode_active = true;
+      000105 D2*00            [12]  911 	setb	_at_mode_active
+                                    912 ;	radio/at.c:198: at_plus_state = ATP_WAIT_FOR_IDLE;
+      000107 78r03            [12]  913 	mov	r0,#_at_plus_state
+      000109 E4               [12]  914 	clr	a
+      00010A F2               [24]  915 	movx	@r0,a
+                                    916 ;	radio/at.c:201: at_cmd[0] = 'A';
+      00010B 90r00r00         [24]  917 	mov	dptr,#_at_cmd
+      00010E 74 41            [12]  918 	mov	a,#0x41
+      000110 F0               [24]  919 	movx	@dptr,a
+                                    920 ;	radio/at.c:202: at_cmd[1] = 'T';
+      000111 90r00r01         [24]  921 	mov	dptr,#(_at_cmd + 0x0001)
+      000114 74 54            [12]  922 	mov	a,#0x54
+      000116 F0               [24]  923 	movx	@dptr,a
+                                    924 ;	radio/at.c:203: at_cmd[2] = '\0';
+      000117 90r00r02         [24]  925 	mov	dptr,#(_at_cmd + 0x0002)
+      00011A E4               [12]  926 	clr	a
+      00011B F0               [24]  927 	movx	@dptr,a
+                                    928 ;	radio/at.c:204: at_cmd_len = 2;
+      00011C 78r01            [12]  929 	mov	r0,#_at_cmd_len
+      00011E 74 02            [12]  930 	mov	a,#0x02
+      000120 F2               [24]  931 	movx	@r0,a
+                                    932 ;	radio/at.c:205: at_cmd_ready = true;
+      000121 D2*01            [12]  933 	setb	_at_cmd_ready
+                                    934 ;	radio/at.c:209: }
+      000123                        935 00109$:
+      000123 22               [24]  936 	ret
+                                    937 ;------------------------------------------------------------
+                                    938 ;Allocation info for local variables in function 'at_command'
+                                    939 ;------------------------------------------------------------
+                                    940 ;	radio/at.c:216: at_command(void)
+                                    941 ;	-----------------------------------------
+                                    942 ;	 function at_command
+                                    943 ;	-----------------------------------------
+      000124                        944 _at_command:
+                                    945 ;	radio/at.c:219: if (at_cmd_ready) {
+      000124 20*01 01         [24]  946 	jb	_at_cmd_ready,00174$
+      000127 22               [24]  947 	ret
+      000128                        948 00174$:
+                                    949 ;	radio/at.c:220: if ((at_cmd_len >= 2) && (at_cmd[0] == 'R') && (at_cmd[1] == 'T')) {
+      000128 78r01            [12]  950 	mov	r0,#_at_cmd_len
+      00012A E2               [24]  951 	movx	a,@r0
+      00012B B4 02 00         [24]  952 	cjne	a,#0x02,00175$
+      00012E                        953 00175$:
+      00012E E4               [12]  954 	clr	a
+      00012F 33               [12]  955 	rlc	a
+      000130 FF               [12]  956 	mov	r7,a
+      000131 70 1A            [24]  957 	jnz	00102$
+      000133 90r00r00         [24]  958 	mov	dptr,#_at_cmd
+      000136 E0               [24]  959 	movx	a,@dptr
+      000137 FE               [12]  960 	mov	r6,a
+      000138 BE 52 12         [24]  961 	cjne	r6,#0x52,00102$
+      00013B 90r00r01         [24]  962 	mov	dptr,#(_at_cmd + 0x0001)
+      00013E E0               [24]  963 	movx	a,@dptr
+      00013F FE               [12]  964 	mov	r6,a
+      000140 BE 54 0A         [24]  965 	cjne	r6,#0x54,00102$
+                                    966 ;	radio/at.c:223: tdm_remote_at();
+      000143 12r00r00         [24]  967 	lcall	_tdm_remote_at
+                                    968 ;	radio/at.c:224: at_cmd_len = 0;
+      000146 78r01            [12]  969 	mov	r0,#_at_cmd_len
+      000148 E4               [12]  970 	clr	a
+      000149 F2               [24]  971 	movx	@r0,a
+                                    972 ;	radio/at.c:225: at_cmd_ready = false;
+      00014A C2*01            [12]  973 	clr	_at_cmd_ready
+                                    974 ;	radio/at.c:226: return;
+      00014C 22               [24]  975 	ret
+      00014D                        976 00102$:
+                                    977 ;	radio/at.c:229: if ((at_cmd_len >= 2) && (at_cmd[0] == 'A') && (at_cmd[1] == 'T')) {
+      00014D EF               [12]  978 	mov	a,r7
+      00014E 60 03            [24]  979 	jz	00181$
+      000150 02r01rBC         [24]  980 	ljmp	00117$
+      000153                        981 00181$:
+      000153 90r00r00         [24]  982 	mov	dptr,#_at_cmd
+      000156 E0               [24]  983 	movx	a,@dptr
+      000157 FF               [12]  984 	mov	r7,a
+      000158 BF 41 61         [24]  985 	cjne	r7,#0x41,00117$
+      00015B 90r00r01         [24]  986 	mov	dptr,#(_at_cmd + 0x0001)
+      00015E E0               [24]  987 	movx	a,@dptr
+      00015F FF               [12]  988 	mov	r7,a
+      000160 BF 54 59         [24]  989 	cjne	r7,#0x54,00117$
+                                    990 ;	radio/at.c:232: switch (at_cmd[2]) {
+      000163 90r00r02         [24]  991 	mov	dptr,#(_at_cmd + 0x0002)
+      000166 E0               [24]  992 	movx	a,@dptr
+      000167 FF               [12]  993 	mov	r7,a
+      000168 60 23            [24]  994 	jz	00105$
+      00016A BF 26 02         [24]  995 	cjne	r7,#0x26,00187$
+      00016D 80 23            [24]  996 	sjmp	00106$
+      00016F                        997 00187$:
+      00016F BF 2B 02         [24]  998 	cjne	r7,#0x2B,00188$
+      000172 80 23            [24]  999 	sjmp	00107$
+      000174                       1000 00188$:
+      000174 BF 49 02         [24] 1001 	cjne	r7,#0x49,00189$
+      000177 80 23            [24] 1002 	sjmp	00108$
+      000179                       1003 00189$:
+      000179 BF 4F 02         [24] 1004 	cjne	r7,#0x4F,00190$
+      00017C 80 28            [24] 1005 	sjmp	00110$
+      00017E                       1006 00190$:
+      00017E BF 50 02         [24] 1007 	cjne	r7,#0x50,00191$
+      000181 80 1E            [24] 1008 	sjmp	00109$
+      000183                       1009 00191$:
+      000183 BF 53 02         [24] 1010 	cjne	r7,#0x53,00192$
+      000186 80 27            [24] 1011 	sjmp	00111$
+      000188                       1012 00192$:
+                                   1013 ;	radio/at.c:233: case '\0':		// no command -> OK
+      000188 BF 5A 2E         [24] 1014 	cjne	r7,#0x5A,00114$
+      00018B 80 27            [24] 1015 	sjmp	00112$
+      00018D                       1016 00105$:
+                                   1017 ;	radio/at.c:234: at_ok();
+      00018D 12r01rC3         [24] 1018 	lcall	_at_ok
+                                   1019 ;	radio/at.c:235: break;
+                                   1020 ;	radio/at.c:236: case '&':
+      000190 80 2A            [24] 1021 	sjmp	00117$
+      000192                       1022 00106$:
+                                   1023 ;	radio/at.c:237: at_ampersand();
+      000192 12r05r04         [24] 1024 	lcall	_at_ampersand
+                                   1025 ;	radio/at.c:238: break;
+                                   1026 ;	radio/at.c:239: case '+':
+      000195 80 25            [24] 1027 	sjmp	00117$
+      000197                       1028 00107$:
+                                   1029 ;	radio/at.c:240: at_plus();
+      000197 12r05rEA         [24] 1030 	lcall	_at_plus
+                                   1031 ;	radio/at.c:241: break;
+                                   1032 ;	radio/at.c:242: case 'I':
+      00019A 80 20            [24] 1033 	sjmp	00117$
+      00019C                       1034 00108$:
+                                   1035 ;	radio/at.c:243: at_i();
+      00019C 12r03r5C         [24] 1036 	lcall	_at_i
+                                   1037 ;	radio/at.c:244: break;
+                                   1038 ;	radio/at.c:245: case 'P':
+      00019F 80 1B            [24] 1039 	sjmp	00117$
+      0001A1                       1040 00109$:
+                                   1041 ;	radio/at.c:246: at_p();
+      0001A1 12r05rE7         [24] 1042 	lcall	_at_p
+                                   1043 ;	radio/at.c:247: break;
+                                   1044 ;	radio/at.c:248: case 'O':		// O -> go online (exit command mode)
+      0001A4 80 16            [24] 1045 	sjmp	00117$
+      0001A6                       1046 00110$:
+                                   1047 ;	radio/at.c:249: at_plus_counter = ATP_COUNT_1S;
+      0001A6 78r04            [12] 1048 	mov	r0,#_at_plus_counter
+      0001A8 74 64            [12] 1049 	mov	a,#0x64
+      0001AA F2               [24] 1050 	movx	@r0,a
+                                   1051 ;	radio/at.c:250: at_mode_active = 0;
+      0001AB C2*00            [12] 1052 	clr	_at_mode_active
+                                   1053 ;	radio/at.c:251: break;
+                                   1054 ;	radio/at.c:252: case 'S':
+      0001AD 80 0D            [24] 1055 	sjmp	00117$
+      0001AF                       1056 00111$:
+                                   1057 ;	radio/at.c:253: at_s();
+      0001AF 12r04r5D         [24] 1058 	lcall	_at_s
+                                   1059 ;	radio/at.c:254: break;
+                                   1060 ;	radio/at.c:255: case 'Z':
+      0001B2 80 08            [24] 1061 	sjmp	00117$
+      0001B4                       1062 00112$:
+                                   1063 ;	radio/at.c:257: RSTSRC |= (1 << 4);
+      0001B4 43 EF 10         [24] 1064 	orl	_RSTSRC,#0x10
+      0001B7                       1065 00123$:
+                                   1066 ;	radio/at.c:261: default:
+      0001B7 80 FE            [24] 1067 	sjmp	00123$
+      0001B9                       1068 00114$:
+                                   1069 ;	radio/at.c:262: at_error();
+      0001B9 12r01rE5         [24] 1070 	lcall	_at_error
+                                   1071 ;	radio/at.c:263: }
+      0001BC                       1072 00117$:
+                                   1073 ;	radio/at.c:267: at_cmd_len = 0;
+      0001BC 78r01            [12] 1074 	mov	r0,#_at_cmd_len
+      0001BE E4               [12] 1075 	clr	a
+      0001BF F2               [24] 1076 	movx	@r0,a
+                                   1077 ;	radio/at.c:268: at_cmd_ready = false;
+      0001C0 C2*01            [12] 1078 	clr	_at_cmd_ready
+      0001C2 22               [24] 1079 	ret
+                                   1080 ;------------------------------------------------------------
+                                   1081 ;Allocation info for local variables in function 'at_ok'
+                                   1082 ;------------------------------------------------------------
+                                   1083 ;	radio/at.c:273: at_ok(void)
+                                   1084 ;	-----------------------------------------
+                                   1085 ;	 function at_ok
+                                   1086 ;	-----------------------------------------
+      0001C3                       1087 _at_ok:
+                                   1088 ;	radio/at.c:275: printf("%s\n", "OK");
+      0001C3 74r04            [12] 1089 	mov	a,#___str_1
+      0001C5 C0 E0            [24] 1090 	push	acc
+      0001C7 74s00            [12] 1091 	mov	a,#(___str_1 >> 8)
+      0001C9 C0 E0            [24] 1092 	push	acc
+      0001CB 74 80            [12] 1093 	mov	a,#0x80
+      0001CD C0 E0            [24] 1094 	push	acc
+      0001CF 74r00            [12] 1095 	mov	a,#___str_0
+      0001D1 C0 E0            [24] 1096 	push	acc
+      0001D3 74s00            [12] 1097 	mov	a,#(___str_0 >> 8)
+      0001D5 C0 E0            [24] 1098 	push	acc
+      0001D7 74 80            [12] 1099 	mov	a,#0x80
+      0001D9 C0 E0            [24] 1100 	push	acc
+      0001DB 12r00r00         [24] 1101 	lcall	_printfl
+      0001DE E5 81            [12] 1102 	mov	a,sp
+      0001E0 24 FA            [12] 1103 	add	a,#0xfa
+      0001E2 F5 81            [12] 1104 	mov	sp,a
+      0001E4 22               [24] 1105 	ret
+                                   1106 ;------------------------------------------------------------
+                                   1107 ;Allocation info for local variables in function 'at_error'
+                                   1108 ;------------------------------------------------------------
+                                   1109 ;	radio/at.c:279: at_error(void)
+                                   1110 ;	-----------------------------------------
+                                   1111 ;	 function at_error
+                                   1112 ;	-----------------------------------------
+      0001E5                       1113 _at_error:
+                                   1114 ;	radio/at.c:281: printf("%s\n", "ERROR");
+      0001E5 74r07            [12] 1115 	mov	a,#___str_2
+      0001E7 C0 E0            [24] 1116 	push	acc
+      0001E9 74s00            [12] 1117 	mov	a,#(___str_2 >> 8)
+      0001EB C0 E0            [24] 1118 	push	acc
+      0001ED 74 80            [12] 1119 	mov	a,#0x80
+      0001EF C0 E0            [24] 1120 	push	acc
+      0001F1 74r00            [12] 1121 	mov	a,#___str_0
+      0001F3 C0 E0            [24] 1122 	push	acc
+      0001F5 74s00            [12] 1123 	mov	a,#(___str_0 >> 8)
+      0001F7 C0 E0            [24] 1124 	push	acc
+      0001F9 74 80            [12] 1125 	mov	a,#0x80
+      0001FB C0 E0            [24] 1126 	push	acc
+      0001FD 12r00r00         [24] 1127 	lcall	_printfl
+      000200 E5 81            [12] 1128 	mov	a,sp
+      000202 24 FA            [12] 1129 	add	a,#0xfa
+      000204 F5 81            [12] 1130 	mov	sp,a
+      000206 22               [24] 1131 	ret
+                                   1132 ;------------------------------------------------------------
+                                   1133 ;Allocation info for local variables in function 'at_parse_number'
+                                   1134 ;------------------------------------------------------------
+                                   1135 ;c                         Allocated to registers r7 
+                                   1136 ;sloc0                     Allocated to stack - sp -3
+                                   1137 ;------------------------------------------------------------
+                                   1138 ;	radio/at.c:291: at_parse_number() __reentrant
+                                   1139 ;	-----------------------------------------
+                                   1140 ;	 function at_parse_number
+                                   1141 ;	-----------------------------------------
+      000207                       1142 _at_parse_number:
+      000207 E5 81            [12] 1143 	mov	a,sp
+      000209 24 04            [12] 1144 	add	a,#0x04
+      00020B F5 81            [12] 1145 	mov	sp,a
+                                   1146 ;	radio/at.c:295: at_num = 0;
+      00020D 90r00r12         [24] 1147 	mov	dptr,#_at_num
+      000210 E4               [12] 1148 	clr	a
+      000211 F0               [24] 1149 	movx	@dptr,a
+      000212 A3               [24] 1150 	inc	dptr
+      000213 F0               [24] 1151 	movx	@dptr,a
+      000214 A3               [24] 1152 	inc	dptr
+      000215 F0               [24] 1153 	movx	@dptr,a
+      000216 A3               [24] 1154 	inc	dptr
+      000217 F0               [24] 1155 	movx	@dptr,a
+      000218                       1156 00104$:
+                                   1157 ;	radio/at.c:297: c = at_cmd[idx];
+      000218 90r00r11         [24] 1158 	mov	dptr,#_idx
+      00021B E0               [24] 1159 	movx	a,@dptr
+      00021C 24r00            [12] 1160 	add	a,#_at_cmd
+      00021E F5 82            [12] 1161 	mov	dpl,a
+      000220 E4               [12] 1162 	clr	a
+      000221 34s00            [12] 1163 	addc	a,#(_at_cmd >> 8)
+      000223 F5 83            [12] 1164 	mov	dph,a
+      000225 E0               [24] 1165 	movx	a,@dptr
+                                   1166 ;	radio/at.c:298: if (!isdigit(c))
+      000226 FF               [12] 1167 	mov	r7,a
+      000227 FD               [12] 1168 	mov	r5,a
+      000228 7E 00            [12] 1169 	mov	r6,#0x00
+      00022A 8D 82            [24] 1170 	mov	dpl,r5
+      00022C 8E 83            [24] 1171 	mov	dph,r6
+      00022E C0 07            [24] 1172 	push	ar7
+      000230 12r00r00         [24] 1173 	lcall	_isdigit
+      000233 E5 82            [12] 1174 	mov	a,dpl
+      000235 85 83 F0         [24] 1175 	mov	b,dph
+      000238 D0 07            [24] 1176 	pop	ar7
+      00023A 45 F0            [12] 1177 	orl	a,b
+      00023C 60 6E            [24] 1178 	jz	00106$
+                                   1179 ;	radio/at.c:300: at_num = (at_num * 10) + (c - '0');
+      00023E 90r00r12         [24] 1180 	mov	dptr,#_at_num
+      000241 E0               [24] 1181 	movx	a,@dptr
+      000242 FB               [12] 1182 	mov	r3,a
+      000243 A3               [24] 1183 	inc	dptr
+      000244 E0               [24] 1184 	movx	a,@dptr
+      000245 FC               [12] 1185 	mov	r4,a
+      000246 A3               [24] 1186 	inc	dptr
+      000247 E0               [24] 1187 	movx	a,@dptr
+      000248 FD               [12] 1188 	mov	r5,a
+      000249 A3               [24] 1189 	inc	dptr
+      00024A E0               [24] 1190 	movx	a,@dptr
+      00024B FE               [12] 1191 	mov	r6,a
+      00024C 90r00r00         [24] 1192 	mov	dptr,#__mullong_PARM_2
+      00024F EB               [12] 1193 	mov	a,r3
+      000250 F0               [24] 1194 	movx	@dptr,a
+      000251 EC               [12] 1195 	mov	a,r4
+      000252 A3               [24] 1196 	inc	dptr
+      000253 F0               [24] 1197 	movx	@dptr,a
+      000254 ED               [12] 1198 	mov	a,r5
+      000255 A3               [24] 1199 	inc	dptr
+      000256 F0               [24] 1200 	movx	@dptr,a
+      000257 EE               [12] 1201 	mov	a,r6
+      000258 A3               [24] 1202 	inc	dptr
+      000259 F0               [24] 1203 	movx	@dptr,a
+      00025A 90 00 0A         [24] 1204 	mov	dptr,#(0x0A&0x00ff)
+      00025D E4               [12] 1205 	clr	a
+      00025E F5 F0            [12] 1206 	mov	b,a
+      000260 C0 07            [24] 1207 	push	ar7
+      000262 12r00r00         [24] 1208 	lcall	__mullong
+      000265 C8               [12] 1209 	xch	a,r0
+      000266 E5 81            [12] 1210 	mov	a,sp
+      000268 24 FC            [12] 1211 	add	a,#0xfc
+      00026A C8               [12] 1212 	xch	a,r0
+      00026B A6 82            [24] 1213 	mov	@r0,dpl
+      00026D 08               [12] 1214 	inc	r0
+      00026E A6 83            [24] 1215 	mov	@r0,dph
+      000270 08               [12] 1216 	inc	r0
+      000271 A6 F0            [24] 1217 	mov	@r0,b
+      000273 08               [12] 1218 	inc	r0
+      000274 F6               [12] 1219 	mov	@r0,a
+      000275 D0 07            [24] 1220 	pop	ar7
+      000277 7A 00            [12] 1221 	mov	r2,#0x00
+      000279 EF               [12] 1222 	mov	a,r7
+      00027A 24 D0            [12] 1223 	add	a,#0xD0
+      00027C FF               [12] 1224 	mov	r7,a
+      00027D EA               [12] 1225 	mov	a,r2
+      00027E 34 FF            [12] 1226 	addc	a,#0xFF
+      000280 FA               [12] 1227 	mov	r2,a
+      000281 8F 05            [24] 1228 	mov	ar5,r7
+      000283 33               [12] 1229 	rlc	a
+      000284 95 E0            [12] 1230 	subb	a,acc
+      000286 FE               [12] 1231 	mov	r6,a
+      000287 FF               [12] 1232 	mov	r7,a
+      000288 E5 81            [12] 1233 	mov	a,sp
+      00028A 24 FD            [12] 1234 	add	a,#0xfd
+      00028C F8               [12] 1235 	mov	r0,a
+      00028D 90r00r12         [24] 1236 	mov	dptr,#_at_num
+      000290 ED               [12] 1237 	mov	a,r5
+      000291 26               [12] 1238 	add	a,@r0
+      000292 F0               [24] 1239 	movx	@dptr,a
+      000293 EA               [12] 1240 	mov	a,r2
+      000294 08               [12] 1241 	inc	r0
+      000295 36               [12] 1242 	addc	a,@r0
+      000296 A3               [24] 1243 	inc	dptr
+      000297 F0               [24] 1244 	movx	@dptr,a
+      000298 EE               [12] 1245 	mov	a,r6
+      000299 08               [12] 1246 	inc	r0
+      00029A 36               [12] 1247 	addc	a,@r0
+      00029B A3               [24] 1248 	inc	dptr
+      00029C F0               [24] 1249 	movx	@dptr,a
+      00029D EF               [12] 1250 	mov	a,r7
+      00029E 08               [12] 1251 	inc	r0
+      00029F 36               [12] 1252 	addc	a,@r0
+      0002A0 A3               [24] 1253 	inc	dptr
+      0002A1 F0               [24] 1254 	movx	@dptr,a
+                                   1255 ;	radio/at.c:301: idx++;
+      0002A2 90r00r11         [24] 1256 	mov	dptr,#_idx
+      0002A5 E0               [24] 1257 	movx	a,@dptr
+      0002A6 24 01            [12] 1258 	add	a,#0x01
+      0002A8 F0               [24] 1259 	movx	@dptr,a
+      0002A9 02r02r18         [24] 1260 	ljmp	00104$
+      0002AC                       1261 00106$:
+      0002AC E5 81            [12] 1262 	mov	a,sp
+      0002AE 24 FC            [12] 1263 	add	a,#0xFC
+      0002B0 F5 81            [12] 1264 	mov	sp,a
+      0002B2 22               [24] 1265 	ret
+                                   1266 ;------------------------------------------------------------
+                                   1267 ;Allocation info for local variables in function 'print_ID_vals'
+                                   1268 ;------------------------------------------------------------
+                                   1269 ;id                        Allocated with name '_print_ID_vals_id_1_166'
+                                   1270 ;sloc0                     Allocated with name '_print_ID_vals_sloc0_1_0'
+                                   1271 ;sloc1                     Allocated with name '_print_ID_vals_sloc1_1_0'
+                                   1272 ;end                       Allocated with name '_print_ID_vals_PARM_2'
+                                   1273 ;name_param                Allocated with name '_print_ID_vals_PARM_3'
+                                   1274 ;get_param                 Allocated with name '_print_ID_vals_PARM_4'
+                                   1275 ;param                     Allocated with name '_print_ID_vals_param_1_163'
+                                   1276 ;------------------------------------------------------------
+                                   1277 ;	radio/at.c:305: static void print_ID_vals(char param, uint8_t end,
+                                   1278 ;	-----------------------------------------
+                                   1279 ;	 function print_ID_vals
+                                   1280 ;	-----------------------------------------
+      0002B3                       1281 _print_ID_vals:
+      0002B3 E5 82            [12] 1282 	mov	a,dpl
+      0002B5 90r00r1B         [24] 1283 	mov	dptr,#_print_ID_vals_param_1_163
+      0002B8 F0               [24] 1284 	movx	@dptr,a
+                                   1285 ;	radio/at.c:312: for (id = 0; id < end; id++) {
+      0002B9 E0               [24] 1286 	movx	a,@dptr
+      0002BA F5*01            [12] 1287 	mov	_print_ID_vals_sloc0_1_0,a
+      0002BC 90r00r16         [24] 1288 	mov	dptr,#_print_ID_vals_PARM_2
+      0002BF E0               [24] 1289 	movx	a,@dptr
+      0002C0 FE               [12] 1290 	mov	r6,a
+      0002C1 75*00 00         [24] 1291 	mov	_print_ID_vals_id_1_166,#0x00
+      0002C4                       1292 00103$:
+      0002C4 C3               [12] 1293 	clr	c
+      0002C5 E5*00            [12] 1294 	mov	a,_print_ID_vals_id_1_166
+      0002C7 9E               [12] 1295 	subb	a,r6
+      0002C8 40 01            [24] 1296 	jc	00114$
+      0002CA 22               [24] 1297 	ret
+      0002CB                       1298 00114$:
+                                   1299 ;	radio/at.c:313: printf("%c%u:%s=%lu\n",
+      0002CB C0 06            [24] 1300 	push	ar6
+      0002CD C0 06            [24] 1301 	push	ar6
+      0002CF 12r02rD4         [24] 1302 	lcall	00115$
+      0002D2 80 0E            [24] 1303 	sjmp	00116$
+      0002D4                       1304 00115$:
+      0002D4 90r00r19         [24] 1305 	mov	dptr,#_print_ID_vals_PARM_4
+      0002D7 E0               [24] 1306 	movx	a,@dptr
+      0002D8 C0 E0            [24] 1307 	push	acc
+      0002DA A3               [24] 1308 	inc	dptr
+      0002DB E0               [24] 1309 	movx	a,@dptr
+      0002DC C0 E0            [24] 1310 	push	acc
+      0002DE 85*00 82         [24] 1311 	mov	dpl,_print_ID_vals_id_1_166
+      0002E1 22               [24] 1312 	ret
+      0002E2                       1313 00116$:
+      0002E2 A9 82            [24] 1314 	mov	r1,dpl
+      0002E4 AA 83            [24] 1315 	mov	r2,dph
+      0002E6 AB F0            [24] 1316 	mov	r3,b
+      0002E8 FC               [12] 1317 	mov	r4,a
+      0002E9 D0 06            [24] 1318 	pop	ar6
+      0002EB C0 06            [24] 1319 	push	ar6
+      0002ED C0 04            [24] 1320 	push	ar4
+      0002EF C0 03            [24] 1321 	push	ar3
+      0002F1 C0 02            [24] 1322 	push	ar2
+      0002F3 C0 01            [24] 1323 	push	ar1
+      0002F5 12r02rFA         [24] 1324 	lcall	00117$
+      0002F8 80 0E            [24] 1325 	sjmp	00118$
+      0002FA                       1326 00117$:
+      0002FA 90r00r17         [24] 1327 	mov	dptr,#_print_ID_vals_PARM_3
+      0002FD E0               [24] 1328 	movx	a,@dptr
+      0002FE C0 E0            [24] 1329 	push	acc
+      000300 A3               [24] 1330 	inc	dptr
+      000301 E0               [24] 1331 	movx	a,@dptr
+      000302 C0 E0            [24] 1332 	push	acc
+      000304 85*00 82         [24] 1333 	mov	dpl,_print_ID_vals_id_1_166
+      000307 22               [24] 1334 	ret
+      000308                       1335 00118$:
+      000308 85 82*02         [24] 1336 	mov	_print_ID_vals_sloc1_1_0,dpl
+      00030B 85 83*03         [24] 1337 	mov	(_print_ID_vals_sloc1_1_0 + 1),dph
+      00030E 85 F0*04         [24] 1338 	mov	(_print_ID_vals_sloc1_1_0 + 2),b
+      000311 D0 01            [24] 1339 	pop	ar1
+      000313 D0 02            [24] 1340 	pop	ar2
+      000315 D0 03            [24] 1341 	pop	ar3
+      000317 D0 04            [24] 1342 	pop	ar4
+      000319 D0 06            [24] 1343 	pop	ar6
+      00031B AE*00            [24] 1344 	mov	r6,_print_ID_vals_id_1_166
+      00031D 7F 00            [12] 1345 	mov	r7,#0x00
+      00031F E5*01            [12] 1346 	mov	a,_print_ID_vals_sloc0_1_0
+      000321 F8               [12] 1347 	mov	r0,a
+      000322 33               [12] 1348 	rlc	a
+      000323 95 E0            [12] 1349 	subb	a,acc
+      000325 FD               [12] 1350 	mov	r5,a
+      000326 C0 06            [24] 1351 	push	ar6
+      000328 C0 01            [24] 1352 	push	ar1
+      00032A C0 02            [24] 1353 	push	ar2
+      00032C C0 03            [24] 1354 	push	ar3
+      00032E C0 04            [24] 1355 	push	ar4
+      000330 C0*02            [24] 1356 	push	_print_ID_vals_sloc1_1_0
+      000332 C0*03            [24] 1357 	push	(_print_ID_vals_sloc1_1_0 + 1)
+      000334 C0*04            [24] 1358 	push	(_print_ID_vals_sloc1_1_0 + 2)
+      000336 C0 06            [24] 1359 	push	ar6
+      000338 C0 07            [24] 1360 	push	ar7
+      00033A C0 00            [24] 1361 	push	ar0
+      00033C C0 05            [24] 1362 	push	ar5
+      00033E 74r0D            [12] 1363 	mov	a,#___str_3
+      000340 C0 E0            [24] 1364 	push	acc
+      000342 74s00            [12] 1365 	mov	a,#(___str_3 >> 8)
+      000344 C0 E0            [24] 1366 	push	acc
+      000346 74 80            [12] 1367 	mov	a,#0x80
+      000348 C0 E0            [24] 1368 	push	acc
+      00034A 12r00r00         [24] 1369 	lcall	_printfl
+      00034D E5 81            [12] 1370 	mov	a,sp
+      00034F 24 F2            [12] 1371 	add	a,#0xf2
+      000351 F5 81            [12] 1372 	mov	sp,a
+      000353 D0 06            [24] 1373 	pop	ar6
+                                   1374 ;	radio/at.c:312: for (id = 0; id < end; id++) {
+      000355 05*00            [12] 1375 	inc	_print_ID_vals_id_1_166
+      000357 D0 06            [24] 1376 	pop	ar6
+      000359 02r02rC4         [24] 1377 	ljmp	00103$
+                                   1378 ;------------------------------------------------------------
+                                   1379 ;Allocation info for local variables in function 'at_i'
+                                   1380 ;------------------------------------------------------------
+                                   1381 ;	radio/at.c:322: at_i(void)
+                                   1382 ;	-----------------------------------------
+                                   1383 ;	 function at_i
+                                   1384 ;	-----------------------------------------
+      00035C                       1385 _at_i:
+                                   1386 ;	radio/at.c:324: switch (at_cmd[3]) {
+      00035C 90r00r03         [24] 1387 	mov	dptr,#(_at_cmd + 0x0003)
+      00035F E0               [24] 1388 	movx	a,@dptr
+      000360 FF               [12] 1389 	mov	r7,a
+      000361 60 30            [24] 1390 	jz	00102$
+      000363 BF 30 02         [24] 1391 	cjne	r7,#0x30,00142$
+      000366 80 2B            [24] 1392 	sjmp	00102$
+      000368                       1393 00142$:
+      000368 BF 31 02         [24] 1394 	cjne	r7,#0x31,00143$
+      00036B 80 48            [24] 1395 	sjmp	00103$
+      00036D                       1396 00143$:
+      00036D BF 32 02         [24] 1397 	cjne	r7,#0x32,00144$
+      000370 80 65            [24] 1398 	sjmp	00104$
+      000372                       1399 00144$:
+      000372 BF 33 03         [24] 1400 	cjne	r7,#0x33,00145$
+      000375 02r03rF4         [24] 1401 	ljmp	00105$
+      000378                       1402 00145$:
+      000378 BF 34 03         [24] 1403 	cjne	r7,#0x34,00146$
+      00037B 02r04r14         [24] 1404 	ljmp	00106$
+      00037E                       1405 00146$:
+      00037E BF 35 03         [24] 1406 	cjne	r7,#0x35,00147$
+      000381 02r04r34         [24] 1407 	ljmp	00107$
+      000384                       1408 00147$:
+      000384 BF 36 03         [24] 1409 	cjne	r7,#0x36,00148$
+      000387 02r04r54         [24] 1410 	ljmp	00108$
+      00038A                       1411 00148$:
+      00038A BF 37 03         [24] 1412 	cjne	r7,#0x37,00149$
+      00038D 02r04r57         [24] 1413 	ljmp	00109$
+      000390                       1414 00149$:
+      000390 02r04r5A         [24] 1415 	ljmp	00110$
+                                   1416 ;	radio/at.c:326: case '0':
+      000393                       1417 00102$:
+                                   1418 ;	radio/at.c:327: printf("%s\n", g_banner_string);
+      000393 74r00            [12] 1419 	mov	a,#_g_banner_string
+      000395 C0 E0            [24] 1420 	push	acc
+      000397 74s00            [12] 1421 	mov	a,#(_g_banner_string >> 8)
+      000399 C0 E0            [24] 1422 	push	acc
+      00039B 74 80            [12] 1423 	mov	a,#0x80
+      00039D C0 E0            [24] 1424 	push	acc
+      00039F 74r00            [12] 1425 	mov	a,#___str_0
+      0003A1 C0 E0            [24] 1426 	push	acc
+      0003A3 74s00            [12] 1427 	mov	a,#(___str_0 >> 8)
+      0003A5 C0 E0            [24] 1428 	push	acc
+      0003A7 74 80            [12] 1429 	mov	a,#0x80
+      0003A9 C0 E0            [24] 1430 	push	acc
+      0003AB 12r00r00         [24] 1431 	lcall	_printfl
+      0003AE E5 81            [12] 1432 	mov	a,sp
+      0003B0 24 FA            [12] 1433 	add	a,#0xfa
+      0003B2 F5 81            [12] 1434 	mov	sp,a
+                                   1435 ;	radio/at.c:328: return;
+      0003B4 22               [24] 1436 	ret
+                                   1437 ;	radio/at.c:329: case '1':
+      0003B5                       1438 00103$:
+                                   1439 ;	radio/at.c:330: printf("%s\n", g_version_string);
+      0003B5 74r00            [12] 1440 	mov	a,#_g_version_string
+      0003B7 C0 E0            [24] 1441 	push	acc
+      0003B9 74s00            [12] 1442 	mov	a,#(_g_version_string >> 8)
+      0003BB C0 E0            [24] 1443 	push	acc
+      0003BD 74 80            [12] 1444 	mov	a,#0x80
+      0003BF C0 E0            [24] 1445 	push	acc
+      0003C1 74r00            [12] 1446 	mov	a,#___str_0
+      0003C3 C0 E0            [24] 1447 	push	acc
+      0003C5 74s00            [12] 1448 	mov	a,#(___str_0 >> 8)
+      0003C7 C0 E0            [24] 1449 	push	acc
+      0003C9 74 80            [12] 1450 	mov	a,#0x80
+      0003CB C0 E0            [24] 1451 	push	acc
+      0003CD 12r00r00         [24] 1452 	lcall	_printfl
+      0003D0 E5 81            [12] 1453 	mov	a,sp
+      0003D2 24 FA            [12] 1454 	add	a,#0xfa
+      0003D4 F5 81            [12] 1455 	mov	sp,a
+                                   1456 ;	radio/at.c:331: return;
+      0003D6 22               [24] 1457 	ret
+                                   1458 ;	radio/at.c:332: case '2':
+      0003D7                       1459 00104$:
+                                   1460 ;	radio/at.c:333: printf("%u\n", BOARD_ID);
+      0003D7 74 4D            [12] 1461 	mov	a,#0x4D
+      0003D9 C0 E0            [24] 1462 	push	acc
+      0003DB E4               [12] 1463 	clr	a
+      0003DC C0 E0            [24] 1464 	push	acc
+      0003DE 74r1A            [12] 1465 	mov	a,#___str_4
+      0003E0 C0 E0            [24] 1466 	push	acc
+      0003E2 74s00            [12] 1467 	mov	a,#(___str_4 >> 8)
+      0003E4 C0 E0            [24] 1468 	push	acc
+      0003E6 74 80            [12] 1469 	mov	a,#0x80
+      0003E8 C0 E0            [24] 1470 	push	acc
+      0003EA 12r00r00         [24] 1471 	lcall	_printfl
+      0003ED E5 81            [12] 1472 	mov	a,sp
+      0003EF 24 FB            [12] 1473 	add	a,#0xfb
+      0003F1 F5 81            [12] 1474 	mov	sp,a
+                                   1475 ;	radio/at.c:334: break;
+                                   1476 ;	radio/at.c:335: case '3':
+      0003F3 22               [24] 1477 	ret
+      0003F4                       1478 00105$:
+                                   1479 ;	radio/at.c:336: printf("%u\n", g_board_frequency);
+      0003F4 78r00            [12] 1480 	mov	r0,#_g_board_frequency
+      0003F6 E2               [24] 1481 	movx	a,@r0
+      0003F7 FE               [12] 1482 	mov	r6,a
+      0003F8 7F 00            [12] 1483 	mov	r7,#0x00
+      0003FA C0 06            [24] 1484 	push	ar6
+      0003FC C0 07            [24] 1485 	push	ar7
+      0003FE 74r1A            [12] 1486 	mov	a,#___str_4
+      000400 C0 E0            [24] 1487 	push	acc
+      000402 74s00            [12] 1488 	mov	a,#(___str_4 >> 8)
+      000404 C0 E0            [24] 1489 	push	acc
+      000406 74 80            [12] 1490 	mov	a,#0x80
+      000408 C0 E0            [24] 1491 	push	acc
+      00040A 12r00r00         [24] 1492 	lcall	_printfl
+      00040D E5 81            [12] 1493 	mov	a,sp
+      00040F 24 FB            [12] 1494 	add	a,#0xfb
+      000411 F5 81            [12] 1495 	mov	sp,a
+                                   1496 ;	radio/at.c:337: break;
+                                   1497 ;	radio/at.c:338: case '4':
+      000413 22               [24] 1498 	ret
+      000414                       1499 00106$:
+                                   1500 ;	radio/at.c:339: printf("%u\n", g_board_bl_version);
+      000414 78r00            [12] 1501 	mov	r0,#_g_board_bl_version
+      000416 E2               [24] 1502 	movx	a,@r0
+      000417 FE               [12] 1503 	mov	r6,a
+      000418 7F 00            [12] 1504 	mov	r7,#0x00
+      00041A C0 06            [24] 1505 	push	ar6
+      00041C C0 07            [24] 1506 	push	ar7
+      00041E 74r1A            [12] 1507 	mov	a,#___str_4
+      000420 C0 E0            [24] 1508 	push	acc
+      000422 74s00            [12] 1509 	mov	a,#(___str_4 >> 8)
+      000424 C0 E0            [24] 1510 	push	acc
+      000426 74 80            [12] 1511 	mov	a,#0x80
+      000428 C0 E0            [24] 1512 	push	acc
+      00042A 12r00r00         [24] 1513 	lcall	_printfl
+      00042D E5 81            [12] 1514 	mov	a,sp
+      00042F 24 FB            [12] 1515 	add	a,#0xfb
+      000431 F5 81            [12] 1516 	mov	sp,a
+                                   1517 ;	radio/at.c:340: return;
+                                   1518 ;	radio/at.c:341: case '5':
+      000433 22               [24] 1519 	ret
+      000434                       1520 00107$:
+                                   1521 ;	radio/at.c:342: print_ID_vals('S', PARAM_MAX, param_name, param_get);
+      000434 90r00r16         [24] 1522 	mov	dptr,#_print_ID_vals_PARM_2
+      000437 74 10            [12] 1523 	mov	a,#0x10
+      000439 F0               [24] 1524 	movx	@dptr,a
+      00043A 90r00r17         [24] 1525 	mov	dptr,#_print_ID_vals_PARM_3
+      00043D 74r00            [12] 1526 	mov	a,#_param_name
+      00043F F0               [24] 1527 	movx	@dptr,a
+      000440 74s00            [12] 1528 	mov	a,#(_param_name >> 8)
+      000442 A3               [24] 1529 	inc	dptr
+      000443 F0               [24] 1530 	movx	@dptr,a
+      000444 90r00r19         [24] 1531 	mov	dptr,#_print_ID_vals_PARM_4
+      000447 74r00            [12] 1532 	mov	a,#_param_get
+      000449 F0               [24] 1533 	movx	@dptr,a
+      00044A 74s00            [12] 1534 	mov	a,#(_param_get >> 8)
+      00044C A3               [24] 1535 	inc	dptr
+      00044D F0               [24] 1536 	movx	@dptr,a
+      00044E 75 82 53         [24] 1537 	mov	dpl,#0x53
+                                   1538 ;	radio/at.c:343: return;
+                                   1539 ;	radio/at.c:344: case '6':
+      000451 02r02rB3         [24] 1540 	ljmp	_print_ID_vals
+      000454                       1541 00108$:
+                                   1542 ;	radio/at.c:345: tdm_report_timing();
+                                   1543 ;	radio/at.c:346: return;
+                                   1544 ;	radio/at.c:347: case '7':
+      000454 02r00r00         [24] 1545 	ljmp	_tdm_report_timing
+      000457                       1546 00109$:
+                                   1547 ;	radio/at.c:348: tdm_show_rssi();
+                                   1548 ;	radio/at.c:349: return;
+                                   1549 ;	radio/at.c:350: default:
+      000457 02r00r00         [24] 1550 	ljmp	_tdm_show_rssi
+      00045A                       1551 00110$:
+                                   1552 ;	radio/at.c:351: at_error();
+                                   1553 ;	radio/at.c:352: return;
+                                   1554 ;	radio/at.c:353: }
+      00045A 02r01rE5         [24] 1555 	ljmp	_at_error
+                                   1556 ;------------------------------------------------------------
+                                   1557 ;Allocation info for local variables in function 'at_s'
+                                   1558 ;------------------------------------------------------------
+                                   1559 ;	radio/at.c:357: at_s(void)
+                                   1560 ;	-----------------------------------------
+                                   1561 ;	 function at_s
+                                   1562 ;	-----------------------------------------
+      00045D                       1563 _at_s:
+                                   1564 ;	radio/at.c:362: idx = 3;
+      00045D 90r00r11         [24] 1565 	mov	dptr,#_idx
+      000460 74 03            [12] 1566 	mov	a,#0x03
+      000462 F0               [24] 1567 	movx	@dptr,a
+                                   1568 ;	radio/at.c:363: at_parse_number();
+      000463 12r02r07         [24] 1569 	lcall	_at_parse_number
+                                   1570 ;	radio/at.c:364: sreg = at_num;
+      000466 90r00r12         [24] 1571 	mov	dptr,#_at_num
+      000469 E0               [24] 1572 	movx	a,@dptr
+      00046A FC               [12] 1573 	mov	r4,a
+      00046B A3               [24] 1574 	inc	dptr
+      00046C E0               [24] 1575 	movx	a,@dptr
+      00046D FD               [12] 1576 	mov	r5,a
+      00046E A3               [24] 1577 	inc	dptr
+      00046F E0               [24] 1578 	movx	a,@dptr
+      000470 FE               [12] 1579 	mov	r6,a
+      000471 A3               [24] 1580 	inc	dptr
+      000472 E0               [24] 1581 	movx	a,@dptr
+      000473 FF               [12] 1582 	mov	r7,a
+                                   1583 ;	radio/at.c:366: if (sreg >= PARAM_MAX) {
+      000474 BC 10 00         [24] 1584 	cjne	r4,#0x10,00127$
+      000477                       1585 00127$:
+      000477 40 03            [24] 1586 	jc	00102$
+                                   1587 ;	radio/at.c:367: at_error();
+                                   1588 ;	radio/at.c:368: return;
+      000479 02r01rE5         [24] 1589 	ljmp	_at_error
+      00047C                       1590 00102$:
+                                   1591 ;	radio/at.c:371: switch (at_cmd[idx]) {
+      00047C 90r00r11         [24] 1592 	mov	dptr,#_idx
+      00047F E0               [24] 1593 	movx	a,@dptr
+      000480 FF               [12] 1594 	mov	r7,a
+      000481 24r00            [12] 1595 	add	a,#_at_cmd
+      000483 F5 82            [12] 1596 	mov	dpl,a
+      000485 E4               [12] 1597 	clr	a
+      000486 34s00            [12] 1598 	addc	a,#(_at_cmd >> 8)
+      000488 F5 83            [12] 1599 	mov	dph,a
+      00048A E0               [24] 1600 	movx	a,@dptr
+      00048B FE               [12] 1601 	mov	r6,a
+      00048C BE 3D 02         [24] 1602 	cjne	r6,#0x3D,00129$
+      00048F 80 3B            [24] 1603 	sjmp	00104$
+      000491                       1604 00129$:
+      000491 BE 3F 6D         [24] 1605 	cjne	r6,#0x3F,00109$
+                                   1606 ;	radio/at.c:373: at_num = param_get(sreg);
+      000494 8C 82            [24] 1607 	mov	dpl,r4
+      000496 12r00r00         [24] 1608 	lcall	_param_get
+      000499 AA 82            [24] 1609 	mov	r2,dpl
+      00049B AB 83            [24] 1610 	mov	r3,dph
+      00049D AD F0            [24] 1611 	mov	r5,b
+      00049F FE               [12] 1612 	mov	r6,a
+      0004A0 90r00r12         [24] 1613 	mov	dptr,#_at_num
+      0004A3 EA               [12] 1614 	mov	a,r2
+      0004A4 F0               [24] 1615 	movx	@dptr,a
+      0004A5 EB               [12] 1616 	mov	a,r3
+      0004A6 A3               [24] 1617 	inc	dptr
+      0004A7 F0               [24] 1618 	movx	@dptr,a
+      0004A8 ED               [12] 1619 	mov	a,r5
+      0004A9 A3               [24] 1620 	inc	dptr
+      0004AA F0               [24] 1621 	movx	@dptr,a
+      0004AB EE               [12] 1622 	mov	a,r6
+      0004AC A3               [24] 1623 	inc	dptr
+      0004AD F0               [24] 1624 	movx	@dptr,a
+                                   1625 ;	radio/at.c:374: printf("%lu\n", at_num);
+      0004AE C0 02            [24] 1626 	push	ar2
+      0004B0 C0 03            [24] 1627 	push	ar3
+      0004B2 C0 05            [24] 1628 	push	ar5
+      0004B4 C0 06            [24] 1629 	push	ar6
+      0004B6 74r1E            [12] 1630 	mov	a,#___str_5
+      0004B8 C0 E0            [24] 1631 	push	acc
+      0004BA 74s00            [12] 1632 	mov	a,#(___str_5 >> 8)
+      0004BC C0 E0            [24] 1633 	push	acc
+      0004BE 74 80            [12] 1634 	mov	a,#0x80
+      0004C0 C0 E0            [24] 1635 	push	acc
+      0004C2 12r00r00         [24] 1636 	lcall	_printfl
+      0004C5 E5 81            [12] 1637 	mov	a,sp
+      0004C7 24 F9            [12] 1638 	add	a,#0xf9
+      0004C9 F5 81            [12] 1639 	mov	sp,a
+                                   1640 ;	radio/at.c:375: return;
+                                   1641 ;	radio/at.c:377: case '=':
+      0004CB 22               [24] 1642 	ret
+      0004CC                       1643 00104$:
+                                   1644 ;	radio/at.c:378: if (sreg > 0) {
+      0004CC EC               [12] 1645 	mov	a,r4
+      0004CD 60 32            [24] 1646 	jz	00109$
+                                   1647 ;	radio/at.c:379: idx++;
+      0004CF 90r00r11         [24] 1648 	mov	dptr,#_idx
+      0004D2 EF               [12] 1649 	mov	a,r7
+      0004D3 04               [12] 1650 	inc	a
+      0004D4 F0               [24] 1651 	movx	@dptr,a
+                                   1652 ;	radio/at.c:380: at_parse_number();
+      0004D5 C0 04            [24] 1653 	push	ar4
+      0004D7 12r02r07         [24] 1654 	lcall	_at_parse_number
+      0004DA D0 04            [24] 1655 	pop	ar4
+                                   1656 ;	radio/at.c:381: if (param_set(sreg, at_num)) {
+      0004DC 90r00r12         [24] 1657 	mov	dptr,#_at_num
+      0004DF E0               [24] 1658 	movx	a,@dptr
+      0004E0 FB               [12] 1659 	mov	r3,a
+      0004E1 A3               [24] 1660 	inc	dptr
+      0004E2 E0               [24] 1661 	movx	a,@dptr
+      0004E3 FD               [12] 1662 	mov	r5,a
+      0004E4 A3               [24] 1663 	inc	dptr
+      0004E5 E0               [24] 1664 	movx	a,@dptr
+      0004E6 FE               [12] 1665 	mov	r6,a
+      0004E7 A3               [24] 1666 	inc	dptr
+      0004E8 E0               [24] 1667 	movx	a,@dptr
+      0004E9 FF               [12] 1668 	mov	r7,a
+      0004EA 78r00            [12] 1669 	mov	r0,#_param_set_PARM_2
+      0004EC EB               [12] 1670 	mov	a,r3
+      0004ED F2               [24] 1671 	movx	@r0,a
+      0004EE 08               [12] 1672 	inc	r0
+      0004EF ED               [12] 1673 	mov	a,r5
+      0004F0 F2               [24] 1674 	movx	@r0,a
+      0004F1 08               [12] 1675 	inc	r0
+      0004F2 EE               [12] 1676 	mov	a,r6
+      0004F3 F2               [24] 1677 	movx	@r0,a
+      0004F4 08               [12] 1678 	inc	r0
+      0004F5 EF               [12] 1679 	mov	a,r7
+      0004F6 F2               [24] 1680 	movx	@r0,a
+      0004F7 8C 82            [24] 1681 	mov	dpl,r4
+      0004F9 12r00r00         [24] 1682 	lcall	_param_set
+      0004FC 50 03            [24] 1683 	jnc	00109$
+                                   1684 ;	radio/at.c:382: at_ok();
+                                   1685 ;	radio/at.c:383: return;
+                                   1686 ;	radio/at.c:387: }
+      0004FE 02r01rC3         [24] 1687 	ljmp	_at_ok
+      000501                       1688 00109$:
+                                   1689 ;	radio/at.c:388: at_error();
+      000501 02r01rE5         [24] 1690 	ljmp	_at_error
+                                   1691 ;------------------------------------------------------------
+                                   1692 ;Allocation info for local variables in function 'at_ampersand'
+                                   1693 ;------------------------------------------------------------
+                                   1694 ;	radio/at.c:392: at_ampersand(void)
+                                   1695 ;	-----------------------------------------
+                                   1696 ;	 function at_ampersand
+                                   1697 ;	-----------------------------------------
+      000504                       1698 _at_ampersand:
+                                   1699 ;	radio/at.c:394: switch (at_cmd[3]) {
+      000504 90r00r03         [24] 1700 	mov	dptr,#(_at_cmd + 0x0003)
+      000507 E0               [24] 1701 	movx	a,@dptr
+      000508 FF               [12] 1702 	mov	r7,a
+      000509 BF 46 02         [24] 1703 	cjne	r7,#0x46,00154$
+      00050C 80 17            [24] 1704 	sjmp	00101$
+      00050E                       1705 00154$:
+      00050E BF 50 02         [24] 1706 	cjne	r7,#0x50,00155$
+      000511 80 58            [24] 1707 	sjmp	00107$
+      000513                       1708 00155$:
+      000513 BF 54 02         [24] 1709 	cjne	r7,#0x54,00156$
+      000516 80 56            [24] 1710 	sjmp	00108$
+      000518                       1711 00156$:
+      000518 BF 55 02         [24] 1712 	cjne	r7,#0x55,00157$
+      00051B 80 14            [24] 1713 	sjmp	00103$
+      00051D                       1714 00157$:
+      00051D BF 57 02         [24] 1715 	cjne	r7,#0x57,00158$
+      000520 80 09            [24] 1716 	sjmp	00102$
+      000522                       1717 00158$:
+      000522 02r05rE4         [24] 1718 	ljmp	00118$
+                                   1719 ;	radio/at.c:395: case 'F':
+      000525                       1720 00101$:
+                                   1721 ;	radio/at.c:396: param_default();
+      000525 12r00r00         [24] 1722 	lcall	_param_default
+                                   1723 ;	radio/at.c:397: at_ok();
+                                   1724 ;	radio/at.c:398: break;
+      000528 02r01rC3         [24] 1725 	ljmp	_at_ok
+                                   1726 ;	radio/at.c:399: case 'W':
+      00052B                       1727 00102$:
+                                   1728 ;	radio/at.c:400: param_save();
+      00052B 12r00r00         [24] 1729 	lcall	_param_save
+                                   1730 ;	radio/at.c:401: at_ok();
+                                   1731 ;	radio/at.c:402: break;
+      00052E 02r01rC3         [24] 1732 	ljmp	_at_ok
+                                   1733 ;	radio/at.c:404: case 'U':
+      000531                       1734 00103$:
+                                   1735 ;	radio/at.c:405: if (!strcmp(at_cmd + 4, "PDATE")) {
+      000531 90r00r00         [24] 1736 	mov	dptr,#_strcmp_PARM_2
+      000534 74r23            [12] 1737 	mov	a,#___str_6
+      000536 F0               [24] 1738 	movx	@dptr,a
+      000537 74s00            [12] 1739 	mov	a,#(___str_6 >> 8)
+      000539 A3               [24] 1740 	inc	dptr
+      00053A F0               [24] 1741 	movx	@dptr,a
+      00053B 74 80            [12] 1742 	mov	a,#0x80
+      00053D A3               [24] 1743 	inc	dptr
+      00053E F0               [24] 1744 	movx	@dptr,a
+      00053F 90r00r04         [24] 1745 	mov	dptr,#(_at_cmd + 0x0004)
+      000542 75 F0 00         [24] 1746 	mov	b,#0x00
+      000545 12r00r00         [24] 1747 	lcall	_strcmp
+      000548 E5 82            [12] 1748 	mov	a,dpl
+      00054A 85 83 F0         [24] 1749 	mov	b,dph
+      00054D 45 F0            [12] 1750 	orl	a,b
+      00054F 70 17            [24] 1751 	jnz	00106$
+                                   1752 ;	radio/at.c:407: FLKEY = 0xa5;
+      000551 75 B7 A5         [24] 1753 	mov	_FLKEY,#0xA5
+                                   1754 ;	radio/at.c:408: FLKEY = 0xf1;
+      000554 75 B7 F1         [24] 1755 	mov	_FLKEY,#0xF1
+                                   1756 ;	radio/at.c:409: PSCTL = 0x03;				// set PSWE and PSEE
+      000557 75 8F 03         [24] 1757 	mov	_PSCTL,#0x03
+                                   1758 ;	radio/at.c:410: *(uint8_t __xdata *)FLASH_SIGNATURE_BYTES = 0xff;	// do the page erase
+      00055A 90 F7 FE         [24] 1759 	mov	dptr,#0xF7FE
+      00055D 74 FF            [12] 1760 	mov	a,#0xFF
+      00055F F0               [24] 1761 	movx	@dptr,a
+                                   1762 ;	radio/at.c:411: PSCTL = 0x00;				// disable PSWE/PSEE
+      000560 75 8F 00         [24] 1763 	mov	_PSCTL,#0x00
+                                   1764 ;	radio/at.c:414: RSTSRC |= 0x10;
+      000563 43 EF 10         [24] 1765 	orl	_RSTSRC,#0x10
+      000566                       1766 00121$:
+      000566 80 FE            [24] 1767 	sjmp	00121$
+      000568                       1768 00106$:
+                                   1769 ;	radio/at.c:419: at_error();
+                                   1770 ;	radio/at.c:420: break;
+      000568 02r01rE5         [24] 1771 	ljmp	_at_error
+                                   1772 ;	radio/at.c:422: case 'P':
+      00056B                       1773 00107$:
+                                   1774 ;	radio/at.c:423: tdm_change_phase();
+                                   1775 ;	radio/at.c:424: break;
+      00056B 02r00r00         [24] 1776 	ljmp	_tdm_change_phase
+                                   1777 ;	radio/at.c:426: case 'T':
+      00056E                       1778 00108$:
+                                   1779 ;	radio/at.c:428: if (!strcmp(at_cmd + 4, "")) {
+      00056E 90r00r00         [24] 1780 	mov	dptr,#_strcmp_PARM_2
+      000571 74r29            [12] 1781 	mov	a,#___str_7
+      000573 F0               [24] 1782 	movx	@dptr,a
+      000574 74s00            [12] 1783 	mov	a,#(___str_7 >> 8)
+      000576 A3               [24] 1784 	inc	dptr
+      000577 F0               [24] 1785 	movx	@dptr,a
+      000578 74 80            [12] 1786 	mov	a,#0x80
+      00057A A3               [24] 1787 	inc	dptr
+      00057B F0               [24] 1788 	movx	@dptr,a
+      00057C 90r00r04         [24] 1789 	mov	dptr,#(_at_cmd + 0x0004)
+      00057F 75 F0 00         [24] 1790 	mov	b,#0x00
+      000582 12r00r00         [24] 1791 	lcall	_strcmp
+      000585 E5 82            [12] 1792 	mov	a,dpl
+      000587 85 83 F0         [24] 1793 	mov	b,dph
+      00058A 45 F0            [12] 1794 	orl	a,b
+      00058C 70 05            [24] 1795 	jnz	00116$
+                                   1796 ;	radio/at.c:430: at_testmode = 0;
+      00058E 78r02            [12] 1797 	mov	r0,#_at_testmode
+      000590 E4               [12] 1798 	clr	a
+      000591 F2               [24] 1799 	movx	@r0,a
+      000592 22               [24] 1800 	ret
+      000593                       1801 00116$:
+                                   1802 ;	radio/at.c:431: } else if (!strcmp(at_cmd + 4, "=RSSI")) {
+      000593 90r00r00         [24] 1803 	mov	dptr,#_strcmp_PARM_2
+      000596 74r2A            [12] 1804 	mov	a,#___str_8
+      000598 F0               [24] 1805 	movx	@dptr,a
+      000599 74s00            [12] 1806 	mov	a,#(___str_8 >> 8)
+      00059B A3               [24] 1807 	inc	dptr
+      00059C F0               [24] 1808 	movx	@dptr,a
+      00059D 74 80            [12] 1809 	mov	a,#0x80
+      00059F A3               [24] 1810 	inc	dptr
+      0005A0 F0               [24] 1811 	movx	@dptr,a
+      0005A1 90r00r04         [24] 1812 	mov	dptr,#(_at_cmd + 0x0004)
+      0005A4 75 F0 00         [24] 1813 	mov	b,#0x00
+      0005A7 12r00r00         [24] 1814 	lcall	_strcmp
+      0005AA E5 82            [12] 1815 	mov	a,dpl
+      0005AC 85 83 F0         [24] 1816 	mov	b,dph
+      0005AF 45 F0            [12] 1817 	orl	a,b
+      0005B1 70 07            [24] 1818 	jnz	00113$
+                                   1819 ;	radio/at.c:433: at_testmode ^= AT_TEST_RSSI;
+      0005B3 78r02            [12] 1820 	mov	r0,#_at_testmode
+      0005B5 E2               [24] 1821 	movx	a,@r0
+      0005B6 64 01            [12] 1822 	xrl	a,#0x01
+      0005B8 F2               [24] 1823 	movx	@r0,a
+      0005B9 22               [24] 1824 	ret
+      0005BA                       1825 00113$:
+                                   1826 ;	radio/at.c:434: } else if (!strcmp(at_cmd + 4, "=TDM")) {
+      0005BA 90r00r00         [24] 1827 	mov	dptr,#_strcmp_PARM_2
+      0005BD 74r30            [12] 1828 	mov	a,#___str_9
+      0005BF F0               [24] 1829 	movx	@dptr,a
+      0005C0 74s00            [12] 1830 	mov	a,#(___str_9 >> 8)
+      0005C2 A3               [24] 1831 	inc	dptr
+      0005C3 F0               [24] 1832 	movx	@dptr,a
+      0005C4 74 80            [12] 1833 	mov	a,#0x80
+      0005C6 A3               [24] 1834 	inc	dptr
+      0005C7 F0               [24] 1835 	movx	@dptr,a
+      0005C8 90r00r04         [24] 1836 	mov	dptr,#(_at_cmd + 0x0004)
+      0005CB 75 F0 00         [24] 1837 	mov	b,#0x00
+      0005CE 12r00r00         [24] 1838 	lcall	_strcmp
+      0005D1 E5 82            [12] 1839 	mov	a,dpl
+      0005D3 85 83 F0         [24] 1840 	mov	b,dph
+      0005D6 45 F0            [12] 1841 	orl	a,b
+      0005D8 70 07            [24] 1842 	jnz	00110$
+                                   1843 ;	radio/at.c:436: at_testmode ^= AT_TEST_TDM;
+      0005DA 78r02            [12] 1844 	mov	r0,#_at_testmode
+      0005DC E2               [24] 1845 	movx	a,@r0
+      0005DD 64 02            [12] 1846 	xrl	a,#0x02
+      0005DF F2               [24] 1847 	movx	@r0,a
+      0005E0 22               [24] 1848 	ret
+      0005E1                       1849 00110$:
+                                   1850 ;	radio/at.c:438: at_error();
+                                   1851 ;	radio/at.c:440: break;
+                                   1852 ;	radio/at.c:456: default:
+      0005E1 02r01rE5         [24] 1853 	ljmp	_at_error
+      0005E4                       1854 00118$:
+                                   1855 ;	radio/at.c:457: at_error();
+                                   1856 ;	radio/at.c:459: }
+      0005E4 02r01rE5         [24] 1857 	ljmp	_at_error
+                                   1858 ;------------------------------------------------------------
+                                   1859 ;Allocation info for local variables in function 'at_p'
+                                   1860 ;------------------------------------------------------------
+                                   1861 ;	radio/at.c:463: at_p (void)
+                                   1862 ;	-----------------------------------------
+                                   1863 ;	 function at_p
+                                   1864 ;	-----------------------------------------
+      0005E7                       1865 _at_p:
+                                   1866 ;	radio/at.c:522: at_error();
+      0005E7 02r01rE5         [24] 1867 	ljmp	_at_error
+                                   1868 ;------------------------------------------------------------
+                                   1869 ;Allocation info for local variables in function 'at_plus'
+                                   1870 ;------------------------------------------------------------
+                                   1871 ;	radio/at.c:527: at_plus(void)
+                                   1872 ;	-----------------------------------------
+                                   1873 ;	 function at_plus
+                                   1874 ;	-----------------------------------------
+      0005EA                       1875 _at_plus:
+                                   1876 ;	radio/at.c:532: idx = 4;
+      0005EA 90r00r11         [24] 1877 	mov	dptr,#_idx
+      0005ED 74 04            [12] 1878 	mov	a,#0x04
+      0005EF F0               [24] 1879 	movx	@dptr,a
+                                   1880 ;	radio/at.c:533: at_parse_number();
+      0005F0 12r02r07         [24] 1881 	lcall	_at_parse_number
+                                   1882 ;	radio/at.c:605: at_error();
+      0005F3 02r01rE5         [24] 1883 	ljmp	_at_error
+                                   1884 	.area CSEG    (CODE)
+                                   1885 	.area CONST   (CODE)
+      000000                       1886 ___str_0:
+      000000 25 73                 1887 	.ascii "%s"
+      000002 0A                    1888 	.db 0x0A
+      000003 00                    1889 	.db 0x00
+      000004                       1890 ___str_1:
+      000004 4F 4B                 1891 	.ascii "OK"
+      000006 00                    1892 	.db 0x00
+      000007                       1893 ___str_2:
+      000007 45 52 52 4F 52        1894 	.ascii "ERROR"
+      00000C 00                    1895 	.db 0x00
+      00000D                       1896 ___str_3:
+      00000D 25 63 25 75 3A 25 73  1897 	.ascii "%c%u:%s=%lu"
+             3D 25 6C 75
+      000018 0A                    1898 	.db 0x0A
+      000019 00                    1899 	.db 0x00
+      00001A                       1900 ___str_4:
+      00001A 25 75                 1901 	.ascii "%u"
+      00001C 0A                    1902 	.db 0x0A
+      00001D 00                    1903 	.db 0x00
+      00001E                       1904 ___str_5:
+      00001E 25 6C 75              1905 	.ascii "%lu"
+      000021 0A                    1906 	.db 0x0A
+      000022 00                    1907 	.db 0x00
+      000023                       1908 ___str_6:
+      000023 50 44 41 54 45        1909 	.ascii "PDATE"
+      000028 00                    1910 	.db 0x00
+      000029                       1911 ___str_7:
+      000029 00                    1912 	.db 0x00
+      00002A                       1913 ___str_8:
+      00002A 3D 52 53 53 49        1914 	.ascii "=RSSI"
+      00002F 00                    1915 	.db 0x00
+      000030                       1916 ___str_9:
+      000030 3D 54 44 4D           1917 	.ascii "=TDM"
+      000034 00                    1918 	.db 0x00
+                                   1919 	.area XINIT   (CODE)
+                                   1920 	.area CABS    (ABS,CODE)

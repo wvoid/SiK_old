@@ -1,0 +1,1408 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Sep  7 2022) (Linux)
+                                      4 ; This file was generated Wed Sep  7 10:05:11 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module CTR_EncryptDecrypt
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _NSS1
+                                     13 	.globl _IRQ
+                                     14 	.globl _PA_ENABLE
+                                     15 	.globl _PIN_ENABLE
+                                     16 	.globl _PIN_CONFIG
+                                     17 	.globl _LED_GREEN
+                                     18 	.globl _LED_RED
+                                     19 	.globl _SPI1EN
+                                     20 	.globl _TXBMT1
+                                     21 	.globl _NSS1MD0
+                                     22 	.globl _NSS1MD1
+                                     23 	.globl _RXOVRN1
+                                     24 	.globl _MODF1
+                                     25 	.globl _WCOL1
+                                     26 	.globl _SPIF1
+                                     27 	.globl _SPI0EN
+                                     28 	.globl _TXBMT0
+                                     29 	.globl _NSS0MD0
+                                     30 	.globl _NSS0MD1
+                                     31 	.globl _RXOVRN0
+                                     32 	.globl _MODF0
+                                     33 	.globl _WCOL0
+                                     34 	.globl _SPIF0
+                                     35 	.globl _AD0CM0
+                                     36 	.globl _AD0CM1
+                                     37 	.globl _AD0CM2
+                                     38 	.globl _AD0WINT
+                                     39 	.globl _AD0BUSY
+                                     40 	.globl _AD0INT
+                                     41 	.globl _BURSTEN
+                                     42 	.globl _AD0EN
+                                     43 	.globl _CCF0
+                                     44 	.globl _CCF1
+                                     45 	.globl _CCF2
+                                     46 	.globl _CCF3
+                                     47 	.globl _CCF4
+                                     48 	.globl _CCF5
+                                     49 	.globl _CR
+                                     50 	.globl _CF
+                                     51 	.globl _P
+                                     52 	.globl _F1
+                                     53 	.globl _OV
+                                     54 	.globl _RS0
+                                     55 	.globl _RS1
+                                     56 	.globl _F0
+                                     57 	.globl _AC
+                                     58 	.globl _CY
+                                     59 	.globl _T2XCLK
+                                     60 	.globl _T2RCLK
+                                     61 	.globl _TR2
+                                     62 	.globl _T2SPLIT
+                                     63 	.globl _TF2CEN
+                                     64 	.globl _TF2LEN
+                                     65 	.globl _TF2L
+                                     66 	.globl _TF2H
+                                     67 	.globl _SI
+                                     68 	.globl _ACK
+                                     69 	.globl _ARBLOST
+                                     70 	.globl _ACKRQ
+                                     71 	.globl _STO
+                                     72 	.globl _STA
+                                     73 	.globl _TXMODE
+                                     74 	.globl _MASTER
+                                     75 	.globl _PX0
+                                     76 	.globl _PT0
+                                     77 	.globl _PX1
+                                     78 	.globl _PT1
+                                     79 	.globl _PS0
+                                     80 	.globl _PT2
+                                     81 	.globl _PSPI0
+                                     82 	.globl _EX0
+                                     83 	.globl _ET0
+                                     84 	.globl _EX1
+                                     85 	.globl _ET1
+                                     86 	.globl _ES0
+                                     87 	.globl _ET2
+                                     88 	.globl _ESPI0
+                                     89 	.globl _EA
+                                     90 	.globl _RI0
+                                     91 	.globl _TI0
+                                     92 	.globl _RB80
+                                     93 	.globl _TB80
+                                     94 	.globl _REN0
+                                     95 	.globl _MCE0
+                                     96 	.globl _S0MODE
+                                     97 	.globl _IT0
+                                     98 	.globl _IE0
+                                     99 	.globl _IT1
+                                    100 	.globl _IE1
+                                    101 	.globl _TR0
+                                    102 	.globl _TF0
+                                    103 	.globl _TR1
+                                    104 	.globl _TF1
+                                    105 	.globl __XPAGE
+                                    106 	.globl _PCA0CP4
+                                    107 	.globl _PCA0CP0
+                                    108 	.globl _PCA0
+                                    109 	.globl _PCA0CP3
+                                    110 	.globl _PCA0CP2
+                                    111 	.globl _PCA0CP1
+                                    112 	.globl _PCA0CP5
+                                    113 	.globl _TMR2
+                                    114 	.globl _TMR2RL
+                                    115 	.globl _ADC0LT
+                                    116 	.globl _ADC0GT
+                                    117 	.globl _ADC0
+                                    118 	.globl _TMR3
+                                    119 	.globl _TMR3RL
+                                    120 	.globl _TOFF
+                                    121 	.globl _DP
+                                    122 	.globl _PCLKEN
+                                    123 	.globl _CLKMODE
+                                    124 	.globl _P7MDOUT
+                                    125 	.globl _P6MDOUT
+                                    126 	.globl _P5MDOUT
+                                    127 	.globl _P4MDOUT
+                                    128 	.globl _PCLKACT
+                                    129 	.globl _P6MDIN
+                                    130 	.globl _P5MDIN
+                                    131 	.globl _P4MDIN
+                                    132 	.globl _P3MDIN
+                                    133 	.globl _DEVICEID
+                                    134 	.globl _REVID
+                                    135 	.globl _HWID
+                                    136 	.globl _P7
+                                    137 	.globl _P6
+                                    138 	.globl _P5
+                                    139 	.globl _P4
+                                    140 	.globl _TOFFH
+                                    141 	.globl _TOFFL
+                                    142 	.globl _ADC0TK
+                                    143 	.globl _ADC0PWR
+                                    144 	.globl _IREF0CF
+                                    145 	.globl _FLSCL
+                                    146 	.globl _OSCICL
+                                    147 	.globl _OSCIFL
+                                    148 	.globl _P3MDOUT
+                                    149 	.globl _LCD0BUFCF
+                                    150 	.globl _P7DRV
+                                    151 	.globl _P6DRV
+                                    152 	.globl _P2DRV
+                                    153 	.globl _P1DRV
+                                    154 	.globl _P0DRV
+                                    155 	.globl _P5DRV
+                                    156 	.globl _P4DRV
+                                    157 	.globl _P3DRV
+                                    158 	.globl _LCD0BUFCN
+                                    159 	.globl _CRC0CNT
+                                    160 	.globl _CRC0AUTO
+                                    161 	.globl _CRC0FLIP
+                                    162 	.globl _CRC0IN
+                                    163 	.globl _CRC0CN
+                                    164 	.globl _CRC0DAT
+                                    165 	.globl _SFRPGCN
+                                    166 	.globl _DC0RDY
+                                    167 	.globl _PC0INT1
+                                    168 	.globl _PC0INT0
+                                    169 	.globl _PC0DCH
+                                    170 	.globl _PC0DCL
+                                    171 	.globl _SPI1CN
+                                    172 	.globl _AES0YOUT
+                                    173 	.globl _PC0HIST
+                                    174 	.globl _PC0CMP1H
+                                    175 	.globl _PC0CMP1M
+                                    176 	.globl _PC0CMP1L
+                                    177 	.globl _AES0KBA
+                                    178 	.globl _AES0DBA
+                                    179 	.globl _AES0KIN
+                                    180 	.globl _AES0XIN
+                                    181 	.globl _AES0BIN
+                                    182 	.globl _AES0DCFG
+                                    183 	.globl _AES0BCFG
+                                    184 	.globl _PC0TH
+                                    185 	.globl _PC0CMP0H
+                                    186 	.globl _PC0CMP0M
+                                    187 	.globl _PC0CMP0L
+                                    188 	.globl _PC0CTR1H
+                                    189 	.globl _PC0CTR1M
+                                    190 	.globl _PC0CTR1L
+                                    191 	.globl _PC0CTR0H
+                                    192 	.globl _PC0CTR0M
+                                    193 	.globl _PC0CTR0L
+                                    194 	.globl _PC0MD
+                                    195 	.globl _PC0PCF
+                                    196 	.globl _DMA0NMD
+                                    197 	.globl _DMA0BUSY
+                                    198 	.globl _DMA0MINT
+                                    199 	.globl _DMA0INT
+                                    200 	.globl _DMA0EN
+                                    201 	.globl _DMA0SEL
+                                    202 	.globl _DMA0NSZH
+                                    203 	.globl _DMA0NSZL
+                                    204 	.globl _DMA0NAOH
+                                    205 	.globl _DMA0NAOL
+                                    206 	.globl _DMA0NBAH
+                                    207 	.globl _DMA0NBAL
+                                    208 	.globl _DMA0NCF
+                                    209 	.globl _VREGINSDH
+                                    210 	.globl _VREGINSDL
+                                    211 	.globl _ENC0CN
+                                    212 	.globl _ENC0H
+                                    213 	.globl _ENC0M
+                                    214 	.globl _ENC0L
+                                    215 	.globl _PC0STAT
+                                    216 	.globl _CRC1CN
+                                    217 	.globl _CRC1POLH
+                                    218 	.globl _CRC1POLL
+                                    219 	.globl _CRC1OUTH
+                                    220 	.globl _CRC1OUTL
+                                    221 	.globl _CRC1IN
+                                    222 	.globl _LCD0BUFMD
+                                    223 	.globl _LCD0CHPCN
+                                    224 	.globl _DC0MD
+                                    225 	.globl _DC0CF
+                                    226 	.globl _DC0CN
+                                    227 	.globl _LCD0VBMCF
+                                    228 	.globl _LCD0CHPMD
+                                    229 	.globl _LCD0CHPCF
+                                    230 	.globl _LCD0MSCF
+                                    231 	.globl _LCD0MSCN
+                                    232 	.globl _LCD0CLKDIVH
+                                    233 	.globl _LCD0CLKDIVL
+                                    234 	.globl _LCD0VBMCN
+                                    235 	.globl _LCD0CF
+                                    236 	.globl _LCD0PWR
+                                    237 	.globl _SPI1DAT
+                                    238 	.globl _SPI1CKR
+                                    239 	.globl _SPI1CFG
+                                    240 	.globl _LCD0TOGR
+                                    241 	.globl _LCD0BLINK
+                                    242 	.globl _LCD0CN
+                                    243 	.globl _LCD0CNTRST
+                                    244 	.globl _LCD0DF
+                                    245 	.globl _LCD0DE
+                                    246 	.globl _LCD0DD
+                                    247 	.globl _LCD0DC
+                                    248 	.globl _LCD0DB
+                                    249 	.globl _LCD0DA
+                                    250 	.globl _LCD0D9
+                                    251 	.globl _LCD0D8
+                                    252 	.globl _LCD0D7
+                                    253 	.globl _LCD0D6
+                                    254 	.globl _LCD0D5
+                                    255 	.globl _LCD0D4
+                                    256 	.globl _LCD0D3
+                                    257 	.globl _LCD0D2
+                                    258 	.globl _LCD0D1
+                                    259 	.globl _LCD0D0
+                                    260 	.globl _VDM0CN
+                                    261 	.globl _PCA0CPH4
+                                    262 	.globl _PCA0CPL4
+                                    263 	.globl _PCA0CPH0
+                                    264 	.globl _PCA0CPL0
+                                    265 	.globl _PCA0H
+                                    266 	.globl _PCA0L
+                                    267 	.globl _SPI0CN
+                                    268 	.globl _EIP2
+                                    269 	.globl _EIP1
+                                    270 	.globl _SMB0ADM
+                                    271 	.globl _SMB0ADR
+                                    272 	.globl _P2MDIN
+                                    273 	.globl _P1MDIN
+                                    274 	.globl _P0MDIN
+                                    275 	.globl _B
+                                    276 	.globl _RSTSRC
+                                    277 	.globl _PCA0CPH3
+                                    278 	.globl _PCA0CPL3
+                                    279 	.globl _PCA0CPH2
+                                    280 	.globl _PCA0CPL2
+                                    281 	.globl _PCA0CPH1
+                                    282 	.globl _PCA0CPL1
+                                    283 	.globl _ADC0CN
+                                    284 	.globl _EIE2
+                                    285 	.globl _EIE1
+                                    286 	.globl _FLWR
+                                    287 	.globl _IT01CF
+                                    288 	.globl _XBR2
+                                    289 	.globl _XBR1
+                                    290 	.globl _XBR0
+                                    291 	.globl _ACC
+                                    292 	.globl _PCA0PWM
+                                    293 	.globl _PCA0CPM4
+                                    294 	.globl _PCA0CPM3
+                                    295 	.globl _PCA0CPM2
+                                    296 	.globl _PCA0CPM1
+                                    297 	.globl _PCA0CPM0
+                                    298 	.globl _PCA0MD
+                                    299 	.globl _PCA0CN
+                                    300 	.globl _P0MAT
+                                    301 	.globl _P2SKIP
+                                    302 	.globl _P1SKIP
+                                    303 	.globl _P0SKIP
+                                    304 	.globl _PCA0CPH5
+                                    305 	.globl _PCA0CPL5
+                                    306 	.globl _REF0CN
+                                    307 	.globl _PSW
+                                    308 	.globl _P1MAT
+                                    309 	.globl _PCA0CPM5
+                                    310 	.globl _TMR2H
+                                    311 	.globl _TMR2L
+                                    312 	.globl _TMR2RLH
+                                    313 	.globl _TMR2RLL
+                                    314 	.globl _REG0CN
+                                    315 	.globl _TMR2CN
+                                    316 	.globl _P0MASK
+                                    317 	.globl _ADC0LTH
+                                    318 	.globl _ADC0LTL
+                                    319 	.globl _ADC0GTH
+                                    320 	.globl _ADC0GTL
+                                    321 	.globl _SMB0DAT
+                                    322 	.globl _SMB0CF
+                                    323 	.globl _SMB0CN
+                                    324 	.globl _P1MASK
+                                    325 	.globl _ADC0H
+                                    326 	.globl _ADC0L
+                                    327 	.globl _ADC0CF
+                                    328 	.globl _ADC0MX
+                                    329 	.globl _ADC0AC
+                                    330 	.globl _IREF0CN
+                                    331 	.globl _IP
+                                    332 	.globl _FLKEY
+                                    333 	.globl _PMU0FL
+                                    334 	.globl _PMU0CF
+                                    335 	.globl _PMU0MD
+                                    336 	.globl _OSCICN
+                                    337 	.globl _OSCXCN
+                                    338 	.globl _P3
+                                    339 	.globl _EMI0TC
+                                    340 	.globl _RTC0KEY
+                                    341 	.globl _RTC0DAT
+                                    342 	.globl _RTC0ADR
+                                    343 	.globl _EMI0CF
+                                    344 	.globl _EMI0CN
+                                    345 	.globl _CLKSEL
+                                    346 	.globl _IE
+                                    347 	.globl _SFRPAGE
+                                    348 	.globl _P2MDOUT
+                                    349 	.globl _P1MDOUT
+                                    350 	.globl _P0MDOUT
+                                    351 	.globl _SPI0DAT
+                                    352 	.globl _SPI0CKR
+                                    353 	.globl _SPI0CFG
+                                    354 	.globl _P2
+                                    355 	.globl _CPT0MX
+                                    356 	.globl _CPT1MX
+                                    357 	.globl _CPT0MD
+                                    358 	.globl _CPT1MD
+                                    359 	.globl _CPT0CN
+                                    360 	.globl _CPT1CN
+                                    361 	.globl _SBUF0
+                                    362 	.globl _SCON0
+                                    363 	.globl _TMR3H
+                                    364 	.globl _TMR3L
+                                    365 	.globl _TMR3RLH
+                                    366 	.globl _TMR3RLL
+                                    367 	.globl _TMR3CN
+                                    368 	.globl _P1
+                                    369 	.globl _PSCTL
+                                    370 	.globl _CKCON
+                                    371 	.globl _TH1
+                                    372 	.globl _TH0
+                                    373 	.globl _TL1
+                                    374 	.globl _TL0
+                                    375 	.globl _TMOD
+                                    376 	.globl _TCON
+                                    377 	.globl _PCON
+                                    378 	.globl _SFRLAST
+                                    379 	.globl _SFRNEXT
+                                    380 	.globl _PSBANK
+                                    381 	.globl _DPH
+                                    382 	.globl _DPL
+                                    383 	.globl _SP
+                                    384 	.globl _P0
+                                    385 	.globl _CTR_EncryptDecrypt_PARM_6
+                                    386 	.globl _CTR_EncryptDecrypt_PARM_5
+                                    387 	.globl _CTR_EncryptDecrypt_PARM_4
+                                    388 	.globl _CTR_EncryptDecrypt_PARM_3
+                                    389 	.globl _CTR_EncryptDecrypt_PARM_2
+                                    390 	.globl _CTR_EncryptDecrypt
+                                    391 	.globl _IncrementCounter
+                                    392 ;--------------------------------------------------------
+                                    393 ; special function registers
+                                    394 ;--------------------------------------------------------
+                                    395 	.area RSEG    (ABS,DATA)
+      000000                        396 	.org 0x0000
+                           000080   397 _P0	=	0x0080
+                           000081   398 _SP	=	0x0081
+                           000082   399 _DPL	=	0x0082
+                           000083   400 _DPH	=	0x0083
+                           000084   401 _PSBANK	=	0x0084
+                           000085   402 _SFRNEXT	=	0x0085
+                           000086   403 _SFRLAST	=	0x0086
+                           000087   404 _PCON	=	0x0087
+                           000088   405 _TCON	=	0x0088
+                           000089   406 _TMOD	=	0x0089
+                           00008A   407 _TL0	=	0x008a
+                           00008B   408 _TL1	=	0x008b
+                           00008C   409 _TH0	=	0x008c
+                           00008D   410 _TH1	=	0x008d
+                           00008E   411 _CKCON	=	0x008e
+                           00008F   412 _PSCTL	=	0x008f
+                           000090   413 _P1	=	0x0090
+                           000091   414 _TMR3CN	=	0x0091
+                           000092   415 _TMR3RLL	=	0x0092
+                           000093   416 _TMR3RLH	=	0x0093
+                           000094   417 _TMR3L	=	0x0094
+                           000095   418 _TMR3H	=	0x0095
+                           000098   419 _SCON0	=	0x0098
+                           000099   420 _SBUF0	=	0x0099
+                           00009A   421 _CPT1CN	=	0x009a
+                           00009B   422 _CPT0CN	=	0x009b
+                           00009C   423 _CPT1MD	=	0x009c
+                           00009D   424 _CPT0MD	=	0x009d
+                           00009E   425 _CPT1MX	=	0x009e
+                           00009F   426 _CPT0MX	=	0x009f
+                           0000A0   427 _P2	=	0x00a0
+                           0000A1   428 _SPI0CFG	=	0x00a1
+                           0000A2   429 _SPI0CKR	=	0x00a2
+                           0000A3   430 _SPI0DAT	=	0x00a3
+                           0000A4   431 _P0MDOUT	=	0x00a4
+                           0000A5   432 _P1MDOUT	=	0x00a5
+                           0000A6   433 _P2MDOUT	=	0x00a6
+                           0000A7   434 _SFRPAGE	=	0x00a7
+                           0000A8   435 _IE	=	0x00a8
+                           0000A9   436 _CLKSEL	=	0x00a9
+                           0000AA   437 _EMI0CN	=	0x00aa
+                           0000AB   438 _EMI0CF	=	0x00ab
+                           0000AC   439 _RTC0ADR	=	0x00ac
+                           0000AD   440 _RTC0DAT	=	0x00ad
+                           0000AE   441 _RTC0KEY	=	0x00ae
+                           0000AF   442 _EMI0TC	=	0x00af
+                           0000B0   443 _P3	=	0x00b0
+                           0000B1   444 _OSCXCN	=	0x00b1
+                           0000B2   445 _OSCICN	=	0x00b2
+                           0000B3   446 _PMU0MD	=	0x00b3
+                           0000B5   447 _PMU0CF	=	0x00b5
+                           0000B6   448 _PMU0FL	=	0x00b6
+                           0000B7   449 _FLKEY	=	0x00b7
+                           0000B8   450 _IP	=	0x00b8
+                           0000B9   451 _IREF0CN	=	0x00b9
+                           0000BA   452 _ADC0AC	=	0x00ba
+                           0000BB   453 _ADC0MX	=	0x00bb
+                           0000BC   454 _ADC0CF	=	0x00bc
+                           0000BD   455 _ADC0L	=	0x00bd
+                           0000BE   456 _ADC0H	=	0x00be
+                           0000BF   457 _P1MASK	=	0x00bf
+                           0000C0   458 _SMB0CN	=	0x00c0
+                           0000C1   459 _SMB0CF	=	0x00c1
+                           0000C2   460 _SMB0DAT	=	0x00c2
+                           0000C3   461 _ADC0GTL	=	0x00c3
+                           0000C4   462 _ADC0GTH	=	0x00c4
+                           0000C5   463 _ADC0LTL	=	0x00c5
+                           0000C6   464 _ADC0LTH	=	0x00c6
+                           0000C7   465 _P0MASK	=	0x00c7
+                           0000C8   466 _TMR2CN	=	0x00c8
+                           0000C9   467 _REG0CN	=	0x00c9
+                           0000CA   468 _TMR2RLL	=	0x00ca
+                           0000CB   469 _TMR2RLH	=	0x00cb
+                           0000CC   470 _TMR2L	=	0x00cc
+                           0000CD   471 _TMR2H	=	0x00cd
+                           0000CE   472 _PCA0CPM5	=	0x00ce
+                           0000CF   473 _P1MAT	=	0x00cf
+                           0000D0   474 _PSW	=	0x00d0
+                           0000D1   475 _REF0CN	=	0x00d1
+                           0000D2   476 _PCA0CPL5	=	0x00d2
+                           0000D3   477 _PCA0CPH5	=	0x00d3
+                           0000D4   478 _P0SKIP	=	0x00d4
+                           0000D5   479 _P1SKIP	=	0x00d5
+                           0000D6   480 _P2SKIP	=	0x00d6
+                           0000D7   481 _P0MAT	=	0x00d7
+                           0000D8   482 _PCA0CN	=	0x00d8
+                           0000D9   483 _PCA0MD	=	0x00d9
+                           0000DA   484 _PCA0CPM0	=	0x00da
+                           0000DB   485 _PCA0CPM1	=	0x00db
+                           0000DC   486 _PCA0CPM2	=	0x00dc
+                           0000DD   487 _PCA0CPM3	=	0x00dd
+                           0000DE   488 _PCA0CPM4	=	0x00de
+                           0000DF   489 _PCA0PWM	=	0x00df
+                           0000E0   490 _ACC	=	0x00e0
+                           0000E1   491 _XBR0	=	0x00e1
+                           0000E2   492 _XBR1	=	0x00e2
+                           0000E3   493 _XBR2	=	0x00e3
+                           0000E4   494 _IT01CF	=	0x00e4
+                           0000E5   495 _FLWR	=	0x00e5
+                           0000E6   496 _EIE1	=	0x00e6
+                           0000E7   497 _EIE2	=	0x00e7
+                           0000E8   498 _ADC0CN	=	0x00e8
+                           0000E9   499 _PCA0CPL1	=	0x00e9
+                           0000EA   500 _PCA0CPH1	=	0x00ea
+                           0000EB   501 _PCA0CPL2	=	0x00eb
+                           0000EC   502 _PCA0CPH2	=	0x00ec
+                           0000ED   503 _PCA0CPL3	=	0x00ed
+                           0000EE   504 _PCA0CPH3	=	0x00ee
+                           0000EF   505 _RSTSRC	=	0x00ef
+                           0000F0   506 _B	=	0x00f0
+                           0000F1   507 _P0MDIN	=	0x00f1
+                           0000F2   508 _P1MDIN	=	0x00f2
+                           0000F3   509 _P2MDIN	=	0x00f3
+                           0000F4   510 _SMB0ADR	=	0x00f4
+                           0000F5   511 _SMB0ADM	=	0x00f5
+                           0000F6   512 _EIP1	=	0x00f6
+                           0000F7   513 _EIP2	=	0x00f7
+                           0000F8   514 _SPI0CN	=	0x00f8
+                           0000F9   515 _PCA0L	=	0x00f9
+                           0000FA   516 _PCA0H	=	0x00fa
+                           0000FB   517 _PCA0CPL0	=	0x00fb
+                           0000FC   518 _PCA0CPH0	=	0x00fc
+                           0000FD   519 _PCA0CPL4	=	0x00fd
+                           0000FE   520 _PCA0CPH4	=	0x00fe
+                           0000FF   521 _VDM0CN	=	0x00ff
+                           000089   522 _LCD0D0	=	0x0089
+                           00008A   523 _LCD0D1	=	0x008a
+                           00008B   524 _LCD0D2	=	0x008b
+                           00008C   525 _LCD0D3	=	0x008c
+                           00008D   526 _LCD0D4	=	0x008d
+                           00008E   527 _LCD0D5	=	0x008e
+                           000091   528 _LCD0D6	=	0x0091
+                           000092   529 _LCD0D7	=	0x0092
+                           000093   530 _LCD0D8	=	0x0093
+                           000094   531 _LCD0D9	=	0x0094
+                           000095   532 _LCD0DA	=	0x0095
+                           000096   533 _LCD0DB	=	0x0096
+                           000097   534 _LCD0DC	=	0x0097
+                           000099   535 _LCD0DD	=	0x0099
+                           00009A   536 _LCD0DE	=	0x009a
+                           00009B   537 _LCD0DF	=	0x009b
+                           00009C   538 _LCD0CNTRST	=	0x009c
+                           00009D   539 _LCD0CN	=	0x009d
+                           00009E   540 _LCD0BLINK	=	0x009e
+                           00009F   541 _LCD0TOGR	=	0x009f
+                           0000A1   542 _SPI1CFG	=	0x00a1
+                           0000A2   543 _SPI1CKR	=	0x00a2
+                           0000A3   544 _SPI1DAT	=	0x00a3
+                           0000A4   545 _LCD0PWR	=	0x00a4
+                           0000A5   546 _LCD0CF	=	0x00a5
+                           0000A6   547 _LCD0VBMCN	=	0x00a6
+                           0000A9   548 _LCD0CLKDIVL	=	0x00a9
+                           0000AA   549 _LCD0CLKDIVH	=	0x00aa
+                           0000AB   550 _LCD0MSCN	=	0x00ab
+                           0000AC   551 _LCD0MSCF	=	0x00ac
+                           0000AD   552 _LCD0CHPCF	=	0x00ad
+                           0000AE   553 _LCD0CHPMD	=	0x00ae
+                           0000AF   554 _LCD0VBMCF	=	0x00af
+                           0000B1   555 _DC0CN	=	0x00b1
+                           0000B2   556 _DC0CF	=	0x00b2
+                           0000B3   557 _DC0MD	=	0x00b3
+                           0000B5   558 _LCD0CHPCN	=	0x00b5
+                           0000B6   559 _LCD0BUFMD	=	0x00b6
+                           0000B9   560 _CRC1IN	=	0x00b9
+                           0000BA   561 _CRC1OUTL	=	0x00ba
+                           0000BB   562 _CRC1OUTH	=	0x00bb
+                           0000BC   563 _CRC1POLL	=	0x00bc
+                           0000BD   564 _CRC1POLH	=	0x00bd
+                           0000BE   565 _CRC1CN	=	0x00be
+                           0000C1   566 _PC0STAT	=	0x00c1
+                           0000C2   567 _ENC0L	=	0x00c2
+                           0000C3   568 _ENC0M	=	0x00c3
+                           0000C4   569 _ENC0H	=	0x00c4
+                           0000C5   570 _ENC0CN	=	0x00c5
+                           0000C6   571 _VREGINSDL	=	0x00c6
+                           0000C7   572 _VREGINSDH	=	0x00c7
+                           0000C9   573 _DMA0NCF	=	0x00c9
+                           0000CA   574 _DMA0NBAL	=	0x00ca
+                           0000CB   575 _DMA0NBAH	=	0x00cb
+                           0000CC   576 _DMA0NAOL	=	0x00cc
+                           0000CD   577 _DMA0NAOH	=	0x00cd
+                           0000CE   578 _DMA0NSZL	=	0x00ce
+                           0000CF   579 _DMA0NSZH	=	0x00cf
+                           0000D1   580 _DMA0SEL	=	0x00d1
+                           0000D2   581 _DMA0EN	=	0x00d2
+                           0000D3   582 _DMA0INT	=	0x00d3
+                           0000D4   583 _DMA0MINT	=	0x00d4
+                           0000D5   584 _DMA0BUSY	=	0x00d5
+                           0000D6   585 _DMA0NMD	=	0x00d6
+                           0000D7   586 _PC0PCF	=	0x00d7
+                           0000D9   587 _PC0MD	=	0x00d9
+                           0000DA   588 _PC0CTR0L	=	0x00da
+                           0000DB   589 _PC0CTR0M	=	0x00db
+                           0000DC   590 _PC0CTR0H	=	0x00dc
+                           0000DD   591 _PC0CTR1L	=	0x00dd
+                           0000DE   592 _PC0CTR1M	=	0x00de
+                           0000DF   593 _PC0CTR1H	=	0x00df
+                           0000E1   594 _PC0CMP0L	=	0x00e1
+                           0000E2   595 _PC0CMP0M	=	0x00e2
+                           0000E3   596 _PC0CMP0H	=	0x00e3
+                           0000E4   597 _PC0TH	=	0x00e4
+                           0000E9   598 _AES0BCFG	=	0x00e9
+                           0000EA   599 _AES0DCFG	=	0x00ea
+                           0000EB   600 _AES0BIN	=	0x00eb
+                           0000EC   601 _AES0XIN	=	0x00ec
+                           0000ED   602 _AES0KIN	=	0x00ed
+                           0000EE   603 _AES0DBA	=	0x00ee
+                           0000EF   604 _AES0KBA	=	0x00ef
+                           0000F1   605 _PC0CMP1L	=	0x00f1
+                           0000F2   606 _PC0CMP1M	=	0x00f2
+                           0000F3   607 _PC0CMP1H	=	0x00f3
+                           0000F4   608 _PC0HIST	=	0x00f4
+                           0000F5   609 _AES0YOUT	=	0x00f5
+                           0000F8   610 _SPI1CN	=	0x00f8
+                           0000F9   611 _PC0DCL	=	0x00f9
+                           0000FA   612 _PC0DCH	=	0x00fa
+                           0000FB   613 _PC0INT0	=	0x00fb
+                           0000FC   614 _PC0INT1	=	0x00fc
+                           0000FD   615 _DC0RDY	=	0x00fd
+                           00008E   616 _SFRPGCN	=	0x008e
+                           000091   617 _CRC0DAT	=	0x0091
+                           000092   618 _CRC0CN	=	0x0092
+                           000093   619 _CRC0IN	=	0x0093
+                           000094   620 _CRC0FLIP	=	0x0094
+                           000096   621 _CRC0AUTO	=	0x0096
+                           000097   622 _CRC0CNT	=	0x0097
+                           00009C   623 _LCD0BUFCN	=	0x009c
+                           0000A1   624 _P3DRV	=	0x00a1
+                           0000A2   625 _P4DRV	=	0x00a2
+                           0000A3   626 _P5DRV	=	0x00a3
+                           0000A4   627 _P0DRV	=	0x00a4
+                           0000A5   628 _P1DRV	=	0x00a5
+                           0000A6   629 _P2DRV	=	0x00a6
+                           0000AA   630 _P6DRV	=	0x00aa
+                           0000AB   631 _P7DRV	=	0x00ab
+                           0000AC   632 _LCD0BUFCF	=	0x00ac
+                           0000B1   633 _P3MDOUT	=	0x00b1
+                           0000B2   634 _OSCIFL	=	0x00b2
+                           0000B3   635 _OSCICL	=	0x00b3
+                           0000B6   636 _FLSCL	=	0x00b6
+                           0000B9   637 _IREF0CF	=	0x00b9
+                           0000BB   638 _ADC0PWR	=	0x00bb
+                           0000BC   639 _ADC0TK	=	0x00bc
+                           0000BD   640 _TOFFL	=	0x00bd
+                           0000BE   641 _TOFFH	=	0x00be
+                           0000D9   642 _P4	=	0x00d9
+                           0000DA   643 _P5	=	0x00da
+                           0000DB   644 _P6	=	0x00db
+                           0000DC   645 _P7	=	0x00dc
+                           0000E9   646 _HWID	=	0x00e9
+                           0000EA   647 _REVID	=	0x00ea
+                           0000EB   648 _DEVICEID	=	0x00eb
+                           0000F1   649 _P3MDIN	=	0x00f1
+                           0000F2   650 _P4MDIN	=	0x00f2
+                           0000F3   651 _P5MDIN	=	0x00f3
+                           0000F4   652 _P6MDIN	=	0x00f4
+                           0000F5   653 _PCLKACT	=	0x00f5
+                           0000F9   654 _P4MDOUT	=	0x00f9
+                           0000FA   655 _P5MDOUT	=	0x00fa
+                           0000FB   656 _P6MDOUT	=	0x00fb
+                           0000FC   657 _P7MDOUT	=	0x00fc
+                           0000FD   658 _CLKMODE	=	0x00fd
+                           0000FE   659 _PCLKEN	=	0x00fe
+                           008382   660 _DP	=	0x8382
+                           008685   661 _TOFF	=	0x8685
+                           009392   662 _TMR3RL	=	0x9392
+                           009594   663 _TMR3	=	0x9594
+                           00BEBD   664 _ADC0	=	0xbebd
+                           00C4C3   665 _ADC0GT	=	0xc4c3
+                           00C6C5   666 _ADC0LT	=	0xc6c5
+                           00CBCA   667 _TMR2RL	=	0xcbca
+                           00CDCC   668 _TMR2	=	0xcdcc
+                           00D3D2   669 _PCA0CP5	=	0xd3d2
+                           00EAE9   670 _PCA0CP1	=	0xeae9
+                           00ECEB   671 _PCA0CP2	=	0xeceb
+                           00EEED   672 _PCA0CP3	=	0xeeed
+                           00FAF9   673 _PCA0	=	0xfaf9
+                           00FCFB   674 _PCA0CP0	=	0xfcfb
+                           00FEFD   675 _PCA0CP4	=	0xfefd
+                           0000AA   676 __XPAGE	=	0x00aa
+                                    677 ;--------------------------------------------------------
+                                    678 ; special function bits
+                                    679 ;--------------------------------------------------------
+                                    680 	.area RSEG    (ABS,DATA)
+      000000                        681 	.org 0x0000
+                           00008F   682 _TF1	=	0x008f
+                           00008E   683 _TR1	=	0x008e
+                           00008D   684 _TF0	=	0x008d
+                           00008C   685 _TR0	=	0x008c
+                           00008B   686 _IE1	=	0x008b
+                           00008A   687 _IT1	=	0x008a
+                           000089   688 _IE0	=	0x0089
+                           000088   689 _IT0	=	0x0088
+                           00009F   690 _S0MODE	=	0x009f
+                           00009D   691 _MCE0	=	0x009d
+                           00009C   692 _REN0	=	0x009c
+                           00009B   693 _TB80	=	0x009b
+                           00009A   694 _RB80	=	0x009a
+                           000099   695 _TI0	=	0x0099
+                           000098   696 _RI0	=	0x0098
+                           0000AF   697 _EA	=	0x00af
+                           0000AE   698 _ESPI0	=	0x00ae
+                           0000AD   699 _ET2	=	0x00ad
+                           0000AC   700 _ES0	=	0x00ac
+                           0000AB   701 _ET1	=	0x00ab
+                           0000AA   702 _EX1	=	0x00aa
+                           0000A9   703 _ET0	=	0x00a9
+                           0000A8   704 _EX0	=	0x00a8
+                           0000BE   705 _PSPI0	=	0x00be
+                           0000BD   706 _PT2	=	0x00bd
+                           0000BC   707 _PS0	=	0x00bc
+                           0000BB   708 _PT1	=	0x00bb
+                           0000BA   709 _PX1	=	0x00ba
+                           0000B9   710 _PT0	=	0x00b9
+                           0000B8   711 _PX0	=	0x00b8
+                           0000C7   712 _MASTER	=	0x00c7
+                           0000C6   713 _TXMODE	=	0x00c6
+                           0000C5   714 _STA	=	0x00c5
+                           0000C4   715 _STO	=	0x00c4
+                           0000C3   716 _ACKRQ	=	0x00c3
+                           0000C2   717 _ARBLOST	=	0x00c2
+                           0000C1   718 _ACK	=	0x00c1
+                           0000C0   719 _SI	=	0x00c0
+                           0000CF   720 _TF2H	=	0x00cf
+                           0000CE   721 _TF2L	=	0x00ce
+                           0000CD   722 _TF2LEN	=	0x00cd
+                           0000CC   723 _TF2CEN	=	0x00cc
+                           0000CB   724 _T2SPLIT	=	0x00cb
+                           0000CA   725 _TR2	=	0x00ca
+                           0000C9   726 _T2RCLK	=	0x00c9
+                           0000C8   727 _T2XCLK	=	0x00c8
+                           0000D7   728 _CY	=	0x00d7
+                           0000D6   729 _AC	=	0x00d6
+                           0000D5   730 _F0	=	0x00d5
+                           0000D4   731 _RS1	=	0x00d4
+                           0000D3   732 _RS0	=	0x00d3
+                           0000D2   733 _OV	=	0x00d2
+                           0000D1   734 _F1	=	0x00d1
+                           0000D0   735 _P	=	0x00d0
+                           0000DF   736 _CF	=	0x00df
+                           0000DE   737 _CR	=	0x00de
+                           0000DD   738 _CCF5	=	0x00dd
+                           0000DC   739 _CCF4	=	0x00dc
+                           0000DB   740 _CCF3	=	0x00db
+                           0000DA   741 _CCF2	=	0x00da
+                           0000D9   742 _CCF1	=	0x00d9
+                           0000D8   743 _CCF0	=	0x00d8
+                           0000EF   744 _AD0EN	=	0x00ef
+                           0000EE   745 _BURSTEN	=	0x00ee
+                           0000ED   746 _AD0INT	=	0x00ed
+                           0000EC   747 _AD0BUSY	=	0x00ec
+                           0000EB   748 _AD0WINT	=	0x00eb
+                           0000EA   749 _AD0CM2	=	0x00ea
+                           0000E9   750 _AD0CM1	=	0x00e9
+                           0000E8   751 _AD0CM0	=	0x00e8
+                           0000FF   752 _SPIF0	=	0x00ff
+                           0000FE   753 _WCOL0	=	0x00fe
+                           0000FD   754 _MODF0	=	0x00fd
+                           0000FC   755 _RXOVRN0	=	0x00fc
+                           0000FB   756 _NSS0MD1	=	0x00fb
+                           0000FA   757 _NSS0MD0	=	0x00fa
+                           0000F9   758 _TXBMT0	=	0x00f9
+                           0000F8   759 _SPI0EN	=	0x00f8
+                           0000FF   760 _SPIF1	=	0x00ff
+                           0000FE   761 _WCOL1	=	0x00fe
+                           0000FD   762 _MODF1	=	0x00fd
+                           0000FC   763 _RXOVRN1	=	0x00fc
+                           0000FB   764 _NSS1MD1	=	0x00fb
+                           0000FA   765 _NSS1MD0	=	0x00fa
+                           0000F9   766 _TXBMT1	=	0x00f9
+                           0000F8   767 _SPI1EN	=	0x00f8
+                           0000B6   768 _LED_RED	=	0x00b6
+                           0000B7   769 _LED_GREEN	=	0x00b7
+                           000082   770 _PIN_CONFIG	=	0x0082
+                           000083   771 _PIN_ENABLE	=	0x0083
+                           0000A5   772 _PA_ENABLE	=	0x00a5
+                           000081   773 _IRQ	=	0x0081
+                           0000A3   774 _NSS1	=	0x00a3
+                                    775 ;--------------------------------------------------------
+                                    776 ; overlayable register banks
+                                    777 ;--------------------------------------------------------
+                                    778 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        779 	.ds 8
+                                    780 ;--------------------------------------------------------
+                                    781 ; internal ram data
+                                    782 ;--------------------------------------------------------
+                                    783 	.area DSEG    (DATA)
+                                    784 ;--------------------------------------------------------
+                                    785 ; overlayable items in internal ram 
+                                    786 ;--------------------------------------------------------
+                                    787 ;--------------------------------------------------------
+                                    788 ; indirectly addressable internal ram data
+                                    789 ;--------------------------------------------------------
+                                    790 	.area ISEG    (DATA)
+                                    791 ;--------------------------------------------------------
+                                    792 ; absolute internal ram data
+                                    793 ;--------------------------------------------------------
+                                    794 	.area IABS    (ABS,DATA)
+                                    795 	.area IABS    (ABS,DATA)
+                                    796 ;--------------------------------------------------------
+                                    797 ; bit data
+                                    798 ;--------------------------------------------------------
+                                    799 	.area BSEG    (BIT)
+                                    800 ;--------------------------------------------------------
+                                    801 ; paged external ram data
+                                    802 ;--------------------------------------------------------
+                                    803 	.area PSEG    (PAG,XDATA)
+                                    804 ;--------------------------------------------------------
+                                    805 ; external ram data
+                                    806 ;--------------------------------------------------------
+                                    807 	.area XSEG    (XDATA)
+      0006E1                        808 _CTR_EncryptDecrypt_PARM_2:
+      0006E1                        809 	.ds 2
+      0006E3                        810 _CTR_EncryptDecrypt_PARM_3:
+      0006E3                        811 	.ds 2
+      0006E5                        812 _CTR_EncryptDecrypt_PARM_4:
+      0006E5                        813 	.ds 2
+      0006E7                        814 _CTR_EncryptDecrypt_PARM_5:
+      0006E7                        815 	.ds 2
+      0006E9                        816 _CTR_EncryptDecrypt_PARM_6:
+      0006E9                        817 	.ds 2
+      0006EB                        818 _CTR_EncryptDecrypt_operation_1_131:
+      0006EB                        819 	.ds 1
+      0006EC                        820 _CTR_EncryptDecrypt_length_1_132:
+      0006EC                        821 	.ds 2
+      0006EE                        822 _CTR_EncryptDecrypt_addr_1_132:
+      0006EE                        823 	.ds 2
+      0006F0                        824 _IncrementCounter_counter_1_138:
+      0006F0                        825 	.ds 2
+                                    826 ;--------------------------------------------------------
+                                    827 ; absolute external ram data
+                                    828 ;--------------------------------------------------------
+                                    829 	.area XABS    (ABS,XDATA)
+                                    830 ;--------------------------------------------------------
+                                    831 ; external initialized ram data
+                                    832 ;--------------------------------------------------------
+                                    833 	.area XISEG   (XDATA)
+                                    834 	.area HOME    (CODE)
+                                    835 	.area GSINIT0 (CODE)
+                                    836 	.area GSINIT1 (CODE)
+                                    837 	.area GSINIT2 (CODE)
+                                    838 	.area GSINIT3 (CODE)
+                                    839 	.area GSINIT4 (CODE)
+                                    840 	.area GSINIT5 (CODE)
+                                    841 	.area GSINIT  (CODE)
+                                    842 	.area GSFINAL (CODE)
+                                    843 	.area CSEG    (CODE)
+                                    844 ;--------------------------------------------------------
+                                    845 ; global & static initialisations
+                                    846 ;--------------------------------------------------------
+                                    847 	.area HOME    (CODE)
+                                    848 	.area GSINIT  (CODE)
+                                    849 	.area GSFINAL (CODE)
+                                    850 	.area GSINIT  (CODE)
+                                    851 ;--------------------------------------------------------
+                                    852 ; Home
+                                    853 ;--------------------------------------------------------
+                                    854 	.area HOME    (CODE)
+                                    855 	.area HOME    (CODE)
+                                    856 ;--------------------------------------------------------
+                                    857 ; code
+                                    858 ;--------------------------------------------------------
+                                    859 	.area CSEG    (CODE)
+                                    860 ;------------------------------------------------------------
+                                    861 ;Allocation info for local variables in function 'CTR_EncryptDecrypt'
+                                    862 ;------------------------------------------------------------
+                                    863 ;plainText                 Allocated with name '_CTR_EncryptDecrypt_PARM_2'
+                                    864 ;cipherText                Allocated with name '_CTR_EncryptDecrypt_PARM_3'
+                                    865 ;counter                   Allocated with name '_CTR_EncryptDecrypt_PARM_4'
+                                    866 ;encryptionKey             Allocated with name '_CTR_EncryptDecrypt_PARM_5'
+                                    867 ;blocks                    Allocated with name '_CTR_EncryptDecrypt_PARM_6'
+                                    868 ;operation                 Allocated with name '_CTR_EncryptDecrypt_operation_1_131'
+                                    869 ;length                    Allocated with name '_CTR_EncryptDecrypt_length_1_132'
+                                    870 ;addr                      Allocated with name '_CTR_EncryptDecrypt_addr_1_132'
+                                    871 ;keyLength                 Allocated with name '_CTR_EncryptDecrypt_keyLength_1_132'
+                                    872 ;------------------------------------------------------------
+                                    873 ;	radio/AES/CTR_EncryptDecrypt.c:101: CTR_EncryptDecrypt (CTR_ENCRYPT_DECRYPT_OPERATION operation,
+                                    874 ;	-----------------------------------------
+                                    875 ;	 function CTR_EncryptDecrypt
+                                    876 ;	-----------------------------------------
+      0066E7                        877 _CTR_EncryptDecrypt:
+                           000007   878 	ar7 = 0x07
+                           000006   879 	ar6 = 0x06
+                           000005   880 	ar5 = 0x05
+                           000004   881 	ar4 = 0x04
+                           000003   882 	ar3 = 0x03
+                           000002   883 	ar2 = 0x02
+                           000001   884 	ar1 = 0x01
+                           000000   885 	ar0 = 0x00
+      0066E7 E5 82            [12]  886 	mov	a,dpl
+      0066E9 90 06 EB         [24]  887 	mov	dptr,#_CTR_EncryptDecrypt_operation_1_131
+      0066EC F0               [24]  888 	movx	@dptr,a
+                                    889 ;	radio/AES/CTR_EncryptDecrypt.c:115: if((operation == DECRYPTION_UNDEFINED)||(operation >= ENCRYPTION_UNDEFINED))
+      0066ED E0               [24]  890 	movx	a,@dptr
+      0066EE FF               [12]  891 	mov	r7,a
+      0066EF BF 03 02         [24]  892 	cjne	r7,#0x03,00147$
+      0066F2 80 05            [24]  893 	sjmp	00101$
+      0066F4                        894 00147$:
+      0066F4 BF 07 00         [24]  895 	cjne	r7,#0x07,00148$
+      0066F7                        896 00148$:
+      0066F7 40 04            [24]  897 	jc	00102$
+      0066F9                        898 00101$:
+                                    899 ;	radio/AES/CTR_EncryptDecrypt.c:117: return ERROR_INVALID_PARAMETER;
+      0066F9 75 82 01         [24]  900 	mov	dpl,#0x01
+      0066FC 22               [24]  901 	ret
+      0066FD                        902 00102$:
+                                    903 ;	radio/AES/CTR_EncryptDecrypt.c:122: keyLength = (((operation & 0x03) + 2) << 3);
+      0066FD 74 03            [12]  904 	mov	a,#0x03
+      0066FF 5F               [12]  905 	anl	a,r7
+      006700 24 02            [12]  906 	add	a,#0x02
+      006702 C4               [12]  907 	swap	a
+      006703 03               [12]  908 	rr	a
+      006704 54 F8            [12]  909 	anl	a,#0xF8
+      006706 FE               [12]  910 	mov	r6,a
+                                    911 ;	radio/AES/CTR_EncryptDecrypt.c:127: length.U16 = (blocks << 4);
+      006707 90 06 E9         [24]  912 	mov	dptr,#_CTR_EncryptDecrypt_PARM_6
+      00670A E0               [24]  913 	movx	a,@dptr
+      00670B FC               [12]  914 	mov	r4,a
+      00670C A3               [24]  915 	inc	dptr
+      00670D E0               [24]  916 	movx	a,@dptr
+      00670E FD               [12]  917 	mov	r5,a
+      00670F 8C 02            [24]  918 	mov	ar2,r4
+      006711 C4               [12]  919 	swap	a
+      006712 54 F0            [12]  920 	anl	a,#0xF0
+      006714 CA               [12]  921 	xch	a,r2
+      006715 C4               [12]  922 	swap	a
+      006716 CA               [12]  923 	xch	a,r2
+      006717 6A               [12]  924 	xrl	a,r2
+      006718 CA               [12]  925 	xch	a,r2
+      006719 54 F0            [12]  926 	anl	a,#0xF0
+      00671B CA               [12]  927 	xch	a,r2
+      00671C 6A               [12]  928 	xrl	a,r2
+      00671D FB               [12]  929 	mov	r3,a
+      00671E 90 06 EC         [24]  930 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      006721 EA               [12]  931 	mov	a,r2
+      006722 F0               [24]  932 	movx	@dptr,a
+      006723 EB               [12]  933 	mov	a,r3
+      006724 A3               [24]  934 	inc	dptr
+      006725 F0               [24]  935 	movx	@dptr,a
+                                    936 ;	radio/AES/CTR_EncryptDecrypt.c:130: blocks--;
+      006726 1C               [12]  937 	dec	r4
+      006727 BC FF 01         [24]  938 	cjne	r4,#0xFF,00150$
+      00672A 1D               [12]  939 	dec	r5
+      00672B                        940 00150$:
+      00672B 90 06 E9         [24]  941 	mov	dptr,#_CTR_EncryptDecrypt_PARM_6
+      00672E EC               [12]  942 	mov	a,r4
+      00672F F0               [24]  943 	movx	@dptr,a
+      006730 ED               [12]  944 	mov	a,r5
+      006731 A3               [24]  945 	inc	dptr
+      006732 F0               [24]  946 	movx	@dptr,a
+                                    947 ;	radio/AES/CTR_EncryptDecrypt.c:132: SFRPAGE = DPPE_PAGE;
+      006733 75 A7 02         [24]  948 	mov	_SFRPAGE,#0x02
+                                    949 ;	radio/AES/CTR_EncryptDecrypt.c:134: AES0BCFG = 0x00;                      // disable, for now
+      006736 75 E9 00         [24]  950 	mov	_AES0BCFG,#0x00
+                                    951 ;	radio/AES/CTR_EncryptDecrypt.c:135: AES0DCFG = 0x00;                      // disable for now
+      006739 75 EA 00         [24]  952 	mov	_AES0DCFG,#0x00
+                                    953 ;	radio/AES/CTR_EncryptDecrypt.c:138: DMA0EN &= ~AES0_KBXY_MASK;
+      00673C AD D2            [24]  954 	mov	r5,_DMA0EN
+      00673E 74 87            [12]  955 	mov	a,#0x87
+      006740 5D               [12]  956 	anl	a,r5
+      006741 F5 D2            [12]  957 	mov	_DMA0EN,a
+                                    958 ;	radio/AES/CTR_EncryptDecrypt.c:146: addr.U16 = (U16)(encryptionKey);
+      006743 90 06 E7         [24]  959 	mov	dptr,#_CTR_EncryptDecrypt_PARM_5
+      006746 E0               [24]  960 	movx	a,@dptr
+      006747 FC               [12]  961 	mov	r4,a
+      006748 A3               [24]  962 	inc	dptr
+      006749 E0               [24]  963 	movx	a,@dptr
+      00674A FD               [12]  964 	mov	r5,a
+      00674B 90 06 EE         [24]  965 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      00674E EC               [12]  966 	mov	a,r4
+      00674F F0               [24]  967 	movx	@dptr,a
+      006750 ED               [12]  968 	mov	a,r5
+      006751 A3               [24]  969 	inc	dptr
+      006752 F0               [24]  970 	movx	@dptr,a
+                                    971 ;	radio/AES/CTR_EncryptDecrypt.c:147: DMA0SEL = AES0KIN_CHANNEL;
+      006753 75 D1 03         [24]  972 	mov	_DMA0SEL,#0x03
+                                    973 ;	radio/AES/CTR_EncryptDecrypt.c:148: DMA0NCF = AES0KIN_PERIPHERAL_REQUEST;
+      006756 75 C9 05         [24]  974 	mov	_DMA0NCF,#0x05
+                                    975 ;	radio/AES/CTR_EncryptDecrypt.c:149: DMA0NMD = NO_WRAPPING;
+      006759 75 D6 00         [24]  976 	mov	_DMA0NMD,#0x00
+                                    977 ;	radio/AES/CTR_EncryptDecrypt.c:150: DMA0NBAL = addr.U8[LSB];
+      00675C 90 06 EE         [24]  978 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      00675F E0               [24]  979 	movx	a,@dptr
+      006760 F5 CA            [12]  980 	mov	_DMA0NBAL,a
+                                    981 ;	radio/AES/CTR_EncryptDecrypt.c:151: DMA0NBAH = addr.U8[MSB];
+      006762 90 06 EF         [24]  982 	mov	dptr,#(_CTR_EncryptDecrypt_addr_1_132 + 0x0001)
+      006765 E0               [24]  983 	movx	a,@dptr
+      006766 F5 CB            [12]  984 	mov	_DMA0NBAH,a
+                                    985 ;	radio/AES/CTR_EncryptDecrypt.c:152: DMA0NSZH = 0;
+      006768 75 CF 00         [24]  986 	mov	_DMA0NSZH,#0x00
+                                    987 ;	radio/AES/CTR_EncryptDecrypt.c:153: DMA0NSZL = keyLength;
+      00676B 8E CE            [24]  988 	mov	_DMA0NSZL,r6
+                                    989 ;	radio/AES/CTR_EncryptDecrypt.c:154: DMA0NAOL = 0;
+      00676D 75 CC 00         [24]  990 	mov	_DMA0NAOL,#0x00
+                                    991 ;	radio/AES/CTR_EncryptDecrypt.c:155: DMA0NAOH = 0;
+      006770 75 CD 00         [24]  992 	mov	_DMA0NAOH,#0x00
+                                    993 ;	radio/AES/CTR_EncryptDecrypt.c:163: DMA0SEL = AES0BIN_CHANNEL;
+      006773 75 D1 04         [24]  994 	mov	_DMA0SEL,#0x04
+                                    995 ;	radio/AES/CTR_EncryptDecrypt.c:164: DMA0NCF = AES0BIN_PERIPHERAL_REQUEST;
+      006776 75 C9 06         [24]  996 	mov	_DMA0NCF,#0x06
+                                    997 ;	radio/AES/CTR_EncryptDecrypt.c:165: DMA0NMD = NO_WRAPPING;
+      006779 75 D6 00         [24]  998 	mov	_DMA0NMD,#0x00
+                                    999 ;	radio/AES/CTR_EncryptDecrypt.c:166: addr.U16 = (U16)(counter);
+      00677C 90 06 E5         [24] 1000 	mov	dptr,#_CTR_EncryptDecrypt_PARM_4
+      00677F E0               [24] 1001 	movx	a,@dptr
+      006780 FD               [12] 1002 	mov	r5,a
+      006781 A3               [24] 1003 	inc	dptr
+      006782 E0               [24] 1004 	movx	a,@dptr
+      006783 FE               [12] 1005 	mov	r6,a
+      006784 8D 03            [24] 1006 	mov	ar3,r5
+      006786 8E 04            [24] 1007 	mov	ar4,r6
+      006788 90 06 EE         [24] 1008 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      00678B EB               [12] 1009 	mov	a,r3
+      00678C F0               [24] 1010 	movx	@dptr,a
+      00678D EC               [12] 1011 	mov	a,r4
+      00678E A3               [24] 1012 	inc	dptr
+      00678F F0               [24] 1013 	movx	@dptr,a
+                                   1014 ;	radio/AES/CTR_EncryptDecrypt.c:167: DMA0NBAL = addr.U8[LSB];
+      006790 90 06 EE         [24] 1015 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      006793 E0               [24] 1016 	movx	a,@dptr
+      006794 F5 CA            [12] 1017 	mov	_DMA0NBAL,a
+                                   1018 ;	radio/AES/CTR_EncryptDecrypt.c:168: DMA0NBAH = addr.U8[MSB];
+      006796 90 06 EF         [24] 1019 	mov	dptr,#(_CTR_EncryptDecrypt_addr_1_132 + 0x0001)
+      006799 E0               [24] 1020 	movx	a,@dptr
+      00679A F5 CB            [12] 1021 	mov	_DMA0NBAH,a
+                                   1022 ;	radio/AES/CTR_EncryptDecrypt.c:169: DMA0NSZL = 16;                      // one block
+      00679C 75 CE 10         [24] 1023 	mov	_DMA0NSZL,#0x10
+                                   1024 ;	radio/AES/CTR_EncryptDecrypt.c:170: DMA0NSZH = 0;
+                                   1025 ;	radio/AES/CTR_EncryptDecrypt.c:171: DMA0NAOL = 0;
+                                   1026 ;	radio/AES/CTR_EncryptDecrypt.c:172: DMA0NAOH = 0;
+                                   1027 ;	radio/AES/CTR_EncryptDecrypt.c:177: if(operation & ENCRYPTION_MODE)
+      00679F E4               [12] 1028 	clr	a
+      0067A0 F5 CF            [12] 1029 	mov	_DMA0NSZH,a
+      0067A2 F5 CC            [12] 1030 	mov	_DMA0NAOL,a
+      0067A4 F5 CD            [12] 1031 	mov	_DMA0NAOH,a
+      0067A6 EF               [12] 1032 	mov	a,r7
+      0067A7 30 E2 12         [24] 1033 	jnb	acc.2,00106$
+                                   1034 ;	radio/AES/CTR_EncryptDecrypt.c:178: addr.U16 = (U16)(plainText);
+      0067AA 90 06 E1         [24] 1035 	mov	dptr,#_CTR_EncryptDecrypt_PARM_2
+      0067AD E0               [24] 1036 	movx	a,@dptr
+      0067AE FB               [12] 1037 	mov	r3,a
+      0067AF A3               [24] 1038 	inc	dptr
+      0067B0 E0               [24] 1039 	movx	a,@dptr
+      0067B1 FC               [12] 1040 	mov	r4,a
+      0067B2 90 06 EE         [24] 1041 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      0067B5 EB               [12] 1042 	mov	a,r3
+      0067B6 F0               [24] 1043 	movx	@dptr,a
+      0067B7 EC               [12] 1044 	mov	a,r4
+      0067B8 A3               [24] 1045 	inc	dptr
+      0067B9 F0               [24] 1046 	movx	@dptr,a
+      0067BA 80 10            [24] 1047 	sjmp	00107$
+      0067BC                       1048 00106$:
+                                   1049 ;	radio/AES/CTR_EncryptDecrypt.c:180: addr.U16 = (U16)(cipherText);
+      0067BC 90 06 E3         [24] 1050 	mov	dptr,#_CTR_EncryptDecrypt_PARM_3
+      0067BF E0               [24] 1051 	movx	a,@dptr
+      0067C0 FB               [12] 1052 	mov	r3,a
+      0067C1 A3               [24] 1053 	inc	dptr
+      0067C2 E0               [24] 1054 	movx	a,@dptr
+      0067C3 FC               [12] 1055 	mov	r4,a
+      0067C4 90 06 EE         [24] 1056 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      0067C7 EB               [12] 1057 	mov	a,r3
+      0067C8 F0               [24] 1058 	movx	@dptr,a
+      0067C9 EC               [12] 1059 	mov	a,r4
+      0067CA A3               [24] 1060 	inc	dptr
+      0067CB F0               [24] 1061 	movx	@dptr,a
+      0067CC                       1062 00107$:
+                                   1063 ;	radio/AES/CTR_EncryptDecrypt.c:185: DMA0SEL = AES0XIN_CHANNEL;
+      0067CC 75 D1 05         [24] 1064 	mov	_DMA0SEL,#0x05
+                                   1065 ;	radio/AES/CTR_EncryptDecrypt.c:186: DMA0NCF = AES0XIN_PERIPHERAL_REQUEST;
+      0067CF 75 C9 07         [24] 1066 	mov	_DMA0NCF,#0x07
+                                   1067 ;	radio/AES/CTR_EncryptDecrypt.c:187: DMA0NMD = NO_WRAPPING;
+      0067D2 75 D6 00         [24] 1068 	mov	_DMA0NMD,#0x00
+                                   1069 ;	radio/AES/CTR_EncryptDecrypt.c:188: DMA0NBAL = addr.U8[LSB];
+      0067D5 90 06 EE         [24] 1070 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      0067D8 E0               [24] 1071 	movx	a,@dptr
+      0067D9 F5 CA            [12] 1072 	mov	_DMA0NBAL,a
+                                   1073 ;	radio/AES/CTR_EncryptDecrypt.c:189: DMA0NBAH = addr.U8[MSB];
+      0067DB 90 06 EF         [24] 1074 	mov	dptr,#(_CTR_EncryptDecrypt_addr_1_132 + 0x0001)
+      0067DE E0               [24] 1075 	movx	a,@dptr
+      0067DF F5 CB            [12] 1076 	mov	_DMA0NBAH,a
+                                   1077 ;	radio/AES/CTR_EncryptDecrypt.c:190: DMA0NSZL = 16;                      // one block
+      0067E1 75 CE 10         [24] 1078 	mov	_DMA0NSZL,#0x10
+                                   1079 ;	radio/AES/CTR_EncryptDecrypt.c:191: DMA0NSZH = 0;
+                                   1080 ;	radio/AES/CTR_EncryptDecrypt.c:192: DMA0NAOL = 0;
+                                   1081 ;	radio/AES/CTR_EncryptDecrypt.c:193: DMA0NAOH = 0;
+                                   1082 ;	radio/AES/CTR_EncryptDecrypt.c:198: if(operation & ENCRYPTION_MODE)
+      0067E4 E4               [12] 1083 	clr	a
+      0067E5 F5 CF            [12] 1084 	mov	_DMA0NSZH,a
+      0067E7 F5 CC            [12] 1085 	mov	_DMA0NAOL,a
+      0067E9 F5 CD            [12] 1086 	mov	_DMA0NAOH,a
+      0067EB EF               [12] 1087 	mov	a,r7
+      0067EC 30 E2 12         [24] 1088 	jnb	acc.2,00109$
+                                   1089 ;	radio/AES/CTR_EncryptDecrypt.c:199: addr.U16 = (U16)(cipherText);
+      0067EF 90 06 E3         [24] 1090 	mov	dptr,#_CTR_EncryptDecrypt_PARM_3
+      0067F2 E0               [24] 1091 	movx	a,@dptr
+      0067F3 FB               [12] 1092 	mov	r3,a
+      0067F4 A3               [24] 1093 	inc	dptr
+      0067F5 E0               [24] 1094 	movx	a,@dptr
+      0067F6 FC               [12] 1095 	mov	r4,a
+      0067F7 90 06 EE         [24] 1096 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      0067FA EB               [12] 1097 	mov	a,r3
+      0067FB F0               [24] 1098 	movx	@dptr,a
+      0067FC EC               [12] 1099 	mov	a,r4
+      0067FD A3               [24] 1100 	inc	dptr
+      0067FE F0               [24] 1101 	movx	@dptr,a
+      0067FF 80 10            [24] 1102 	sjmp	00110$
+      006801                       1103 00109$:
+                                   1104 ;	radio/AES/CTR_EncryptDecrypt.c:201: addr.U16 = (U16)(plainText);
+      006801 90 06 E1         [24] 1105 	mov	dptr,#_CTR_EncryptDecrypt_PARM_2
+      006804 E0               [24] 1106 	movx	a,@dptr
+      006805 FB               [12] 1107 	mov	r3,a
+      006806 A3               [24] 1108 	inc	dptr
+      006807 E0               [24] 1109 	movx	a,@dptr
+      006808 FC               [12] 1110 	mov	r4,a
+      006809 90 06 EE         [24] 1111 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      00680C EB               [12] 1112 	mov	a,r3
+      00680D F0               [24] 1113 	movx	@dptr,a
+      00680E EC               [12] 1114 	mov	a,r4
+      00680F A3               [24] 1115 	inc	dptr
+      006810 F0               [24] 1116 	movx	@dptr,a
+      006811                       1117 00110$:
+                                   1118 ;	radio/AES/CTR_EncryptDecrypt.c:207: DMA0SEL = AES0YOUT_CHANNEL;
+      006811 75 D1 06         [24] 1119 	mov	_DMA0SEL,#0x06
+                                   1120 ;	radio/AES/CTR_EncryptDecrypt.c:208: DMA0NCF = AES0YOUT_PERIPHERAL_REQUEST|DMA_INT_EN;
+      006814 75 C9 88         [24] 1121 	mov	_DMA0NCF,#0x88
+                                   1122 ;	radio/AES/CTR_EncryptDecrypt.c:209: DMA0NMD = NO_WRAPPING;
+      006817 75 D6 00         [24] 1123 	mov	_DMA0NMD,#0x00
+                                   1124 ;	radio/AES/CTR_EncryptDecrypt.c:211: DMA0NBAL = addr.U8[LSB];
+      00681A 90 06 EE         [24] 1125 	mov	dptr,#_CTR_EncryptDecrypt_addr_1_132
+      00681D E0               [24] 1126 	movx	a,@dptr
+      00681E F5 CA            [12] 1127 	mov	_DMA0NBAL,a
+                                   1128 ;	radio/AES/CTR_EncryptDecrypt.c:212: DMA0NBAH = addr.U8[MSB];
+      006820 90 06 EF         [24] 1129 	mov	dptr,#(_CTR_EncryptDecrypt_addr_1_132 + 0x0001)
+      006823 E0               [24] 1130 	movx	a,@dptr
+      006824 F5 CB            [12] 1131 	mov	_DMA0NBAH,a
+                                   1132 ;	radio/AES/CTR_EncryptDecrypt.c:213: DMA0NSZL = 16;                      // one block
+      006826 75 CE 10         [24] 1133 	mov	_DMA0NSZL,#0x10
+                                   1134 ;	radio/AES/CTR_EncryptDecrypt.c:214: DMA0NSZH = 0;
+      006829 75 CF 00         [24] 1135 	mov	_DMA0NSZH,#0x00
+                                   1136 ;	radio/AES/CTR_EncryptDecrypt.c:215: DMA0NAOH = 0;
+      00682C 75 CD 00         [24] 1137 	mov	_DMA0NAOH,#0x00
+                                   1138 ;	radio/AES/CTR_EncryptDecrypt.c:216: DMA0NAOL = 0;
+      00682F 75 CC 00         [24] 1139 	mov	_DMA0NAOL,#0x00
+                                   1140 ;	radio/AES/CTR_EncryptDecrypt.c:219: DMA0INT &= ~AES0_KBXY_MASK;
+      006832 AC D3            [24] 1141 	mov	r4,_DMA0INT
+      006834 74 87            [12] 1142 	mov	a,#0x87
+      006836 5C               [12] 1143 	anl	a,r4
+      006837 F5 D3            [12] 1144 	mov	_DMA0INT,a
+                                   1145 ;	radio/AES/CTR_EncryptDecrypt.c:225: DMA0EN  |=  AES0_KBXY_MASK;
+      006839 43 D2 78         [24] 1146 	orl	_DMA0EN,#0x78
+                                   1147 ;	radio/AES/CTR_EncryptDecrypt.c:229: AES0DCFG = XOR_ON_OUTPUT;
+      00683C 75 EA 02         [24] 1148 	mov	_AES0DCFG,#0x02
+                                   1149 ;	radio/AES/CTR_EncryptDecrypt.c:233: AES0BCFG = operation;
+      00683F 8F E9            [24] 1150 	mov	_AES0BCFG,r7
+                                   1151 ;	radio/AES/CTR_EncryptDecrypt.c:234: AES0BCFG |= ENCRYPTION_MODE;
+      006841 43 E9 04         [24] 1152 	orl	_AES0BCFG,#0x04
+                                   1153 ;	radio/AES/CTR_EncryptDecrypt.c:235: AES0BCFG |= AES_ENABLE;
+      006844 43 E9 08         [24] 1154 	orl	_AES0BCFG,#0x08
+                                   1155 ;	radio/AES/CTR_EncryptDecrypt.c:238: EIE2 |= 0x20;
+      006847 43 E7 20         [24] 1156 	orl	_EIE2,#0x20
+                                   1157 ;	radio/AES/CTR_EncryptDecrypt.c:242: do
+      00684A                       1158 00111$:
+                                   1159 ;	radio/AES/CTR_EncryptDecrypt.c:247: }  while((DMA0INT&AES0YOUT_MASK)==0);
+      00684A E5 D3            [12] 1160 	mov	a,_DMA0INT
+      00684C 30 E6 FB         [24] 1161 	jnb	acc.6,00111$
+                                   1162 ;	radio/AES/CTR_EncryptDecrypt.c:249: while(blocks--)                     // if blocks remaining
+      00684F 90 06 E9         [24] 1163 	mov	dptr,#_CTR_EncryptDecrypt_PARM_6
+      006852 E0               [24] 1164 	movx	a,@dptr
+      006853 FC               [12] 1165 	mov	r4,a
+      006854 A3               [24] 1166 	inc	dptr
+      006855 E0               [24] 1167 	movx	a,@dptr
+      006856 FF               [12] 1168 	mov	r7,a
+      006857                       1169 00115$:
+      006857 8C 02            [24] 1170 	mov	ar2,r4
+      006859 8F 03            [24] 1171 	mov	ar3,r7
+      00685B 1C               [12] 1172 	dec	r4
+      00685C BC FF 01         [24] 1173 	cjne	r4,#0xFF,00154$
+      00685F 1F               [12] 1174 	dec	r7
+      006860                       1175 00154$:
+      006860 EA               [12] 1176 	mov	a,r2
+      006861 4B               [12] 1177 	orl	a,r3
+      006862 70 03            [24] 1178 	jnz	00155$
+      006864 02 69 1D         [24] 1179 	ljmp	00117$
+      006867                       1180 00155$:
+                                   1181 ;	radio/AES/CTR_EncryptDecrypt.c:260: AES0BCFG &= ~AES_ENABLE;
+      006867 AB E9            [24] 1182 	mov	r3,_AES0BCFG
+      006869 74 F7            [12] 1183 	mov	a,#0xF7
+      00686B 5B               [12] 1184 	anl	a,r3
+      00686C F5 E9            [12] 1185 	mov	_AES0BCFG,a
+                                   1186 ;	radio/AES/CTR_EncryptDecrypt.c:263: DMA0EN &= ~AES0_KBXY_MASK;
+      00686E AB D2            [24] 1187 	mov	r3,_DMA0EN
+      006870 74 87            [12] 1188 	mov	a,#0x87
+      006872 5B               [12] 1189 	anl	a,r3
+      006873 F5 D2            [12] 1190 	mov	_DMA0EN,a
+                                   1191 ;	radio/AES/CTR_EncryptDecrypt.c:265: IncrementCounter(counter);
+      006875 8D 82            [24] 1192 	mov	dpl,r5
+      006877 8E 83            [24] 1193 	mov	dph,r6
+      006879 C0 07            [24] 1194 	push	ar7
+      00687B C0 06            [24] 1195 	push	ar6
+      00687D C0 05            [24] 1196 	push	ar5
+      00687F C0 04            [24] 1197 	push	ar4
+      006881 12 69 35         [24] 1198 	lcall	_IncrementCounter
+      006884 D0 04            [24] 1199 	pop	ar4
+      006886 D0 05            [24] 1200 	pop	ar5
+      006888 D0 06            [24] 1201 	pop	ar6
+      00688A D0 07            [24] 1202 	pop	ar7
+                                   1203 ;	radio/AES/CTR_EncryptDecrypt.c:267: SFRPAGE = DPPE_PAGE;
+      00688C 75 A7 02         [24] 1204 	mov	_SFRPAGE,#0x02
+                                   1205 ;	radio/AES/CTR_EncryptDecrypt.c:270: DMA0SEL = AES0KIN_CHANNEL;
+      00688F 75 D1 03         [24] 1206 	mov	_DMA0SEL,#0x03
+                                   1207 ;	radio/AES/CTR_EncryptDecrypt.c:271: DMA0NAOL = 0;
+      006892 75 CC 00         [24] 1208 	mov	_DMA0NAOL,#0x00
+                                   1209 ;	radio/AES/CTR_EncryptDecrypt.c:272: DMA0NAOH = 0;
+      006895 75 CD 00         [24] 1210 	mov	_DMA0NAOH,#0x00
+                                   1211 ;	radio/AES/CTR_EncryptDecrypt.c:275: DMA0SEL = AES0BIN_CHANNEL;
+      006898 75 D1 04         [24] 1212 	mov	_DMA0SEL,#0x04
+                                   1213 ;	radio/AES/CTR_EncryptDecrypt.c:276: DMA0NAOL = 0;
+      00689B 75 CC 00         [24] 1214 	mov	_DMA0NAOL,#0x00
+                                   1215 ;	radio/AES/CTR_EncryptDecrypt.c:277: DMA0NAOH = 0;
+      00689E 75 CD 00         [24] 1216 	mov	_DMA0NAOH,#0x00
+                                   1217 ;	radio/AES/CTR_EncryptDecrypt.c:280: DMA0SEL = AES0XIN_CHANNEL;
+      0068A1 75 D1 05         [24] 1218 	mov	_DMA0SEL,#0x05
+                                   1219 ;	radio/AES/CTR_EncryptDecrypt.c:281: length.U8[LSB] = DMA0NSZL;
+      0068A4 90 06 EC         [24] 1220 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068A7 E5 CE            [12] 1221 	mov	a,_DMA0NSZL
+      0068A9 F0               [24] 1222 	movx	@dptr,a
+                                   1223 ;	radio/AES/CTR_EncryptDecrypt.c:282: length.U8[MSB] = DMA0NSZH;
+      0068AA 90 06 ED         [24] 1224 	mov	dptr,#(_CTR_EncryptDecrypt_length_1_132 + 0x0001)
+      0068AD E5 CF            [12] 1225 	mov	a,_DMA0NSZH
+      0068AF F0               [24] 1226 	movx	@dptr,a
+                                   1227 ;	radio/AES/CTR_EncryptDecrypt.c:283: length.U16 += 16;
+      0068B0 90 06 EC         [24] 1228 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068B3 E0               [24] 1229 	movx	a,@dptr
+      0068B4 FA               [12] 1230 	mov	r2,a
+      0068B5 A3               [24] 1231 	inc	dptr
+      0068B6 E0               [24] 1232 	movx	a,@dptr
+      0068B7 FB               [12] 1233 	mov	r3,a
+      0068B8 74 10            [12] 1234 	mov	a,#0x10
+      0068BA 2A               [12] 1235 	add	a,r2
+      0068BB FA               [12] 1236 	mov	r2,a
+      0068BC E4               [12] 1237 	clr	a
+      0068BD 3B               [12] 1238 	addc	a,r3
+      0068BE FB               [12] 1239 	mov	r3,a
+      0068BF 90 06 EC         [24] 1240 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068C2 EA               [12] 1241 	mov	a,r2
+      0068C3 F0               [24] 1242 	movx	@dptr,a
+      0068C4 EB               [12] 1243 	mov	a,r3
+      0068C5 A3               [24] 1244 	inc	dptr
+      0068C6 F0               [24] 1245 	movx	@dptr,a
+                                   1246 ;	radio/AES/CTR_EncryptDecrypt.c:284: DMA0NSZL = length.U8[LSB];
+      0068C7 90 06 EC         [24] 1247 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068CA E0               [24] 1248 	movx	a,@dptr
+      0068CB F5 CE            [12] 1249 	mov	_DMA0NSZL,a
+                                   1250 ;	radio/AES/CTR_EncryptDecrypt.c:285: DMA0NSZH = length.U8[MSB];
+      0068CD 90 06 ED         [24] 1251 	mov	dptr,#(_CTR_EncryptDecrypt_length_1_132 + 0x0001)
+      0068D0 E0               [24] 1252 	movx	a,@dptr
+      0068D1 F5 CF            [12] 1253 	mov	_DMA0NSZH,a
+                                   1254 ;	radio/AES/CTR_EncryptDecrypt.c:288: DMA0SEL = AES0YOUT_CHANNEL;
+      0068D3 75 D1 06         [24] 1255 	mov	_DMA0SEL,#0x06
+                                   1256 ;	radio/AES/CTR_EncryptDecrypt.c:289: length.U8[LSB] = DMA0NSZL;
+      0068D6 90 06 EC         [24] 1257 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068D9 E5 CE            [12] 1258 	mov	a,_DMA0NSZL
+      0068DB F0               [24] 1259 	movx	@dptr,a
+                                   1260 ;	radio/AES/CTR_EncryptDecrypt.c:290: length.U8[MSB] = DMA0NSZH;
+      0068DC 90 06 ED         [24] 1261 	mov	dptr,#(_CTR_EncryptDecrypt_length_1_132 + 0x0001)
+      0068DF E5 CF            [12] 1262 	mov	a,_DMA0NSZH
+      0068E1 F0               [24] 1263 	movx	@dptr,a
+                                   1264 ;	radio/AES/CTR_EncryptDecrypt.c:291: length.U16 += 16;
+      0068E2 90 06 EC         [24] 1265 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068E5 E0               [24] 1266 	movx	a,@dptr
+      0068E6 FA               [12] 1267 	mov	r2,a
+      0068E7 A3               [24] 1268 	inc	dptr
+      0068E8 E0               [24] 1269 	movx	a,@dptr
+      0068E9 FB               [12] 1270 	mov	r3,a
+      0068EA 74 10            [12] 1271 	mov	a,#0x10
+      0068EC 2A               [12] 1272 	add	a,r2
+      0068ED FA               [12] 1273 	mov	r2,a
+      0068EE E4               [12] 1274 	clr	a
+      0068EF 3B               [12] 1275 	addc	a,r3
+      0068F0 FB               [12] 1276 	mov	r3,a
+      0068F1 90 06 EC         [24] 1277 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068F4 EA               [12] 1278 	mov	a,r2
+      0068F5 F0               [24] 1279 	movx	@dptr,a
+      0068F6 EB               [12] 1280 	mov	a,r3
+      0068F7 A3               [24] 1281 	inc	dptr
+      0068F8 F0               [24] 1282 	movx	@dptr,a
+                                   1283 ;	radio/AES/CTR_EncryptDecrypt.c:292: DMA0NSZL = length.U8[LSB];
+      0068F9 90 06 EC         [24] 1284 	mov	dptr,#_CTR_EncryptDecrypt_length_1_132
+      0068FC E0               [24] 1285 	movx	a,@dptr
+      0068FD F5 CE            [12] 1286 	mov	_DMA0NSZL,a
+                                   1287 ;	radio/AES/CTR_EncryptDecrypt.c:293: DMA0NSZH = length.U8[MSB];
+      0068FF 90 06 ED         [24] 1288 	mov	dptr,#(_CTR_EncryptDecrypt_length_1_132 + 0x0001)
+      006902 E0               [24] 1289 	movx	a,@dptr
+      006903 F5 CF            [12] 1290 	mov	_DMA0NSZH,a
+                                   1291 ;	radio/AES/CTR_EncryptDecrypt.c:296: DMA0INT &= ~AES0_KBXY_MASK;
+      006905 AB D3            [24] 1292 	mov	r3,_DMA0INT
+      006907 74 87            [12] 1293 	mov	a,#0x87
+      006909 5B               [12] 1294 	anl	a,r3
+      00690A F5 D3            [12] 1295 	mov	_DMA0INT,a
+                                   1296 ;	radio/AES/CTR_EncryptDecrypt.c:301: DMA0EN  |=  AES0_KBXY_MASK;
+      00690C 43 D2 78         [24] 1297 	orl	_DMA0EN,#0x78
+                                   1298 ;	radio/AES/CTR_EncryptDecrypt.c:304: AES0BCFG |= AES_ENABLE;
+      00690F 43 E9 08         [24] 1299 	orl	_AES0BCFG,#0x08
+                                   1300 ;	radio/AES/CTR_EncryptDecrypt.c:307: EIE2 |= 0x20;
+      006912 43 E7 20         [24] 1301 	orl	_EIE2,#0x20
+                                   1302 ;	radio/AES/CTR_EncryptDecrypt.c:311: do
+      006915                       1303 00113$:
+                                   1304 ;	radio/AES/CTR_EncryptDecrypt.c:316: }  while((DMA0INT & AES0YOUT_MASK)==0);
+      006915 E5 D3            [12] 1305 	mov	a,_DMA0INT
+      006917 30 E6 FB         [24] 1306 	jnb	acc.6,00113$
+      00691A 02 68 57         [24] 1307 	ljmp	00115$
+      00691D                       1308 00117$:
+                                   1309 ;	radio/AES/CTR_EncryptDecrypt.c:320: AES0BCFG = 0x00;
+      00691D 75 E9 00         [24] 1310 	mov	_AES0BCFG,#0x00
+                                   1311 ;	radio/AES/CTR_EncryptDecrypt.c:321: AES0DCFG = 0x00;
+      006920 75 EA 00         [24] 1312 	mov	_AES0DCFG,#0x00
+                                   1313 ;	radio/AES/CTR_EncryptDecrypt.c:324: DMA0EN &= ~AES0_KBXY_MASK;
+      006923 AF D2            [24] 1314 	mov	r7,_DMA0EN
+      006925 74 87            [12] 1315 	mov	a,#0x87
+      006927 5F               [12] 1316 	anl	a,r7
+      006928 F5 D2            [12] 1317 	mov	_DMA0EN,a
+                                   1318 ;	radio/AES/CTR_EncryptDecrypt.c:327: DMA0INT &= ~AES0_KBXY_MASK;
+      00692A AF D3            [24] 1319 	mov	r7,_DMA0INT
+      00692C 74 87            [12] 1320 	mov	a,#0x87
+      00692E 5F               [12] 1321 	anl	a,r7
+      00692F F5 D3            [12] 1322 	mov	_DMA0INT,a
+                                   1323 ;	radio/AES/CTR_EncryptDecrypt.c:329: return SUCCESS;
+      006931 75 82 00         [24] 1324 	mov	dpl,#0x00
+      006934 22               [24] 1325 	ret
+                                   1326 ;------------------------------------------------------------
+                                   1327 ;Allocation info for local variables in function 'IncrementCounter'
+                                   1328 ;------------------------------------------------------------
+                                   1329 ;counter                   Allocated with name '_IncrementCounter_counter_1_138'
+                                   1330 ;i                         Allocated with name '_IncrementCounter_i_1_139'
+                                   1331 ;x                         Allocated with name '_IncrementCounter_x_1_139'
+                                   1332 ;------------------------------------------------------------
+                                   1333 ;	radio/AES/CTR_EncryptDecrypt.c:340: void IncrementCounter (VARIABLE_SEGMENT_POINTER(counter, U8, SEG_XDATA))
+                                   1334 ;	-----------------------------------------
+                                   1335 ;	 function IncrementCounter
+                                   1336 ;	-----------------------------------------
+      006935                       1337 _IncrementCounter:
+      006935 AF 83            [24] 1338 	mov	r7,dph
+      006937 E5 82            [12] 1339 	mov	a,dpl
+      006939 90 06 F0         [24] 1340 	mov	dptr,#_IncrementCounter_counter_1_138
+      00693C F0               [24] 1341 	movx	@dptr,a
+      00693D EF               [12] 1342 	mov	a,r7
+      00693E A3               [24] 1343 	inc	dptr
+      00693F F0               [24] 1344 	movx	@dptr,a
+                                   1345 ;	radio/AES/CTR_EncryptDecrypt.c:346: counter += 16;                      // point to end of data
+      006940 90 06 F0         [24] 1346 	mov	dptr,#_IncrementCounter_counter_1_138
+      006943 E0               [24] 1347 	movx	a,@dptr
+      006944 FE               [12] 1348 	mov	r6,a
+      006945 A3               [24] 1349 	inc	dptr
+      006946 E0               [24] 1350 	movx	a,@dptr
+      006947 FF               [12] 1351 	mov	r7,a
+      006948 90 06 F0         [24] 1352 	mov	dptr,#_IncrementCounter_counter_1_138
+      00694B 74 10            [12] 1353 	mov	a,#0x10
+      00694D 2E               [12] 1354 	add	a,r6
+      00694E F0               [24] 1355 	movx	@dptr,a
+      00694F E4               [12] 1356 	clr	a
+      006950 3F               [12] 1357 	addc	a,r7
+      006951 A3               [24] 1358 	inc	dptr
+      006952 F0               [24] 1359 	movx	@dptr,a
+                                   1360 ;	radio/AES/CTR_EncryptDecrypt.c:348: do
+      006953 7F 10            [12] 1361 	mov	r7,#0x10
+      006955 90 06 F0         [24] 1362 	mov	dptr,#_IncrementCounter_counter_1_138
+      006958 E0               [24] 1363 	movx	a,@dptr
+      006959 FD               [12] 1364 	mov	r5,a
+      00695A A3               [24] 1365 	inc	dptr
+      00695B E0               [24] 1366 	movx	a,@dptr
+      00695C FE               [12] 1367 	mov	r6,a
+      00695D                       1368 00103$:
+                                   1369 ;	radio/AES/CTR_EncryptDecrypt.c:350: counter--;                          // decrement data pointer
+      00695D 1D               [12] 1370 	dec	r5
+      00695E BD FF 01         [24] 1371 	cjne	r5,#0xFF,00115$
+      006961 1E               [12] 1372 	dec	r6
+      006962                       1373 00115$:
+      006962 90 06 F0         [24] 1374 	mov	dptr,#_IncrementCounter_counter_1_138
+      006965 ED               [12] 1375 	mov	a,r5
+      006966 F0               [24] 1376 	movx	@dptr,a
+      006967 EE               [12] 1377 	mov	a,r6
+      006968 A3               [24] 1378 	inc	dptr
+      006969 F0               [24] 1379 	movx	@dptr,a
+                                   1380 ;	radio/AES/CTR_EncryptDecrypt.c:351: x = *counter;                       // read xdata using data pointer
+      00696A 8D 82            [24] 1381 	mov	dpl,r5
+      00696C 8E 83            [24] 1382 	mov	dph,r6
+      00696E E0               [24] 1383 	movx	a,@dptr
+      00696F FC               [12] 1384 	mov	r4,a
+                                   1385 ;	radio/AES/CTR_EncryptDecrypt.c:352: x++;                             // increment value
+      006970 0C               [12] 1386 	inc	r4
+                                   1387 ;	radio/AES/CTR_EncryptDecrypt.c:353: *counter = x;                       // move to xram
+      006971 8D 82            [24] 1388 	mov	dpl,r5
+      006973 8E 83            [24] 1389 	mov	dph,r6
+      006975 EC               [12] 1390 	mov	a,r4
+      006976 F0               [24] 1391 	movx	@dptr,a
+                                   1392 ;	radio/AES/CTR_EncryptDecrypt.c:354: if(x) break;                     // break if not zero
+      006977 EC               [12] 1393 	mov	a,r4
+      006978 70 02            [24] 1394 	jnz	00110$
+                                   1395 ;	radio/AES/CTR_EncryptDecrypt.c:355: }  while(--i);                      // DJNZ
+      00697A DF E1            [24] 1396 	djnz	r7,00103$
+      00697C                       1397 00110$:
+      00697C 90 06 F0         [24] 1398 	mov	dptr,#_IncrementCounter_counter_1_138
+      00697F ED               [12] 1399 	mov	a,r5
+      006980 F0               [24] 1400 	movx	@dptr,a
+      006981 EE               [12] 1401 	mov	a,r6
+      006982 A3               [24] 1402 	inc	dptr
+      006983 F0               [24] 1403 	movx	@dptr,a
+      006984 22               [24] 1404 	ret
+                                   1405 	.area CSEG    (CODE)
+                                   1406 	.area CONST   (CODE)
+                                   1407 	.area XINIT   (CODE)
+                                   1408 	.area CABS    (ABS,CODE)

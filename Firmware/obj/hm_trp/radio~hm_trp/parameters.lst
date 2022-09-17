@@ -1,0 +1,1951 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.5.0 #9253 (Sep  7 2022) (Linux)
+                                      4 ; This file was generated Wed Sep  7 10:05:12 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module parameters
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _parameter_info
+                                     13 	.globl _write_params
+                                     14 	.globl _read_params
+                                     15 	.globl _crc16
+                                     16 	.globl _radio_get_transmit_power
+                                     17 	.globl _radio_set_transmit_power
+                                     18 	.globl _flash_write_scratch
+                                     19 	.globl _flash_read_scratch
+                                     20 	.globl _flash_erase_scratch
+                                     21 	.globl _serial_device_valid_speed
+                                     22 	.globl _strcmp
+                                     23 	.globl _SDN
+                                     24 	.globl _NSS1
+                                     25 	.globl _IRQ
+                                     26 	.globl _PIN_ENABLE
+                                     27 	.globl _PIN_CONFIG
+                                     28 	.globl _LED_GREEN
+                                     29 	.globl _LED_RED
+                                     30 	.globl _SPI0EN
+                                     31 	.globl _TXBMT0
+                                     32 	.globl _NSS0MD0
+                                     33 	.globl _NSS0MD1
+                                     34 	.globl _RXOVRN0
+                                     35 	.globl _MODF0
+                                     36 	.globl _WCOL0
+                                     37 	.globl _SPIF0
+                                     38 	.globl _AD0CM0
+                                     39 	.globl _AD0CM1
+                                     40 	.globl _AD0CM2
+                                     41 	.globl _AD0WINT
+                                     42 	.globl _AD0BUSY
+                                     43 	.globl _AD0INT
+                                     44 	.globl _BURSTEN
+                                     45 	.globl _AD0EN
+                                     46 	.globl _CCF0
+                                     47 	.globl _CCF1
+                                     48 	.globl _CCF2
+                                     49 	.globl _CCF3
+                                     50 	.globl _CCF4
+                                     51 	.globl _CCF5
+                                     52 	.globl _CR
+                                     53 	.globl _CF
+                                     54 	.globl _P
+                                     55 	.globl _F1
+                                     56 	.globl _OV
+                                     57 	.globl _RS0
+                                     58 	.globl _RS1
+                                     59 	.globl _F0
+                                     60 	.globl _AC
+                                     61 	.globl _CY
+                                     62 	.globl _T2XCLK
+                                     63 	.globl _T2RCLK
+                                     64 	.globl _TR2
+                                     65 	.globl _T2SPLIT
+                                     66 	.globl _TF2CEN
+                                     67 	.globl _TF2LEN
+                                     68 	.globl _TF2L
+                                     69 	.globl _TF2H
+                                     70 	.globl _SI
+                                     71 	.globl _ACK
+                                     72 	.globl _ARBLOST
+                                     73 	.globl _ACKRQ
+                                     74 	.globl _STO
+                                     75 	.globl _STA
+                                     76 	.globl _TXMODE
+                                     77 	.globl _MASTER
+                                     78 	.globl _PX0
+                                     79 	.globl _PT0
+                                     80 	.globl _PX1
+                                     81 	.globl _PT1
+                                     82 	.globl _PS0
+                                     83 	.globl _PT2
+                                     84 	.globl _PSPI0
+                                     85 	.globl _SPI1EN
+                                     86 	.globl _TXBMT1
+                                     87 	.globl _NSS1MD0
+                                     88 	.globl _NSS1MD1
+                                     89 	.globl _RXOVRN1
+                                     90 	.globl _MODF1
+                                     91 	.globl _WCOL1
+                                     92 	.globl _SPIF1
+                                     93 	.globl _EX0
+                                     94 	.globl _ET0
+                                     95 	.globl _EX1
+                                     96 	.globl _ET1
+                                     97 	.globl _ES0
+                                     98 	.globl _ET2
+                                     99 	.globl _ESPI0
+                                    100 	.globl _EA
+                                    101 	.globl _RI0
+                                    102 	.globl _TI0
+                                    103 	.globl _RB80
+                                    104 	.globl _TB80
+                                    105 	.globl _REN0
+                                    106 	.globl _MCE0
+                                    107 	.globl _S0MODE
+                                    108 	.globl _CRC0VAL
+                                    109 	.globl _CRC0INIT
+                                    110 	.globl _CRC0SEL
+                                    111 	.globl _IT0
+                                    112 	.globl _IE0
+                                    113 	.globl _IT1
+                                    114 	.globl _IE1
+                                    115 	.globl _TR0
+                                    116 	.globl _TF0
+                                    117 	.globl _TR1
+                                    118 	.globl _TF1
+                                    119 	.globl _PCA0CP4
+                                    120 	.globl _PCA0CP0
+                                    121 	.globl _PCA0
+                                    122 	.globl _PCA0CP3
+                                    123 	.globl _PCA0CP2
+                                    124 	.globl _PCA0CP1
+                                    125 	.globl _PCA0CP5
+                                    126 	.globl _TMR2
+                                    127 	.globl _TMR2RL
+                                    128 	.globl _ADC0LT
+                                    129 	.globl _ADC0GT
+                                    130 	.globl _ADC0
+                                    131 	.globl _TMR3
+                                    132 	.globl _TMR3RL
+                                    133 	.globl _TOFF
+                                    134 	.globl _DP
+                                    135 	.globl _VDM0CN
+                                    136 	.globl _PCA0CPH4
+                                    137 	.globl _PCA0CPL4
+                                    138 	.globl _PCA0CPH0
+                                    139 	.globl _PCA0CPL0
+                                    140 	.globl _PCA0H
+                                    141 	.globl _PCA0L
+                                    142 	.globl _SPI0CN
+                                    143 	.globl _EIP2
+                                    144 	.globl _EIP1
+                                    145 	.globl _SMB0ADM
+                                    146 	.globl _SMB0ADR
+                                    147 	.globl _P2MDIN
+                                    148 	.globl _P1MDIN
+                                    149 	.globl _P0MDIN
+                                    150 	.globl _B
+                                    151 	.globl _RSTSRC
+                                    152 	.globl _PCA0CPH3
+                                    153 	.globl _PCA0CPL3
+                                    154 	.globl _PCA0CPH2
+                                    155 	.globl _PCA0CPL2
+                                    156 	.globl _PCA0CPH1
+                                    157 	.globl _PCA0CPL1
+                                    158 	.globl _ADC0CN
+                                    159 	.globl _EIE2
+                                    160 	.globl _EIE1
+                                    161 	.globl _FLWR
+                                    162 	.globl _IT01CF
+                                    163 	.globl _XBR2
+                                    164 	.globl _XBR1
+                                    165 	.globl _XBR0
+                                    166 	.globl _ACC
+                                    167 	.globl _PCA0PWM
+                                    168 	.globl _PCA0CPM4
+                                    169 	.globl _PCA0CPM3
+                                    170 	.globl _PCA0CPM2
+                                    171 	.globl _PCA0CPM1
+                                    172 	.globl _PCA0CPM0
+                                    173 	.globl _PCA0MD
+                                    174 	.globl _PCA0CN
+                                    175 	.globl _P0MAT
+                                    176 	.globl _P2SKIP
+                                    177 	.globl _P1SKIP
+                                    178 	.globl _P0SKIP
+                                    179 	.globl _PCA0CPH5
+                                    180 	.globl _PCA0CPL5
+                                    181 	.globl _REF0CN
+                                    182 	.globl _PSW
+                                    183 	.globl _P1MAT
+                                    184 	.globl _PCA0CPM5
+                                    185 	.globl _TMR2H
+                                    186 	.globl _TMR2L
+                                    187 	.globl _TMR2RLH
+                                    188 	.globl _TMR2RLL
+                                    189 	.globl _REG0CN
+                                    190 	.globl _TMR2CN
+                                    191 	.globl _P0MASK
+                                    192 	.globl _ADC0LTH
+                                    193 	.globl _ADC0LTL
+                                    194 	.globl _ADC0GTH
+                                    195 	.globl _ADC0GTL
+                                    196 	.globl _SMB0DAT
+                                    197 	.globl _SMB0CF
+                                    198 	.globl _SMB0CN
+                                    199 	.globl _P1MASK
+                                    200 	.globl _ADC0H
+                                    201 	.globl _ADC0L
+                                    202 	.globl _ADC0TK
+                                    203 	.globl _ADC0CF
+                                    204 	.globl _ADC0MX
+                                    205 	.globl _ADC0PWR
+                                    206 	.globl _ADC0AC
+                                    207 	.globl _IREF0CN
+                                    208 	.globl _IP
+                                    209 	.globl _FLKEY
+                                    210 	.globl _FLSCL
+                                    211 	.globl _PMU0CF
+                                    212 	.globl _OSCICL
+                                    213 	.globl _OSCICN
+                                    214 	.globl _OSCXCN
+                                    215 	.globl _SPI1CN
+                                    216 	.globl _ONESHOT
+                                    217 	.globl _EMI0TC
+                                    218 	.globl _RTC0KEY
+                                    219 	.globl _RTC0DAT
+                                    220 	.globl _RTC0ADR
+                                    221 	.globl _EMI0CF
+                                    222 	.globl _EMI0CN
+                                    223 	.globl _CLKSEL
+                                    224 	.globl _IE
+                                    225 	.globl _SFRPAGE
+                                    226 	.globl _P2DRV
+                                    227 	.globl _P2MDOUT
+                                    228 	.globl _P1DRV
+                                    229 	.globl _P1MDOUT
+                                    230 	.globl _P0DRV
+                                    231 	.globl _P0MDOUT
+                                    232 	.globl _SPI0DAT
+                                    233 	.globl _SPI0CKR
+                                    234 	.globl _SPI0CFG
+                                    235 	.globl _P2
+                                    236 	.globl _CPT0MX
+                                    237 	.globl _CPT1MX
+                                    238 	.globl _CPT0MD
+                                    239 	.globl _CPT1MD
+                                    240 	.globl _CPT0CN
+                                    241 	.globl _CPT1CN
+                                    242 	.globl _SBUF0
+                                    243 	.globl _SCON0
+                                    244 	.globl _CRC0CNT
+                                    245 	.globl _DC0CN
+                                    246 	.globl _CRC0AUTO
+                                    247 	.globl _DC0CF
+                                    248 	.globl _TMR3H
+                                    249 	.globl _CRC0FLIP
+                                    250 	.globl _TMR3L
+                                    251 	.globl _CRC0IN
+                                    252 	.globl _TMR3RLH
+                                    253 	.globl _CRC0CN
+                                    254 	.globl _TMR3RLL
+                                    255 	.globl _CRC0DAT
+                                    256 	.globl _TMR3CN
+                                    257 	.globl _P1
+                                    258 	.globl _PSCTL
+                                    259 	.globl _CKCON
+                                    260 	.globl _TH1
+                                    261 	.globl _TH0
+                                    262 	.globl _TL1
+                                    263 	.globl _TL0
+                                    264 	.globl _TMOD
+                                    265 	.globl _TCON
+                                    266 	.globl _PCON
+                                    267 	.globl _TOFFH
+                                    268 	.globl _SPI1DAT
+                                    269 	.globl _TOFFL
+                                    270 	.globl _SPI1CKR
+                                    271 	.globl _SPI1CFG
+                                    272 	.globl _DPH
+                                    273 	.globl _DPL
+                                    274 	.globl _SP
+                                    275 	.globl _P0
+                                    276 	.globl _write_params_PARM_3
+                                    277 	.globl _write_params_PARM_2
+                                    278 	.globl _read_params_PARM_3
+                                    279 	.globl _read_params_PARM_2
+                                    280 	.globl _parameter_values
+                                    281 	.globl _constrain_PARM_3
+                                    282 	.globl _constrain_PARM_2
+                                    283 	.globl _param_set_PARM_2
+                                    284 	.globl _param_set
+                                    285 	.globl _param_get
+                                    286 	.globl _param_load
+                                    287 	.globl _param_save
+                                    288 	.globl _param_default
+                                    289 	.globl _param_id
+                                    290 	.globl _param_name
+                                    291 	.globl _constrain
+                                    292 ;--------------------------------------------------------
+                                    293 ; special function registers
+                                    294 ;--------------------------------------------------------
+                                    295 	.area RSEG    (ABS,DATA)
+      000000                        296 	.org 0x0000
+                           000080   297 _P0	=	0x0080
+                           000081   298 _SP	=	0x0081
+                           000082   299 _DPL	=	0x0082
+                           000083   300 _DPH	=	0x0083
+                           000084   301 _SPI1CFG	=	0x0084
+                           000085   302 _SPI1CKR	=	0x0085
+                           000085   303 _TOFFL	=	0x0085
+                           000086   304 _SPI1DAT	=	0x0086
+                           000086   305 _TOFFH	=	0x0086
+                           000087   306 _PCON	=	0x0087
+                           000088   307 _TCON	=	0x0088
+                           000089   308 _TMOD	=	0x0089
+                           00008A   309 _TL0	=	0x008a
+                           00008B   310 _TL1	=	0x008b
+                           00008C   311 _TH0	=	0x008c
+                           00008D   312 _TH1	=	0x008d
+                           00008E   313 _CKCON	=	0x008e
+                           00008F   314 _PSCTL	=	0x008f
+                           000090   315 _P1	=	0x0090
+                           000091   316 _TMR3CN	=	0x0091
+                           000091   317 _CRC0DAT	=	0x0091
+                           000092   318 _TMR3RLL	=	0x0092
+                           000092   319 _CRC0CN	=	0x0092
+                           000093   320 _TMR3RLH	=	0x0093
+                           000093   321 _CRC0IN	=	0x0093
+                           000094   322 _TMR3L	=	0x0094
+                           000095   323 _CRC0FLIP	=	0x0095
+                           000095   324 _TMR3H	=	0x0095
+                           000096   325 _DC0CF	=	0x0096
+                           000096   326 _CRC0AUTO	=	0x0096
+                           000097   327 _DC0CN	=	0x0097
+                           000097   328 _CRC0CNT	=	0x0097
+                           000098   329 _SCON0	=	0x0098
+                           000099   330 _SBUF0	=	0x0099
+                           00009A   331 _CPT1CN	=	0x009a
+                           00009B   332 _CPT0CN	=	0x009b
+                           00009C   333 _CPT1MD	=	0x009c
+                           00009D   334 _CPT0MD	=	0x009d
+                           00009E   335 _CPT1MX	=	0x009e
+                           00009F   336 _CPT0MX	=	0x009f
+                           0000A0   337 _P2	=	0x00a0
+                           0000A1   338 _SPI0CFG	=	0x00a1
+                           0000A2   339 _SPI0CKR	=	0x00a2
+                           0000A3   340 _SPI0DAT	=	0x00a3
+                           0000A4   341 _P0MDOUT	=	0x00a4
+                           0000A4   342 _P0DRV	=	0x00a4
+                           0000A5   343 _P1MDOUT	=	0x00a5
+                           0000A5   344 _P1DRV	=	0x00a5
+                           0000A6   345 _P2MDOUT	=	0x00a6
+                           0000A6   346 _P2DRV	=	0x00a6
+                           0000A7   347 _SFRPAGE	=	0x00a7
+                           0000A8   348 _IE	=	0x00a8
+                           0000A9   349 _CLKSEL	=	0x00a9
+                           0000AA   350 _EMI0CN	=	0x00aa
+                           0000AB   351 _EMI0CF	=	0x00ab
+                           0000AC   352 _RTC0ADR	=	0x00ac
+                           0000AD   353 _RTC0DAT	=	0x00ad
+                           0000AE   354 _RTC0KEY	=	0x00ae
+                           0000AF   355 _EMI0TC	=	0x00af
+                           0000AF   356 _ONESHOT	=	0x00af
+                           0000B0   357 _SPI1CN	=	0x00b0
+                           0000B1   358 _OSCXCN	=	0x00b1
+                           0000B2   359 _OSCICN	=	0x00b2
+                           0000B3   360 _OSCICL	=	0x00b3
+                           0000B5   361 _PMU0CF	=	0x00b5
+                           0000B6   362 _FLSCL	=	0x00b6
+                           0000B7   363 _FLKEY	=	0x00b7
+                           0000B8   364 _IP	=	0x00b8
+                           0000B9   365 _IREF0CN	=	0x00b9
+                           0000BA   366 _ADC0AC	=	0x00ba
+                           0000BA   367 _ADC0PWR	=	0x00ba
+                           0000BB   368 _ADC0MX	=	0x00bb
+                           0000BC   369 _ADC0CF	=	0x00bc
+                           0000BD   370 _ADC0TK	=	0x00bd
+                           0000BD   371 _ADC0L	=	0x00bd
+                           0000BE   372 _ADC0H	=	0x00be
+                           0000BF   373 _P1MASK	=	0x00bf
+                           0000C0   374 _SMB0CN	=	0x00c0
+                           0000C1   375 _SMB0CF	=	0x00c1
+                           0000C2   376 _SMB0DAT	=	0x00c2
+                           0000C3   377 _ADC0GTL	=	0x00c3
+                           0000C4   378 _ADC0GTH	=	0x00c4
+                           0000C5   379 _ADC0LTL	=	0x00c5
+                           0000C6   380 _ADC0LTH	=	0x00c6
+                           0000C7   381 _P0MASK	=	0x00c7
+                           0000C8   382 _TMR2CN	=	0x00c8
+                           0000C9   383 _REG0CN	=	0x00c9
+                           0000CA   384 _TMR2RLL	=	0x00ca
+                           0000CB   385 _TMR2RLH	=	0x00cb
+                           0000CC   386 _TMR2L	=	0x00cc
+                           0000CD   387 _TMR2H	=	0x00cd
+                           0000CE   388 _PCA0CPM5	=	0x00ce
+                           0000CF   389 _P1MAT	=	0x00cf
+                           0000D0   390 _PSW	=	0x00d0
+                           0000D1   391 _REF0CN	=	0x00d1
+                           0000D2   392 _PCA0CPL5	=	0x00d2
+                           0000D3   393 _PCA0CPH5	=	0x00d3
+                           0000D4   394 _P0SKIP	=	0x00d4
+                           0000D5   395 _P1SKIP	=	0x00d5
+                           0000D6   396 _P2SKIP	=	0x00d6
+                           0000D7   397 _P0MAT	=	0x00d7
+                           0000D8   398 _PCA0CN	=	0x00d8
+                           0000D9   399 _PCA0MD	=	0x00d9
+                           0000DA   400 _PCA0CPM0	=	0x00da
+                           0000DB   401 _PCA0CPM1	=	0x00db
+                           0000DC   402 _PCA0CPM2	=	0x00dc
+                           0000DD   403 _PCA0CPM3	=	0x00dd
+                           0000DE   404 _PCA0CPM4	=	0x00de
+                           0000DF   405 _PCA0PWM	=	0x00df
+                           0000E0   406 _ACC	=	0x00e0
+                           0000E1   407 _XBR0	=	0x00e1
+                           0000E2   408 _XBR1	=	0x00e2
+                           0000E3   409 _XBR2	=	0x00e3
+                           0000E4   410 _IT01CF	=	0x00e4
+                           0000E5   411 _FLWR	=	0x00e5
+                           0000E6   412 _EIE1	=	0x00e6
+                           0000E7   413 _EIE2	=	0x00e7
+                           0000E8   414 _ADC0CN	=	0x00e8
+                           0000E9   415 _PCA0CPL1	=	0x00e9
+                           0000EA   416 _PCA0CPH1	=	0x00ea
+                           0000EB   417 _PCA0CPL2	=	0x00eb
+                           0000EC   418 _PCA0CPH2	=	0x00ec
+                           0000ED   419 _PCA0CPL3	=	0x00ed
+                           0000EE   420 _PCA0CPH3	=	0x00ee
+                           0000EF   421 _RSTSRC	=	0x00ef
+                           0000F0   422 _B	=	0x00f0
+                           0000F1   423 _P0MDIN	=	0x00f1
+                           0000F2   424 _P1MDIN	=	0x00f2
+                           0000F3   425 _P2MDIN	=	0x00f3
+                           0000F4   426 _SMB0ADR	=	0x00f4
+                           0000F5   427 _SMB0ADM	=	0x00f5
+                           0000F6   428 _EIP1	=	0x00f6
+                           0000F7   429 _EIP2	=	0x00f7
+                           0000F8   430 _SPI0CN	=	0x00f8
+                           0000F9   431 _PCA0L	=	0x00f9
+                           0000FA   432 _PCA0H	=	0x00fa
+                           0000FB   433 _PCA0CPL0	=	0x00fb
+                           0000FC   434 _PCA0CPH0	=	0x00fc
+                           0000FD   435 _PCA0CPL4	=	0x00fd
+                           0000FE   436 _PCA0CPH4	=	0x00fe
+                           0000FF   437 _VDM0CN	=	0x00ff
+                           008382   438 _DP	=	0x8382
+                           008685   439 _TOFF	=	0x8685
+                           009392   440 _TMR3RL	=	0x9392
+                           009594   441 _TMR3	=	0x9594
+                           00BEBD   442 _ADC0	=	0xbebd
+                           00C4C3   443 _ADC0GT	=	0xc4c3
+                           00C6C5   444 _ADC0LT	=	0xc6c5
+                           00CBCA   445 _TMR2RL	=	0xcbca
+                           00CDCC   446 _TMR2	=	0xcdcc
+                           00D3D2   447 _PCA0CP5	=	0xd3d2
+                           00EAE9   448 _PCA0CP1	=	0xeae9
+                           00ECEB   449 _PCA0CP2	=	0xeceb
+                           00EEED   450 _PCA0CP3	=	0xeeed
+                           00FAF9   451 _PCA0	=	0xfaf9
+                           00FCFB   452 _PCA0CP0	=	0xfcfb
+                           00FEFD   453 _PCA0CP4	=	0xfefd
+                                    454 ;--------------------------------------------------------
+                                    455 ; special function bits
+                                    456 ;--------------------------------------------------------
+                                    457 	.area RSEG    (ABS,DATA)
+      000000                        458 	.org 0x0000
+                           00008F   459 _TF1	=	0x008f
+                           00008E   460 _TR1	=	0x008e
+                           00008D   461 _TF0	=	0x008d
+                           00008C   462 _TR0	=	0x008c
+                           00008B   463 _IE1	=	0x008b
+                           00008A   464 _IT1	=	0x008a
+                           000089   465 _IE0	=	0x0089
+                           000088   466 _IT0	=	0x0088
+                           000096   467 _CRC0SEL	=	0x0096
+                           000095   468 _CRC0INIT	=	0x0095
+                           000094   469 _CRC0VAL	=	0x0094
+                           00009F   470 _S0MODE	=	0x009f
+                           00009D   471 _MCE0	=	0x009d
+                           00009C   472 _REN0	=	0x009c
+                           00009B   473 _TB80	=	0x009b
+                           00009A   474 _RB80	=	0x009a
+                           000099   475 _TI0	=	0x0099
+                           000098   476 _RI0	=	0x0098
+                           0000AF   477 _EA	=	0x00af
+                           0000AE   478 _ESPI0	=	0x00ae
+                           0000AD   479 _ET2	=	0x00ad
+                           0000AC   480 _ES0	=	0x00ac
+                           0000AB   481 _ET1	=	0x00ab
+                           0000AA   482 _EX1	=	0x00aa
+                           0000A9   483 _ET0	=	0x00a9
+                           0000A8   484 _EX0	=	0x00a8
+                           0000B7   485 _SPIF1	=	0x00b7
+                           0000B6   486 _WCOL1	=	0x00b6
+                           0000B5   487 _MODF1	=	0x00b5
+                           0000B4   488 _RXOVRN1	=	0x00b4
+                           0000B3   489 _NSS1MD1	=	0x00b3
+                           0000B2   490 _NSS1MD0	=	0x00b2
+                           0000B1   491 _TXBMT1	=	0x00b1
+                           0000B0   492 _SPI1EN	=	0x00b0
+                           0000BE   493 _PSPI0	=	0x00be
+                           0000BD   494 _PT2	=	0x00bd
+                           0000BC   495 _PS0	=	0x00bc
+                           0000BB   496 _PT1	=	0x00bb
+                           0000BA   497 _PX1	=	0x00ba
+                           0000B9   498 _PT0	=	0x00b9
+                           0000B8   499 _PX0	=	0x00b8
+                           0000C7   500 _MASTER	=	0x00c7
+                           0000C6   501 _TXMODE	=	0x00c6
+                           0000C5   502 _STA	=	0x00c5
+                           0000C4   503 _STO	=	0x00c4
+                           0000C3   504 _ACKRQ	=	0x00c3
+                           0000C2   505 _ARBLOST	=	0x00c2
+                           0000C1   506 _ACK	=	0x00c1
+                           0000C0   507 _SI	=	0x00c0
+                           0000CF   508 _TF2H	=	0x00cf
+                           0000CE   509 _TF2L	=	0x00ce
+                           0000CD   510 _TF2LEN	=	0x00cd
+                           0000CC   511 _TF2CEN	=	0x00cc
+                           0000CB   512 _T2SPLIT	=	0x00cb
+                           0000CA   513 _TR2	=	0x00ca
+                           0000C9   514 _T2RCLK	=	0x00c9
+                           0000C8   515 _T2XCLK	=	0x00c8
+                           0000D7   516 _CY	=	0x00d7
+                           0000D6   517 _AC	=	0x00d6
+                           0000D5   518 _F0	=	0x00d5
+                           0000D4   519 _RS1	=	0x00d4
+                           0000D3   520 _RS0	=	0x00d3
+                           0000D2   521 _OV	=	0x00d2
+                           0000D1   522 _F1	=	0x00d1
+                           0000D0   523 _P	=	0x00d0
+                           0000DF   524 _CF	=	0x00df
+                           0000DE   525 _CR	=	0x00de
+                           0000DD   526 _CCF5	=	0x00dd
+                           0000DC   527 _CCF4	=	0x00dc
+                           0000DB   528 _CCF3	=	0x00db
+                           0000DA   529 _CCF2	=	0x00da
+                           0000D9   530 _CCF1	=	0x00d9
+                           0000D8   531 _CCF0	=	0x00d8
+                           0000EF   532 _AD0EN	=	0x00ef
+                           0000EE   533 _BURSTEN	=	0x00ee
+                           0000ED   534 _AD0INT	=	0x00ed
+                           0000EC   535 _AD0BUSY	=	0x00ec
+                           0000EB   536 _AD0WINT	=	0x00eb
+                           0000EA   537 _AD0CM2	=	0x00ea
+                           0000E9   538 _AD0CM1	=	0x00e9
+                           0000E8   539 _AD0CM0	=	0x00e8
+                           0000FF   540 _SPIF0	=	0x00ff
+                           0000FE   541 _WCOL0	=	0x00fe
+                           0000FD   542 _MODF0	=	0x00fd
+                           0000FC   543 _RXOVRN0	=	0x00fc
+                           0000FB   544 _NSS0MD1	=	0x00fb
+                           0000FA   545 _NSS0MD0	=	0x00fa
+                           0000F9   546 _TXBMT0	=	0x00f9
+                           0000F8   547 _SPI0EN	=	0x00f8
+                           000096   548 _LED_RED	=	0x0096
+                           000095   549 _LED_GREEN	=	0x0095
+                           000082   550 _PIN_CONFIG	=	0x0082
+                           000083   551 _PIN_ENABLE	=	0x0083
+                           000087   552 _IRQ	=	0x0087
+                           000094   553 _NSS1	=	0x0094
+                           0000A6   554 _SDN	=	0x00a6
+                                    555 ;--------------------------------------------------------
+                                    556 ; overlayable register banks
+                                    557 ;--------------------------------------------------------
+                                    558 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        559 	.ds 8
+                                    560 ;--------------------------------------------------------
+                                    561 ; internal ram data
+                                    562 ;--------------------------------------------------------
+                                    563 	.area DSEG    (DATA)
+      000000                        564 _param_check_PARM_2:
+      000000                        565 	.ds 4
+      000004                        566 _read_params_input_1_140:
+      000004                        567 	.ds 2
+      000006                        568 _write_params_input_1_142:
+      000006                        569 	.ds 2
+      000008                        570 _write_params_sloc0_1_0:
+      000008                        571 	.ds 2
+                                    572 ;--------------------------------------------------------
+                                    573 ; overlayable items in internal ram 
+                                    574 ;--------------------------------------------------------
+                                    575 	.area	OSEG    (OVR,DATA)
+                                    576 	.area	OSEG    (OVR,DATA)
+                                    577 ;--------------------------------------------------------
+                                    578 ; indirectly addressable internal ram data
+                                    579 ;--------------------------------------------------------
+                                    580 	.area ISEG    (DATA)
+                                    581 ;--------------------------------------------------------
+                                    582 ; absolute internal ram data
+                                    583 ;--------------------------------------------------------
+                                    584 	.area IABS    (ABS,DATA)
+                                    585 	.area IABS    (ABS,DATA)
+                                    586 ;--------------------------------------------------------
+                                    587 ; bit data
+                                    588 ;--------------------------------------------------------
+                                    589 	.area BSEG    (BIT)
+      000000                        590 _param_check_sloc0_1_0:
+      000000                        591 	.ds 1
+                                    592 ;--------------------------------------------------------
+                                    593 ; paged external ram data
+                                    594 ;--------------------------------------------------------
+                                    595 	.area PSEG    (PAG,XDATA)
+      000000                        596 _param_set_PARM_2:
+      000000                        597 	.ds 4
+      000004                        598 _constrain_PARM_2:
+      000004                        599 	.ds 4
+      000008                        600 _constrain_PARM_3:
+      000008                        601 	.ds 4
+                                    602 ;--------------------------------------------------------
+                                    603 ; external ram data
+                                    604 ;--------------------------------------------------------
+                                    605 	.area XSEG    (XDATA)
+      000000                        606 _parameter_values::
+      000000                        607 	.ds 64
+      000040                        608 _read_params_PARM_2:
+      000040                        609 	.ds 2
+      000042                        610 _read_params_PARM_3:
+      000042                        611 	.ds 1
+      000043                        612 _write_params_PARM_2:
+      000043                        613 	.ds 2
+      000045                        614 _write_params_PARM_3:
+      000045                        615 	.ds 1
+                                    616 ;--------------------------------------------------------
+                                    617 ; absolute external ram data
+                                    618 ;--------------------------------------------------------
+                                    619 	.area XABS    (ABS,XDATA)
+                                    620 ;--------------------------------------------------------
+                                    621 ; external initialized ram data
+                                    622 ;--------------------------------------------------------
+                                    623 	.area XISEG   (XDATA)
+                                    624 	.area HOME    (CODE)
+                                    625 	.area GSINIT0 (CODE)
+                                    626 	.area GSINIT1 (CODE)
+                                    627 	.area GSINIT2 (CODE)
+                                    628 	.area GSINIT3 (CODE)
+                                    629 	.area GSINIT4 (CODE)
+                                    630 	.area GSINIT5 (CODE)
+                                    631 	.area GSINIT  (CODE)
+                                    632 	.area GSFINAL (CODE)
+                                    633 	.area CSEG    (CODE)
+                                    634 ;--------------------------------------------------------
+                                    635 ; global & static initialisations
+                                    636 ;--------------------------------------------------------
+                                    637 	.area HOME    (CODE)
+                                    638 	.area GSINIT  (CODE)
+                                    639 	.area GSFINAL (CODE)
+                                    640 	.area GSINIT  (CODE)
+                                    641 ;--------------------------------------------------------
+                                    642 ; Home
+                                    643 ;--------------------------------------------------------
+                                    644 	.area HOME    (CODE)
+                                    645 	.area HOME    (CODE)
+                                    646 ;--------------------------------------------------------
+                                    647 ; code
+                                    648 ;--------------------------------------------------------
+                                    649 	.area CSEG    (CODE)
+                                    650 ;------------------------------------------------------------
+                                    651 ;Allocation info for local variables in function 'param_check'
+                                    652 ;------------------------------------------------------------
+                                    653 ;val                       Allocated with name '_param_check_PARM_2'
+                                    654 ;------------------------------------------------------------
+                                    655 ;	radio/parameters.c:123: param_check(__pdata enum ParamID id, __data uint32_t val)
+                                    656 ;	-----------------------------------------
+                                    657 ;	 function param_check
+                                    658 ;	-----------------------------------------
+      000000                        659 _param_check:
+                           000007   660 	ar7 = 0x07
+                           000006   661 	ar6 = 0x06
+                           000005   662 	ar5 = 0x05
+                           000004   663 	ar4 = 0x04
+                           000003   664 	ar3 = 0x03
+                           000002   665 	ar2 = 0x02
+                           000001   666 	ar1 = 0x01
+                           000000   667 	ar0 = 0x00
+      000000 AF 82            [24]  668 	mov	r7,dpl
+                                    669 ;	radio/parameters.c:126: if (id >= PARAM_MAX)
+      000002 BF 10 00         [24]  670 	cjne	r7,#0x10,00147$
+      000005                        671 00147$:
+                                    672 ;	radio/parameters.c:127: return false;
+      000005 40 01            [24]  673 	jc	00102$
+      000007 22               [24]  674 	ret
+      000008                        675 00102$:
+                                    676 ;	radio/parameters.c:129: switch (id) {
+      000008 EF               [12]  677 	mov	a,r7
+      000009 24 F0            [12]  678 	add	a,#0xff - 0x0F
+      00000B 50 03            [24]  679 	jnc	00149$
+      00000D 02r00rAF         [24]  680 	ljmp	00123$
+      000010                        681 00149$:
+      000010 EF               [12]  682 	mov	a,r7
+      000011 2F               [12]  683 	add	a,r7
+      000012 2F               [12]  684 	add	a,r7
+      000013 90r00r17         [24]  685 	mov	dptr,#00150$
+      000016 73               [24]  686 	jmp	@a+dptr
+      000017                        687 00150$:
+      000017 02r00r47         [24]  688 	ljmp	00103$
+      00001A 02r00r49         [24]  689 	ljmp	00104$
+      00001D 02r00r53         [24]  690 	ljmp	00105$
+      000020 02r00r65         [24]  691 	ljmp	00108$
+      000023 02r00r67         [24]  692 	ljmp	00109$
+      000026 02r00r79         [24]  693 	ljmp	00112$
+      000029 02r00r8B         [24]  694 	ljmp	00116$
+      00002C 02r00r79         [24]  695 	ljmp	00113$
+      00002F 02r00rAF         [24]  696 	ljmp	00122$
+      000032 02r00rAF         [24]  697 	ljmp	00122$
+      000035 02r00rAF         [24]  698 	ljmp	00122$
+      000038 02r00rAF         [24]  699 	ljmp	00122$
+      00003B 02r00rAF         [24]  700 	ljmp	00122$
+      00003E 02r00rAF         [24]  701 	ljmp	00122$
+      000041 02r00rAF         [24]  702 	ljmp	00122$
+      000044 02r00r9D         [24]  703 	ljmp	00119$
+                                    704 ;	radio/parameters.c:130: case PARAM_FORMAT:
+      000047                        705 00103$:
+                                    706 ;	radio/parameters.c:131: return false;
+      000047 C3               [12]  707 	clr	c
+      000048 22               [24]  708 	ret
+                                    709 ;	radio/parameters.c:133: case PARAM_SERIAL_SPEED:
+      000049                        710 00104$:
+                                    711 ;	radio/parameters.c:134: return serial_device_valid_speed(val);
+      000049 AF*00            [24]  712 	mov	r7,_param_check_PARM_2
+      00004B 8F 82            [24]  713 	mov	dpl,r7
+      00004D 12r00r00         [24]  714 	lcall	_serial_device_valid_speed
+      000050 92*00            [24]  715 	mov  _param_check_sloc0_1_0,c
+                                    716 ;	radio/parameters.c:136: case PARAM_AIR_SPEED:
+      000052 22               [24]  717 	ret
+      000053                        718 00105$:
+                                    719 ;	radio/parameters.c:137: if (val > 256)
+      000053 C3               [12]  720 	clr	c
+      000054 E4               [12]  721 	clr	a
+      000055 95*00            [12]  722 	subb	a,_param_check_PARM_2
+      000057 74 01            [12]  723 	mov	a,#0x01
+      000059 95*01            [12]  724 	subb	a,(_param_check_PARM_2 + 1)
+      00005B E4               [12]  725 	clr	a
+      00005C 95*02            [12]  726 	subb	a,(_param_check_PARM_2 + 2)
+      00005E E4               [12]  727 	clr	a
+      00005F 95*03            [12]  728 	subb	a,(_param_check_PARM_2 + 3)
+      000061 50 4C            [24]  729 	jnc	00123$
+                                    730 ;	radio/parameters.c:138: return false;
+      000063 C3               [12]  731 	clr	c
+                                    732 ;	radio/parameters.c:141: case PARAM_NETID:
+      000064 22               [24]  733 	ret
+      000065                        734 00108$:
+                                    735 ;	radio/parameters.c:143: return true;
+      000065 D3               [12]  736 	setb	c
+                                    737 ;	radio/parameters.c:145: case PARAM_TXPOWER:
+      000066 22               [24]  738 	ret
+      000067                        739 00109$:
+                                    740 ;	radio/parameters.c:146: if (val > BOARD_MAXTXPOWER)
+      000067 C3               [12]  741 	clr	c
+      000068 74 14            [12]  742 	mov	a,#0x14
+      00006A 95*00            [12]  743 	subb	a,_param_check_PARM_2
+      00006C E4               [12]  744 	clr	a
+      00006D 95*01            [12]  745 	subb	a,(_param_check_PARM_2 + 1)
+      00006F E4               [12]  746 	clr	a
+      000070 95*02            [12]  747 	subb	a,(_param_check_PARM_2 + 2)
+      000072 E4               [12]  748 	clr	a
+      000073 95*03            [12]  749 	subb	a,(_param_check_PARM_2 + 3)
+      000075 50 38            [24]  750 	jnc	00123$
+                                    751 ;	radio/parameters.c:147: return false;
+      000077 C3               [12]  752 	clr	c
+                                    753 ;	radio/parameters.c:150: case PARAM_ECC:
+      000078 22               [24]  754 	ret
+      000079                        755 00112$:
+                                    756 ;	radio/parameters.c:151: case PARAM_OPPRESEND:
+      000079                        757 00113$:
+                                    758 ;	radio/parameters.c:153: if (val > 1)
+      000079 C3               [12]  759 	clr	c
+      00007A 74 01            [12]  760 	mov	a,#0x01
+      00007C 95*00            [12]  761 	subb	a,_param_check_PARM_2
+      00007E E4               [12]  762 	clr	a
+      00007F 95*01            [12]  763 	subb	a,(_param_check_PARM_2 + 1)
+      000081 E4               [12]  764 	clr	a
+      000082 95*02            [12]  765 	subb	a,(_param_check_PARM_2 + 2)
+      000084 E4               [12]  766 	clr	a
+      000085 95*03            [12]  767 	subb	a,(_param_check_PARM_2 + 3)
+      000087 50 26            [24]  768 	jnc	00123$
+                                    769 ;	radio/parameters.c:154: return false;
+      000089 C3               [12]  770 	clr	c
+                                    771 ;	radio/parameters.c:157: case PARAM_MAVLINK:
+      00008A 22               [24]  772 	ret
+      00008B                        773 00116$:
+                                    774 ;	radio/parameters.c:158: if (val > 2)
+      00008B C3               [12]  775 	clr	c
+      00008C 74 02            [12]  776 	mov	a,#0x02
+      00008E 95*00            [12]  777 	subb	a,_param_check_PARM_2
+      000090 E4               [12]  778 	clr	a
+      000091 95*01            [12]  779 	subb	a,(_param_check_PARM_2 + 1)
+      000093 E4               [12]  780 	clr	a
+      000094 95*02            [12]  781 	subb	a,(_param_check_PARM_2 + 2)
+      000096 E4               [12]  782 	clr	a
+      000097 95*03            [12]  783 	subb	a,(_param_check_PARM_2 + 3)
+      000099 50 14            [24]  784 	jnc	00123$
+                                    785 ;	radio/parameters.c:159: return false;
+      00009B C3               [12]  786 	clr	c
+                                    787 ;	radio/parameters.c:162: case PARAM_MAX_WINDOW:
+      00009C 22               [24]  788 	ret
+      00009D                        789 00119$:
+                                    790 ;	radio/parameters.c:166: if (val > 131)
+      00009D C3               [12]  791 	clr	c
+      00009E 74 83            [12]  792 	mov	a,#0x83
+      0000A0 95*00            [12]  793 	subb	a,_param_check_PARM_2
+      0000A2 E4               [12]  794 	clr	a
+      0000A3 95*01            [12]  795 	subb	a,(_param_check_PARM_2 + 1)
+      0000A5 E4               [12]  796 	clr	a
+      0000A6 95*02            [12]  797 	subb	a,(_param_check_PARM_2 + 2)
+      0000A8 E4               [12]  798 	clr	a
+      0000A9 95*03            [12]  799 	subb	a,(_param_check_PARM_2 + 3)
+      0000AB 50 02            [24]  800 	jnc	00123$
+                                    801 ;	radio/parameters.c:167: return false;
+      0000AD C3               [12]  802 	clr	c
+                                    803 ;	radio/parameters.c:170: default:
+      0000AE 22               [24]  804 	ret
+      0000AF                        805 00122$:
+                                    806 ;	radio/parameters.c:173: }
+      0000AF                        807 00123$:
+                                    808 ;	radio/parameters.c:174: return true;
+      0000AF D3               [12]  809 	setb	c
+      0000B0 22               [24]  810 	ret
+                                    811 ;------------------------------------------------------------
+                                    812 ;Allocation info for local variables in function 'param_set'
+                                    813 ;------------------------------------------------------------
+                                    814 ;param                     Allocated to registers r7 
+                                    815 ;------------------------------------------------------------
+                                    816 ;	radio/parameters.c:178: param_set(__data enum ParamID param, __pdata param_t value)
+                                    817 ;	-----------------------------------------
+                                    818 ;	 function param_set
+                                    819 ;	-----------------------------------------
+      0000B1                        820 _param_set:
+      0000B1 AF 82            [24]  821 	mov	r7,dpl
+                                    822 ;	radio/parameters.c:181: if (!param_check(param, value))
+      0000B3 78r00            [12]  823 	mov	r0,#_param_set_PARM_2
+      0000B5 E2               [24]  824 	movx	a,@r0
+      0000B6 F5*00            [12]  825 	mov	_param_check_PARM_2,a
+      0000B8 08               [12]  826 	inc	r0
+      0000B9 E2               [24]  827 	movx	a,@r0
+      0000BA F5*01            [12]  828 	mov	(_param_check_PARM_2 + 1),a
+      0000BC 08               [12]  829 	inc	r0
+      0000BD E2               [24]  830 	movx	a,@r0
+      0000BE F5*02            [12]  831 	mov	(_param_check_PARM_2 + 2),a
+      0000C0 08               [12]  832 	inc	r0
+      0000C1 E2               [24]  833 	movx	a,@r0
+      0000C2 F5*03            [12]  834 	mov	(_param_check_PARM_2 + 3),a
+      0000C4 8F 82            [24]  835 	mov	dpl,r7
+      0000C6 C0 07            [24]  836 	push	ar7
+      0000C8 12r00r00         [24]  837 	lcall	_param_check
+      0000CB D0 07            [24]  838 	pop	ar7
+                                    839 ;	radio/parameters.c:182: return false;
+      0000CD 40 01            [24]  840 	jc	00102$
+      0000CF 22               [24]  841 	ret
+      0000D0                        842 00102$:
+                                    843 ;	radio/parameters.c:185: switch (param) {
+      0000D0 BF 04 02         [24]  844 	cjne	r7,#0x04,00145$
+      0000D3 80 1F            [24]  845 	sjmp	00103$
+      0000D5                        846 00145$:
+      0000D5 BF 06 03         [24]  847 	cjne	r7,#0x06,00146$
+      0000D8 02r01rB7         [24]  848 	ljmp	00108$
+      0000DB                        849 00146$:
+      0000DB BF 07 03         [24]  850 	cjne	r7,#0x07,00147$
+      0000DE 02r01rF4         [24]  851 	ljmp	00112$
+      0000E1                        852 00147$:
+      0000E1 BF 0B 02         [24]  853 	cjne	r7,#0x0B,00148$
+      0000E4 80 2D            [24]  854 	sjmp	00104$
+      0000E6                        855 00148$:
+      0000E6 BF 0C 02         [24]  856 	cjne	r7,#0x0C,00149$
+      0000E9 80 6F            [24]  857 	sjmp	00105$
+      0000EB                        858 00149$:
+      0000EB BF 0E 03         [24]  859 	cjne	r7,#0x0E,00150$
+      0000EE 02r01rCC         [24]  860 	ljmp	00110$
+      0000F1                        861 00150$:
+      0000F1 02r01rF4         [24]  862 	ljmp	00112$
+                                    863 ;	radio/parameters.c:186: case PARAM_TXPOWER:
+      0000F4                        864 00103$:
+                                    865 ;	radio/parameters.c:189: radio_set_transmit_power(value);
+      0000F4 78r00            [12]  866 	mov	r0,#_param_set_PARM_2
+      0000F6 E2               [24]  867 	movx	a,@r0
+      0000F7 F5 82            [12]  868 	mov	dpl,a
+      0000F9 C0 07            [24]  869 	push	ar7
+      0000FB 12r00r00         [24]  870 	lcall	_radio_set_transmit_power
+                                    871 ;	radio/parameters.c:190: value = radio_get_transmit_power();
+      0000FE 12r00r00         [24]  872 	lcall	_radio_get_transmit_power
+      000101 AE 82            [24]  873 	mov	r6,dpl
+      000103 D0 07            [24]  874 	pop	ar7
+      000105 78r00            [12]  875 	mov	r0,#_param_set_PARM_2
+      000107 EE               [12]  876 	mov	a,r6
+      000108 F2               [24]  877 	movx	@r0,a
+      000109 08               [12]  878 	inc	r0
+      00010A E4               [12]  879 	clr	a
+      00010B F2               [24]  880 	movx	@r0,a
+      00010C 08               [12]  881 	inc	r0
+      00010D F2               [24]  882 	movx	@r0,a
+      00010E 08               [12]  883 	inc	r0
+      00010F F2               [24]  884 	movx	@r0,a
+                                    885 ;	radio/parameters.c:191: break;
+      000110 02r01rF4         [24]  886 	ljmp	00112$
+                                    887 ;	radio/parameters.c:193: case PARAM_DUTY_CYCLE:
+      000113                        888 00104$:
+                                    889 ;	radio/parameters.c:195: value = constrain(value, 0, 100);
+      000113 78r04            [12]  890 	mov	r0,#_constrain_PARM_2
+      000115 E4               [12]  891 	clr	a
+      000116 F2               [24]  892 	movx	@r0,a
+      000117 08               [12]  893 	inc	r0
+      000118 F2               [24]  894 	movx	@r0,a
+      000119 08               [12]  895 	inc	r0
+      00011A F2               [24]  896 	movx	@r0,a
+      00011B 08               [12]  897 	inc	r0
+      00011C F2               [24]  898 	movx	@r0,a
+      00011D 78r08            [12]  899 	mov	r0,#_constrain_PARM_3
+      00011F 74 64            [12]  900 	mov	a,#0x64
+      000121 F2               [24]  901 	movx	@r0,a
+      000122 08               [12]  902 	inc	r0
+      000123 E4               [12]  903 	clr	a
+      000124 F2               [24]  904 	movx	@r0,a
+      000125 08               [12]  905 	inc	r0
+      000126 F2               [24]  906 	movx	@r0,a
+      000127 08               [12]  907 	inc	r0
+      000128 F2               [24]  908 	movx	@r0,a
+      000129 78r00            [12]  909 	mov	r0,#_param_set_PARM_2
+      00012B E2               [24]  910 	movx	a,@r0
+      00012C F5 82            [12]  911 	mov	dpl,a
+      00012E 08               [12]  912 	inc	r0
+      00012F E2               [24]  913 	movx	a,@r0
+      000130 F5 83            [12]  914 	mov	dph,a
+      000132 08               [12]  915 	inc	r0
+      000133 E2               [24]  916 	movx	a,@r0
+      000134 F5 F0            [12]  917 	mov	b,a
+      000136 08               [12]  918 	inc	r0
+      000137 E2               [24]  919 	movx	a,@r0
+      000138 C0 07            [24]  920 	push	ar7
+      00013A 12r05r79         [24]  921 	lcall	_constrain
+      00013D AB 82            [24]  922 	mov	r3,dpl
+      00013F AC 83            [24]  923 	mov	r4,dph
+      000141 AD F0            [24]  924 	mov	r5,b
+      000143 FE               [12]  925 	mov	r6,a
+      000144 D0 07            [24]  926 	pop	ar7
+      000146 78r00            [12]  927 	mov	r0,#_param_set_PARM_2
+      000148 EB               [12]  928 	mov	a,r3
+      000149 F2               [24]  929 	movx	@r0,a
+      00014A 08               [12]  930 	inc	r0
+      00014B EC               [12]  931 	mov	a,r4
+      00014C F2               [24]  932 	movx	@r0,a
+      00014D 08               [12]  933 	inc	r0
+      00014E ED               [12]  934 	mov	a,r5
+      00014F F2               [24]  935 	movx	@r0,a
+      000150 08               [12]  936 	inc	r0
+      000151 EE               [12]  937 	mov	a,r6
+      000152 F2               [24]  938 	movx	@r0,a
+                                    939 ;	radio/parameters.c:196: duty_cycle = value;
+      000153 78r00            [12]  940 	mov	r0,#_duty_cycle
+      000155 EB               [12]  941 	mov	a,r3
+      000156 F2               [24]  942 	movx	@r0,a
+                                    943 ;	radio/parameters.c:197: break;
+      000157 02r01rF4         [24]  944 	ljmp	00112$
+                                    945 ;	radio/parameters.c:199: case PARAM_LBT_RSSI:
+      00015A                        946 00105$:
+                                    947 ;	radio/parameters.c:201: if (value != 0) {
+      00015A 78r00            [12]  948 	mov	r0,#_param_set_PARM_2
+      00015C E2               [24]  949 	movx	a,@r0
+      00015D F5 F0            [12]  950 	mov	b,a
+      00015F 08               [12]  951 	inc	r0
+      000160 E2               [24]  952 	movx	a,@r0
+      000161 42 F0            [12]  953 	orl	b,a
+      000163 08               [12]  954 	inc	r0
+      000164 E2               [24]  955 	movx	a,@r0
+      000165 42 F0            [12]  956 	orl	b,a
+      000167 08               [12]  957 	inc	r0
+      000168 E2               [24]  958 	movx	a,@r0
+      000169 45 F0            [12]  959 	orl	a,b
+      00016B 60 42            [24]  960 	jz	00107$
+                                    961 ;	radio/parameters.c:202: value = constrain(value, 25, 220);
+      00016D 78r04            [12]  962 	mov	r0,#_constrain_PARM_2
+      00016F 74 19            [12]  963 	mov	a,#0x19
+      000171 F2               [24]  964 	movx	@r0,a
+      000172 08               [12]  965 	inc	r0
+      000173 E4               [12]  966 	clr	a
+      000174 F2               [24]  967 	movx	@r0,a
+      000175 08               [12]  968 	inc	r0
+      000176 F2               [24]  969 	movx	@r0,a
+      000177 08               [12]  970 	inc	r0
+      000178 F2               [24]  971 	movx	@r0,a
+      000179 78r08            [12]  972 	mov	r0,#_constrain_PARM_3
+      00017B 74 DC            [12]  973 	mov	a,#0xDC
+      00017D F2               [24]  974 	movx	@r0,a
+      00017E 08               [12]  975 	inc	r0
+      00017F E4               [12]  976 	clr	a
+      000180 F2               [24]  977 	movx	@r0,a
+      000181 08               [12]  978 	inc	r0
+      000182 F2               [24]  979 	movx	@r0,a
+      000183 08               [12]  980 	inc	r0
+      000184 F2               [24]  981 	movx	@r0,a
+      000185 78r00            [12]  982 	mov	r0,#_param_set_PARM_2
+      000187 E2               [24]  983 	movx	a,@r0
+      000188 F5 82            [12]  984 	mov	dpl,a
+      00018A 08               [12]  985 	inc	r0
+      00018B E2               [24]  986 	movx	a,@r0
+      00018C F5 83            [12]  987 	mov	dph,a
+      00018E 08               [12]  988 	inc	r0
+      00018F E2               [24]  989 	movx	a,@r0
+      000190 F5 F0            [12]  990 	mov	b,a
+      000192 08               [12]  991 	inc	r0
+      000193 E2               [24]  992 	movx	a,@r0
+      000194 C0 07            [24]  993 	push	ar7
+      000196 12r05r79         [24]  994 	lcall	_constrain
+      000199 AB 82            [24]  995 	mov	r3,dpl
+      00019B AC 83            [24]  996 	mov	r4,dph
+      00019D AD F0            [24]  997 	mov	r5,b
+      00019F FE               [12]  998 	mov	r6,a
+      0001A0 D0 07            [24]  999 	pop	ar7
+      0001A2 78r00            [12] 1000 	mov	r0,#_param_set_PARM_2
+      0001A4 EB               [12] 1001 	mov	a,r3
+      0001A5 F2               [24] 1002 	movx	@r0,a
+      0001A6 08               [12] 1003 	inc	r0
+      0001A7 EC               [12] 1004 	mov	a,r4
+      0001A8 F2               [24] 1005 	movx	@r0,a
+      0001A9 08               [12] 1006 	inc	r0
+      0001AA ED               [12] 1007 	mov	a,r5
+      0001AB F2               [24] 1008 	movx	@r0,a
+      0001AC 08               [12] 1009 	inc	r0
+      0001AD EE               [12] 1010 	mov	a,r6
+      0001AE F2               [24] 1011 	movx	@r0,a
+      0001AF                       1012 00107$:
+                                   1013 ;	radio/parameters.c:204: lbt_rssi = value;
+      0001AF 78r00            [12] 1014 	mov	r0,#_param_set_PARM_2
+      0001B1 79r00            [12] 1015 	mov	r1,#_lbt_rssi
+      0001B3 E2               [24] 1016 	movx	a,@r0
+      0001B4 F3               [24] 1017 	movx	@r1,a
+                                   1018 ;	radio/parameters.c:205: break;
+                                   1019 ;	radio/parameters.c:207: case PARAM_MAVLINK:
+      0001B5 80 3D            [24] 1020 	sjmp	00112$
+      0001B7                       1021 00108$:
+                                   1022 ;	radio/parameters.c:208: feature_mavlink_framing = (uint8_t) value;
+      0001B7 78r00            [12] 1023 	mov	r0,#_param_set_PARM_2
+      0001B9 E2               [24] 1024 	movx	a,@r0
+      0001BA FE               [12] 1025 	mov	r6,a
+      0001BB 90r00r00         [24] 1026 	mov	dptr,#_feature_mavlink_framing
+      0001BE F0               [24] 1027 	movx	@dptr,a
+                                   1028 ;	radio/parameters.c:209: value = feature_mavlink_framing;
+      0001BF 78r00            [12] 1029 	mov	r0,#_param_set_PARM_2
+      0001C1 EE               [12] 1030 	mov	a,r6
+      0001C2 F2               [24] 1031 	movx	@r0,a
+      0001C3 08               [12] 1032 	inc	r0
+      0001C4 E4               [12] 1033 	clr	a
+      0001C5 F2               [24] 1034 	movx	@r0,a
+      0001C6 08               [12] 1035 	inc	r0
+      0001C7 F2               [24] 1036 	movx	@r0,a
+      0001C8 08               [12] 1037 	inc	r0
+      0001C9 F2               [24] 1038 	movx	@r0,a
+                                   1039 ;	radio/parameters.c:210: break;
+                                   1040 ;	radio/parameters.c:215: case PARAM_RTSCTS:
+      0001CA 80 28            [24] 1041 	sjmp	00112$
+      0001CC                       1042 00110$:
+                                   1043 ;	radio/parameters.c:216: feature_rtscts = value?true:false;
+      0001CC 78r00            [12] 1044 	mov	r0,#_param_set_PARM_2
+      0001CE E2               [24] 1045 	movx	a,@r0
+      0001CF F5 F0            [12] 1046 	mov	b,a
+      0001D1 08               [12] 1047 	inc	r0
+      0001D2 E2               [24] 1048 	movx	a,@r0
+      0001D3 42 F0            [12] 1049 	orl	b,a
+      0001D5 08               [12] 1050 	inc	r0
+      0001D6 E2               [24] 1051 	movx	a,@r0
+      0001D7 42 F0            [12] 1052 	orl	b,a
+      0001D9 08               [12] 1053 	inc	r0
+      0001DA E2               [24] 1054 	movx	a,@r0
+      0001DB 45 F0            [12] 1055 	orl	a,b
+      0001DD 24 FF            [12] 1056 	add	a,#0xff
+                                   1057 ;	radio/parameters.c:217: value = feature_rtscts?1:0;
+      0001DF 92*00            [24] 1058 	mov	_feature_rtscts,c
+      0001E1 50 04            [24] 1059 	jnc	00115$
+      0001E3 7E 01            [12] 1060 	mov	r6,#0x01
+      0001E5 80 02            [24] 1061 	sjmp	00116$
+      0001E7                       1062 00115$:
+      0001E7 7E 00            [12] 1063 	mov	r6,#0x00
+      0001E9                       1064 00116$:
+      0001E9 78r00            [12] 1065 	mov	r0,#_param_set_PARM_2
+      0001EB EE               [12] 1066 	mov	a,r6
+      0001EC F2               [24] 1067 	movx	@r0,a
+      0001ED 08               [12] 1068 	inc	r0
+      0001EE E4               [12] 1069 	clr	a
+      0001EF F2               [24] 1070 	movx	@r0,a
+      0001F0 08               [12] 1071 	inc	r0
+      0001F1 F2               [24] 1072 	movx	@r0,a
+      0001F2 08               [12] 1073 	inc	r0
+      0001F3 F2               [24] 1074 	movx	@r0,a
+                                   1075 ;	radio/parameters.c:222: }
+      0001F4                       1076 00112$:
+                                   1077 ;	radio/parameters.c:224: parameter_values[param] = value;
+      0001F4 EF               [12] 1078 	mov	a,r7
+      0001F5 75 F0 04         [24] 1079 	mov	b,#0x04
+      0001F8 A4               [48] 1080 	mul	ab
+      0001F9 24r00            [12] 1081 	add	a,#_parameter_values
+      0001FB F5 82            [12] 1082 	mov	dpl,a
+      0001FD 74s00            [12] 1083 	mov	a,#(_parameter_values >> 8)
+      0001FF 35 F0            [12] 1084 	addc	a,b
+      000201 F5 83            [12] 1085 	mov	dph,a
+      000203 78r00            [12] 1086 	mov	r0,#_param_set_PARM_2
+      000205 E2               [24] 1087 	movx	a,@r0
+      000206 F0               [24] 1088 	movx	@dptr,a
+      000207 08               [12] 1089 	inc	r0
+      000208 E2               [24] 1090 	movx	a,@r0
+      000209 A3               [24] 1091 	inc	dptr
+      00020A F0               [24] 1092 	movx	@dptr,a
+      00020B 08               [12] 1093 	inc	r0
+      00020C E2               [24] 1094 	movx	a,@r0
+      00020D A3               [24] 1095 	inc	dptr
+      00020E F0               [24] 1096 	movx	@dptr,a
+      00020F 08               [12] 1097 	inc	r0
+      000210 E2               [24] 1098 	movx	a,@r0
+      000211 A3               [24] 1099 	inc	dptr
+      000212 F0               [24] 1100 	movx	@dptr,a
+                                   1101 ;	radio/parameters.c:226: return true;
+      000213 D3               [12] 1102 	setb	c
+      000214 22               [24] 1103 	ret
+                                   1104 ;------------------------------------------------------------
+                                   1105 ;Allocation info for local variables in function 'param_get'
+                                   1106 ;------------------------------------------------------------
+                                   1107 ;param                     Allocated to registers r7 
+                                   1108 ;------------------------------------------------------------
+                                   1109 ;	radio/parameters.c:230: param_get(__data enum ParamID param)
+                                   1110 ;	-----------------------------------------
+                                   1111 ;	 function param_get
+                                   1112 ;	-----------------------------------------
+      000215                       1113 _param_get:
+      000215 AF 82            [24] 1114 	mov	r7,dpl
+                                   1115 ;	radio/parameters.c:232: if (param >= PARAM_MAX)
+      000217 BF 10 00         [24] 1116 	cjne	r7,#0x10,00108$
+      00021A                       1117 00108$:
+      00021A 40 07            [24] 1118 	jc	00102$
+                                   1119 ;	radio/parameters.c:233: return 0;
+      00021C 90 00 00         [24] 1120 	mov	dptr,#(0x00&0x00ff)
+      00021F E4               [12] 1121 	clr	a
+      000220 F5 F0            [12] 1122 	mov	b,a
+      000222 22               [24] 1123 	ret
+      000223                       1124 00102$:
+                                   1125 ;	radio/parameters.c:234: return parameter_values[param];
+      000223 EF               [12] 1126 	mov	a,r7
+      000224 75 F0 04         [24] 1127 	mov	b,#0x04
+      000227 A4               [48] 1128 	mul	ab
+      000228 24r00            [12] 1129 	add	a,#_parameter_values
+      00022A F5 82            [12] 1130 	mov	dpl,a
+      00022C 74s00            [12] 1131 	mov	a,#(_parameter_values >> 8)
+      00022E 35 F0            [12] 1132 	addc	a,b
+      000230 F5 83            [12] 1133 	mov	dph,a
+      000232 E0               [24] 1134 	movx	a,@dptr
+      000233 FC               [12] 1135 	mov	r4,a
+      000234 A3               [24] 1136 	inc	dptr
+      000235 E0               [24] 1137 	movx	a,@dptr
+      000236 FD               [12] 1138 	mov	r5,a
+      000237 A3               [24] 1139 	inc	dptr
+      000238 E0               [24] 1140 	movx	a,@dptr
+      000239 FE               [12] 1141 	mov	r6,a
+      00023A A3               [24] 1142 	inc	dptr
+      00023B E0               [24] 1143 	movx	a,@dptr
+      00023C 8C 82            [24] 1144 	mov	dpl,r4
+      00023E 8D 83            [24] 1145 	mov	dph,r5
+      000240 8E F0            [24] 1146 	mov	b,r6
+      000242 22               [24] 1147 	ret
+                                   1148 ;------------------------------------------------------------
+                                   1149 ;Allocation info for local variables in function 'read_params'
+                                   1150 ;------------------------------------------------------------
+                                   1151 ;input                     Allocated with name '_read_params_input_1_140'
+                                   1152 ;start                     Allocated with name '_read_params_PARM_2'
+                                   1153 ;size                      Allocated with name '_read_params_PARM_3'
+                                   1154 ;i                         Allocated with name '_read_params_i_1_141'
+                                   1155 ;------------------------------------------------------------
+                                   1156 ;	radio/parameters.c:237: bool read_params(__xdata uint8_t * __data input, uint16_t start, uint8_t size)
+                                   1157 ;	-----------------------------------------
+                                   1158 ;	 function read_params
+                                   1159 ;	-----------------------------------------
+      000243                       1160 _read_params:
+      000243 85 82*04         [24] 1161 	mov	_read_params_input_1_140,dpl
+      000246 85 83*05         [24] 1162 	mov	(_read_params_input_1_140 + 1),dph
+                                   1163 ;	radio/parameters.c:241: for (i = start; i < start+size; i ++)
+      000249 90r00r40         [24] 1164 	mov	dptr,#_read_params_PARM_2
+      00024C E0               [24] 1165 	movx	a,@dptr
+      00024D FC               [12] 1166 	mov	r4,a
+      00024E A3               [24] 1167 	inc	dptr
+      00024F E0               [24] 1168 	movx	a,@dptr
+      000250 FD               [12] 1169 	mov	r5,a
+      000251 90r00r42         [24] 1170 	mov	dptr,#_read_params_PARM_3
+      000254 E0               [24] 1171 	movx	a,@dptr
+      000255 FB               [12] 1172 	mov	r3,a
+      000256 8C 01            [24] 1173 	mov	ar1,r4
+      000258 8D 02            [24] 1174 	mov	ar2,r5
+      00025A                       1175 00105$:
+      00025A 8B 00            [24] 1176 	mov	ar0,r3
+      00025C 7F 00            [12] 1177 	mov	r7,#0x00
+      00025E E8               [12] 1178 	mov	a,r0
+      00025F 2C               [12] 1179 	add	a,r4
+      000260 F8               [12] 1180 	mov	r0,a
+      000261 EF               [12] 1181 	mov	a,r7
+      000262 3D               [12] 1182 	addc	a,r5
+      000263 FF               [12] 1183 	mov	r7,a
+      000264 C3               [12] 1184 	clr	c
+      000265 E9               [12] 1185 	mov	a,r1
+      000266 98               [12] 1186 	subb	a,r0
+      000267 EA               [12] 1187 	mov	a,r2
+      000268 9F               [12] 1188 	subb	a,r7
+      000269 50 41            [24] 1189 	jnc	00101$
+                                   1190 ;	radio/parameters.c:242: input[i-start] = flash_read_scratch(i);
+      00026B E9               [12] 1191 	mov	a,r1
+      00026C C3               [12] 1192 	clr	c
+      00026D 9C               [12] 1193 	subb	a,r4
+      00026E FE               [12] 1194 	mov	r6,a
+      00026F EA               [12] 1195 	mov	a,r2
+      000270 9D               [12] 1196 	subb	a,r5
+      000271 FF               [12] 1197 	mov	r7,a
+      000272 EE               [12] 1198 	mov	a,r6
+      000273 25*04            [12] 1199 	add	a,_read_params_input_1_140
+      000275 FE               [12] 1200 	mov	r6,a
+      000276 EF               [12] 1201 	mov	a,r7
+      000277 35*05            [12] 1202 	addc	a,(_read_params_input_1_140 + 1)
+      000279 FF               [12] 1203 	mov	r7,a
+      00027A 89 82            [24] 1204 	mov	dpl,r1
+      00027C 8A 83            [24] 1205 	mov	dph,r2
+      00027E C0 07            [24] 1206 	push	ar7
+      000280 C0 06            [24] 1207 	push	ar6
+      000282 C0 05            [24] 1208 	push	ar5
+      000284 C0 04            [24] 1209 	push	ar4
+      000286 C0 03            [24] 1210 	push	ar3
+      000288 C0 02            [24] 1211 	push	ar2
+      00028A C0 01            [24] 1212 	push	ar1
+      00028C 12r00r00         [24] 1213 	lcall	_flash_read_scratch
+      00028F A8 82            [24] 1214 	mov	r0,dpl
+      000291 D0 01            [24] 1215 	pop	ar1
+      000293 D0 02            [24] 1216 	pop	ar2
+      000295 D0 03            [24] 1217 	pop	ar3
+      000297 D0 04            [24] 1218 	pop	ar4
+      000299 D0 05            [24] 1219 	pop	ar5
+      00029B D0 06            [24] 1220 	pop	ar6
+      00029D D0 07            [24] 1221 	pop	ar7
+      00029F 8E 82            [24] 1222 	mov	dpl,r6
+      0002A1 8F 83            [24] 1223 	mov	dph,r7
+      0002A3 E8               [12] 1224 	mov	a,r0
+      0002A4 F0               [24] 1225 	movx	@dptr,a
+                                   1226 ;	radio/parameters.c:241: for (i = start; i < start+size; i ++)
+      0002A5 09               [12] 1227 	inc	r1
+      0002A6 B9 00 B1         [24] 1228 	cjne	r1,#0x00,00105$
+      0002A9 0A               [12] 1229 	inc	r2
+      0002AA 80 AE            [24] 1230 	sjmp	00105$
+      0002AC                       1231 00101$:
+                                   1232 ;	radio/parameters.c:245: if (crc16(size, input) != ((uint16_t) flash_read_scratch(i+1)<<8 | flash_read_scratch(i)))
+      0002AC 85*04*00         [24] 1233 	mov	_crc16_PARM_2,_read_params_input_1_140
+      0002AF 85*05*01         [24] 1234 	mov	(_crc16_PARM_2 + 1),(_read_params_input_1_140 + 1)
+      0002B2 8B 82            [24] 1235 	mov	dpl,r3
+      0002B4 C0 02            [24] 1236 	push	ar2
+      0002B6 C0 01            [24] 1237 	push	ar1
+      0002B8 12r00r00         [24] 1238 	lcall	_crc16
+      0002BB AE 82            [24] 1239 	mov	r6,dpl
+      0002BD AF 83            [24] 1240 	mov	r7,dph
+      0002BF D0 01            [24] 1241 	pop	ar1
+      0002C1 D0 02            [24] 1242 	pop	ar2
+      0002C3 74 01            [12] 1243 	mov	a,#0x01
+      0002C5 29               [12] 1244 	add	a,r1
+      0002C6 FC               [12] 1245 	mov	r4,a
+      0002C7 E4               [12] 1246 	clr	a
+      0002C8 3A               [12] 1247 	addc	a,r2
+      0002C9 FD               [12] 1248 	mov	r5,a
+      0002CA 8C 82            [24] 1249 	mov	dpl,r4
+      0002CC 8D 83            [24] 1250 	mov	dph,r5
+      0002CE C0 07            [24] 1251 	push	ar7
+      0002D0 C0 06            [24] 1252 	push	ar6
+      0002D2 C0 02            [24] 1253 	push	ar2
+      0002D4 C0 01            [24] 1254 	push	ar1
+      0002D6 12r00r00         [24] 1255 	lcall	_flash_read_scratch
+      0002D9 AD 82            [24] 1256 	mov	r5,dpl
+      0002DB D0 01            [24] 1257 	pop	ar1
+      0002DD D0 02            [24] 1258 	pop	ar2
+      0002DF 8D 04            [24] 1259 	mov	ar4,r5
+      0002E1 7D 00            [12] 1260 	mov	r5,#0x00
+      0002E3 89 82            [24] 1261 	mov	dpl,r1
+      0002E5 8A 83            [24] 1262 	mov	dph,r2
+      0002E7 C0 05            [24] 1263 	push	ar5
+      0002E9 C0 04            [24] 1264 	push	ar4
+      0002EB 12r00r00         [24] 1265 	lcall	_flash_read_scratch
+      0002EE AB 82            [24] 1266 	mov	r3,dpl
+      0002F0 D0 04            [24] 1267 	pop	ar4
+      0002F2 D0 05            [24] 1268 	pop	ar5
+      0002F4 D0 06            [24] 1269 	pop	ar6
+      0002F6 D0 07            [24] 1270 	pop	ar7
+      0002F8 7A 00            [12] 1271 	mov	r2,#0x00
+      0002FA EB               [12] 1272 	mov	a,r3
+      0002FB 42 05            [12] 1273 	orl	ar5,a
+      0002FD EA               [12] 1274 	mov	a,r2
+      0002FE 42 04            [12] 1275 	orl	ar4,a
+      000300 EE               [12] 1276 	mov	a,r6
+      000301 B5 05 06         [24] 1277 	cjne	a,ar5,00121$
+      000304 EF               [12] 1278 	mov	a,r7
+      000305 B5 04 02         [24] 1279 	cjne	a,ar4,00121$
+      000308 80 02            [24] 1280 	sjmp	00103$
+      00030A                       1281 00121$:
+                                   1282 ;	radio/parameters.c:246: return false;
+      00030A C3               [12] 1283 	clr	c
+      00030B 22               [24] 1284 	ret
+      00030C                       1285 00103$:
+                                   1286 ;	radio/parameters.c:247: return true;
+      00030C D3               [12] 1287 	setb	c
+      00030D 22               [24] 1288 	ret
+                                   1289 ;------------------------------------------------------------
+                                   1290 ;Allocation info for local variables in function 'write_params'
+                                   1291 ;------------------------------------------------------------
+                                   1292 ;input                     Allocated with name '_write_params_input_1_142'
+                                   1293 ;sloc0                     Allocated with name '_write_params_sloc0_1_0'
+                                   1294 ;start                     Allocated with name '_write_params_PARM_2'
+                                   1295 ;size                      Allocated with name '_write_params_PARM_3'
+                                   1296 ;i                         Allocated with name '_write_params_i_1_143'
+                                   1297 ;checksum                  Allocated with name '_write_params_checksum_1_143'
+                                   1298 ;------------------------------------------------------------
+                                   1299 ;	radio/parameters.c:250: void write_params(__xdata uint8_t * __data input, uint16_t start, uint8_t size)
+                                   1300 ;	-----------------------------------------
+                                   1301 ;	 function write_params
+                                   1302 ;	-----------------------------------------
+      00030E                       1303 _write_params:
+      00030E 85 82*06         [24] 1304 	mov	_write_params_input_1_142,dpl
+      000311 85 83*07         [24] 1305 	mov	(_write_params_input_1_142 + 1),dph
+                                   1306 ;	radio/parameters.c:255: for (i = start; i < start+size; i ++)
+      000314 90r00r43         [24] 1307 	mov	dptr,#_write_params_PARM_2
+      000317 E0               [24] 1308 	movx	a,@dptr
+      000318 FC               [12] 1309 	mov	r4,a
+      000319 A3               [24] 1310 	inc	dptr
+      00031A E0               [24] 1311 	movx	a,@dptr
+      00031B FD               [12] 1312 	mov	r5,a
+      00031C 90r00r45         [24] 1313 	mov	dptr,#_write_params_PARM_3
+      00031F E0               [24] 1314 	movx	a,@dptr
+      000320 FB               [12] 1315 	mov	r3,a
+      000321 8C*08            [24] 1316 	mov	_write_params_sloc0_1_0,r4
+      000323 8D*09            [24] 1317 	mov	(_write_params_sloc0_1_0 + 1),r5
+      000325                       1318 00103$:
+      000325 8B 02            [24] 1319 	mov	ar2,r3
+      000327 7F 00            [12] 1320 	mov	r7,#0x00
+      000329 EA               [12] 1321 	mov	a,r2
+      00032A 2C               [12] 1322 	add	a,r4
+      00032B FA               [12] 1323 	mov	r2,a
+      00032C EF               [12] 1324 	mov	a,r7
+      00032D 3D               [12] 1325 	addc	a,r5
+      00032E FF               [12] 1326 	mov	r7,a
+      00032F C3               [12] 1327 	clr	c
+      000330 E5*08            [12] 1328 	mov	a,_write_params_sloc0_1_0
+      000332 9A               [12] 1329 	subb	a,r2
+      000333 E5*09            [12] 1330 	mov	a,(_write_params_sloc0_1_0 + 1)
+      000335 9F               [12] 1331 	subb	a,r7
+      000336 50 36            [24] 1332 	jnc	00101$
+                                   1333 ;	radio/parameters.c:256: flash_write_scratch(i, input[i-start]);
+      000338 E5*08            [12] 1334 	mov	a,_write_params_sloc0_1_0
+      00033A C3               [12] 1335 	clr	c
+      00033B 9C               [12] 1336 	subb	a,r4
+      00033C FE               [12] 1337 	mov	r6,a
+      00033D E5*09            [12] 1338 	mov	a,(_write_params_sloc0_1_0 + 1)
+      00033F 9D               [12] 1339 	subb	a,r5
+      000340 FF               [12] 1340 	mov	r7,a
+      000341 EE               [12] 1341 	mov	a,r6
+      000342 25*06            [12] 1342 	add	a,_write_params_input_1_142
+      000344 F5 82            [12] 1343 	mov	dpl,a
+      000346 EF               [12] 1344 	mov	a,r7
+      000347 35*07            [12] 1345 	addc	a,(_write_params_input_1_142 + 1)
+      000349 F5 83            [12] 1346 	mov	dph,a
+      00034B 78r00            [12] 1347 	mov	r0,#_flash_write_scratch_PARM_2
+      00034D E0               [24] 1348 	movx	a,@dptr
+      00034E F2               [24] 1349 	movx	@r0,a
+      00034F 85*08 82         [24] 1350 	mov	dpl,_write_params_sloc0_1_0
+      000352 85*09 83         [24] 1351 	mov	dph,(_write_params_sloc0_1_0 + 1)
+      000355 C0 05            [24] 1352 	push	ar5
+      000357 C0 04            [24] 1353 	push	ar4
+      000359 C0 03            [24] 1354 	push	ar3
+      00035B 12r00r00         [24] 1355 	lcall	_flash_write_scratch
+      00035E D0 03            [24] 1356 	pop	ar3
+      000360 D0 04            [24] 1357 	pop	ar4
+      000362 D0 05            [24] 1358 	pop	ar5
+                                   1359 ;	radio/parameters.c:255: for (i = start; i < start+size; i ++)
+      000364 05*08            [12] 1360 	inc	_write_params_sloc0_1_0
+      000366 E4               [12] 1361 	clr	a
+      000367 B5*08 BB         [24] 1362 	cjne	a,_write_params_sloc0_1_0,00103$
+      00036A 05*09            [12] 1363 	inc	(_write_params_sloc0_1_0 + 1)
+      00036C 80 B7            [24] 1364 	sjmp	00103$
+      00036E                       1365 00101$:
+                                   1366 ;	radio/parameters.c:259: checksum = crc16(size, input);
+      00036E 85*06*00         [24] 1367 	mov	_crc16_PARM_2,_write_params_input_1_142
+      000371 85*07*01         [24] 1368 	mov	(_crc16_PARM_2 + 1),(_write_params_input_1_142 + 1)
+      000374 8B 82            [24] 1369 	mov	dpl,r3
+      000376 12r00r00         [24] 1370 	lcall	_crc16
+      000379 AE 82            [24] 1371 	mov	r6,dpl
+      00037B AF 83            [24] 1372 	mov	r7,dph
+                                   1373 ;	radio/parameters.c:260: flash_write_scratch(i, checksum&0xFF);
+      00037D 8E 04            [24] 1374 	mov	ar4,r6
+      00037F 78r00            [12] 1375 	mov	r0,#_flash_write_scratch_PARM_2
+      000381 EC               [12] 1376 	mov	a,r4
+      000382 F2               [24] 1377 	movx	@r0,a
+      000383 85*08 82         [24] 1378 	mov	dpl,_write_params_sloc0_1_0
+      000386 85*09 83         [24] 1379 	mov	dph,(_write_params_sloc0_1_0 + 1)
+      000389 C0 07            [24] 1380 	push	ar7
+      00038B C0 06            [24] 1381 	push	ar6
+      00038D 12r00r00         [24] 1382 	lcall	_flash_write_scratch
+      000390 D0 06            [24] 1383 	pop	ar6
+      000392 D0 07            [24] 1384 	pop	ar7
+                                   1385 ;	radio/parameters.c:261: flash_write_scratch(i+1, checksum>>8);
+      000394 74 01            [12] 1386 	mov	a,#0x01
+      000396 25*08            [12] 1387 	add	a,_write_params_sloc0_1_0
+      000398 FC               [12] 1388 	mov	r4,a
+      000399 E4               [12] 1389 	clr	a
+      00039A 35*09            [12] 1390 	addc	a,(_write_params_sloc0_1_0 + 1)
+      00039C FD               [12] 1391 	mov	r5,a
+      00039D 78r00            [12] 1392 	mov	r0,#_flash_write_scratch_PARM_2
+      00039F EF               [12] 1393 	mov	a,r7
+      0003A0 F2               [24] 1394 	movx	@r0,a
+      0003A1 8C 82            [24] 1395 	mov	dpl,r4
+      0003A3 8D 83            [24] 1396 	mov	dph,r5
+      0003A5 02r00r00         [24] 1397 	ljmp	_flash_write_scratch
+                                   1398 ;------------------------------------------------------------
+                                   1399 ;Allocation info for local variables in function 'param_load'
+                                   1400 ;------------------------------------------------------------
+                                   1401 ;	radio/parameters.c:265: param_load(void)
+                                   1402 ;	-----------------------------------------
+                                   1403 ;	 function param_load
+                                   1404 ;	-----------------------------------------
+      0003A8                       1405 _param_load:
+      0003A8 D3               [12] 1406 	setb	c
+      0003A9 10 AF 01         [24] 1407 	jbc	ea,00134$
+      0003AC C3               [12] 1408 	clr	c
+      0003AD                       1409 00134$:
+      0003AD C0 D0            [24] 1410 	push	psw
+                                   1411 ;	radio/parameters.c:270: param_default();
+      0003AF 12r04rB0         [24] 1412 	lcall	_param_default
+                                   1413 ;	radio/parameters.c:273: expected = flash_read_scratch(PARAM_FLASH_START);
+      0003B2 90 00 00         [24] 1414 	mov	dptr,#0x0000
+      0003B5 12r00r00         [24] 1415 	lcall	_flash_read_scratch
+                                   1416 ;	radio/parameters.c:274: if (expected > sizeof(parameter_values) || expected < 12*sizeof(param_t))
+      0003B8 E5 82            [12] 1417 	mov	a,dpl
+      0003BA FF               [12] 1418 	mov	r7,a
+      0003BB 24 BF            [12] 1419 	add	a,#0xff - 0x40
+      0003BD 40 05            [24] 1420 	jc	00101$
+      0003BF BF 30 00         [24] 1421 	cjne	r7,#0x30,00136$
+      0003C2                       1422 00136$:
+      0003C2 50 04            [24] 1423 	jnc	00102$
+      0003C4                       1424 00101$:
+                                   1425 ;	radio/parameters.c:275: return false;
+      0003C4 C3               [12] 1426 	clr	c
+      0003C5 02r04r6D         [24] 1427 	ljmp	00113$
+      0003C8                       1428 00102$:
+                                   1429 ;	radio/parameters.c:278: if(!read_params((__xdata uint8_t *)parameter_values, PARAM_FLASH_START+1, expected))
+      0003C8 90r00r40         [24] 1430 	mov	dptr,#_read_params_PARM_2
+      0003CB 74 01            [12] 1431 	mov	a,#0x01
+      0003CD F0               [24] 1432 	movx	@dptr,a
+      0003CE E4               [12] 1433 	clr	a
+      0003CF A3               [24] 1434 	inc	dptr
+      0003D0 F0               [24] 1435 	movx	@dptr,a
+      0003D1 90r00r42         [24] 1436 	mov	dptr,#_read_params_PARM_3
+      0003D4 EF               [12] 1437 	mov	a,r7
+      0003D5 F0               [24] 1438 	movx	@dptr,a
+      0003D6 90r00r00         [24] 1439 	mov	dptr,#_parameter_values
+      0003D9 12r02r43         [24] 1440 	lcall	_read_params
+                                   1441 ;	radio/parameters.c:279: return false;
+      0003DC 40 03            [24] 1442 	jc	00105$
+      0003DE 02r04r6D         [24] 1443 	ljmp	00113$
+      0003E1                       1444 00105$:
+                                   1445 ;	radio/parameters.c:282: if (param_get(PARAM_FORMAT) != PARAM_FORMAT_CURRENT) {
+      0003E1 75 82 00         [24] 1446 	mov	dpl,#0x00
+      0003E4 12r02r15         [24] 1447 	lcall	_param_get
+      0003E7 AC 82            [24] 1448 	mov	r4,dpl
+      0003E9 AD 83            [24] 1449 	mov	r5,dph
+      0003EB AE F0            [24] 1450 	mov	r6,b
+      0003ED FF               [12] 1451 	mov	r7,a
+      0003EE BC 1A 0B         [24] 1452 	cjne	r4,#0x1A,00139$
+      0003F1 BD 00 08         [24] 1453 	cjne	r5,#0x00,00139$
+      0003F4 BE 00 05         [24] 1454 	cjne	r6,#0x00,00139$
+      0003F7 BF 00 02         [24] 1455 	cjne	r7,#0x00,00139$
+      0003FA 80 03            [24] 1456 	sjmp	00119$
+      0003FC                       1457 00139$:
+                                   1458 ;	radio/parameters.c:284: return false;
+      0003FC C3               [12] 1459 	clr	c
+                                   1460 ;	radio/parameters.c:287: for (i = 0; i < sizeof(parameter_values); i++) {
+      0003FD 80 6E            [24] 1461 	sjmp	00113$
+      0003FF                       1462 00119$:
+      0003FF 7F 00            [12] 1463 	mov	r7,#0x00
+      000401                       1464 00111$:
+                                   1465 ;	radio/parameters.c:288: if (!param_check(i, parameter_values[i])) {
+      000401 EF               [12] 1466 	mov	a,r7
+      000402 75 F0 04         [24] 1467 	mov	b,#0x04
+      000405 A4               [48] 1468 	mul	ab
+      000406 24r00            [12] 1469 	add	a,#_parameter_values
+      000408 FD               [12] 1470 	mov	r5,a
+      000409 74s00            [12] 1471 	mov	a,#(_parameter_values >> 8)
+      00040B 35 F0            [12] 1472 	addc	a,b
+      00040D FE               [12] 1473 	mov	r6,a
+      00040E 8D 82            [24] 1474 	mov	dpl,r5
+      000410 8E 83            [24] 1475 	mov	dph,r6
+      000412 E0               [24] 1476 	movx	a,@dptr
+      000413 F5*00            [12] 1477 	mov	_param_check_PARM_2,a
+      000415 A3               [24] 1478 	inc	dptr
+      000416 E0               [24] 1479 	movx	a,@dptr
+      000417 F5*01            [12] 1480 	mov	(_param_check_PARM_2 + 1),a
+      000419 A3               [24] 1481 	inc	dptr
+      00041A E0               [24] 1482 	movx	a,@dptr
+      00041B F5*02            [12] 1483 	mov	(_param_check_PARM_2 + 2),a
+      00041D A3               [24] 1484 	inc	dptr
+      00041E E0               [24] 1485 	movx	a,@dptr
+      00041F F5*03            [12] 1486 	mov	(_param_check_PARM_2 + 3),a
+      000421 8F 82            [24] 1487 	mov	dpl,r7
+      000423 C0 07            [24] 1488 	push	ar7
+      000425 C0 06            [24] 1489 	push	ar6
+      000427 C0 05            [24] 1490 	push	ar5
+      000429 12r00r00         [24] 1491 	lcall	_param_check
+      00042C D0 05            [24] 1492 	pop	ar5
+      00042E D0 06            [24] 1493 	pop	ar6
+      000430 D0 07            [24] 1494 	pop	ar7
+      000432 40 32            [24] 1495 	jc	00112$
+                                   1496 ;	radio/parameters.c:289: parameter_values[i] = parameter_info[i].default_value;
+      000434 EF               [12] 1497 	mov	a,r7
+      000435 75 F0 07         [24] 1498 	mov	b,#0x07
+      000438 A4               [48] 1499 	mul	ab
+      000439 24r00            [12] 1500 	add	a,#_parameter_info
+      00043B FB               [12] 1501 	mov	r3,a
+      00043C 74s00            [12] 1502 	mov	a,#(_parameter_info >> 8)
+      00043E 35 F0            [12] 1503 	addc	a,b
+      000440 FC               [12] 1504 	mov	r4,a
+      000441 8B 82            [24] 1505 	mov	dpl,r3
+      000443 8C 83            [24] 1506 	mov	dph,r4
+      000445 A3               [24] 1507 	inc	dptr
+      000446 A3               [24] 1508 	inc	dptr
+      000447 A3               [24] 1509 	inc	dptr
+      000448 E4               [12] 1510 	clr	a
+      000449 93               [24] 1511 	movc	a,@a+dptr
+      00044A F9               [12] 1512 	mov	r1,a
+      00044B A3               [24] 1513 	inc	dptr
+      00044C E4               [12] 1514 	clr	a
+      00044D 93               [24] 1515 	movc	a,@a+dptr
+      00044E FA               [12] 1516 	mov	r2,a
+      00044F A3               [24] 1517 	inc	dptr
+      000450 E4               [12] 1518 	clr	a
+      000451 93               [24] 1519 	movc	a,@a+dptr
+      000452 FB               [12] 1520 	mov	r3,a
+      000453 A3               [24] 1521 	inc	dptr
+      000454 E4               [12] 1522 	clr	a
+      000455 93               [24] 1523 	movc	a,@a+dptr
+      000456 FC               [12] 1524 	mov	r4,a
+      000457 8D 82            [24] 1525 	mov	dpl,r5
+      000459 8E 83            [24] 1526 	mov	dph,r6
+      00045B E9               [12] 1527 	mov	a,r1
+      00045C F0               [24] 1528 	movx	@dptr,a
+      00045D EA               [12] 1529 	mov	a,r2
+      00045E A3               [24] 1530 	inc	dptr
+      00045F F0               [24] 1531 	movx	@dptr,a
+      000460 EB               [12] 1532 	mov	a,r3
+      000461 A3               [24] 1533 	inc	dptr
+      000462 F0               [24] 1534 	movx	@dptr,a
+      000463 EC               [12] 1535 	mov	a,r4
+      000464 A3               [24] 1536 	inc	dptr
+      000465 F0               [24] 1537 	movx	@dptr,a
+      000466                       1538 00112$:
+                                   1539 ;	radio/parameters.c:287: for (i = 0; i < sizeof(parameter_values); i++) {
+      000466 0F               [12] 1540 	inc	r7
+      000467 BF 40 00         [24] 1541 	cjne	r7,#0x40,00141$
+      00046A                       1542 00141$:
+      00046A 40 95            [24] 1543 	jc	00111$
+                                   1544 ;	radio/parameters.c:304: return true;
+      00046C D3               [12] 1545 	setb	c
+      00046D                       1546 00113$:
+      00046D 33               [12] 1547 	rlc	a
+      00046E D0 D0            [24] 1548 	pop	psw
+      000470 92 AF            [24] 1549 	mov	ea,c
+      000472 13               [12] 1550 	rrc	a
+      000473 22               [24] 1551 	ret
+                                   1552 ;------------------------------------------------------------
+                                   1553 ;Allocation info for local variables in function 'param_save'
+                                   1554 ;------------------------------------------------------------
+                                   1555 ;	radio/parameters.c:308: param_save(void)
+                                   1556 ;	-----------------------------------------
+                                   1557 ;	 function param_save
+                                   1558 ;	-----------------------------------------
+      000474                       1559 _param_save:
+      000474 D3               [12] 1560 	setb	c
+      000475 10 AF 01         [24] 1561 	jbc	ea,00103$
+      000478 C3               [12] 1562 	clr	c
+      000479                       1563 00103$:
+      000479 C0 D0            [24] 1564 	push	psw
+                                   1565 ;	radio/parameters.c:312: parameter_values[PARAM_FORMAT] = PARAM_FORMAT_CURRENT;
+      00047B 90r00r00         [24] 1566 	mov	dptr,#_parameter_values
+      00047E 74 1A            [12] 1567 	mov	a,#0x1A
+      000480 F0               [24] 1568 	movx	@dptr,a
+      000481 E4               [12] 1569 	clr	a
+      000482 A3               [24] 1570 	inc	dptr
+      000483 F0               [24] 1571 	movx	@dptr,a
+      000484 A3               [24] 1572 	inc	dptr
+      000485 F0               [24] 1573 	movx	@dptr,a
+      000486 A3               [24] 1574 	inc	dptr
+      000487 F0               [24] 1575 	movx	@dptr,a
+                                   1576 ;	radio/parameters.c:315: flash_erase_scratch();
+      000488 12r00r00         [24] 1577 	lcall	_flash_erase_scratch
+                                   1578 ;	radio/parameters.c:318: flash_write_scratch(PARAM_FLASH_START, sizeof(parameter_values));
+      00048B 78r00            [12] 1579 	mov	r0,#_flash_write_scratch_PARM_2
+      00048D 74 40            [12] 1580 	mov	a,#0x40
+      00048F F2               [24] 1581 	movx	@r0,a
+      000490 90 00 00         [24] 1582 	mov	dptr,#0x0000
+      000493 12r00r00         [24] 1583 	lcall	_flash_write_scratch
+                                   1584 ;	radio/parameters.c:321: write_params((__xdata uint8_t *)parameter_values, PARAM_FLASH_START+1, sizeof(parameter_values));
+      000496 90r00r43         [24] 1585 	mov	dptr,#_write_params_PARM_2
+      000499 74 01            [12] 1586 	mov	a,#0x01
+      00049B F0               [24] 1587 	movx	@dptr,a
+      00049C E4               [12] 1588 	clr	a
+      00049D A3               [24] 1589 	inc	dptr
+      00049E F0               [24] 1590 	movx	@dptr,a
+      00049F 90r00r45         [24] 1591 	mov	dptr,#_write_params_PARM_3
+      0004A2 74 40            [12] 1592 	mov	a,#0x40
+      0004A4 F0               [24] 1593 	movx	@dptr,a
+      0004A5 90r00r00         [24] 1594 	mov	dptr,#_parameter_values
+      0004A8 12r03r0E         [24] 1595 	lcall	_write_params
+      0004AB D0 D0            [24] 1596 	pop	psw
+      0004AD 92 AF            [24] 1597 	mov	ea,c
+      0004AF 22               [24] 1598 	ret
+                                   1599 ;------------------------------------------------------------
+                                   1600 ;Allocation info for local variables in function 'param_default'
+                                   1601 ;------------------------------------------------------------
+                                   1602 ;	radio/parameters.c:338: param_default(void)
+                                   1603 ;	-----------------------------------------
+                                   1604 ;	 function param_default
+                                   1605 ;	-----------------------------------------
+      0004B0                       1606 _param_default:
+                                   1607 ;	radio/parameters.c:343: for (i = 0; i < PARAM_MAX; i++) {
+      0004B0 7F 00            [12] 1608 	mov	r7,#0x00
+      0004B2                       1609 00102$:
+                                   1610 ;	radio/parameters.c:344: parameter_values[i] = parameter_info[i].default_value;
+      0004B2 EF               [12] 1611 	mov	a,r7
+      0004B3 75 F0 04         [24] 1612 	mov	b,#0x04
+      0004B6 A4               [48] 1613 	mul	ab
+      0004B7 24r00            [12] 1614 	add	a,#_parameter_values
+      0004B9 FD               [12] 1615 	mov	r5,a
+      0004BA 74s00            [12] 1616 	mov	a,#(_parameter_values >> 8)
+      0004BC 35 F0            [12] 1617 	addc	a,b
+      0004BE FE               [12] 1618 	mov	r6,a
+      0004BF EF               [12] 1619 	mov	a,r7
+      0004C0 75 F0 07         [24] 1620 	mov	b,#0x07
+      0004C3 A4               [48] 1621 	mul	ab
+      0004C4 24r00            [12] 1622 	add	a,#_parameter_info
+      0004C6 FB               [12] 1623 	mov	r3,a
+      0004C7 74s00            [12] 1624 	mov	a,#(_parameter_info >> 8)
+      0004C9 35 F0            [12] 1625 	addc	a,b
+      0004CB FC               [12] 1626 	mov	r4,a
+      0004CC 8B 82            [24] 1627 	mov	dpl,r3
+      0004CE 8C 83            [24] 1628 	mov	dph,r4
+      0004D0 A3               [24] 1629 	inc	dptr
+      0004D1 A3               [24] 1630 	inc	dptr
+      0004D2 A3               [24] 1631 	inc	dptr
+      0004D3 E4               [12] 1632 	clr	a
+      0004D4 93               [24] 1633 	movc	a,@a+dptr
+      0004D5 F9               [12] 1634 	mov	r1,a
+      0004D6 A3               [24] 1635 	inc	dptr
+      0004D7 E4               [12] 1636 	clr	a
+      0004D8 93               [24] 1637 	movc	a,@a+dptr
+      0004D9 FA               [12] 1638 	mov	r2,a
+      0004DA A3               [24] 1639 	inc	dptr
+      0004DB E4               [12] 1640 	clr	a
+      0004DC 93               [24] 1641 	movc	a,@a+dptr
+      0004DD FB               [12] 1642 	mov	r3,a
+      0004DE A3               [24] 1643 	inc	dptr
+      0004DF E4               [12] 1644 	clr	a
+      0004E0 93               [24] 1645 	movc	a,@a+dptr
+      0004E1 FC               [12] 1646 	mov	r4,a
+      0004E2 8D 82            [24] 1647 	mov	dpl,r5
+      0004E4 8E 83            [24] 1648 	mov	dph,r6
+      0004E6 E9               [12] 1649 	mov	a,r1
+      0004E7 F0               [24] 1650 	movx	@dptr,a
+      0004E8 EA               [12] 1651 	mov	a,r2
+      0004E9 A3               [24] 1652 	inc	dptr
+      0004EA F0               [24] 1653 	movx	@dptr,a
+      0004EB EB               [12] 1654 	mov	a,r3
+      0004EC A3               [24] 1655 	inc	dptr
+      0004ED F0               [24] 1656 	movx	@dptr,a
+      0004EE EC               [12] 1657 	mov	a,r4
+      0004EF A3               [24] 1658 	inc	dptr
+      0004F0 F0               [24] 1659 	movx	@dptr,a
+                                   1660 ;	radio/parameters.c:343: for (i = 0; i < PARAM_MAX; i++) {
+      0004F1 0F               [12] 1661 	inc	r7
+      0004F2 BF 10 00         [24] 1662 	cjne	r7,#0x10,00110$
+      0004F5                       1663 00110$:
+      0004F5 40 BB            [24] 1664 	jc	00102$
+      0004F7 22               [24] 1665 	ret
+                                   1666 ;------------------------------------------------------------
+                                   1667 ;Allocation info for local variables in function 'param_id'
+                                   1668 ;------------------------------------------------------------
+                                   1669 ;	radio/parameters.c:357: param_id(__data char * __pdata name)
+                                   1670 ;	-----------------------------------------
+                                   1671 ;	 function param_id
+                                   1672 ;	-----------------------------------------
+      0004F8                       1673 _param_id:
+      0004F8 AF 82            [24] 1674 	mov	r7,dpl
+                                   1675 ;	radio/parameters.c:361: for (i = 0; i < PARAM_MAX; i++) {
+      0004FA 7E 00            [12] 1676 	mov	r6,#0x00
+      0004FC                       1677 00104$:
+                                   1678 ;	radio/parameters.c:362: if (!strcmp(name, parameter_info[i].name))
+      0004FC 8F 03            [24] 1679 	mov	ar3,r7
+      0004FE 7C 00            [12] 1680 	mov	r4,#0x00
+      000500 7D 40            [12] 1681 	mov	r5,#0x40
+      000502 EE               [12] 1682 	mov	a,r6
+      000503 75 F0 07         [24] 1683 	mov	b,#0x07
+      000506 A4               [48] 1684 	mul	ab
+      000507 24r00            [12] 1685 	add	a,#_parameter_info
+      000509 F5 82            [12] 1686 	mov	dpl,a
+      00050B 74s00            [12] 1687 	mov	a,#(_parameter_info >> 8)
+      00050D 35 F0            [12] 1688 	addc	a,b
+      00050F F5 83            [12] 1689 	mov	dph,a
+      000511 E4               [12] 1690 	clr	a
+      000512 93               [24] 1691 	movc	a,@a+dptr
+      000513 F8               [12] 1692 	mov	r0,a
+      000514 A3               [24] 1693 	inc	dptr
+      000515 E4               [12] 1694 	clr	a
+      000516 93               [24] 1695 	movc	a,@a+dptr
+      000517 F9               [12] 1696 	mov	r1,a
+      000518 A3               [24] 1697 	inc	dptr
+      000519 E4               [12] 1698 	clr	a
+      00051A 93               [24] 1699 	movc	a,@a+dptr
+      00051B FA               [12] 1700 	mov	r2,a
+      00051C 90r00r00         [24] 1701 	mov	dptr,#_strcmp_PARM_2
+      00051F E8               [12] 1702 	mov	a,r0
+      000520 F0               [24] 1703 	movx	@dptr,a
+      000521 E9               [12] 1704 	mov	a,r1
+      000522 A3               [24] 1705 	inc	dptr
+      000523 F0               [24] 1706 	movx	@dptr,a
+      000524 EA               [12] 1707 	mov	a,r2
+      000525 A3               [24] 1708 	inc	dptr
+      000526 F0               [24] 1709 	movx	@dptr,a
+      000527 8B 82            [24] 1710 	mov	dpl,r3
+      000529 8C 83            [24] 1711 	mov	dph,r4
+      00052B 8D F0            [24] 1712 	mov	b,r5
+      00052D C0 07            [24] 1713 	push	ar7
+      00052F C0 06            [24] 1714 	push	ar6
+      000531 12r00r00         [24] 1715 	lcall	_strcmp
+      000534 E5 82            [12] 1716 	mov	a,dpl
+      000536 85 83 F0         [24] 1717 	mov	b,dph
+      000539 D0 06            [24] 1718 	pop	ar6
+      00053B D0 07            [24] 1719 	pop	ar7
+      00053D 45 F0            [12] 1720 	orl	a,b
+      00053F 60 06            [24] 1721 	jz	00103$
+                                   1722 ;	radio/parameters.c:361: for (i = 0; i < PARAM_MAX; i++) {
+      000541 0E               [12] 1723 	inc	r6
+      000542 BE 10 00         [24] 1724 	cjne	r6,#0x10,00116$
+      000545                       1725 00116$:
+      000545 40 B5            [24] 1726 	jc	00104$
+      000547                       1727 00103$:
+                                   1728 ;	radio/parameters.c:365: return i;
+      000547 8E 82            [24] 1729 	mov	dpl,r6
+      000549 22               [24] 1730 	ret
+                                   1731 ;------------------------------------------------------------
+                                   1732 ;Allocation info for local variables in function 'param_name'
+                                   1733 ;------------------------------------------------------------
+                                   1734 ;param                     Allocated to registers r7 
+                                   1735 ;------------------------------------------------------------
+                                   1736 ;	radio/parameters.c:369: param_name(__data enum ParamID param)
+                                   1737 ;	-----------------------------------------
+                                   1738 ;	 function param_name
+                                   1739 ;	-----------------------------------------
+      00054A                       1740 _param_name:
+      00054A AF 82            [24] 1741 	mov	r7,dpl
+                                   1742 ;	radio/parameters.c:371: if (param < PARAM_MAX) {
+      00054C BF 10 00         [24] 1743 	cjne	r7,#0x10,00108$
+      00054F                       1744 00108$:
+      00054F 50 21            [24] 1745 	jnc	00102$
+                                   1746 ;	radio/parameters.c:372: return parameter_info[param].name;
+      000551 EF               [12] 1747 	mov	a,r7
+      000552 75 F0 07         [24] 1748 	mov	b,#0x07
+      000555 A4               [48] 1749 	mul	ab
+      000556 24r00            [12] 1750 	add	a,#_parameter_info
+      000558 F5 82            [12] 1751 	mov	dpl,a
+      00055A 74s00            [12] 1752 	mov	a,#(_parameter_info >> 8)
+      00055C 35 F0            [12] 1753 	addc	a,b
+      00055E F5 83            [12] 1754 	mov	dph,a
+      000560 E4               [12] 1755 	clr	a
+      000561 93               [24] 1756 	movc	a,@a+dptr
+      000562 FD               [12] 1757 	mov	r5,a
+      000563 A3               [24] 1758 	inc	dptr
+      000564 E4               [12] 1759 	clr	a
+      000565 93               [24] 1760 	movc	a,@a+dptr
+      000566 FE               [12] 1761 	mov	r6,a
+      000567 A3               [24] 1762 	inc	dptr
+      000568 E4               [12] 1763 	clr	a
+      000569 93               [24] 1764 	movc	a,@a+dptr
+      00056A FF               [12] 1765 	mov	r7,a
+      00056B 8D 82            [24] 1766 	mov	dpl,r5
+      00056D 8E 83            [24] 1767 	mov	dph,r6
+      00056F 8F F0            [24] 1768 	mov	b,r7
+      000571 22               [24] 1769 	ret
+      000572                       1770 00102$:
+                                   1771 ;	radio/parameters.c:374: return 0;
+      000572 90 00 00         [24] 1772 	mov	dptr,#0x0000
+      000575 75 F0 00         [24] 1773 	mov	b,#0x00
+      000578 22               [24] 1774 	ret
+                                   1775 ;------------------------------------------------------------
+                                   1776 ;Allocation info for local variables in function 'constrain'
+                                   1777 ;------------------------------------------------------------
+                                   1778 ;	radio/parameters.c:378: uint32_t constrain(__pdata uint32_t v, __pdata uint32_t min, __pdata uint32_t max)
+                                   1779 ;	-----------------------------------------
+                                   1780 ;	 function constrain
+                                   1781 ;	-----------------------------------------
+      000579                       1782 _constrain:
+      000579 AC 82            [24] 1783 	mov	r4,dpl
+      00057B AD 83            [24] 1784 	mov	r5,dph
+      00057D AE F0            [24] 1785 	mov	r6,b
+      00057F FF               [12] 1786 	mov	r7,a
+                                   1787 ;	radio/parameters.c:380: if (v < min) v = min;
+      000580 78r04            [12] 1788 	mov	r0,#_constrain_PARM_2
+      000582 C3               [12] 1789 	clr	c
+      000583 E2               [24] 1790 	movx	a,@r0
+      000584 F5 F0            [12] 1791 	mov	b,a
+      000586 EC               [12] 1792 	mov	a,r4
+      000587 95 F0            [12] 1793 	subb	a,b
+      000589 08               [12] 1794 	inc	r0
+      00058A E2               [24] 1795 	movx	a,@r0
+      00058B F5 F0            [12] 1796 	mov	b,a
+      00058D ED               [12] 1797 	mov	a,r5
+      00058E 95 F0            [12] 1798 	subb	a,b
+      000590 08               [12] 1799 	inc	r0
+      000591 E2               [24] 1800 	movx	a,@r0
+      000592 F5 F0            [12] 1801 	mov	b,a
+      000594 EE               [12] 1802 	mov	a,r6
+      000595 95 F0            [12] 1803 	subb	a,b
+      000597 08               [12] 1804 	inc	r0
+      000598 E2               [24] 1805 	movx	a,@r0
+      000599 F5 F0            [12] 1806 	mov	b,a
+      00059B EF               [12] 1807 	mov	a,r7
+      00059C 95 F0            [12] 1808 	subb	a,b
+      00059E 50 0D            [24] 1809 	jnc	00102$
+      0005A0 78r04            [12] 1810 	mov	r0,#_constrain_PARM_2
+      0005A2 E2               [24] 1811 	movx	a,@r0
+      0005A3 FC               [12] 1812 	mov	r4,a
+      0005A4 08               [12] 1813 	inc	r0
+      0005A5 E2               [24] 1814 	movx	a,@r0
+      0005A6 FD               [12] 1815 	mov	r5,a
+      0005A7 08               [12] 1816 	inc	r0
+      0005A8 E2               [24] 1817 	movx	a,@r0
+      0005A9 FE               [12] 1818 	mov	r6,a
+      0005AA 08               [12] 1819 	inc	r0
+      0005AB E2               [24] 1820 	movx	a,@r0
+      0005AC FF               [12] 1821 	mov	r7,a
+      0005AD                       1822 00102$:
+                                   1823 ;	radio/parameters.c:381: if (v > max) v = max;
+      0005AD 78r08            [12] 1824 	mov	r0,#_constrain_PARM_3
+      0005AF C3               [12] 1825 	clr	c
+      0005B0 E2               [24] 1826 	movx	a,@r0
+      0005B1 9C               [12] 1827 	subb	a,r4
+      0005B2 08               [12] 1828 	inc	r0
+      0005B3 E2               [24] 1829 	movx	a,@r0
+      0005B4 9D               [12] 1830 	subb	a,r5
+      0005B5 08               [12] 1831 	inc	r0
+      0005B6 E2               [24] 1832 	movx	a,@r0
+      0005B7 9E               [12] 1833 	subb	a,r6
+      0005B8 08               [12] 1834 	inc	r0
+      0005B9 E2               [24] 1835 	movx	a,@r0
+      0005BA 9F               [12] 1836 	subb	a,r7
+      0005BB 50 0D            [24] 1837 	jnc	00104$
+      0005BD 78r08            [12] 1838 	mov	r0,#_constrain_PARM_3
+      0005BF E2               [24] 1839 	movx	a,@r0
+      0005C0 FC               [12] 1840 	mov	r4,a
+      0005C1 08               [12] 1841 	inc	r0
+      0005C2 E2               [24] 1842 	movx	a,@r0
+      0005C3 FD               [12] 1843 	mov	r5,a
+      0005C4 08               [12] 1844 	inc	r0
+      0005C5 E2               [24] 1845 	movx	a,@r0
+      0005C6 FE               [12] 1846 	mov	r6,a
+      0005C7 08               [12] 1847 	inc	r0
+      0005C8 E2               [24] 1848 	movx	a,@r0
+      0005C9 FF               [12] 1849 	mov	r7,a
+      0005CA                       1850 00104$:
+                                   1851 ;	radio/parameters.c:382: return v;
+      0005CA 8C 82            [24] 1852 	mov	dpl,r4
+      0005CC 8D 83            [24] 1853 	mov	dph,r5
+      0005CE 8E F0            [24] 1854 	mov	b,r6
+      0005D0 EF               [12] 1855 	mov	a,r7
+      0005D1 22               [24] 1856 	ret
+                                   1857 	.area CSEG    (CODE)
+                                   1858 	.area CONST   (CODE)
+      000000                       1859 _parameter_info:
+      000000r70s00 80              1860 	.byte __str_0, (__str_0 >> 8),#0x80
+      000003 1A 00 00 00           1861 	.byte #0x1A,#0x00,#0x00,#0x00	; 26
+      000007r77s00 80              1862 	.byte __str_1, (__str_1 >> 8),#0x80
+      00000A 39 00 00 00           1863 	.byte #0x39,#0x00,#0x00,#0x00	; 57
+      00000Er84s00 80              1864 	.byte __str_2, (__str_2 >> 8),#0x80
+      000011 40 00 00 00           1865 	.byte #0x40,#0x00,#0x00,#0x00	; 64
+      000015r8Es00 80              1866 	.byte __str_3, (__str_3 >> 8),#0x80
+      000018 19 00 00 00           1867 	.byte #0x19,#0x00,#0x00,#0x00	; 25
+      00001Cr94s00 80              1868 	.byte __str_4, (__str_4 >> 8),#0x80
+      00001F 14 00 00 00           1869 	.byte #0x14,#0x00,#0x00,#0x00	; 20
+      000023r9Cs00 80              1870 	.byte __str_5, (__str_5 >> 8),#0x80
+      000026 00 00 00 00           1871 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      00002ArA0s00 80              1872 	.byte __str_6, (__str_6 >> 8),#0x80
+      00002D 01 00 00 00           1873 	.byte #0x01,#0x00,#0x00,#0x00	; 1
+      000031rA8s00 80              1874 	.byte __str_7, (__str_7 >> 8),#0x80
+      000034 00 00 00 00           1875 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      000038rB2s00 80              1876 	.byte __str_8, (__str_8 >> 8),#0x80
+      00003B 00 00 00 00           1877 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      00003FrBBs00 80              1878 	.byte __str_9, (__str_9 >> 8),#0x80
+      000042 00 00 00 00           1879 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      000046rC4s00 80              1880 	.byte __str_10, (__str_10 >> 8),#0x80
+      000049 00 00 00 00           1881 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      00004DrD1s00 80              1882 	.byte __str_11, (__str_11 >> 8),#0x80
+      000050 64 00 00 00           1883 	.byte #0x64,#0x00,#0x00,#0x00	; 100
+      000054rDCs00 80              1884 	.byte __str_12, (__str_12 >> 8),#0x80
+      000057 00 00 00 00           1885 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      00005BrE5s00 80              1886 	.byte __str_13, (__str_13 >> 8),#0x80
+      00005E 00 00 00 00           1887 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      000062rF0s00 80              1888 	.byte __str_14, (__str_14 >> 8),#0x80
+      000065 00 00 00 00           1889 	.byte #0x00,#0x00,#0x00,#0x00	; 0
+      000069rF7s00 80              1890 	.byte __str_15, (__str_15 >> 8),#0x80
+      00006C 83 00 00 00           1891 	.byte #0x83,#0x00,#0x00,#0x00	; 131
+      000070                       1892 __str_0:
+      000070 46 4F 52 4D 41 54     1893 	.ascii "FORMAT"
+      000076 00                    1894 	.db 0x00
+      000077                       1895 __str_1:
+      000077 53 45 52 49 41 4C 5F  1896 	.ascii "SERIAL_SPEED"
+             53 50 45 45 44
+      000083 00                    1897 	.db 0x00
+      000084                       1898 __str_2:
+      000084 41 49 52 5F 53 50 45  1899 	.ascii "AIR_SPEED"
+             45 44
+      00008D 00                    1900 	.db 0x00
+      00008E                       1901 __str_3:
+      00008E 4E 45 54 49 44        1902 	.ascii "NETID"
+      000093 00                    1903 	.db 0x00
+      000094                       1904 __str_4:
+      000094 54 58 50 4F 57 45 52  1905 	.ascii "TXPOWER"
+      00009B 00                    1906 	.db 0x00
+      00009C                       1907 __str_5:
+      00009C 45 43 43              1908 	.ascii "ECC"
+      00009F 00                    1909 	.db 0x00
+      0000A0                       1910 __str_6:
+      0000A0 4D 41 56 4C 49 4E 4B  1911 	.ascii "MAVLINK"
+      0000A7 00                    1912 	.db 0x00
+      0000A8                       1913 __str_7:
+      0000A8 4F 50 50 52 45 53 45  1914 	.ascii "OPPRESEND"
+             4E 44
+      0000B1 00                    1915 	.db 0x00
+      0000B2                       1916 __str_8:
+      0000B2 4D 49 4E 5F 46 52 45  1917 	.ascii "MIN_FREQ"
+             51
+      0000BA 00                    1918 	.db 0x00
+      0000BB                       1919 __str_9:
+      0000BB 4D 41 58 5F 46 52 45  1920 	.ascii "MAX_FREQ"
+             51
+      0000C3 00                    1921 	.db 0x00
+      0000C4                       1922 __str_10:
+      0000C4 4E 55 4D 5F 43 48 41  1923 	.ascii "NUM_CHANNELS"
+             4E 4E 45 4C 53
+      0000D0 00                    1924 	.db 0x00
+      0000D1                       1925 __str_11:
+      0000D1 44 55 54 59 5F 43 59  1926 	.ascii "DUTY_CYCLE"
+             43 4C 45
+      0000DB 00                    1927 	.db 0x00
+      0000DC                       1928 __str_12:
+      0000DC 4C 42 54 5F 52 53 53  1929 	.ascii "LBT_RSSI"
+             49
+      0000E4 00                    1930 	.db 0x00
+      0000E5                       1931 __str_13:
+      0000E5 4D 41 4E 43 48 45 53  1932 	.ascii "MANCHESTER"
+             54 45 52
+      0000EF 00                    1933 	.db 0x00
+      0000F0                       1934 __str_14:
+      0000F0 52 54 53 43 54 53     1935 	.ascii "RTSCTS"
+      0000F6 00                    1936 	.db 0x00
+      0000F7                       1937 __str_15:
+      0000F7 4D 41 58 5F 57 49 4E  1938 	.ascii "MAX_WINDOW"
+             44 4F 57
+      000101 00                    1939 	.db 0x00
+                                   1940 	.area XINIT   (CODE)
+                                   1941 	.area CABS    (ABS,CODE)

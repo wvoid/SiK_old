@@ -1,0 +1,7 @@
+.//obj/rfd900pe/radio~rfd900pe/AES_BlockCipher.rel: radio/AES/AES_BlockCipher.c include/compiler_defs.h \
+ include/cdt.h include/Si1020_defs.h radio/AES/AES_BlockCipher.h \
+ radio/AES/AES_defs.h radio/AES/../radio.h include/board.h \
+ include/board_rfd900p.h radio/AES/../serial.h radio/AES/../radio.h \
+ include/board_info.h radio/AES/../pins_user.h radio/AES/../parameters.h \
+ radio/AES/../at.h radio/AES/../flash.h radio/AES/../rtc.h \
+ radio/AES/DMA_defs.h

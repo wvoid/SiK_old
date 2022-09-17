@@ -1,0 +1,1175 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS2                               00000000    00000002 =           2. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  l_CABS                          
+C:   00000000  l_GSINIT1                       
+C:   00000000  l_GSINIT5                       
+C:   00000000  l_IABS                          
+C:   00000000  l_REG_BANK_1                    
+C:   00000000  l_REG_BANK_2                    
+C:   00000000  l_REG_BANK_3                    
+C:   00000000  l_RSEG                          
+C:   00000000  l_RSEG0                         
+C:   00000000  l_RSEG1                         
+C:   00000000  l_XABS                          
+C:   00000000  l__CODE                         
+C:   00000000  s_BSEG                          
+C:   00000000  s_CABS                          
+C:   00000000  s_CABS2                         
+C:   00000000  s_DSEG                          
+C:   00000000  s_IABS                          
+C:   00000000  s_REG_BANK_0                    
+C:   00000000  s_RSEG                          
+C:   00000000  s_RSEG0                         
+C:   00000000  s_RSEG1                         
+C:   00000000  s_XABS                          
+C:   00000001  l_BIT_BANK                      
+C:   00000001  s_PSEG                          
+C:   00000002  l_CABS2                         
+C:   00000003  l_GSFINAL                       
+C:   00000003  l_GSINIT0                       
+C:   00000005  l_OSEG                          
+C:   00000007  l_BSEG_BYTES                    
+C:   00000008  l_REG_BANK_0                    
+C:   00000008  s_REG_BANK_1                    
+C:   0000000A  l_GSINIT2                       
+C:   0000000C  l_ISEG                          
+C:   00000010  s_REG_BANK_2                    
+C:   00000018  s_REG_BANK_3                    
+C:   00000020  s_BSEG_BYTES                    
+C:   00000020  s__CODE                         
+C:   00000022  l_GSINIT3                       
+C:   00000027  s_BIT_BANK                      
+C:   0000002A  l_GSINIT                        
+C:   0000002A  l_GSINIT4                       
+C:   00000031  l_BSEG                          
+C:   00000040  l_SSEG                          
+C:   00000075  s_OSEG                          
+C:   0000007A  s_ISEG                          
+C:   00000080  l_DSEG                          
+C:   00000086  s_SSEG                          
+C:   000000A9  l_HOME                          
+C:   000000EE  l_PSEG                          
+C:   000000EF  s_XSEG                          
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS2                               00000000    00000002 =           2. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000100  l_IRAM                          
+C:   00000400  s_HOME                          
+C:   000004A9  s_GSINIT0                       
+C:   000004AC  s_GSINIT1                       
+C:   000004AC  s_GSINIT2                       
+C:   000004B6  s_GSINIT3                       
+C:   000004D8  s_GSINIT4                       
+C:   00000502  s_GSINIT                        
+C:   00000502  s_GSINIT5                       
+C:   0000052C  s_GSFINAL                       
+C:   0000052F  s_CSEG                          
+C:   00000688  l_XSEG                          
+C:   00000777  s_XISEG                         
+C:   00000879  l_CONST                         
+C:   00000C00  l_XINIT                         
+C:   00000C00  l_XISEG                         
+C:   00007000  l_CSEG                          
+C:   0000752F  s_CONST                         
+C:   00007DA8  s_XINIT                         
+C:   0000F7FE  _app_signature                     flash
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           _startup
+     00000080  _P0                                CTR_EncryptDecrypt
+     00000081  _IRQ                               CTR_EncryptDecrypt
+     00000081  _SP                                CTR_EncryptDecrypt
+     00000082  _DPL                               CTR_EncryptDecrypt
+     00000082  _PIN_CONFIG                        CTR_EncryptDecrypt
+     00000083  _DPH                               CTR_EncryptDecrypt
+     00000083  _PIN_ENABLE                        CTR_EncryptDecrypt
+     00000084  _PSBANK                            CTR_EncryptDecrypt
+     00000085  _SFRNEXT                           CTR_EncryptDecrypt
+     00000086  _SFRLAST                           CTR_EncryptDecrypt
+     00000087  _PCON                              CTR_EncryptDecrypt
+     00000088  _IT0                               CTR_EncryptDecrypt
+     00000088  _TCON                              CTR_EncryptDecrypt
+     00000089  _IE0                               CTR_EncryptDecrypt
+     00000089  _LCD0D0                            CTR_EncryptDecrypt
+     00000089  _TMOD                              CTR_EncryptDecrypt
+     0000008A  _IT1                               CTR_EncryptDecrypt
+     0000008A  _LCD0D1                            CTR_EncryptDecrypt
+     0000008A  _TL0                               CTR_EncryptDecrypt
+     0000008B  _IE1                               CTR_EncryptDecrypt
+     0000008B  _LCD0D2                            CTR_EncryptDecrypt
+     0000008B  _TL1                               CTR_EncryptDecrypt
+     0000008C  _LCD0D3                            CTR_EncryptDecrypt
+     0000008C  _TH0                               CTR_EncryptDecrypt
+     0000008C  _TR0                               CTR_EncryptDecrypt
+     0000008D  _LCD0D4                            CTR_EncryptDecrypt
+     0000008D  _TF0                               CTR_EncryptDecrypt
+     0000008D  _TH1                               CTR_EncryptDecrypt
+     0000008E  _CKCON                             CTR_EncryptDecrypt
+     0000008E  _LCD0D5                            CTR_EncryptDecrypt
+     0000008E  _SFRPGCN                           CTR_EncryptDecrypt
+     0000008E  _TR1                               CTR_EncryptDecrypt
+     0000008F  _PSCTL                             CTR_EncryptDecrypt
+     0000008F  _TF1                               CTR_EncryptDecrypt
+     00000090  _P1                                CTR_EncryptDecrypt
+     00000091  _CRC0DAT                           CTR_EncryptDecrypt
+     00000091  _LCD0D6                            CTR_EncryptDecrypt
+     00000091  _TMR3CN                            CTR_EncryptDecrypt
+     00000092  _CRC0CN                            CTR_EncryptDecrypt
+     00000092  _LCD0D7                            CTR_EncryptDecrypt
+     00000092  _TMR3RLL                           CTR_EncryptDecrypt
+     00000093  _CRC0IN                            CTR_EncryptDecrypt
+     00000093  _LCD0D8                            CTR_EncryptDecrypt
+     00000093  _TMR3RLH                           CTR_EncryptDecrypt
+     00000094  _CRC0FLIP                          CTR_EncryptDecrypt
+     00000094  _LCD0D9                            CTR_EncryptDecrypt
+     00000094  _TMR3L                             CTR_EncryptDecrypt
+     00000095  _LCD0DA                            CTR_EncryptDecrypt
+     00000095  _TMR3H                             CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000096  _CRC0AUTO                          CTR_EncryptDecrypt
+     00000096  _LCD0DB                            CTR_EncryptDecrypt
+     00000097  _CRC0CNT                           CTR_EncryptDecrypt
+     00000097  _LCD0DC                            CTR_EncryptDecrypt
+     00000098  _RI0                               CTR_EncryptDecrypt
+     00000098  _SCON0                             CTR_EncryptDecrypt
+     00000099  _LCD0DD                            CTR_EncryptDecrypt
+     00000099  _SBUF0                             CTR_EncryptDecrypt
+     00000099  _TI0                               CTR_EncryptDecrypt
+     0000009A  _CPT1CN                            CTR_EncryptDecrypt
+     0000009A  _LCD0DE                            CTR_EncryptDecrypt
+     0000009A  _RB80                              CTR_EncryptDecrypt
+     0000009B  _CPT0CN                            CTR_EncryptDecrypt
+     0000009B  _LCD0DF                            CTR_EncryptDecrypt
+     0000009B  _TB80                              CTR_EncryptDecrypt
+     0000009C  _CPT1MD                            CTR_EncryptDecrypt
+     0000009C  _LCD0BUFCN                         CTR_EncryptDecrypt
+     0000009C  _LCD0CNTRST                        CTR_EncryptDecrypt
+     0000009C  _REN0                              CTR_EncryptDecrypt
+     0000009D  _CPT0MD                            CTR_EncryptDecrypt
+     0000009D  _LCD0CN                            CTR_EncryptDecrypt
+     0000009D  _MCE0                              CTR_EncryptDecrypt
+     0000009E  _CPT1MX                            CTR_EncryptDecrypt
+     0000009E  _LCD0BLINK                         CTR_EncryptDecrypt
+     0000009F  _CPT0MX                            CTR_EncryptDecrypt
+     0000009F  _LCD0TOGR                          CTR_EncryptDecrypt
+     0000009F  _S0MODE                            CTR_EncryptDecrypt
+     000000A0  _P2                                CTR_EncryptDecrypt
+     000000A1  _P3DRV                             CTR_EncryptDecrypt
+     000000A1  _SPI0CFG                           CTR_EncryptDecrypt
+     000000A1  _SPI1CFG                           CTR_EncryptDecrypt
+     000000A2  _P4DRV                             CTR_EncryptDecrypt
+     000000A2  _SPI0CKR                           CTR_EncryptDecrypt
+     000000A2  _SPI1CKR                           CTR_EncryptDecrypt
+     000000A3  _NSS1                              CTR_EncryptDecrypt
+     000000A3  _P5DRV                             CTR_EncryptDecrypt
+     000000A3  _SPI0DAT                           CTR_EncryptDecrypt
+     000000A3  _SPI1DAT                           CTR_EncryptDecrypt
+     000000A4  _LCD0PWR                           CTR_EncryptDecrypt
+     000000A4  _P0DRV                             CTR_EncryptDecrypt
+     000000A4  _P0MDOUT                           CTR_EncryptDecrypt
+     000000A5  _LCD0CF                            CTR_EncryptDecrypt
+     000000A5  _P1DRV                             CTR_EncryptDecrypt
+     000000A5  _P1MDOUT                           CTR_EncryptDecrypt
+     000000A6  _LCD0VBMCN                         CTR_EncryptDecrypt
+     000000A6  _P2DRV                             CTR_EncryptDecrypt
+     000000A6  _P2MDOUT                           CTR_EncryptDecrypt
+     000000A7  _SFRPAGE                           CTR_EncryptDecrypt
+     000000A8  _EX0                               CTR_EncryptDecrypt
+     000000A8  _IE                                CTR_EncryptDecrypt
+     000000A9  _CLKSEL                            CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000A9  _ET0                               CTR_EncryptDecrypt
+     000000A9  _LCD0CLKDIVL                       CTR_EncryptDecrypt
+     000000AA  _EMI0CN                            CTR_EncryptDecrypt
+     000000AA  _EX1                               CTR_EncryptDecrypt
+     000000AA  _LCD0CLKDIVH                       CTR_EncryptDecrypt
+     000000AA  _P6DRV                             CTR_EncryptDecrypt
+     000000AA  __XPAGE                            CTR_EncryptDecrypt
+     000000AB  _EMI0CF                            CTR_EncryptDecrypt
+     000000AB  _ET1                               CTR_EncryptDecrypt
+     000000AB  _LCD0MSCN                          CTR_EncryptDecrypt
+     000000AB  _P7DRV                             CTR_EncryptDecrypt
+     000000AC  _ES0                               CTR_EncryptDecrypt
+     000000AC  _LCD0BUFCF                         CTR_EncryptDecrypt
+     000000AC  _LCD0MSCF                          CTR_EncryptDecrypt
+     000000AC  _RTC0ADR                           CTR_EncryptDecrypt
+     000000AD  _ET2                               CTR_EncryptDecrypt
+     000000AD  _LCD0CHPCF                         CTR_EncryptDecrypt
+     000000AD  _RTC0DAT                           CTR_EncryptDecrypt
+     000000AE  _ESPI0                             CTR_EncryptDecrypt
+     000000AE  _LCD0CHPMD                         CTR_EncryptDecrypt
+     000000AE  _RTC0KEY                           CTR_EncryptDecrypt
+     000000AF  _EA                                CTR_EncryptDecrypt
+     000000AF  _EMI0TC                            CTR_EncryptDecrypt
+     000000AF  _LCD0VBMCF                         CTR_EncryptDecrypt
+     000000B0  _P3                                CTR_EncryptDecrypt
+     000000B1  _DC0CN                             CTR_EncryptDecrypt
+     000000B1  _OSCXCN                            CTR_EncryptDecrypt
+     000000B1  _P3MDOUT                           CTR_EncryptDecrypt
+     000000B2  _DC0CF                             CTR_EncryptDecrypt
+     000000B2  _OSCICN                            CTR_EncryptDecrypt
+     000000B2  _OSCIFL                            CTR_EncryptDecrypt
+     000000B3  _DC0MD                             CTR_EncryptDecrypt
+     000000B3  _OSCICL                            CTR_EncryptDecrypt
+     000000B3  _PMU0MD                            CTR_EncryptDecrypt
+     000000B5  _LCD0CHPCN                         CTR_EncryptDecrypt
+     000000B5  _PMU0CF                            CTR_EncryptDecrypt
+     000000B6  _FLSCL                             CTR_EncryptDecrypt
+     000000B6  _LCD0BUFMD                         CTR_EncryptDecrypt
+     000000B6  _LED_RED                           CTR_EncryptDecrypt
+     000000B6  _PMU0FL                            CTR_EncryptDecrypt
+     000000B7  _FLKEY                             CTR_EncryptDecrypt
+     000000B7  _LED_GREEN                         CTR_EncryptDecrypt
+     000000B8  _IP                                CTR_EncryptDecrypt
+     000000B8  _PX0                               CTR_EncryptDecrypt
+     000000B9  _CRC1IN                            CTR_EncryptDecrypt
+     000000B9  _IREF0CF                           CTR_EncryptDecrypt
+     000000B9  _IREF0CN                           CTR_EncryptDecrypt
+     000000B9  _PT0                               CTR_EncryptDecrypt
+     000000BA  _ADC0AC                            CTR_EncryptDecrypt
+     000000BA  _CRC1OUTL                          CTR_EncryptDecrypt
+     000000BA  _PX1                               CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000BB  _ADC0MX                            CTR_EncryptDecrypt
+     000000BB  _ADC0PWR                           CTR_EncryptDecrypt
+     000000BB  _CRC1OUTH                          CTR_EncryptDecrypt
+     000000BB  _PT1                               CTR_EncryptDecrypt
+     000000BC  _ADC0CF                            CTR_EncryptDecrypt
+     000000BC  _ADC0TK                            CTR_EncryptDecrypt
+     000000BC  _CRC1POLL                          CTR_EncryptDecrypt
+     000000BC  _PS0                               CTR_EncryptDecrypt
+     000000BD  _ADC0L                             CTR_EncryptDecrypt
+     000000BD  _CRC1POLH                          CTR_EncryptDecrypt
+     000000BD  _PT2                               CTR_EncryptDecrypt
+     000000BD  _TOFFL                             CTR_EncryptDecrypt
+     000000BE  _ADC0H                             CTR_EncryptDecrypt
+     000000BE  _CRC1CN                            CTR_EncryptDecrypt
+     000000BE  _PSPI0                             CTR_EncryptDecrypt
+     000000BE  _TOFFH                             CTR_EncryptDecrypt
+     000000BF  _P1MASK                            CTR_EncryptDecrypt
+     000000C0  _SI                                CTR_EncryptDecrypt
+     000000C0  _SMB0CN                            CTR_EncryptDecrypt
+     000000C1  _ACK                               CTR_EncryptDecrypt
+     000000C1  _PC0STAT                           CTR_EncryptDecrypt
+     000000C1  _SMB0CF                            CTR_EncryptDecrypt
+     000000C2  _ARBLOST                           CTR_EncryptDecrypt
+     000000C2  _ENC0L                             CTR_EncryptDecrypt
+     000000C2  _SMB0DAT                           CTR_EncryptDecrypt
+     000000C3  _ACKRQ                             CTR_EncryptDecrypt
+     000000C3  _ADC0GTL                           CTR_EncryptDecrypt
+     000000C3  _ENC0M                             CTR_EncryptDecrypt
+     000000C4  _ADC0GTH                           CTR_EncryptDecrypt
+     000000C4  _ENC0H                             CTR_EncryptDecrypt
+     000000C4  _STO                               CTR_EncryptDecrypt
+     000000C5  _ADC0LTL                           CTR_EncryptDecrypt
+     000000C5  _ENC0CN                            CTR_EncryptDecrypt
+     000000C5  _STA                               CTR_EncryptDecrypt
+     000000C6  _ADC0LTH                           CTR_EncryptDecrypt
+     000000C6  _TXMODE                            CTR_EncryptDecrypt
+     000000C6  _VREGINSDL                         CTR_EncryptDecrypt
+     000000C7  _MASTER                            CTR_EncryptDecrypt
+     000000C7  _P0MASK                            CTR_EncryptDecrypt
+     000000C7  _VREGINSDH                         CTR_EncryptDecrypt
+     000000C8  _T2XCLK                            CTR_EncryptDecrypt
+     000000C8  _TMR2CN                            CTR_EncryptDecrypt
+     000000C9  _DMA0NCF                           CTR_EncryptDecrypt
+     000000C9  _REG0CN                            CTR_EncryptDecrypt
+     000000C9  _T2RCLK                            CTR_EncryptDecrypt
+     000000CA  _DMA0NBAL                          CTR_EncryptDecrypt
+     000000CA  _TMR2RLL                           CTR_EncryptDecrypt
+     000000CA  _TR2                               CTR_EncryptDecrypt
+     000000CB  _DMA0NBAH                          CTR_EncryptDecrypt
+     000000CB  _T2SPLIT                           CTR_EncryptDecrypt
+     000000CB  _TMR2RLH                           CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000CC  _DMA0NAOL                          CTR_EncryptDecrypt
+     000000CC  _TF2CEN                            CTR_EncryptDecrypt
+     000000CC  _TMR2L                             CTR_EncryptDecrypt
+     000000CD  _DMA0NAOH                          CTR_EncryptDecrypt
+     000000CD  _TF2LEN                            CTR_EncryptDecrypt
+     000000CD  _TMR2H                             CTR_EncryptDecrypt
+     000000CE  _DMA0NSZL                          CTR_EncryptDecrypt
+     000000CE  _PCA0CPM5                          CTR_EncryptDecrypt
+     000000CE  _TF2L                              CTR_EncryptDecrypt
+     000000CF  _DMA0NSZH                          CTR_EncryptDecrypt
+     000000CF  _P1MAT                             CTR_EncryptDecrypt
+     000000CF  _TF2H                              CTR_EncryptDecrypt
+     000000D0  _P                                 CTR_EncryptDecrypt
+     000000D0  _PSW                               CTR_EncryptDecrypt
+     000000D1  _DMA0SEL                           CTR_EncryptDecrypt
+     000000D1  _F1                                CTR_EncryptDecrypt
+     000000D1  _REF0CN                            CTR_EncryptDecrypt
+     000000D2  _DMA0EN                            CTR_EncryptDecrypt
+     000000D2  _OV                                CTR_EncryptDecrypt
+     000000D2  _PCA0CPL5                          CTR_EncryptDecrypt
+     000000D3  _DMA0INT                           CTR_EncryptDecrypt
+     000000D3  _PCA0CPH5                          CTR_EncryptDecrypt
+     000000D3  _RS0                               CTR_EncryptDecrypt
+     000000D4  _DMA0MINT                          CTR_EncryptDecrypt
+     000000D4  _P0SKIP                            CTR_EncryptDecrypt
+     000000D4  _RS1                               CTR_EncryptDecrypt
+     000000D5  _DMA0BUSY                          CTR_EncryptDecrypt
+     000000D5  _F0                                CTR_EncryptDecrypt
+     000000D5  _P1SKIP                            CTR_EncryptDecrypt
+     000000D6  _AC                                CTR_EncryptDecrypt
+     000000D6  _DMA0NMD                           CTR_EncryptDecrypt
+     000000D6  _P2SKIP                            CTR_EncryptDecrypt
+     000000D7  _CY                                CTR_EncryptDecrypt
+     000000D7  _P0MAT                             CTR_EncryptDecrypt
+     000000D7  _PC0PCF                            CTR_EncryptDecrypt
+     000000D8  _CCF0                              CTR_EncryptDecrypt
+     000000D8  _PCA0CN                            CTR_EncryptDecrypt
+     000000D9  _CCF1                              CTR_EncryptDecrypt
+     000000D9  _P4                                CTR_EncryptDecrypt
+     000000D9  _PC0MD                             CTR_EncryptDecrypt
+     000000D9  _PCA0MD                            CTR_EncryptDecrypt
+     000000DA  _CCF2                              CTR_EncryptDecrypt
+     000000DA  _P5                                CTR_EncryptDecrypt
+     000000DA  _PC0CTR0L                          CTR_EncryptDecrypt
+     000000DA  _PCA0CPM0                          CTR_EncryptDecrypt
+     000000DB  _CCF3                              CTR_EncryptDecrypt
+     000000DB  _P6                                CTR_EncryptDecrypt
+     000000DB  _PC0CTR0M                          CTR_EncryptDecrypt
+     000000DB  _PCA0CPM1                          CTR_EncryptDecrypt
+     000000DC  _CCF4                              CTR_EncryptDecrypt
+     000000DC  _P7                                CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000DC  _PC0CTR0H                          CTR_EncryptDecrypt
+     000000DC  _PCA0CPM2                          CTR_EncryptDecrypt
+     000000DD  _CCF5                              CTR_EncryptDecrypt
+     000000DD  _PC0CTR1L                          CTR_EncryptDecrypt
+     000000DD  _PCA0CPM3                          CTR_EncryptDecrypt
+     000000DE  _CR                                CTR_EncryptDecrypt
+     000000DE  _PC0CTR1M                          CTR_EncryptDecrypt
+     000000DE  _PCA0CPM4                          CTR_EncryptDecrypt
+     000000DF  _CF                                CTR_EncryptDecrypt
+     000000DF  _PC0CTR1H                          CTR_EncryptDecrypt
+     000000DF  _PCA0PWM                           CTR_EncryptDecrypt
+     000000E0  _ACC                               CTR_EncryptDecrypt
+     000000E1  _PC0CMP0L                          CTR_EncryptDecrypt
+     000000E1  _XBR0                              CTR_EncryptDecrypt
+     000000E2  _PC0CMP0M                          CTR_EncryptDecrypt
+     000000E2  _XBR1                              CTR_EncryptDecrypt
+     000000E3  _PC0CMP0H                          CTR_EncryptDecrypt
+     000000E3  _XBR2                              CTR_EncryptDecrypt
+     000000E4  _IT01CF                            CTR_EncryptDecrypt
+     000000E4  _PC0TH                             CTR_EncryptDecrypt
+     000000E5  _FLWR                              CTR_EncryptDecrypt
+     000000E6  _EIE1                              CTR_EncryptDecrypt
+     000000E7  _EIE2                              CTR_EncryptDecrypt
+     000000E8  _AD0CM0                            CTR_EncryptDecrypt
+     000000E8  _ADC0CN                            CTR_EncryptDecrypt
+     000000E9  _AD0CM1                            CTR_EncryptDecrypt
+     000000E9  _AES0BCFG                          CTR_EncryptDecrypt
+     000000E9  _HWID                              CTR_EncryptDecrypt
+     000000E9  _PCA0CPL1                          CTR_EncryptDecrypt
+     000000EA  _AD0CM2                            CTR_EncryptDecrypt
+     000000EA  _AES0DCFG                          CTR_EncryptDecrypt
+     000000EA  _PCA0CPH1                          CTR_EncryptDecrypt
+     000000EA  _REVID                             CTR_EncryptDecrypt
+     000000EB  _AD0WINT                           CTR_EncryptDecrypt
+     000000EB  _AES0BIN                           CTR_EncryptDecrypt
+     000000EB  _DEVICEID                          CTR_EncryptDecrypt
+     000000EB  _PCA0CPL2                          CTR_EncryptDecrypt
+     000000EC  _AD0BUSY                           CTR_EncryptDecrypt
+     000000EC  _AES0XIN                           CTR_EncryptDecrypt
+     000000EC  _PCA0CPH2                          CTR_EncryptDecrypt
+     000000ED  _AD0INT                            CTR_EncryptDecrypt
+     000000ED  _AES0KIN                           CTR_EncryptDecrypt
+     000000ED  _PCA0CPL3                          CTR_EncryptDecrypt
+     000000EE  _AES0DBA                           CTR_EncryptDecrypt
+     000000EE  _BURSTEN                           CTR_EncryptDecrypt
+     000000EE  _PCA0CPH3                          CTR_EncryptDecrypt
+     000000EF  _AD0EN                             CTR_EncryptDecrypt
+     000000EF  _AES0KBA                           CTR_EncryptDecrypt
+     000000EF  _RSTSRC                            CTR_EncryptDecrypt
+     000000F0  _B                                 CTR_EncryptDecrypt
+     000000F1  _P0MDIN                            CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000F1  _P3MDIN                            CTR_EncryptDecrypt
+     000000F1  _PC0CMP1L                          CTR_EncryptDecrypt
+     000000F2  _P1MDIN                            CTR_EncryptDecrypt
+     000000F2  _P4MDIN                            CTR_EncryptDecrypt
+     000000F2  _PC0CMP1M                          CTR_EncryptDecrypt
+     000000F3  _P2MDIN                            CTR_EncryptDecrypt
+     000000F3  _P5MDIN                            CTR_EncryptDecrypt
+     000000F3  _PC0CMP1H                          CTR_EncryptDecrypt
+     000000F4  _P6MDIN                            CTR_EncryptDecrypt
+     000000F4  _PC0HIST                           CTR_EncryptDecrypt
+     000000F4  _SMB0ADR                           CTR_EncryptDecrypt
+     000000F5  _AES0YOUT                          CTR_EncryptDecrypt
+     000000F5  _B_5                               _gptrget
+     000000F5  _PCLKACT                           CTR_EncryptDecrypt
+     000000F5  _SMB0ADM                           CTR_EncryptDecrypt
+     000000F6  _B_6                               _gptrget
+     000000F6  _EIP1                              CTR_EncryptDecrypt
+     000000F7  _B_7                               _gptrget
+     000000F7  _EIP2                              CTR_EncryptDecrypt
+     000000F8  _SPI0CN                            CTR_EncryptDecrypt
+     000000F8  _SPI0EN                            CTR_EncryptDecrypt
+     000000F8  _SPI1CN                            CTR_EncryptDecrypt
+     000000F8  _SPI1EN                            CTR_EncryptDecrypt
+     000000F9  _P4MDOUT                           CTR_EncryptDecrypt
+     000000F9  _PC0DCL                            CTR_EncryptDecrypt
+     000000F9  _PCA0L                             CTR_EncryptDecrypt
+     000000F9  _TXBMT0                            CTR_EncryptDecrypt
+     000000F9  _TXBMT1                            CTR_EncryptDecrypt
+     000000FA  _NSS0MD0                           CTR_EncryptDecrypt
+     000000FA  _NSS1MD0                           CTR_EncryptDecrypt
+     000000FA  _P5MDOUT                           CTR_EncryptDecrypt
+     000000FA  _PC0DCH                            CTR_EncryptDecrypt
+     000000FA  _PCA0H                             CTR_EncryptDecrypt
+     000000FB  _NSS0MD1                           CTR_EncryptDecrypt
+     000000FB  _NSS1MD1                           CTR_EncryptDecrypt
+     000000FB  _P6MDOUT                           CTR_EncryptDecrypt
+     000000FB  _PC0INT0                           CTR_EncryptDecrypt
+     000000FB  _PCA0CPL0                          CTR_EncryptDecrypt
+     000000FC  _P7MDOUT                           CTR_EncryptDecrypt
+     000000FC  _PC0INT1                           CTR_EncryptDecrypt
+     000000FC  _PCA0CPH0                          CTR_EncryptDecrypt
+     000000FC  _RXOVRN0                           CTR_EncryptDecrypt
+     000000FC  _RXOVRN1                           CTR_EncryptDecrypt
+     000000FD  _CLKMODE                           CTR_EncryptDecrypt
+     000000FD  _DC0RDY                            CTR_EncryptDecrypt
+     000000FD  _MODF0                             CTR_EncryptDecrypt
+     000000FD  _MODF1                             CTR_EncryptDecrypt
+     000000FD  _PCA0CPL4                          CTR_EncryptDecrypt
+     000000FE  _PCA0CPH4                          CTR_EncryptDecrypt
+     000000FE  _PCLKEN                            CTR_EncryptDecrypt
+     000000FE  _WCOL0                             CTR_EncryptDecrypt
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000FE  _WCOL1                             CTR_EncryptDecrypt
+     000000FF  _SPIF0                             CTR_EncryptDecrypt
+     000000FF  _SPIF1                             CTR_EncryptDecrypt
+     000000FF  _VDM0CN                            CTR_EncryptDecrypt
+     000000FF  __canary                           tdm
+     00008382  _DP                                CTR_EncryptDecrypt
+     00008685  _TOFF                              CTR_EncryptDecrypt
+     00009392  _TMR3RL                            CTR_EncryptDecrypt
+     00009594  _TMR3                              CTR_EncryptDecrypt
+     0000BEBD  _ADC0                              CTR_EncryptDecrypt
+     0000C4C3  _ADC0GT                            CTR_EncryptDecrypt
+     0000C6C5  _ADC0LT                            CTR_EncryptDecrypt
+     0000CBCA  _TMR2RL                            CTR_EncryptDecrypt
+     0000CDCC  _TMR2                              CTR_EncryptDecrypt
+     0000D3D2  _PCA0CP5                           CTR_EncryptDecrypt
+     0000EAE9  _PCA0CP1                           CTR_EncryptDecrypt
+     0000ECEB  _PCA0CP2                           CTR_EncryptDecrypt
+     0000EEED  _PCA0CP3                           CTR_EncryptDecrypt
+     0000FAF9  _PCA0                              CTR_EncryptDecrypt
+     0000FCFB  _PCA0CP0                           CTR_EncryptDecrypt
+     0000FEFD  _PCA0CP4                           CTR_EncryptDecrypt
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BSEG_BYTES                          00000020    00000007 =           7. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+REG_BANK_0                          00000000    00000008 =           8. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BIT_BANK                            00000027    00000001 =           1. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DSEG                                00000000    00000080 =         128. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000008  _crc16_PARM_2                      crc
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+OSEG                                00000075    00000005 =           5. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+ISEG                                0000007A    0000000C =          12. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000086    00000040 =          64. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000086  __start__stack                     main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+PSEG                                00000001    000000EE =         238. bytes (REL,CON,PAG,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   0000000C  _packet_inject_PARM_2              packet
+D:   00000013  _num_fh_channels                   freq_hopping
+D:   00000022  _transmit_wait                     tdm
+D:   00000024  _duty_cycle                        tdm
+D:   00000029  _duty_cycle_offset                 tdm
+D:   0000002C  _lbt_rssi                          tdm
+D:   00000033  _trailer                           tdm
+D:   00000086  _pdata_canary                      at
+D:   00000087  _at_cmd_len                        at
+D:   00000088  _at_testmode                       at
+D:   0000008B  _receive_packet_length             radio
+D:   0000008C  _partial_packet_length             radio
+D:   0000008D  _last_rssi                         radio
+D:   0000008E  _netid                             radio
+D:   00000090  _settings                          radio
+D:   0000009C  _radio_receive_packet_PARM_2       radio
+D:   000000A4  _radio_transmit_PARM_2             radio
+D:   000000A6  _radio_transmit_PARM_3             radio
+D:   000000B4  _flash_write_scratch_PARM_2        flash
+D:   000000B5  _param_set_PARM_2                  parameters
+D:   000000B9  _constrain_PARM_2                  parameters
+D:   000000BD  _constrain_PARM_3                  parameters
+D:   000000C1  _convert_to_hex_PARM_3             parameters
+D:   000000C3  _g_board_frequency                 main
+D:   000000C4  _g_board_bl_version                main
+D:   000000C5  _errors                            main
+D:   000000D3  _statistics                        main
+D:   000000D7  _remote_statistics                 main
+D:   000000EC  _serial_decrypt_buf_PARM_2         serial
+D:   000000ED  _serial_write_buf_PARM_2           serial
+D:   000000EE  _serial_read_buf_PARM_2            serial
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XSEG                                000000EF    00000688 =        1672. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   000002EC  _len_encrypted                     packet
+D:   000002ED  _encryptReturn_PARM_2              packet
+D:   000002EF  _encryptReturn_PARM_3              packet
+D:   000002F2  _packet_get_next_PARM_2            packet
+D:   000002F7  _packet_is_duplicate_PARM_2        packet
+D:   000002FE  _printf_start_capture_PARM_2       printfl
+D:   00000338  _pbuf                              tdm
+D:   00000434  _test_display                      tdm
+D:   0000043D  _at_cmd                            at
+D:   00000483  _idx                               at
+D:   00000484  _at_num                            at
+D:   0000048E  _radio_buffer                      radio
+D:   00000595  _parameter_values                  parameters
+D:   000005D9  _encryption_key                    parameters
+D:   000005F9  _read_params_PARM_2                parameters
+D:   000005FB  _read_params_PARM_3                parameters
+D:   000005FC  _write_params_PARM_2               parameters
+D:   000005FE  _write_params_PARM_3               parameters
+D:   000005FF  _convert_to_hex_PARM_2             parameters
+D:   00000606  _feature_mavlink_framing           main
+D:   0000063E  _AES_BlockCipher_PARM_2            AES_BlockCipher
+D:   00000640  _AES_BlockCipher_PARM_3            AES_BlockCipher
+D:   00000642  _AES_BlockCipher_PARM_4            AES_BlockCipher
+D:   00000644  _AES_BlockCipher_PARM_5            AES_BlockCipher
+D:   0000064B  _GenerateDecryptionKey_PARM_2      GenerateDecryptionKey
+D:   0000064D  _GenerateDecryptionKey_PARM_3      GenerateDecryptionKey
+D:   00000652  _CBC_EncryptDecrypt_PARM_2         CBC_EncryptDecrypt
+D:   00000654  _CBC_EncryptDecrypt_PARM_3         CBC_EncryptDecrypt
+D:   00000656  _CBC_EncryptDecrypt_PARM_4         CBC_EncryptDecrypt
+D:   00000658  _CBC_EncryptDecrypt_PARM_5         CBC_EncryptDecrypt
+D:   0000065A  _CBC_EncryptDecrypt_PARM_6         CBC_EncryptDecrypt
+D:   00000661  _EncryptionKey                     aes
+D:   00000663  _DecryptionKey                     aes
+D:   00000683  _InitialVector                     aes
+D:   00000693  _Counter                           aes
+D:   000006C3  _encryption_level                  aes
+D:   000006C5  _aesCopyInit2_PARM_2               aes
+D:   000006CA  _aes_pad_PARM_2                    aes
+D:   000006CE  _aes_encrypt_PARM_2                aes
+D:   000006CF  _aes_encrypt_PARM_3                aes
+D:   000006D1  _aes_encrypt_PARM_4                aes
+D:   000006D8  _aes_decrypt_PARM_2                aes
+D:   000006D9  _aes_decrypt_PARM_3                aes
+D:   000006DB  _aes_decrypt_PARM_4                aes
+D:   000006E2  _CTR_EncryptDecrypt_PARM_2         CTR_EncryptDecrypt
+D:   000006E4  _CTR_EncryptDecrypt_PARM_3         CTR_EncryptDecrypt
+D:   000006E6  _CTR_EncryptDecrypt_PARM_4         CTR_EncryptDecrypt
+D:   000006E8  _CTR_EncryptDecrypt_PARM_5         CTR_EncryptDecrypt
+D:   000006EA  _CTR_EncryptDecrypt_PARM_6         CTR_EncryptDecrypt
+D:   000006F3  __divuint_PARM_2                   _divuint
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XSEG                                000000EF    00000688 =        1672. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   000006F9  __modulong_PARM_2                  _modulong
+D:   00000702  __ultoa_PARM_2                     _ltoa
+D:   00000705  __ultoa_PARM_3                     _ltoa
+D:   0000072B  __ltoa_PARM_2                      _ltoa
+D:   0000072E  __ltoa_PARM_3                      _ltoa
+D:   00000735  __divulong_PARM_2                  _divulong
+D:   00000741  _memset_PARM_2                     _memset
+D:   00000742  _memset_PARM_3                     _memset
+D:   00000744  _memcpy_PARM_2                     _memcpy
+D:   00000747  _memcpy_PARM_3                     _memcpy
+D:   0000074E  __gptrput_PARM_2                   _gptrput
+D:   0000074F  __mulint_PARM_2                    _mulint
+D:   00000751  _strcmp_PARM_2                     _strcmp
+D:   00000757  __mullong_PARM_2                   _mullong
+D:   0000075B  __modsint_PARM_2                   _modsint
+D:   0000075F  __moduint_PARM_2                   _moduint
+D:   00000764  _memcmp_PARM_2                     _memcmp
+D:   00000767  _memcmp_PARM_3                     _memcmp
+D:   0000076C  __divsint_PARM_2                   _divsint
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XISEG                               00000777    00000C00 =        3072. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   00000777  _rx_buf                            serial
+D:   00000B77  _tx_buf                            serial
+D:   00000F77  _encrypt_buf                       serial
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00000400    000000A9 =         169. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004A6  __sdcc_program_startup             main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT0                             000004A9    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004A9  __sdcc_gsinit_startup              
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT2                             000004AC    0000000A =          10. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT3                             000004B6    00000022 =          34. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004B6  __mcs51_genXINIT                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT4                             000004D8    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004D8  __mcs51_genRAMCLEAR                
+C:   000004DE  __mcs51_genXRAMCLEAR               
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              00000502    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             0000052C    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                0000052F    00007000 =       28672. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000052F  _crc16                             crc
+C:   0000063C  _MAVLink_report                    mavlink
+C:   000008CD  _encryptReturn                     packet
+C:   0000097B  _packet_get_next                   packet
+C:   00000E18  _packet_is_resend                  packet
+C:   00000E1B  _packet_is_injected                packet
+C:   00000E1E  _packet_force_resend               packet
+C:   00000E21  _packet_set_max_xmit               packet
+C:   00000E2C  _packet_set_serial_speed           packet
+C:   00000E72  _packet_is_duplicate               packet
+C:   00000EFC  _packet_inject                     packet
+C:   00000F7C  _printf_start_capture              printfl
+C:   00000FA5  _printf_end_capture                printfl
+C:   00000FAD  _vprintfl                          printfl
+C:   00001250  _printfl                           printfl
+C:   000012E7  _shuffleRand                       freq_hopping
+C:   00001318  _fhop_init                         freq_hopping
+C:   0000139C  _fhop_transmit_channel             freq_hopping
+C:   000013AC  _fhop_receive_channel              freq_hopping
+C:   000013BC  _fhop_window_change                freq_hopping
+C:   0000141E  _fhop_set_locked                   freq_hopping
+C:   0000144E  _tdm_show_rssi                     tdm
+C:   00001937  _tdm_change_phase                  tdm
+C:   00001B2D  _tdm_remote_at                     tdm
+C:   00001BE0  _tdm_serial_loop                   tdm
+C:   00002321  _tdm_init                          tdm
+C:   00002657  _tdm_report_timing                 tdm
+C:   000026C4  _at_input                          at
+C:   0000275A  _at_plus_detector                  at
+C:   000027A7  _at_timer                          at
+C:   000027E8  _at_command                        at
+C:   00002D1F  _radio_receive_packet              radio
+C:   00002DE6  _radio_receive_in_progress         radio
+C:   00002DFF  _radio_preamble_detected           radio
+C:   00002E16  _radio_last_rssi                   radio
+C:   00002E1C  _radio_current_rssi                radio
+C:   00002E22  _radio_air_rate                    radio
+C:   00003061  _radio_transmit                    radio
+C:   00003094  _radio_receiver_on                 radio
+C:   000030D3  _radio_initialise                  radio
+C:   0000310A  _radio_set_frequency               radio
+C:   00003146  _radio_set_channel_spacing         radio
+C:   00003195  _radio_set_channel                 radio
+C:   000031B6  _radio_get_channel                 radio
+C:   000031BC  _radio_configure                   radio
+C:   00003495  _radio_set_transmit_power          radio
+C:   000034D6  _radio_get_transmit_power          radio
+C:   000034DC  _radio_set_network_id              radio
+C:   000038A1  _radio_temperature                 radio
+C:   000038FD  _radio_set_diversity               radio
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                0000052F    00007000 =       28672. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000399F  _Receiver_ISR                      radio
+C:   00003AEC  _flash_erase_scratch               flash
+C:   00003B16  _flash_read_scratch                flash
+C:   00003B40  _flash_write_scratch               flash
+C:   00003C29  _param_set                         parameters
+C:   00003D8D  _param_get                         parameters
+C:   00003DBB  _read_params                       parameters
+C:   00003E86  _write_params                      parameters
+C:   00003F20  _param_load                        parameters
+C:   00004007  _param_save                        parameters
+C:   00004064  _param_default                     parameters
+C:   000040AC  _param_id                          parameters
+C:   000040FE  _param_name                        parameters
+C:   0000412D  _constrain                         parameters
+C:   00004186  _read_hex_nibble                   parameters
+C:   000041C0  _convert_to_hex                    parameters
+C:   00004257  _param_set_default_encryption_ke   parameters
+C:   0000429A  _param_set_encryption_key          parameters
+C:   00004366  _print_encryption_key              parameters
+C:   000043F6  _param_get_encryption_key          parameters
+C:   000043FA  _main                              main
+C:   0000448F  _panic                             main
+C:   00004E3D  _serial_interrupt                  serial
+C:   00004FEC  _serial_check_rts                  serial
+C:   00005008  _serial_init                       serial
+C:   00005047  _serial_write                      serial
+C:   00005101  _decryptPackets                    serial
+C:   00005200  _serial_decrypt_buf                serial
+C:   0000531A  _serial_write_buf                  serial
+C:   00005452  _serial_write_space                serial
+C:   000054B5  _serial_read                       serial
+C:   00005563  _serial_peek                       serial
+C:   0000557F  _serial_peekx                      serial
+C:   000055B7  _serial_read_buf                   serial
+C:   0000572A  _serial_read_available             serial
+C:   0000577E  _serial_read_space                 serial
+C:   000057B9  _putchar                           serial
+C:   000057CD  _serial_device_valid_speed         serial
+C:   00005866  _encrypt_buffer_getting_full       serial
+C:   000058C1  _encrypt_buffer_getting_empty      serial
+C:   00005914  _encrypt_buffer_write_space        serial
+C:   0000595E  _T3_ISR                            timer
+C:   000059A6  _delay_set                         timer
+C:   000059D3  _delay_set_ticks                   timer
+C:   000059D7  _delay_expired                     timer
+C:   000059DF  _delay_msec                        timer
+C:   000059E8  _T2_ISR                            timer
+C:   00005A38  _timer2_16                         timer
+C:   00005A50  _timer2_tick                       timer
+C:   00005A8E  _timer_init                        timer
+C:   00005AA6  _timer_entropy                     timer
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                0000052F    00007000 =       28672. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00005AAA  _AES_BlockCipher                   AES_BlockCipher
+C:   00005BF0  _GenerateDecryptionKey             GenerateDecryptionKey
+C:   00005CFE  _CBC_EncryptDecrypt                CBC_EncryptDecrypt
+C:   00005F0E  _DMA_ISR                           aes
+C:   00005F25  _aes_get_encryption_level          aes
+C:   00005F2C  _aes_set_encryption_level          aes
+C:   00005F38  _aes_initkey                       aes
+C:   00005F49  _aesCopyInit2                      aes
+C:   00005F90  _aes_init                          aes
+C:   0000601C  _aes_pad                           aes
+C:   000060A8  _aes_encrypt                       aes
+C:   0000627A  _aes_decrypt                       aes
+C:   00006453  _CTR_EncryptDecrypt                CTR_EncryptDecrypt
+C:   000066A1  _IncrementCounter                  CTR_EncryptDecrypt
+C:   000066F1  __divuint                          _divuint
+C:   0000678B  __modulong                         _modulong
+C:   000068CC  __ultoa                            _ltoa
+C:   000069E2  __ltoa                             _ltoa
+C:   00006A7F  ___fsmul                           _fsmul
+C:   00006B22  _rand                              rand
+C:   00006B7C  _srand                             rand
+C:   00006B9D  fsgetargs                          _fsget2args
+C:   00006BCB  __divulong                         _divulong
+C:   00006CD6  fs_normalize_a                     _fsnormalize
+C:   00006D09  _memset                            _memset
+C:   00006D31  _memcpy                            _memcpy
+C:   00006DA5  _isdigit                           isdigit
+C:   00006DD1  __gptrput                          _gptrput
+C:   00006DEC  ___fslt                            _fslt
+C:   00006E1C  __mulint                           _mulint
+C:   00006E3C  _strcmp                            _strcmp
+C:   00006ED0  __mullong                          _mullong
+C:   00006ED0  __mullong_dummy                    _mullong
+C:   00006F3C  __modsint                          _modsint
+C:   00006FA5  __moduint                          _moduint
+C:   00007052  _memcmp                            _memcmp
+C:   00007131  __divsint                          _divsint
+C:   000071A2  ___fsadd                           _fsadd
+C:   000071A5  fsadd_direct_entry                 _fsadd
+C:   000071FB  fs_compare_uint32                  _fscmp
+C:   00007219  fs_check_negative_zeros            _fscmp
+C:   00007244  ___sint2fs                         _sint2fs
+C:   00007251  _isprint                           isprint
+C:   0000728C  ___uint2fs                         _uint2fs
+C:   00007298  _puts                              puts
+C:   00007316  _toupper                           toupper
+C:   00007348  fs_round_and_return                _fsreturnval
+C:   00007360  fs_zerocheck_return                _fsreturnval
+C:   00007369  fs_return_zero                     _fsreturnval
+C:   00007371  fs_direct_return                   _fsreturnval
+C:   0000737F  fs_return_inf                      _fsreturnval
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                0000052F    00007000 =       28672. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000738C  fs_return_nan                      _fsreturnval
+C:   00007397  fs_swap_a_b                        _fsswapargs
+C:   000073B1  _strlen                            _strlen
+C:   000073C9  ___fsdiv                           _fsdiv
+C:   0000748C  __gptrget                          _gptrget
+C:   000074A8  ___slong2fs                        _slong2fs
+C:   000074B1  slong2fs_doit                      _slong2fs
+C:   000074D5  ___ulong2fs                        _ulong2fs
+C:   000074DE  ulong2fs_doit                      _ulong2fs
+C:   000074E8  fs_rshift_a                        _fsrshift
+C:   0000752B  __sdcc_external_startup            _startup
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               0000752F    00000879 =        2169. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00007B59  _parameter_info                    parameters
+C:   00007CAA  _g_banner_string                   main
+C:   00007CC1  _g_version_string                  main
+C:   00007D88  _Nonce                             aes
+C:   00007D98  _ReferenceInitialVector            aes
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XINIT                               00007DA8    00000C00 =        3072. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
+
+Files Linked                              [ module(s) ]
+
+.//obj/rfd900ue/radio~rfd900ue/crc.rel    [  ]
+.//obj/rfd900ue/radio~rfd900ue/mavlink.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/packet.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/printfl.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/freq_hopping.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/tdm.rel    [  ]
+.//obj/rfd900ue/radio~rfd900ue/at.rel     [  ]
+.//obj/rfd900ue/radio~rfd900ue/radio.rel  [  ]
+.//obj/rfd900ue/radio~rfd900ue/flash.rel  [  ]
+.//obj/rfd900ue/radio~rfd900ue/parameters.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/main.rel   [  ]
+.//obj/rfd900ue/radio~rfd900ue/golay.rel  [  ]
+.//obj/rfd900ue/radio~rfd900ue/pins_user.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/serial.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/rtc.rel    [  ]
+.//obj/rfd900ue/radio~rfd900ue/timer.rel  [  ]
+.//obj/rfd900ue/radio~rfd900ue/AES/AES_BlockCipher.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/AES/GenerateDecryptionKey.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/AES/CBC_EncryptDecrypt.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/AES/aes.rel
+                                          [  ]
+.//obj/rfd900ue/radio~rfd900ue/AES/CTR_EncryptDecrypt.rel
+                                          [  ]
+
+
+Libraries Linked                          [ object file ]
+
+/usr/local/bin/../share/sdcc/lib/large/libint.lib
+                                          [ _divuint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/liblong.lib
+                                          [ _modulong.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _ltoa.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsmul.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ rand.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsget2args.rel ]
+/usr/local/bin/../share/sdcc/lib/large/liblong.lib
+                                          [ _divulong.rel ]
+/usr/local/bin/../share/sdcc/lib/large/mcs51.lib
+                                          [ crtclear.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsnormalize.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _memset.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _memcpy.rel ]
+/usr/local/bin/../share/sdcc/lib/large/mcs51.lib
+                                          [ crtxinit.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ isdigit.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _gptrput.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fslt.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libint.lib
+                                          [ _mulint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _strcmp.rel ]
+/usr/local/bin/../share/sdcc/lib/large/liblong.lib
+                                          [ _mullong.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libint.lib
+                                          [ _modsint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libint.lib
+                                          [ _moduint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _memcmp.rel ]
+/usr/local/bin/../share/sdcc/lib/large/mcs51.lib
+                                          [ crtxclear.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libint.lib
+                                          [ _divsint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsadd.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fscmp.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _sint2fs.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ isprint.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _uint2fs.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ puts.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ toupper.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsreturnval.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsswapargs.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _strlen.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsdiv.rel ]
+/usr/local/bin/../share/sdcc/lib/large/mcs51.lib
+                                          [ crtstart.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _gptrget.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _slong2fs.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _ulong2fs.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libfloat.lib
+                                          [ _fsrshift.rel ]
+/usr/local/bin/../share/sdcc/lib/large/libsdcc.lib
+                                          [ _startup.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
+
+User Base Address Definitions
+
+HOME = 0x0400
+XSEG = 0x0001
+PSEG = 0x0001
+ISEG = 0x0000
+BSEG = 0x0000
+
+

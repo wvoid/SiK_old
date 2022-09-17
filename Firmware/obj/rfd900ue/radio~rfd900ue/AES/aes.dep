@@ -1,0 +1,8 @@
+.//obj/rfd900ue/radio~rfd900ue/aes.rel: radio/AES/aes.c radio/AES/../radio.h include/board.h \
+ include/board_rfd900u.h include/compiler_defs.h include/cdt.h \
+ include/Si1020_defs.h radio/AES/../serial.h radio/AES/../radio.h \
+ include/board_info.h radio/AES/../pins_user.h radio/AES/../parameters.h \
+ radio/AES/../at.h radio/AES/../flash.h radio/AES/../rtc.h \
+ radio/AES/GenerateDecryptionKey.h radio/AES/AES_defs.h \
+ radio/AES/AES_BlockCipher.h radio/AES/CBC_EncryptDecrypt.h \
+ radio/AES/CTR_EncryptDecrypt.h

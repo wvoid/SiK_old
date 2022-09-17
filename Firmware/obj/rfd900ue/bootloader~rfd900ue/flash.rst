@@ -1,0 +1,1445 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.1.0 #7066 (Nov 22 2011) (Linux)
+                              4 ; This file was generated Wed Sep  7 09:33:08 2022
+                              5 ;--------------------------------------------------------
+                              6 	.module flash
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _flash_lock_byte
+                             13 	.globl _board_frequency
+                             14 	.globl _flash_signature
+                             15 	.globl _NSS1
+                             16 	.globl _IRQ
+                             17 	.globl _PIN_ENABLE
+                             18 	.globl _PIN_CONFIG
+                             19 	.globl _LED_GREEN
+                             20 	.globl _LED_RED
+                             21 	.globl _SPI1EN
+                             22 	.globl _TXBMT1
+                             23 	.globl _NSS1MD0
+                             24 	.globl _NSS1MD1
+                             25 	.globl _RXOVRN1
+                             26 	.globl _MODF1
+                             27 	.globl _WCOL1
+                             28 	.globl _SPIF1
+                             29 	.globl _SPI0EN
+                             30 	.globl _TXBMT0
+                             31 	.globl _NSS0MD0
+                             32 	.globl _NSS0MD1
+                             33 	.globl _RXOVRN0
+                             34 	.globl _MODF0
+                             35 	.globl _WCOL0
+                             36 	.globl _SPIF0
+                             37 	.globl _AD0CM0
+                             38 	.globl _AD0CM1
+                             39 	.globl _AD0CM2
+                             40 	.globl _AD0WINT
+                             41 	.globl _AD0BUSY
+                             42 	.globl _AD0INT
+                             43 	.globl _BURSTEN
+                             44 	.globl _AD0EN
+                             45 	.globl _CCF0
+                             46 	.globl _CCF1
+                             47 	.globl _CCF2
+                             48 	.globl _CCF3
+                             49 	.globl _CCF4
+                             50 	.globl _CCF5
+                             51 	.globl _CR
+                             52 	.globl _CF
+                             53 	.globl _P
+                             54 	.globl _F1
+                             55 	.globl _OV
+                             56 	.globl _RS0
+                             57 	.globl _RS1
+                             58 	.globl _F0
+                             59 	.globl _AC
+                             60 	.globl _CY
+                             61 	.globl _T2XCLK
+                             62 	.globl _T2RCLK
+                             63 	.globl _TR2
+                             64 	.globl _T2SPLIT
+                             65 	.globl _TF2CEN
+                             66 	.globl _TF2LEN
+                             67 	.globl _TF2L
+                             68 	.globl _TF2H
+                             69 	.globl _SI
+                             70 	.globl _ACK
+                             71 	.globl _ARBLOST
+                             72 	.globl _ACKRQ
+                             73 	.globl _STO
+                             74 	.globl _STA
+                             75 	.globl _TXMODE
+                             76 	.globl _MASTER
+                             77 	.globl _PX0
+                             78 	.globl _PT0
+                             79 	.globl _PX1
+                             80 	.globl _PT1
+                             81 	.globl _PS0
+                             82 	.globl _PT2
+                             83 	.globl _PSPI0
+                             84 	.globl _EX0
+                             85 	.globl _ET0
+                             86 	.globl _EX1
+                             87 	.globl _ET1
+                             88 	.globl _ES0
+                             89 	.globl _ET2
+                             90 	.globl _ESPI0
+                             91 	.globl _EA
+                             92 	.globl _RI0
+                             93 	.globl _TI0
+                             94 	.globl _RB80
+                             95 	.globl _TB80
+                             96 	.globl _REN0
+                             97 	.globl _MCE0
+                             98 	.globl _S0MODE
+                             99 	.globl _IT0
+                            100 	.globl _IE0
+                            101 	.globl _IT1
+                            102 	.globl _IE1
+                            103 	.globl _TR0
+                            104 	.globl _TF0
+                            105 	.globl _TR1
+                            106 	.globl _TF1
+                            107 	.globl __XPAGE
+                            108 	.globl _PCA0CP4
+                            109 	.globl _PCA0CP0
+                            110 	.globl _PCA0
+                            111 	.globl _PCA0CP3
+                            112 	.globl _PCA0CP2
+                            113 	.globl _PCA0CP1
+                            114 	.globl _PCA0CP5
+                            115 	.globl _TMR2
+                            116 	.globl _TMR2RL
+                            117 	.globl _ADC0LT
+                            118 	.globl _ADC0GT
+                            119 	.globl _ADC0
+                            120 	.globl _TMR3
+                            121 	.globl _TMR3RL
+                            122 	.globl _TOFF
+                            123 	.globl _DP
+                            124 	.globl _PCLKEN
+                            125 	.globl _CLKMODE
+                            126 	.globl _P7MDOUT
+                            127 	.globl _P6MDOUT
+                            128 	.globl _P5MDOUT
+                            129 	.globl _P4MDOUT
+                            130 	.globl _PCLKACT
+                            131 	.globl _P6MDIN
+                            132 	.globl _P5MDIN
+                            133 	.globl _P4MDIN
+                            134 	.globl _P3MDIN
+                            135 	.globl _DEVICEID
+                            136 	.globl _REVID
+                            137 	.globl _HWID
+                            138 	.globl _P7
+                            139 	.globl _P6
+                            140 	.globl _P5
+                            141 	.globl _P4
+                            142 	.globl _TOFFH
+                            143 	.globl _TOFFL
+                            144 	.globl _ADC0TK
+                            145 	.globl _ADC0PWR
+                            146 	.globl _IREF0CF
+                            147 	.globl _FLSCL
+                            148 	.globl _OSCICL
+                            149 	.globl _OSCIFL
+                            150 	.globl _P3MDOUT
+                            151 	.globl _LCD0BUFCF
+                            152 	.globl _P7DRV
+                            153 	.globl _P6DRV
+                            154 	.globl _P2DRV
+                            155 	.globl _P1DRV
+                            156 	.globl _P0DRV
+                            157 	.globl _P5DRV
+                            158 	.globl _P4DRV
+                            159 	.globl _P3DRV
+                            160 	.globl _LCD0BUFCN
+                            161 	.globl _CRC0CNT
+                            162 	.globl _CRC0AUTO
+                            163 	.globl _CRC0FLIP
+                            164 	.globl _CRC0IN
+                            165 	.globl _CRC0CN
+                            166 	.globl _CRC0DAT
+                            167 	.globl _SFRPGCN
+                            168 	.globl _DC0RDY
+                            169 	.globl _PC0INT1
+                            170 	.globl _PC0INT0
+                            171 	.globl _PC0DCH
+                            172 	.globl _PC0DCL
+                            173 	.globl _SPI1CN
+                            174 	.globl _AES0YOUT
+                            175 	.globl _PC0HIST
+                            176 	.globl _PC0CMP1H
+                            177 	.globl _PC0CMP1M
+                            178 	.globl _PC0CMP1L
+                            179 	.globl _AES0KBA
+                            180 	.globl _AES0DBA
+                            181 	.globl _AES0KIN
+                            182 	.globl _AES0XIN
+                            183 	.globl _AES0BIN
+                            184 	.globl _AES0DCFG
+                            185 	.globl _AES0BCFG
+                            186 	.globl _PC0TH
+                            187 	.globl _PC0CMP0H
+                            188 	.globl _PC0CMP0M
+                            189 	.globl _PC0CMP0L
+                            190 	.globl _PC0CTR1H
+                            191 	.globl _PC0CTR1M
+                            192 	.globl _PC0CTR1L
+                            193 	.globl _PC0CTR0H
+                            194 	.globl _PC0CTR0M
+                            195 	.globl _PC0CTR0L
+                            196 	.globl _PC0MD
+                            197 	.globl _PC0PCF
+                            198 	.globl _DMA0NMD
+                            199 	.globl _DMA0BUSY
+                            200 	.globl _DMA0MINT
+                            201 	.globl _DMA0INT
+                            202 	.globl _DMA0EN
+                            203 	.globl _DMA0SEL
+                            204 	.globl _DMA0NSZH
+                            205 	.globl _DMA0NSZL
+                            206 	.globl _DMA0NAOH
+                            207 	.globl _DMA0NAOL
+                            208 	.globl _DMA0NBAH
+                            209 	.globl _DMA0NBAL
+                            210 	.globl _DMA0NCF
+                            211 	.globl _VREGINSDH
+                            212 	.globl _VREGINSDL
+                            213 	.globl _ENC0CN
+                            214 	.globl _ENC0H
+                            215 	.globl _ENC0M
+                            216 	.globl _ENC0L
+                            217 	.globl _PC0STAT
+                            218 	.globl _CRC1CN
+                            219 	.globl _CRC1POLH
+                            220 	.globl _CRC1POLL
+                            221 	.globl _CRC1OUTH
+                            222 	.globl _CRC1OUTL
+                            223 	.globl _CRC1IN
+                            224 	.globl _LCD0BUFMD
+                            225 	.globl _LCD0CHPCN
+                            226 	.globl _DC0MD
+                            227 	.globl _DC0CF
+                            228 	.globl _DC0CN
+                            229 	.globl _LCD0VBMCF
+                            230 	.globl _LCD0CHPMD
+                            231 	.globl _LCD0CHPCF
+                            232 	.globl _LCD0MSCF
+                            233 	.globl _LCD0MSCN
+                            234 	.globl _LCD0CLKDIVH
+                            235 	.globl _LCD0CLKDIVL
+                            236 	.globl _LCD0VBMCN
+                            237 	.globl _LCD0CF
+                            238 	.globl _LCD0PWR
+                            239 	.globl _SPI1DAT
+                            240 	.globl _SPI1CKR
+                            241 	.globl _SPI1CFG
+                            242 	.globl _LCD0TOGR
+                            243 	.globl _LCD0BLINK
+                            244 	.globl _LCD0CN
+                            245 	.globl _LCD0CNTRST
+                            246 	.globl _LCD0DF
+                            247 	.globl _LCD0DE
+                            248 	.globl _LCD0DD
+                            249 	.globl _LCD0DC
+                            250 	.globl _LCD0DB
+                            251 	.globl _LCD0DA
+                            252 	.globl _LCD0D9
+                            253 	.globl _LCD0D8
+                            254 	.globl _LCD0D7
+                            255 	.globl _LCD0D6
+                            256 	.globl _LCD0D5
+                            257 	.globl _LCD0D4
+                            258 	.globl _LCD0D3
+                            259 	.globl _LCD0D2
+                            260 	.globl _LCD0D1
+                            261 	.globl _LCD0D0
+                            262 	.globl _VDM0CN
+                            263 	.globl _PCA0CPH4
+                            264 	.globl _PCA0CPL4
+                            265 	.globl _PCA0CPH0
+                            266 	.globl _PCA0CPL0
+                            267 	.globl _PCA0H
+                            268 	.globl _PCA0L
+                            269 	.globl _SPI0CN
+                            270 	.globl _EIP2
+                            271 	.globl _EIP1
+                            272 	.globl _SMB0ADM
+                            273 	.globl _SMB0ADR
+                            274 	.globl _P2MDIN
+                            275 	.globl _P1MDIN
+                            276 	.globl _P0MDIN
+                            277 	.globl _B
+                            278 	.globl _RSTSRC
+                            279 	.globl _PCA0CPH3
+                            280 	.globl _PCA0CPL3
+                            281 	.globl _PCA0CPH2
+                            282 	.globl _PCA0CPL2
+                            283 	.globl _PCA0CPH1
+                            284 	.globl _PCA0CPL1
+                            285 	.globl _ADC0CN
+                            286 	.globl _EIE2
+                            287 	.globl _EIE1
+                            288 	.globl _FLWR
+                            289 	.globl _IT01CF
+                            290 	.globl _XBR2
+                            291 	.globl _XBR1
+                            292 	.globl _XBR0
+                            293 	.globl _ACC
+                            294 	.globl _PCA0PWM
+                            295 	.globl _PCA0CPM4
+                            296 	.globl _PCA0CPM3
+                            297 	.globl _PCA0CPM2
+                            298 	.globl _PCA0CPM1
+                            299 	.globl _PCA0CPM0
+                            300 	.globl _PCA0MD
+                            301 	.globl _PCA0CN
+                            302 	.globl _P0MAT
+                            303 	.globl _P2SKIP
+                            304 	.globl _P1SKIP
+                            305 	.globl _P0SKIP
+                            306 	.globl _PCA0CPH5
+                            307 	.globl _PCA0CPL5
+                            308 	.globl _REF0CN
+                            309 	.globl _PSW
+                            310 	.globl _P1MAT
+                            311 	.globl _PCA0CPM5
+                            312 	.globl _TMR2H
+                            313 	.globl _TMR2L
+                            314 	.globl _TMR2RLH
+                            315 	.globl _TMR2RLL
+                            316 	.globl _REG0CN
+                            317 	.globl _TMR2CN
+                            318 	.globl _P0MASK
+                            319 	.globl _ADC0LTH
+                            320 	.globl _ADC0LTL
+                            321 	.globl _ADC0GTH
+                            322 	.globl _ADC0GTL
+                            323 	.globl _SMB0DAT
+                            324 	.globl _SMB0CF
+                            325 	.globl _SMB0CN
+                            326 	.globl _P1MASK
+                            327 	.globl _ADC0H
+                            328 	.globl _ADC0L
+                            329 	.globl _ADC0CF
+                            330 	.globl _ADC0MX
+                            331 	.globl _ADC0AC
+                            332 	.globl _IREF0CN
+                            333 	.globl _IP
+                            334 	.globl _FLKEY
+                            335 	.globl _PMU0FL
+                            336 	.globl _PMU0CF
+                            337 	.globl _PMU0MD
+                            338 	.globl _OSCICN
+                            339 	.globl _OSCXCN
+                            340 	.globl _P3
+                            341 	.globl _EMI0TC
+                            342 	.globl _RTC0KEY
+                            343 	.globl _RTC0DAT
+                            344 	.globl _RTC0ADR
+                            345 	.globl _EMI0CF
+                            346 	.globl _EMI0CN
+                            347 	.globl _CLKSEL
+                            348 	.globl _IE
+                            349 	.globl _SFRPAGE
+                            350 	.globl _P2MDOUT
+                            351 	.globl _P1MDOUT
+                            352 	.globl _P0MDOUT
+                            353 	.globl _SPI0DAT
+                            354 	.globl _SPI0CKR
+                            355 	.globl _SPI0CFG
+                            356 	.globl _P2
+                            357 	.globl _CPT0MX
+                            358 	.globl _CPT1MX
+                            359 	.globl _CPT0MD
+                            360 	.globl _CPT1MD
+                            361 	.globl _CPT0CN
+                            362 	.globl _CPT1CN
+                            363 	.globl _SBUF0
+                            364 	.globl _SCON0
+                            365 	.globl _TMR3H
+                            366 	.globl _TMR3L
+                            367 	.globl _TMR3RLH
+                            368 	.globl _TMR3RLL
+                            369 	.globl _TMR3CN
+                            370 	.globl _P1
+                            371 	.globl _PSCTL
+                            372 	.globl _CKCON
+                            373 	.globl _TH1
+                            374 	.globl _TH0
+                            375 	.globl _TL1
+                            376 	.globl _TL0
+                            377 	.globl _TMOD
+                            378 	.globl _TCON
+                            379 	.globl _PCON
+                            380 	.globl _SFRLAST
+                            381 	.globl _SFRNEXT
+                            382 	.globl _PSBANK
+                            383 	.globl _DPH
+                            384 	.globl _DPL
+                            385 	.globl _SP
+                            386 	.globl _P0
+                            387 	.globl _flash_write_byte_PARM_2
+                            388 	.globl _flash_app_valid
+                            389 	.globl _flash_erase_app
+                            390 	.globl _flash_erase_scratch
+                            391 	.globl _flash_write_byte
+                            392 	.globl _flash_read_byte
+                            393 ;--------------------------------------------------------
+                            394 ; special function registers
+                            395 ;--------------------------------------------------------
+                            396 	.area RSEG    (ABS,DATA)
+   0000                     397 	.org 0x0000
+                    0080    398 _P0	=	0x0080
+                    0081    399 _SP	=	0x0081
+                    0082    400 _DPL	=	0x0082
+                    0083    401 _DPH	=	0x0083
+                    0084    402 _PSBANK	=	0x0084
+                    0085    403 _SFRNEXT	=	0x0085
+                    0086    404 _SFRLAST	=	0x0086
+                    0087    405 _PCON	=	0x0087
+                    0088    406 _TCON	=	0x0088
+                    0089    407 _TMOD	=	0x0089
+                    008A    408 _TL0	=	0x008a
+                    008B    409 _TL1	=	0x008b
+                    008C    410 _TH0	=	0x008c
+                    008D    411 _TH1	=	0x008d
+                    008E    412 _CKCON	=	0x008e
+                    008F    413 _PSCTL	=	0x008f
+                    0090    414 _P1	=	0x0090
+                    0091    415 _TMR3CN	=	0x0091
+                    0092    416 _TMR3RLL	=	0x0092
+                    0093    417 _TMR3RLH	=	0x0093
+                    0094    418 _TMR3L	=	0x0094
+                    0095    419 _TMR3H	=	0x0095
+                    0098    420 _SCON0	=	0x0098
+                    0099    421 _SBUF0	=	0x0099
+                    009A    422 _CPT1CN	=	0x009a
+                    009B    423 _CPT0CN	=	0x009b
+                    009C    424 _CPT1MD	=	0x009c
+                    009D    425 _CPT0MD	=	0x009d
+                    009E    426 _CPT1MX	=	0x009e
+                    009F    427 _CPT0MX	=	0x009f
+                    00A0    428 _P2	=	0x00a0
+                    00A1    429 _SPI0CFG	=	0x00a1
+                    00A2    430 _SPI0CKR	=	0x00a2
+                    00A3    431 _SPI0DAT	=	0x00a3
+                    00A4    432 _P0MDOUT	=	0x00a4
+                    00A5    433 _P1MDOUT	=	0x00a5
+                    00A6    434 _P2MDOUT	=	0x00a6
+                    00A7    435 _SFRPAGE	=	0x00a7
+                    00A8    436 _IE	=	0x00a8
+                    00A9    437 _CLKSEL	=	0x00a9
+                    00AA    438 _EMI0CN	=	0x00aa
+                    00AB    439 _EMI0CF	=	0x00ab
+                    00AC    440 _RTC0ADR	=	0x00ac
+                    00AD    441 _RTC0DAT	=	0x00ad
+                    00AE    442 _RTC0KEY	=	0x00ae
+                    00AF    443 _EMI0TC	=	0x00af
+                    00B0    444 _P3	=	0x00b0
+                    00B1    445 _OSCXCN	=	0x00b1
+                    00B2    446 _OSCICN	=	0x00b2
+                    00B3    447 _PMU0MD	=	0x00b3
+                    00B5    448 _PMU0CF	=	0x00b5
+                    00B6    449 _PMU0FL	=	0x00b6
+                    00B7    450 _FLKEY	=	0x00b7
+                    00B8    451 _IP	=	0x00b8
+                    00B9    452 _IREF0CN	=	0x00b9
+                    00BA    453 _ADC0AC	=	0x00ba
+                    00BB    454 _ADC0MX	=	0x00bb
+                    00BC    455 _ADC0CF	=	0x00bc
+                    00BD    456 _ADC0L	=	0x00bd
+                    00BE    457 _ADC0H	=	0x00be
+                    00BF    458 _P1MASK	=	0x00bf
+                    00C0    459 _SMB0CN	=	0x00c0
+                    00C1    460 _SMB0CF	=	0x00c1
+                    00C2    461 _SMB0DAT	=	0x00c2
+                    00C3    462 _ADC0GTL	=	0x00c3
+                    00C4    463 _ADC0GTH	=	0x00c4
+                    00C5    464 _ADC0LTL	=	0x00c5
+                    00C6    465 _ADC0LTH	=	0x00c6
+                    00C7    466 _P0MASK	=	0x00c7
+                    00C8    467 _TMR2CN	=	0x00c8
+                    00C9    468 _REG0CN	=	0x00c9
+                    00CA    469 _TMR2RLL	=	0x00ca
+                    00CB    470 _TMR2RLH	=	0x00cb
+                    00CC    471 _TMR2L	=	0x00cc
+                    00CD    472 _TMR2H	=	0x00cd
+                    00CE    473 _PCA0CPM5	=	0x00ce
+                    00CF    474 _P1MAT	=	0x00cf
+                    00D0    475 _PSW	=	0x00d0
+                    00D1    476 _REF0CN	=	0x00d1
+                    00D2    477 _PCA0CPL5	=	0x00d2
+                    00D3    478 _PCA0CPH5	=	0x00d3
+                    00D4    479 _P0SKIP	=	0x00d4
+                    00D5    480 _P1SKIP	=	0x00d5
+                    00D6    481 _P2SKIP	=	0x00d6
+                    00D7    482 _P0MAT	=	0x00d7
+                    00D8    483 _PCA0CN	=	0x00d8
+                    00D9    484 _PCA0MD	=	0x00d9
+                    00DA    485 _PCA0CPM0	=	0x00da
+                    00DB    486 _PCA0CPM1	=	0x00db
+                    00DC    487 _PCA0CPM2	=	0x00dc
+                    00DD    488 _PCA0CPM3	=	0x00dd
+                    00DE    489 _PCA0CPM4	=	0x00de
+                    00DF    490 _PCA0PWM	=	0x00df
+                    00E0    491 _ACC	=	0x00e0
+                    00E1    492 _XBR0	=	0x00e1
+                    00E2    493 _XBR1	=	0x00e2
+                    00E3    494 _XBR2	=	0x00e3
+                    00E4    495 _IT01CF	=	0x00e4
+                    00E5    496 _FLWR	=	0x00e5
+                    00E6    497 _EIE1	=	0x00e6
+                    00E7    498 _EIE2	=	0x00e7
+                    00E8    499 _ADC0CN	=	0x00e8
+                    00E9    500 _PCA0CPL1	=	0x00e9
+                    00EA    501 _PCA0CPH1	=	0x00ea
+                    00EB    502 _PCA0CPL2	=	0x00eb
+                    00EC    503 _PCA0CPH2	=	0x00ec
+                    00ED    504 _PCA0CPL3	=	0x00ed
+                    00EE    505 _PCA0CPH3	=	0x00ee
+                    00EF    506 _RSTSRC	=	0x00ef
+                    00F0    507 _B	=	0x00f0
+                    00F1    508 _P0MDIN	=	0x00f1
+                    00F2    509 _P1MDIN	=	0x00f2
+                    00F3    510 _P2MDIN	=	0x00f3
+                    00F4    511 _SMB0ADR	=	0x00f4
+                    00F5    512 _SMB0ADM	=	0x00f5
+                    00F6    513 _EIP1	=	0x00f6
+                    00F7    514 _EIP2	=	0x00f7
+                    00F8    515 _SPI0CN	=	0x00f8
+                    00F9    516 _PCA0L	=	0x00f9
+                    00FA    517 _PCA0H	=	0x00fa
+                    00FB    518 _PCA0CPL0	=	0x00fb
+                    00FC    519 _PCA0CPH0	=	0x00fc
+                    00FD    520 _PCA0CPL4	=	0x00fd
+                    00FE    521 _PCA0CPH4	=	0x00fe
+                    00FF    522 _VDM0CN	=	0x00ff
+                    0089    523 _LCD0D0	=	0x0089
+                    008A    524 _LCD0D1	=	0x008a
+                    008B    525 _LCD0D2	=	0x008b
+                    008C    526 _LCD0D3	=	0x008c
+                    008D    527 _LCD0D4	=	0x008d
+                    008E    528 _LCD0D5	=	0x008e
+                    0091    529 _LCD0D6	=	0x0091
+                    0092    530 _LCD0D7	=	0x0092
+                    0093    531 _LCD0D8	=	0x0093
+                    0094    532 _LCD0D9	=	0x0094
+                    0095    533 _LCD0DA	=	0x0095
+                    0096    534 _LCD0DB	=	0x0096
+                    0097    535 _LCD0DC	=	0x0097
+                    0099    536 _LCD0DD	=	0x0099
+                    009A    537 _LCD0DE	=	0x009a
+                    009B    538 _LCD0DF	=	0x009b
+                    009C    539 _LCD0CNTRST	=	0x009c
+                    009D    540 _LCD0CN	=	0x009d
+                    009E    541 _LCD0BLINK	=	0x009e
+                    009F    542 _LCD0TOGR	=	0x009f
+                    00A1    543 _SPI1CFG	=	0x00a1
+                    00A2    544 _SPI1CKR	=	0x00a2
+                    00A3    545 _SPI1DAT	=	0x00a3
+                    00A4    546 _LCD0PWR	=	0x00a4
+                    00A5    547 _LCD0CF	=	0x00a5
+                    00A6    548 _LCD0VBMCN	=	0x00a6
+                    00A9    549 _LCD0CLKDIVL	=	0x00a9
+                    00AA    550 _LCD0CLKDIVH	=	0x00aa
+                    00AB    551 _LCD0MSCN	=	0x00ab
+                    00AC    552 _LCD0MSCF	=	0x00ac
+                    00AD    553 _LCD0CHPCF	=	0x00ad
+                    00AE    554 _LCD0CHPMD	=	0x00ae
+                    00AF    555 _LCD0VBMCF	=	0x00af
+                    00B1    556 _DC0CN	=	0x00b1
+                    00B2    557 _DC0CF	=	0x00b2
+                    00B3    558 _DC0MD	=	0x00b3
+                    00B5    559 _LCD0CHPCN	=	0x00b5
+                    00B6    560 _LCD0BUFMD	=	0x00b6
+                    00B9    561 _CRC1IN	=	0x00b9
+                    00BA    562 _CRC1OUTL	=	0x00ba
+                    00BB    563 _CRC1OUTH	=	0x00bb
+                    00BC    564 _CRC1POLL	=	0x00bc
+                    00BD    565 _CRC1POLH	=	0x00bd
+                    00BE    566 _CRC1CN	=	0x00be
+                    00C1    567 _PC0STAT	=	0x00c1
+                    00C2    568 _ENC0L	=	0x00c2
+                    00C3    569 _ENC0M	=	0x00c3
+                    00C4    570 _ENC0H	=	0x00c4
+                    00C5    571 _ENC0CN	=	0x00c5
+                    00C6    572 _VREGINSDL	=	0x00c6
+                    00C7    573 _VREGINSDH	=	0x00c7
+                    00C9    574 _DMA0NCF	=	0x00c9
+                    00CA    575 _DMA0NBAL	=	0x00ca
+                    00CB    576 _DMA0NBAH	=	0x00cb
+                    00CC    577 _DMA0NAOL	=	0x00cc
+                    00CD    578 _DMA0NAOH	=	0x00cd
+                    00CE    579 _DMA0NSZL	=	0x00ce
+                    00CF    580 _DMA0NSZH	=	0x00cf
+                    00D1    581 _DMA0SEL	=	0x00d1
+                    00D2    582 _DMA0EN	=	0x00d2
+                    00D3    583 _DMA0INT	=	0x00d3
+                    00D4    584 _DMA0MINT	=	0x00d4
+                    00D5    585 _DMA0BUSY	=	0x00d5
+                    00D6    586 _DMA0NMD	=	0x00d6
+                    00D7    587 _PC0PCF	=	0x00d7
+                    00D9    588 _PC0MD	=	0x00d9
+                    00DA    589 _PC0CTR0L	=	0x00da
+                    00DB    590 _PC0CTR0M	=	0x00db
+                    00DC    591 _PC0CTR0H	=	0x00dc
+                    00DD    592 _PC0CTR1L	=	0x00dd
+                    00DE    593 _PC0CTR1M	=	0x00de
+                    00DF    594 _PC0CTR1H	=	0x00df
+                    00E1    595 _PC0CMP0L	=	0x00e1
+                    00E2    596 _PC0CMP0M	=	0x00e2
+                    00E3    597 _PC0CMP0H	=	0x00e3
+                    00E4    598 _PC0TH	=	0x00e4
+                    00E9    599 _AES0BCFG	=	0x00e9
+                    00EA    600 _AES0DCFG	=	0x00ea
+                    00EB    601 _AES0BIN	=	0x00eb
+                    00EC    602 _AES0XIN	=	0x00ec
+                    00ED    603 _AES0KIN	=	0x00ed
+                    00EE    604 _AES0DBA	=	0x00ee
+                    00EF    605 _AES0KBA	=	0x00ef
+                    00F1    606 _PC0CMP1L	=	0x00f1
+                    00F2    607 _PC0CMP1M	=	0x00f2
+                    00F3    608 _PC0CMP1H	=	0x00f3
+                    00F4    609 _PC0HIST	=	0x00f4
+                    00F5    610 _AES0YOUT	=	0x00f5
+                    00F8    611 _SPI1CN	=	0x00f8
+                    00F9    612 _PC0DCL	=	0x00f9
+                    00FA    613 _PC0DCH	=	0x00fa
+                    00FB    614 _PC0INT0	=	0x00fb
+                    00FC    615 _PC0INT1	=	0x00fc
+                    00FD    616 _DC0RDY	=	0x00fd
+                    008E    617 _SFRPGCN	=	0x008e
+                    0091    618 _CRC0DAT	=	0x0091
+                    0092    619 _CRC0CN	=	0x0092
+                    0093    620 _CRC0IN	=	0x0093
+                    0094    621 _CRC0FLIP	=	0x0094
+                    0096    622 _CRC0AUTO	=	0x0096
+                    0097    623 _CRC0CNT	=	0x0097
+                    009C    624 _LCD0BUFCN	=	0x009c
+                    00A1    625 _P3DRV	=	0x00a1
+                    00A2    626 _P4DRV	=	0x00a2
+                    00A3    627 _P5DRV	=	0x00a3
+                    00A4    628 _P0DRV	=	0x00a4
+                    00A5    629 _P1DRV	=	0x00a5
+                    00A6    630 _P2DRV	=	0x00a6
+                    00AA    631 _P6DRV	=	0x00aa
+                    00AB    632 _P7DRV	=	0x00ab
+                    00AC    633 _LCD0BUFCF	=	0x00ac
+                    00B1    634 _P3MDOUT	=	0x00b1
+                    00B2    635 _OSCIFL	=	0x00b2
+                    00B3    636 _OSCICL	=	0x00b3
+                    00B6    637 _FLSCL	=	0x00b6
+                    00B9    638 _IREF0CF	=	0x00b9
+                    00BB    639 _ADC0PWR	=	0x00bb
+                    00BC    640 _ADC0TK	=	0x00bc
+                    00BD    641 _TOFFL	=	0x00bd
+                    00BE    642 _TOFFH	=	0x00be
+                    00D9    643 _P4	=	0x00d9
+                    00DA    644 _P5	=	0x00da
+                    00DB    645 _P6	=	0x00db
+                    00DC    646 _P7	=	0x00dc
+                    00E9    647 _HWID	=	0x00e9
+                    00EA    648 _REVID	=	0x00ea
+                    00EB    649 _DEVICEID	=	0x00eb
+                    00F1    650 _P3MDIN	=	0x00f1
+                    00F2    651 _P4MDIN	=	0x00f2
+                    00F3    652 _P5MDIN	=	0x00f3
+                    00F4    653 _P6MDIN	=	0x00f4
+                    00F5    654 _PCLKACT	=	0x00f5
+                    00F9    655 _P4MDOUT	=	0x00f9
+                    00FA    656 _P5MDOUT	=	0x00fa
+                    00FB    657 _P6MDOUT	=	0x00fb
+                    00FC    658 _P7MDOUT	=	0x00fc
+                    00FD    659 _CLKMODE	=	0x00fd
+                    00FE    660 _PCLKEN	=	0x00fe
+                    8382    661 _DP	=	0x8382
+                    8685    662 _TOFF	=	0x8685
+                    9392    663 _TMR3RL	=	0x9392
+                    9594    664 _TMR3	=	0x9594
+                    BEBD    665 _ADC0	=	0xbebd
+                    C4C3    666 _ADC0GT	=	0xc4c3
+                    C6C5    667 _ADC0LT	=	0xc6c5
+                    CBCA    668 _TMR2RL	=	0xcbca
+                    CDCC    669 _TMR2	=	0xcdcc
+                    D3D2    670 _PCA0CP5	=	0xd3d2
+                    EAE9    671 _PCA0CP1	=	0xeae9
+                    ECEB    672 _PCA0CP2	=	0xeceb
+                    EEED    673 _PCA0CP3	=	0xeeed
+                    FAF9    674 _PCA0	=	0xfaf9
+                    FCFB    675 _PCA0CP0	=	0xfcfb
+                    FEFD    676 _PCA0CP4	=	0xfefd
+                    00AA    677 __XPAGE	=	0x00aa
+                            678 ;--------------------------------------------------------
+                            679 ; special function bits
+                            680 ;--------------------------------------------------------
+                            681 	.area RSEG    (ABS,DATA)
+   0000                     682 	.org 0x0000
+                    008F    683 _TF1	=	0x008f
+                    008E    684 _TR1	=	0x008e
+                    008D    685 _TF0	=	0x008d
+                    008C    686 _TR0	=	0x008c
+                    008B    687 _IE1	=	0x008b
+                    008A    688 _IT1	=	0x008a
+                    0089    689 _IE0	=	0x0089
+                    0088    690 _IT0	=	0x0088
+                    009F    691 _S0MODE	=	0x009f
+                    009D    692 _MCE0	=	0x009d
+                    009C    693 _REN0	=	0x009c
+                    009B    694 _TB80	=	0x009b
+                    009A    695 _RB80	=	0x009a
+                    0099    696 _TI0	=	0x0099
+                    0098    697 _RI0	=	0x0098
+                    00AF    698 _EA	=	0x00af
+                    00AE    699 _ESPI0	=	0x00ae
+                    00AD    700 _ET2	=	0x00ad
+                    00AC    701 _ES0	=	0x00ac
+                    00AB    702 _ET1	=	0x00ab
+                    00AA    703 _EX1	=	0x00aa
+                    00A9    704 _ET0	=	0x00a9
+                    00A8    705 _EX0	=	0x00a8
+                    00BE    706 _PSPI0	=	0x00be
+                    00BD    707 _PT2	=	0x00bd
+                    00BC    708 _PS0	=	0x00bc
+                    00BB    709 _PT1	=	0x00bb
+                    00BA    710 _PX1	=	0x00ba
+                    00B9    711 _PT0	=	0x00b9
+                    00B8    712 _PX0	=	0x00b8
+                    00C7    713 _MASTER	=	0x00c7
+                    00C6    714 _TXMODE	=	0x00c6
+                    00C5    715 _STA	=	0x00c5
+                    00C4    716 _STO	=	0x00c4
+                    00C3    717 _ACKRQ	=	0x00c3
+                    00C2    718 _ARBLOST	=	0x00c2
+                    00C1    719 _ACK	=	0x00c1
+                    00C0    720 _SI	=	0x00c0
+                    00CF    721 _TF2H	=	0x00cf
+                    00CE    722 _TF2L	=	0x00ce
+                    00CD    723 _TF2LEN	=	0x00cd
+                    00CC    724 _TF2CEN	=	0x00cc
+                    00CB    725 _T2SPLIT	=	0x00cb
+                    00CA    726 _TR2	=	0x00ca
+                    00C9    727 _T2RCLK	=	0x00c9
+                    00C8    728 _T2XCLK	=	0x00c8
+                    00D7    729 _CY	=	0x00d7
+                    00D6    730 _AC	=	0x00d6
+                    00D5    731 _F0	=	0x00d5
+                    00D4    732 _RS1	=	0x00d4
+                    00D3    733 _RS0	=	0x00d3
+                    00D2    734 _OV	=	0x00d2
+                    00D1    735 _F1	=	0x00d1
+                    00D0    736 _P	=	0x00d0
+                    00DF    737 _CF	=	0x00df
+                    00DE    738 _CR	=	0x00de
+                    00DD    739 _CCF5	=	0x00dd
+                    00DC    740 _CCF4	=	0x00dc
+                    00DB    741 _CCF3	=	0x00db
+                    00DA    742 _CCF2	=	0x00da
+                    00D9    743 _CCF1	=	0x00d9
+                    00D8    744 _CCF0	=	0x00d8
+                    00EF    745 _AD0EN	=	0x00ef
+                    00EE    746 _BURSTEN	=	0x00ee
+                    00ED    747 _AD0INT	=	0x00ed
+                    00EC    748 _AD0BUSY	=	0x00ec
+                    00EB    749 _AD0WINT	=	0x00eb
+                    00EA    750 _AD0CM2	=	0x00ea
+                    00E9    751 _AD0CM1	=	0x00e9
+                    00E8    752 _AD0CM0	=	0x00e8
+                    00FF    753 _SPIF0	=	0x00ff
+                    00FE    754 _WCOL0	=	0x00fe
+                    00FD    755 _MODF0	=	0x00fd
+                    00FC    756 _RXOVRN0	=	0x00fc
+                    00FB    757 _NSS0MD1	=	0x00fb
+                    00FA    758 _NSS0MD0	=	0x00fa
+                    00F9    759 _TXBMT0	=	0x00f9
+                    00F8    760 _SPI0EN	=	0x00f8
+                    00FF    761 _SPIF1	=	0x00ff
+                    00FE    762 _WCOL1	=	0x00fe
+                    00FD    763 _MODF1	=	0x00fd
+                    00FC    764 _RXOVRN1	=	0x00fc
+                    00FB    765 _NSS1MD1	=	0x00fb
+                    00FA    766 _NSS1MD0	=	0x00fa
+                    00F9    767 _TXBMT1	=	0x00f9
+                    00F8    768 _SPI1EN	=	0x00f8
+                    00B6    769 _LED_RED	=	0x00b6
+                    00B7    770 _LED_GREEN	=	0x00b7
+                    0082    771 _PIN_CONFIG	=	0x0082
+                    0083    772 _PIN_ENABLE	=	0x0083
+                    0081    773 _IRQ	=	0x0081
+                    00A3    774 _NSS1	=	0x00a3
+                            775 ;--------------------------------------------------------
+                            776 ; overlayable register banks
+                            777 ;--------------------------------------------------------
+                            778 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     779 	.ds 8
+                            780 ;--------------------------------------------------------
+                            781 ; internal ram data
+                            782 ;--------------------------------------------------------
+                            783 	.area DSEG    (DATA)
+   0008                     784 _flash_write_byte_PARM_2:
+   0008                     785 	.ds 1
+   0009                     786 _flash_write_byte_address_1_1:
+   0009                     787 	.ds 4
+   000D                     788 _flash_write_byte_bank_state_1_1:
+   000D                     789 	.ds 1
+                            790 ;--------------------------------------------------------
+                            791 ; overlayable items in internal ram 
+                            792 ;--------------------------------------------------------
+                            793 	.area	OSEG    (OVR,DATA)
+                            794 	.area	OSEG    (OVR,DATA)
+   000E                     795 _flash_read_byte_address_1_1:
+   000E                     796 	.ds 4
+   0012                     797 _flash_read_byte_bank_state_1_1:
+   0012                     798 	.ds 1
+                            799 ;--------------------------------------------------------
+                            800 ; indirectly addressable internal ram data
+                            801 ;--------------------------------------------------------
+                            802 	.area ISEG    (DATA)
+                            803 ;--------------------------------------------------------
+                            804 ; absolute internal ram data
+                            805 ;--------------------------------------------------------
+                            806 	.area IABS    (ABS,DATA)
+                            807 	.area IABS    (ABS,DATA)
+                            808 ;--------------------------------------------------------
+                            809 ; bit data
+                            810 ;--------------------------------------------------------
+                            811 	.area BSEG    (BIT)
+                            812 ;--------------------------------------------------------
+                            813 ; paged external ram data
+                            814 ;--------------------------------------------------------
+                            815 	.area PSEG    (PAG,XDATA)
+                            816 ;--------------------------------------------------------
+                            817 ; external ram data
+                            818 ;--------------------------------------------------------
+                            819 	.area XSEG    (XDATA)
+                            820 ;--------------------------------------------------------
+                            821 ; absolute external ram data
+                            822 ;--------------------------------------------------------
+                            823 	.area XABS    (ABS,XDATA)
+                            824 ;--------------------------------------------------------
+                            825 ; external initialized ram data
+                            826 ;--------------------------------------------------------
+                            827 	.area HOME    (CODE)
+                            828 	.area GSINIT0 (CODE)
+                            829 	.area GSINIT1 (CODE)
+                            830 	.area GSINIT2 (CODE)
+                            831 	.area GSINIT3 (CODE)
+                            832 	.area GSINIT4 (CODE)
+                            833 	.area GSINIT5 (CODE)
+                            834 	.area GSINIT  (CODE)
+                            835 	.area GSFINAL (CODE)
+                            836 	.area CSEG    (CODE)
+                            837 ;--------------------------------------------------------
+                            838 ; global & static initialisations
+                            839 ;--------------------------------------------------------
+                            840 	.area HOME    (CODE)
+                            841 	.area GSINIT  (CODE)
+                            842 	.area GSFINAL (CODE)
+                            843 	.area GSINIT  (CODE)
+                            844 ;--------------------------------------------------------
+                            845 ; Home
+                            846 ;--------------------------------------------------------
+                            847 	.area HOME    (CODE)
+                            848 	.area HOME    (CODE)
+                            849 ;--------------------------------------------------------
+                            850 ; code
+                            851 ;--------------------------------------------------------
+                            852 	.area HIGHCSEG(CODE)
+                            853 ;------------------------------------------------------------
+                            854 ;Allocation info for local variables in function 'flash_app_valid'
+                            855 ;------------------------------------------------------------
+                            856 ;	bootloader/flash.c:72: flash_app_valid(void)
+                            857 ;	-----------------------------------------
+                            858 ;	 function flash_app_valid
+                            859 ;	-----------------------------------------
+   FC00                     860 _flash_app_valid:
+                    0007    861 	ar7 = 0x07
+                    0006    862 	ar6 = 0x06
+                    0005    863 	ar5 = 0x05
+                    0004    864 	ar4 = 0x04
+                    0003    865 	ar3 = 0x03
+                    0002    866 	ar2 = 0x02
+                    0001    867 	ar1 = 0x01
+                    0000    868 	ar0 = 0x00
+                            869 ;	bootloader/flash.c:74: return (flash_signature[0] == FLASH_SIG0) && (flash_signature[1] == FLASH_SIG1);
+   FC00 90 F7 FE            870 	mov	dptr,#_flash_signature
+   FC03 E4                  871 	clr	a
+   FC04 93                  872 	movc	a,@a+dptr
+   FC05 FF                  873 	mov	r7,a
+   FC06 BF 3D 0B            874 	cjne	r7,#0x3D,00103$
+   FC09 90 F7 FF            875 	mov	dptr,#(_flash_signature + 0x0001)
+   FC0C E4                  876 	clr	a
+   FC0D 93                  877 	movc	a,@a+dptr
+   FC0E FF                  878 	mov	r7,a
+   FC0F BF C2 02            879 	cjne	r7,#0xC2,00109$
+   FC12 80 04               880 	sjmp	00104$
+   FC14                     881 00109$:
+   FC14                     882 00103$:
+   FC14 7F 00               883 	mov	r7,#0x00
+   FC16 80 02               884 	sjmp	00105$
+   FC18                     885 00104$:
+   FC18 7F 01               886 	mov	r7,#0x01
+   FC1A                     887 00105$:
+   FC1A 8F 82               888 	mov	dpl,r7
+   FC1C 22                  889 	ret
+                            890 ;------------------------------------------------------------
+                            891 ;Allocation info for local variables in function 'flash_address_visible'
+                            892 ;------------------------------------------------------------
+                            893 ;address                   Allocated to registers r4 r5 r6 r7 
+                            894 ;------------------------------------------------------------
+                            895 ;	bootloader/flash.c:84: flash_address_visible(uint32_t address)
+                            896 ;	-----------------------------------------
+                            897 ;	 function flash_address_visible
+                            898 ;	-----------------------------------------
+   FC1D                     899 _flash_address_visible:
+   FC1D AC 82               900 	mov	r4,dpl
+   FC1F AD 83               901 	mov	r5,dph
+   FC21 AE F0               902 	mov	r6,b
+   FC23 FF                  903 	mov	r7,a
+                            904 ;	bootloader/flash.c:86: switch (address >> 16) {
+   FC24 8E 00               905 	mov	ar0,r6
+   FC26 8F 01               906 	mov	ar1,r7
+   FC28 7A 00               907 	mov	r2,#0x00
+   FC2A 7B 00               908 	mov	r3,#0x00
+   FC2C C3                  909 	clr	c
+   FC2D 74 03               910 	mov	a,#0x03
+   FC2F 98                  911 	subb	a,r0
+   FC30 E4                  912 	clr	a
+   FC31 99                  913 	subb	a,r1
+   FC32 E4                  914 	clr	a
+   FC33 9A                  915 	subb	a,r2
+   FC34 E4                  916 	clr	a
+   FC35 9B                  917 	subb	a,r3
+   FC36 40 5B               918 	jc	00112$
+   FC38 E8                  919 	mov	a,r0
+   FC39 28                  920 	add	a,r0
+   FC3A 28                  921 	add	a,r0
+   FC3B 90 FC 3F            922 	mov	dptr,#00121$
+   FC3E 73                  923 	jmp	@a+dptr
+   FC3F                     924 00121$:
+   FC3F 02 FC 72            925 	ljmp	00108$
+   FC42 02 FC 5D            926 	ljmp	00105$
+   FC45 02 FC 5D            927 	ljmp	00104$
+                            928 ;	bootloader/flash.c:88: case 3:
+                            929 ;	bootloader/flash.c:89: if ((address & 0xFFFF) >= FLASH_SCRATCH)
+   FC48 8C 00               930 	mov	ar0,r4
+   FC4A 8D 01               931 	mov	ar1,r5
+   FC4C 7A 00               932 	mov	r2,#0x00
+   FC4E 7B 00               933 	mov	r3,#0x00
+   FC50 C3                  934 	clr	c
+   FC51 E9                  935 	mov	a,r1
+   FC52 94 F8               936 	subb	a,#0xF8
+   FC54 EA                  937 	mov	a,r2
+   FC55 94 00               938 	subb	a,#0x00
+   FC57 EB                  939 	mov	a,r3
+   FC58 94 00               940 	subb	a,#0x00
+                            941 ;	bootloader/flash.c:90: return false;
+   FC5A 40 01               942 	jc	00105$
+                            943 ;	bootloader/flash.c:92: case 2:
+   FC5C 22                  944 	ret
+   FC5D                     945 00104$:
+                            946 ;	bootloader/flash.c:93: case 1:
+   FC5D                     947 00105$:
+                            948 ;	bootloader/flash.c:94: if ((address & 0xFFFF) < 0x8000)
+   FC5D 8C 00               949 	mov	ar0,r4
+   FC5F 8D 01               950 	mov	ar1,r5
+   FC61 E4                  951 	clr	a
+   FC62 FA                  952 	mov	r2,a
+   FC63 FB                  953 	mov	r3,a
+   FC64 E9                  954 	mov	a,r1
+   FC65 20 E7 06            955 	jb	acc.7,00123$
+   FC68 EA                  956 	mov	a,r2
+   FC69 70 03               957 	jnz	00123$
+   FC6B EB                  958 	mov	a,r3
+   FC6C 60 02               959 	jz	00124$
+   FC6E                     960 00123$:
+   FC6E 80 25               961 	sjmp	00113$
+   FC70                     962 00124$:
+                            963 ;	bootloader/flash.c:95: return false;
+   FC70 C3                  964 	clr	c
+                            965 ;	bootloader/flash.c:98: case 0:
+   FC71 22                  966 	ret
+   FC72                     967 00108$:
+                            968 ;	bootloader/flash.c:99: if ((address & 0xFFFF) < FLASH_APP_START || (address & 0xFFFF) > 0x7FFF)
+   FC72 8C 00               969 	mov	ar0,r4
+   FC74 8D 01               970 	mov	ar1,r5
+   FC76 E4                  971 	clr	a
+   FC77 FA                  972 	mov	r2,a
+   FC78 FB                  973 	mov	r3,a
+   FC79 E9                  974 	mov	a,r1
+   FC7A 54 FC               975 	anl	a,#0xFC
+   FC7C 70 06               976 	jnz	00125$
+   FC7E EA                  977 	mov	a,r2
+   FC7F 70 03               978 	jnz	00125$
+   FC81 EB                  979 	mov	a,r3
+   FC82 60 0D               980 	jz	00109$
+   FC84                     981 00125$:
+   FC84 E4                  982 	clr	a
+   FC85 FE                  983 	mov	r6,a
+   FC86 FF                  984 	mov	r7,a
+   FC87 ED                  985 	mov	a,r5
+   FC88 20 E7 06            986 	jb	acc.7,00126$
+   FC8B EE                  987 	mov	a,r6
+   FC8C 70 03               988 	jnz	00126$
+   FC8E EF                  989 	mov	a,r7
+   FC8F 60 04               990 	jz	00113$
+   FC91                     991 00126$:
+   FC91                     992 00109$:
+                            993 ;	bootloader/flash.c:100: return false;
+   FC91 C3                  994 	clr	c
+                            995 ;	bootloader/flash.c:102: default:
+   FC92 22                  996 	ret
+   FC93                     997 00112$:
+                            998 ;	bootloader/flash.c:103: return false;
+   FC93 C3                  999 	clr	c
+                           1000 ;	bootloader/flash.c:104: }
+   FC94 22                 1001 	ret
+   FC95                    1002 00113$:
+                           1003 ;	bootloader/flash.c:105: return true;
+   FC95 D3                 1004 	setb	c
+   FC96 22                 1005 	ret
+                           1006 ;------------------------------------------------------------
+                           1007 ;Allocation info for local variables in function 'flash_load_keys'
+                           1008 ;------------------------------------------------------------
+                           1009 ;	bootloader/flash.c:120: flash_load_keys(void)
+                           1010 ;	-----------------------------------------
+                           1011 ;	 function flash_load_keys
+                           1012 ;	-----------------------------------------
+   FC97                    1013 _flash_load_keys:
+                           1014 ;	bootloader/flash.c:122: FLKEY = 0xa5;
+   FC97 75 B7 A5           1015 	mov	_FLKEY,#0xA5
+                           1016 ;	bootloader/flash.c:123: FLKEY = 0xf1;
+   FC9A 75 B7 F1           1017 	mov	_FLKEY,#0xF1
+   FC9D 22                 1018 	ret
+                           1019 ;------------------------------------------------------------
+                           1020 ;Allocation info for local variables in function 'flash_erase_app'
+                           1021 ;------------------------------------------------------------
+                           1022 ;address                   Allocated to registers r3 r4 
+                           1023 ;greaterAddress            Allocated to registers r1 r2 
+                           1024 ;bank                      Allocated to registers r5 
+                           1025 ;bank_state                Allocated to registers r7 
+                           1026 ;------------------------------------------------------------
+                           1027 ;	bootloader/flash.c:127: flash_erase_app(void)
+                           1028 ;	-----------------------------------------
+                           1029 ;	 function flash_erase_app
+                           1030 ;	-----------------------------------------
+   FC9E                    1031 _flash_erase_app:
+                           1032 ;	bootloader/flash.c:133: uint8_t		bank_state = PSBANK;
+   FC9E AF 84              1033 	mov	r7,_PSBANK
+                           1034 ;	bootloader/flash.c:134: for (bank=FLASH_BANKS; bank>0; bank--) {
+   FCA0 74 03              1035 	mov	a,#0x03
+   FCA2 5F                 1036 	anl	a,r7
+   FCA3 FE                 1037 	mov	r6,a
+   FCA4 7D 03              1038 	mov	r5,#0x03
+   FCA6                    1039 00110$:
+   FCA6 ED                 1040 	mov	a,r5
+   FCA7 60 04              1041 	jz	00116$
+   FCA9 7C 01              1042 	mov	r4,#0x01
+   FCAB 80 02              1043 	sjmp	00117$
+   FCAD                    1044 00116$:
+   FCAD 7C 00              1045 	mov	r4,#0x00
+   FCAF                    1046 00117$:
+   FCAF EC                 1047 	mov	a,r4
+   FCB0 70 03              1048 	jnz	00129$
+   FCB2 02 FD 2D           1049 	ljmp	00113$
+   FCB5                    1050 00129$:
+                           1051 ;	bootloader/flash.c:136: PSBANK = ((bank_state & 0x03) | (bank<<4)); // Set IFBANK to current value and COBANK to the erase page..
+   FCB5 ED                 1052 	mov	a,r5
+   FCB6 C4                 1053 	swap	a
+   FCB7 54 F0              1054 	anl	a,#0xF0
+   FCB9 FC                 1055 	mov	r4,a
+   FCBA 4E                 1056 	orl	a,r6
+   FCBB F5 84              1057 	mov	_PSBANK,a
+                           1058 ;	bootloader/flash.c:138: switch (bank) {
+   FCBD BD 01 02           1059 	cjne	r5,#0x01,00130$
+   FCC0 80 1C              1060 	sjmp	00103$
+   FCC2                    1061 00130$:
+   FCC2 BD 02 02           1062 	cjne	r5,#0x02,00131$
+   FCC5 80 0D              1063 	sjmp	00102$
+   FCC7                    1064 00131$:
+   FCC7 BD 03 1E           1065 	cjne	r5,#0x03,00104$
+                           1066 ;	bootloader/flash.c:140: address = FLASH_SCRATCH - FLASH_PAGE_SIZE;
+   FCCA 7B 00              1067 	mov	r3,#0x00
+   FCCC 7C F4              1068 	mov	r4,#0xF4
+                           1069 ;	bootloader/flash.c:141: greaterAddress = 0x8000;
+   FCCE 79 00              1070 	mov	r1,#0x00
+   FCD0 7A 80              1071 	mov	r2,#0x80
+                           1072 ;	bootloader/flash.c:142: break;
+                           1073 ;	bootloader/flash.c:143: case 2:
+   FCD2 80 1C              1074 	sjmp	00124$
+   FCD4                    1075 00102$:
+                           1076 ;	bootloader/flash.c:144: address = 0xFFFF;
+   FCD4 7B FF              1077 	mov	r3,#0xFF
+   FCD6 7C FF              1078 	mov	r4,#0xFF
+                           1079 ;	bootloader/flash.c:145: greaterAddress = 0x8000;
+   FCD8 79 00              1080 	mov	r1,#0x00
+   FCDA 7A 80              1081 	mov	r2,#0x80
+                           1082 ;	bootloader/flash.c:146: break;
+                           1083 ;	bootloader/flash.c:147: case 1:
+   FCDC 80 12              1084 	sjmp	00124$
+   FCDE                    1085 00103$:
+                           1086 ;	bootloader/flash.c:148: address = 0xFFFF;
+   FCDE 7B FF              1087 	mov	r3,#0xFF
+   FCE0 7C FF              1088 	mov	r4,#0xFF
+                           1089 ;	bootloader/flash.c:149: greaterAddress = FLASH_APP_START;
+   FCE2 79 00              1090 	mov	r1,#0x00
+   FCE4 7A 04              1091 	mov	r2,#0x04
+                           1092 ;	bootloader/flash.c:150: break;
+                           1093 ;	bootloader/flash.c:151: default:
+   FCE6 80 08              1094 	sjmp	00124$
+   FCE8                    1095 00104$:
+                           1096 ;	bootloader/flash.c:152: address = 1;
+   FCE8 7B 01              1097 	mov	r3,#0x01
+   FCEA 7C 00              1098 	mov	r4,#0x00
+                           1099 ;	bootloader/flash.c:153: greaterAddress = 0;
+   FCEC 79 00              1100 	mov	r1,#0x00
+   FCEE 7A 00              1101 	mov	r2,#0x00
+                           1102 ;	bootloader/flash.c:155: }
+   FCF0                    1103 00124$:
+   FCF0                    1104 00106$:
+                           1105 ;	bootloader/flash.c:158: for (; address >= greaterAddress; address -= FLASH_PAGE_SIZE) {
+   FCF0 C3                 1106 	clr	c
+   FCF1 EB                 1107 	mov	a,r3
+   FCF2 99                 1108 	subb	a,r1
+   FCF3 EC                 1109 	mov	a,r4
+   FCF4 9A                 1110 	subb	a,r2
+   FCF5 40 32              1111 	jc	00112$
+                           1112 ;	bootloader/flash.c:159: flash_load_keys();
+   FCF7 C0 07              1113 	push	ar7
+   FCF9 C0 06              1114 	push	ar6
+   FCFB C0 05              1115 	push	ar5
+   FCFD C0 04              1116 	push	ar4
+   FCFF C0 03              1117 	push	ar3
+   FD01 C0 02              1118 	push	ar2
+   FD03 C0 01              1119 	push	ar1
+   FD05 12 FC 97           1120 	lcall	_flash_load_keys
+   FD08 D0 01              1121 	pop	ar1
+   FD0A D0 02              1122 	pop	ar2
+   FD0C D0 03              1123 	pop	ar3
+   FD0E D0 04              1124 	pop	ar4
+   FD10 D0 05              1125 	pop	ar5
+   FD12 D0 06              1126 	pop	ar6
+   FD14 D0 07              1127 	pop	ar7
+                           1128 ;	bootloader/flash.c:160: PSCTL = 0x03;				// set PSWE and PSEE
+   FD16 75 8F 03           1129 	mov	_PSCTL,#0x03
+                           1130 ;	bootloader/flash.c:161: *(uint8_t __xdata *)address = 0xff;	// do the page erase
+   FD19 8B 82              1131 	mov	dpl,r3
+   FD1B 8C 83              1132 	mov	dph,r4
+   FD1D 74 FF              1133 	mov	a,#0xFF
+   FD1F F0                 1134 	movx	@dptr,a
+                           1135 ;	bootloader/flash.c:162: PSCTL = 0x00;				// disable PSWE/PSEE
+   FD20 75 8F 00           1136 	mov	_PSCTL,#0x00
+                           1137 ;	bootloader/flash.c:158: for (; address >= greaterAddress; address -= FLASH_PAGE_SIZE) {
+   FD23 EC                 1138 	mov	a,r4
+   FD24 24 FC              1139 	add	a,#0xFC
+   FD26 FC                 1140 	mov	r4,a
+   FD27 80 C7              1141 	sjmp	00106$
+   FD29                    1142 00112$:
+                           1143 ;	bootloader/flash.c:134: for (bank=FLASH_BANKS; bank>0; bank--) {
+   FD29 1D                 1144 	dec	r5
+   FD2A 02 FC A6           1145 	ljmp	00110$
+   FD2D                    1146 00113$:
+                           1147 ;	bootloader/flash.c:166: PSBANK = bank_state;
+   FD2D 8F 84              1148 	mov	_PSBANK,r7
+   FD2F 22                 1149 	ret
+                           1150 ;------------------------------------------------------------
+                           1151 ;Allocation info for local variables in function 'flash_erase_scratch'
+                           1152 ;------------------------------------------------------------
+                           1153 ;	bootloader/flash.c:179: flash_erase_scratch(void)
+                           1154 ;	-----------------------------------------
+                           1155 ;	 function flash_erase_scratch
+                           1156 ;	-----------------------------------------
+   FD30                    1157 _flash_erase_scratch:
+                           1158 ;	bootloader/flash.c:182: flash_load_keys();		// unlock flash for one operation
+   FD30 12 FC 97           1159 	lcall	_flash_load_keys
+                           1160 ;	bootloader/flash.c:183: PSCTL = 0x03;			// set PSWE and PSEE
+   FD33 75 8F 03           1161 	mov	_PSCTL,#0x03
+                           1162 ;	bootloader/flash.c:184: *(uint8_t __xdata *)FLASH_SCRATCH = 0xff;	// do the page erase
+   FD36 90 F8 00           1163 	mov	dptr,#0xF800
+   FD39 74 FF              1164 	mov	a,#0xFF
+   FD3B F0                 1165 	movx	@dptr,a
+                           1166 ;	bootloader/flash.c:185: PSCTL = 0x00;			// disable PSWE/PSEE
+   FD3C 75 8F 00           1167 	mov	_PSCTL,#0x00
+   FD3F 22                 1168 	ret
+                           1169 ;------------------------------------------------------------
+                           1170 ;Allocation info for local variables in function 'flash_write_byte'
+                           1171 ;------------------------------------------------------------
+                           1172 ;c                         Allocated with name '_flash_write_byte_PARM_2'
+                           1173 ;address                   Allocated with name '_flash_write_byte_address_1_1'
+                           1174 ;bank_state                Allocated with name '_flash_write_byte_bank_state_1_1'
+                           1175 ;------------------------------------------------------------
+                           1176 ;	bootloader/flash.c:199: flash_write_byte(uint32_t address, uint8_t c)
+                           1177 ;	-----------------------------------------
+                           1178 ;	 function flash_write_byte
+                           1179 ;	-----------------------------------------
+   FD40                    1180 _flash_write_byte:
+   FD40 85 82 09           1181 	mov	_flash_write_byte_address_1_1,dpl
+   FD43 85 83 0A           1182 	mov	(_flash_write_byte_address_1_1 + 1),dph
+   FD46 85 F0 0B           1183 	mov	(_flash_write_byte_address_1_1 + 2),b
+   FD49 F5 0C              1184 	mov	(_flash_write_byte_address_1_1 + 3),a
+                           1185 ;	bootloader/flash.c:201: uint8_t	bank_state = PSBANK;
+   FD4B 85 84 0D           1186 	mov	_flash_write_byte_bank_state_1_1,_PSBANK
+                           1187 ;	bootloader/flash.c:206: if(((address & 0xFFFF) > 0x7FFF) && ((address & 0xFFFF) < 0xFFFF))
+   FD4E A8 09              1188 	mov	r0,_flash_write_byte_address_1_1
+   FD50 A9 0A              1189 	mov	r1,(_flash_write_byte_address_1_1 + 1)
+   FD52 E4                 1190 	clr	a
+   FD53 FA                 1191 	mov	r2,a
+   FD54 FB                 1192 	mov	r3,a
+   FD55 E9                 1193 	mov	a,r1
+   FD56 20 E7 06           1194 	jb	acc.7,00115$
+   FD59 EA                 1195 	mov	a,r2
+   FD5A 70 03              1196 	jnz	00115$
+   FD5C EB                 1197 	mov	a,r3
+   FD5D 60 1A              1198 	jz	00102$
+   FD5F                    1199 00115$:
+   FD5F A8 09              1200 	mov	r0,_flash_write_byte_address_1_1
+   FD61 A9 0A              1201 	mov	r1,(_flash_write_byte_address_1_1 + 1)
+   FD63 7A 00              1202 	mov	r2,#0x00
+   FD65 7B 00              1203 	mov	r3,#0x00
+   FD67 C3                 1204 	clr	c
+   FD68 E8                 1205 	mov	a,r0
+   FD69 94 FF              1206 	subb	a,#0xFF
+   FD6B E9                 1207 	mov	a,r1
+   FD6C 94 FF              1208 	subb	a,#0xFF
+   FD6E EA                 1209 	mov	a,r2
+   FD6F 94 00              1210 	subb	a,#0x00
+   FD71 EB                 1211 	mov	a,r3
+   FD72 94 00              1212 	subb	a,#0x00
+   FD74 50 03              1213 	jnc	00102$
+                           1214 ;	bootloader/flash.c:208: address |= 0x30000;
+   FD76 43 0B 03           1215 	orl	(_flash_write_byte_address_1_1 + 2),#0x03
+   FD79                    1216 00102$:
+                           1217 ;	bootloader/flash.c:211: if (flash_address_visible(address)) {
+   FD79 85 09 82           1218 	mov	dpl,_flash_write_byte_address_1_1
+   FD7C 85 0A 83           1219 	mov	dph,(_flash_write_byte_address_1_1 + 1)
+   FD7F 85 0B F0           1220 	mov	b,(_flash_write_byte_address_1_1 + 2)
+   FD82 E5 0C              1221 	mov	a,(_flash_write_byte_address_1_1 + 3)
+   FD84 12 FC 1D           1222 	lcall	_flash_address_visible
+   FD87 50 6A              1223 	jnc	00109$
+                           1224 ;	bootloader/flash.c:213: if((address>>16) == 0)
+   FD89 A8 0B              1225 	mov	r0,(_flash_write_byte_address_1_1 + 2)
+   FD8B A9 0C              1226 	mov	r1,(_flash_write_byte_address_1_1 + 3)
+   FD8D E4                 1227 	clr	a
+   FD8E FA                 1228 	mov	r2,a
+   FD8F FB                 1229 	mov	r3,a
+   FD90 E8                 1230 	mov	a,r0
+   FD91 49                 1231 	orl	a,r1
+   FD92 4A                 1232 	orl	a,r2
+   FD93 4B                 1233 	orl	a,r3
+   FD94 70 0A              1234 	jnz	00105$
+                           1235 ;	bootloader/flash.c:214: PSBANK = ((bank_state & 0x03) | 0x10);
+   FD96 74 03              1236 	mov	a,#0x03
+   FD98 55 0D              1237 	anl	a,_flash_write_byte_bank_state_1_1
+   FD9A 44 10              1238 	orl	a,#0x10
+   FD9C F5 84              1239 	mov	_PSBANK,a
+   FD9E 80 3C              1240 	sjmp	00106$
+   FDA0                    1241 00105$:
+                           1242 ;	bootloader/flash.c:217: PSBANK = ((bank_state & 0x03) | ((address>>12) & 0xF0));
+   FDA0 74 03              1243 	mov	a,#0x03
+   FDA2 55 0D              1244 	anl	a,_flash_write_byte_bank_state_1_1
+   FDA4 FB                 1245 	mov	r3,a
+   FDA5 A8 0A              1246 	mov	r0,(_flash_write_byte_address_1_1 + 1)
+   FDA7 E5 0B              1247 	mov	a,(_flash_write_byte_address_1_1 + 2)
+   FDA9 C4                 1248 	swap	a
+   FDAA C8                 1249 	xch	a,r0
+   FDAB C4                 1250 	swap	a
+   FDAC 54 0F              1251 	anl	a,#0x0F
+   FDAE 68                 1252 	xrl	a,r0
+   FDAF C8                 1253 	xch	a,r0
+   FDB0 54 0F              1254 	anl	a,#0x0F
+   FDB2 C8                 1255 	xch	a,r0
+   FDB3 68                 1256 	xrl	a,r0
+   FDB4 C8                 1257 	xch	a,r0
+   FDB5 F9                 1258 	mov	r1,a
+   FDB6 E5 0C              1259 	mov	a,(_flash_write_byte_address_1_1 + 3)
+   FDB8 C4                 1260 	swap	a
+   FDB9 54 F0              1261 	anl	a,#0xF0
+   FDBB 49                 1262 	orl	a,r1
+   FDBC E5 0C              1263 	mov	a,(_flash_write_byte_address_1_1 + 3)
+   FDBE C4                 1264 	swap	a
+   FDBF 54 0F              1265 	anl	a,#0x0F
+   FDC1 53 00 F0           1266 	anl	ar0,#0xF0
+   FDC4 79 00              1267 	mov	r1,#0x00
+   FDC6 7A 00              1268 	mov	r2,#0x00
+   FDC8 7F 00              1269 	mov	r7,#0x00
+   FDCA E4                 1270 	clr	a
+   FDCB FE                 1271 	mov	r6,a
+   FDCC FD                 1272 	mov	r5,a
+   FDCD FC                 1273 	mov	r4,a
+   FDCE EB                 1274 	mov	a,r3
+   FDCF 42 00              1275 	orl	ar0,a
+   FDD1 EE                 1276 	mov	a,r6
+   FDD2 42 01              1277 	orl	ar1,a
+   FDD4 ED                 1278 	mov	a,r5
+   FDD5 42 02              1279 	orl	ar2,a
+   FDD7 EC                 1280 	mov	a,r4
+   FDD8 42 07              1281 	orl	ar7,a
+   FDDA 88 84              1282 	mov	_PSBANK,r0
+   FDDC                    1283 00106$:
+                           1284 ;	bootloader/flash.c:218: flash_load_keys();
+   FDDC 12 FC 97           1285 	lcall	_flash_load_keys
+                           1286 ;	bootloader/flash.c:219: PSCTL = 0x01;				// set PSWE, clear PSEE
+   FDDF 75 8F 01           1287 	mov	_PSCTL,#0x01
+                           1288 ;	bootloader/flash.c:220: *(uint8_t __xdata *)((uint16_t)address) = c;	// write the byte
+   FDE2 AC 09              1289 	mov	r4,_flash_write_byte_address_1_1
+   FDE4 AD 0A              1290 	mov	r5,(_flash_write_byte_address_1_1 + 1)
+   FDE6 8C 82              1291 	mov	dpl,r4
+   FDE8 8D 83              1292 	mov	dph,r5
+   FDEA E5 08              1293 	mov	a,_flash_write_byte_PARM_2
+   FDEC F0                 1294 	movx	@dptr,a
+                           1295 ;	bootloader/flash.c:221: PSCTL = 0x00;				// disable PSWE/PSEE
+   FDED 75 8F 00           1296 	mov	_PSCTL,#0x00
+                           1297 ;	bootloader/flash.c:224: PSBANK = bank_state;
+   FDF0 85 0D 84           1298 	mov	_PSBANK,_flash_write_byte_bank_state_1_1
+   FDF3                    1299 00109$:
+   FDF3 22                 1300 	ret
+                           1301 ;------------------------------------------------------------
+                           1302 ;Allocation info for local variables in function 'flash_read_byte'
+                           1303 ;------------------------------------------------------------
+                           1304 ;address                   Allocated with name '_flash_read_byte_address_1_1'
+                           1305 ;bank_state                Allocated with name '_flash_read_byte_bank_state_1_1'
+                           1306 ;c                         Allocated to registers r7 
+                           1307 ;------------------------------------------------------------
+                           1308 ;	bootloader/flash.c:241: flash_read_byte(uint32_t address)
+                           1309 ;	-----------------------------------------
+                           1310 ;	 function flash_read_byte
+                           1311 ;	-----------------------------------------
+   FDF4                    1312 _flash_read_byte:
+   FDF4 85 82 0E           1313 	mov	_flash_read_byte_address_1_1,dpl
+   FDF7 85 83 0F           1314 	mov	(_flash_read_byte_address_1_1 + 1),dph
+   FDFA 85 F0 10           1315 	mov	(_flash_read_byte_address_1_1 + 2),b
+   FDFD F5 11              1316 	mov	(_flash_read_byte_address_1_1 + 3),a
+                           1317 ;	bootloader/flash.c:243: uint8_t	bank_state = PSBANK;
+   FDFF 85 84 12           1318 	mov	_flash_read_byte_bank_state_1_1,_PSBANK
+                           1319 ;	bootloader/flash.c:247: if(((address & 0xFFFF) > 0x7FFF) && ((address & 0xFFFF) < 0xFFFF))
+   FE02 A8 0E              1320 	mov	r0,_flash_read_byte_address_1_1
+   FE04 A9 0F              1321 	mov	r1,(_flash_read_byte_address_1_1 + 1)
+   FE06 E4                 1322 	clr	a
+   FE07 FA                 1323 	mov	r2,a
+   FE08 FB                 1324 	mov	r3,a
+   FE09 E9                 1325 	mov	a,r1
+   FE0A 20 E7 06           1326 	jb	acc.7,00115$
+   FE0D EA                 1327 	mov	a,r2
+   FE0E 70 03              1328 	jnz	00115$
+   FE10 EB                 1329 	mov	a,r3
+   FE11 60 1A              1330 	jz	00102$
+   FE13                    1331 00115$:
+   FE13 A8 0E              1332 	mov	r0,_flash_read_byte_address_1_1
+   FE15 A9 0F              1333 	mov	r1,(_flash_read_byte_address_1_1 + 1)
+   FE17 7A 00              1334 	mov	r2,#0x00
+   FE19 7B 00              1335 	mov	r3,#0x00
+   FE1B C3                 1336 	clr	c
+   FE1C E8                 1337 	mov	a,r0
+   FE1D 94 FF              1338 	subb	a,#0xFF
+   FE1F E9                 1339 	mov	a,r1
+   FE20 94 FF              1340 	subb	a,#0xFF
+   FE22 EA                 1341 	mov	a,r2
+   FE23 94 00              1342 	subb	a,#0x00
+   FE25 EB                 1343 	mov	a,r3
+   FE26 94 00              1344 	subb	a,#0x00
+   FE28 50 03              1345 	jnc	00102$
+                           1346 ;	bootloader/flash.c:249: address |= 0x30000;
+   FE2A 43 10 03           1347 	orl	(_flash_read_byte_address_1_1 + 2),#0x03
+   FE2D                    1348 00102$:
+                           1349 ;	bootloader/flash.c:252: if ((address>>16) <= FLASH_BANKS) {
+   FE2D A8 10              1350 	mov	r0,(_flash_read_byte_address_1_1 + 2)
+   FE2F A9 11              1351 	mov	r1,(_flash_read_byte_address_1_1 + 3)
+   FE31 7A 00              1352 	mov	r2,#0x00
+   FE33 7B 00              1353 	mov	r3,#0x00
+   FE35 C3                 1354 	clr	c
+   FE36 74 03              1355 	mov	a,#0x03
+   FE38 98                 1356 	subb	a,r0
+   FE39 E4                 1357 	clr	a
+   FE3A 99                 1358 	subb	a,r1
+   FE3B E4                 1359 	clr	a
+   FE3C 9A                 1360 	subb	a,r2
+   FE3D E4                 1361 	clr	a
+   FE3E 9B                 1362 	subb	a,r3
+   FE3F 40 5D              1363 	jc	00108$
+                           1364 ;	bootloader/flash.c:255: if((address>>16) == 0)
+   FE41 E8                 1365 	mov	a,r0
+   FE42 49                 1366 	orl	a,r1
+   FE43 4A                 1367 	orl	a,r2
+   FE44 4B                 1368 	orl	a,r3
+   FE45 70 0A              1369 	jnz	00105$
+                           1370 ;	bootloader/flash.c:256: PSBANK = ((bank_state & 0x03) | 0x10);
+   FE47 74 03              1371 	mov	a,#0x03
+   FE49 55 12              1372 	anl	a,_flash_read_byte_bank_state_1_1
+   FE4B 44 10              1373 	orl	a,#0x10
+   FE4D F5 84              1374 	mov	_PSBANK,a
+   FE4F 80 3C              1375 	sjmp	00106$
+   FE51                    1376 00105$:
+                           1377 ;	bootloader/flash.c:259: PSBANK = ((bank_state & 0x03) | ((address>>12) & 0xF0));
+   FE51 74 03              1378 	mov	a,#0x03
+   FE53 55 12              1379 	anl	a,_flash_read_byte_bank_state_1_1
+   FE55 FB                 1380 	mov	r3,a
+   FE56 A8 0F              1381 	mov	r0,(_flash_read_byte_address_1_1 + 1)
+   FE58 E5 10              1382 	mov	a,(_flash_read_byte_address_1_1 + 2)
+   FE5A C4                 1383 	swap	a
+   FE5B C8                 1384 	xch	a,r0
+   FE5C C4                 1385 	swap	a
+   FE5D 54 0F              1386 	anl	a,#0x0F
+   FE5F 68                 1387 	xrl	a,r0
+   FE60 C8                 1388 	xch	a,r0
+   FE61 54 0F              1389 	anl	a,#0x0F
+   FE63 C8                 1390 	xch	a,r0
+   FE64 68                 1391 	xrl	a,r0
+   FE65 C8                 1392 	xch	a,r0
+   FE66 F9                 1393 	mov	r1,a
+   FE67 E5 11              1394 	mov	a,(_flash_read_byte_address_1_1 + 3)
+   FE69 C4                 1395 	swap	a
+   FE6A 54 F0              1396 	anl	a,#0xF0
+   FE6C 49                 1397 	orl	a,r1
+   FE6D E5 11              1398 	mov	a,(_flash_read_byte_address_1_1 + 3)
+   FE6F C4                 1399 	swap	a
+   FE70 54 0F              1400 	anl	a,#0x0F
+   FE72 53 00 F0           1401 	anl	ar0,#0xF0
+   FE75 79 00              1402 	mov	r1,#0x00
+   FE77 7A 00              1403 	mov	r2,#0x00
+   FE79 7F 00              1404 	mov	r7,#0x00
+   FE7B E4                 1405 	clr	a
+   FE7C FE                 1406 	mov	r6,a
+   FE7D FD                 1407 	mov	r5,a
+   FE7E FC                 1408 	mov	r4,a
+   FE7F EB                 1409 	mov	a,r3
+   FE80 42 00              1410 	orl	ar0,a
+   FE82 EE                 1411 	mov	a,r6
+   FE83 42 01              1412 	orl	ar1,a
+   FE85 ED                 1413 	mov	a,r5
+   FE86 42 02              1414 	orl	ar2,a
+   FE88 EC                 1415 	mov	a,r4
+   FE89 42 07              1416 	orl	ar7,a
+   FE8B 88 84              1417 	mov	_PSBANK,r0
+   FE8D                    1418 00106$:
+                           1419 ;	bootloader/flash.c:260: c = *(uint8_t __code *)((uint16_t)address);
+   FE8D AC 0E              1420 	mov	r4,_flash_read_byte_address_1_1
+   FE8F AD 0F              1421 	mov	r5,(_flash_read_byte_address_1_1 + 1)
+   FE91 8C 82              1422 	mov	dpl,r4
+   FE93 8D 83              1423 	mov	dph,r5
+   FE95 E4                 1424 	clr	a
+   FE96 93                 1425 	movc	a,@a+dptr
+   FE97 FF                 1426 	mov	r7,a
+                           1427 ;	bootloader/flash.c:263: PSBANK = bank_state;
+   FE98 85 12 84           1428 	mov	_PSBANK,_flash_read_byte_bank_state_1_1
+                           1429 ;	bootloader/flash.c:264: return c;
+   FE9B 8F 82              1430 	mov	dpl,r7
+   FE9D 22                 1431 	ret
+   FE9E                    1432 00108$:
+                           1433 ;	bootloader/flash.c:266: return 0xFF;
+   FE9E 75 82 FF           1434 	mov	dpl,#0xFF
+   FEA1 22                 1435 	ret
+                           1436 	.area CSEG    (CODE)
+                           1437 	.area CONST   (CODE)
+                    F7FE   1438 _flash_signature	=	0xf7fe
+                           1439 	.area CABS    (ABS,CODE)
+   FFFE                    1440 	.org 0xFFFE
+   FFFE                    1441 _board_frequency:
+   FFFE F0                 1442 	.db #0xF0	; 240
+   FFFF                    1443 	.org 0xFFFF
+   FFFF                    1444 _flash_lock_byte:
+   FFFF FE                 1445 	.db #0xFE	; 254
