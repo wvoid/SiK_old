@@ -43,7 +43,7 @@ extern void shuffleRand(void);
 /// initialise frequency hopping logic
 ///
 extern void fhop_init(void);
-
+//s
 /// tell the TDM code what channel to transmit on
 ///
 /// @return		The channel that we should be transmitting on.
